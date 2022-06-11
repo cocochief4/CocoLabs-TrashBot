@@ -11,6 +11,7 @@ void setup() {
   
   Wire.begin(1);        // join i2c bus (address optional for master)
   Serial.begin(115200);  // start serial for output
+  Wire.onReceive(receiveEvent);
 }
 
 void loop() {
@@ -20,9 +21,9 @@ void loop() {
   Serial.print(ch1Val);
   Serial.print(", ");
   Serial.println(ch2Val);
+  
+}
 
-  Wire.beginTransmission(4); // transmit to device #4
-  Wire.write(ch1Val);        // sends 3-4 bytes
-  Wire.write(ch2Val);              // sends 3-4 bytes 
-  Wire.endTransmission();
+void receiveEvent(int howMany) {
+  
 }
