@@ -10,7 +10,7 @@ void setup() {
   pinMode(ch2Pin, INPUT);
   
   Wire.begin(1);        // join i2c bus (address optional for master)
-  Serial.begin(115200);  // start serial for output
+  Serial.begin(9600);  // start serial for output
   Wire.onReceive(receiveEvent);
 }
 
