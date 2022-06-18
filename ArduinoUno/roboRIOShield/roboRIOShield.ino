@@ -1,6 +1,10 @@
 #include <Wire.h>
 int ch1Pin;
 int ch2Pin;
+int ch1Val;
+int ch2Val;
+
+byte channelData[4];
   
 void setup() {
   // put your setup code here, to run once:
@@ -11,19 +15,19 @@ void setup() {
   
   Wire.begin(1);        // join i2c bus (address optional for master)
   Serial.begin(9600);  // start serial for output
-  Wire.onReceive(receiveEvent);
+  Wire.onRequest(receiveRequest);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  int ch1Val = pulseIn(ch1Pin, HIGH);
-  int ch2Val = pulseIn(ch2Pin, HIGH);
+  ch1Val = pulseIn(ch1Pin, HIGH);
+  ch2Val = pulseIn(ch2Pin, HIGH);
   Serial.print(ch1Val);
   Serial.print(", ");
   Serial.println(ch2Val);
   
 }
 
-void receiveEvent(int howMany) {
-  
+void receiveRequest() {
+  Wire.beginTransmission(4);
 }
