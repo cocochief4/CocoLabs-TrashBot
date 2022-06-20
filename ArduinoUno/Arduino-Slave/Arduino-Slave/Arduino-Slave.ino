@@ -1,3 +1,15 @@
+// Wire Peripheral Sender
+// by Nicholas Zambetti <http://www.zambetti.com>
+
+// Demonstrates use of the Wire library
+// Sends data as an I2C/TWI peripheral device
+// Refer to the "Wire Master Reader" example for use with this
+
+// Created 29 March 2006
+
+// This example code is in the public domain.
+
+int requestCount = 0;
 #include <Wire.h>
 
 void setup() {
@@ -8,6 +20,7 @@ void setup() {
 
 void loop() {
   delay(100);
+  Serial.println(requestCount);
 }
 
 // function that executes whenever data is requested by master
@@ -15,5 +28,5 @@ void loop() {
 void requestEvent() {
   Wire.write("hello "); // respond with message of 6 bytes
   // as expected by master
-  Serial.println("wrote");
+  requestCount++;
 }
