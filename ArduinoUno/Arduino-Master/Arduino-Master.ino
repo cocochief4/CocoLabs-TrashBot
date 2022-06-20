@@ -1,21 +1,31 @@
+// Wire Controller Reader
+// by Nicholas Zambetti <http://www.zambetti.com>
+
+// Demonstrates use of the Wire library
+// Reads data from an I2C/TWI peripheral device
+// Refer to the "Wire Peripheral Sender" example for use with this
+
+// Created 29 March 2006
+
+// This example code is in the public domain.
+
+int reqCount = 0;
 #include <Wire.h>
 
 void setup() {
-  // put your setup code here, to run once:
-  Wire.begin(1); //join I2C with ID of 1
-  Serial.begin(115200); //begin Serial Monitor with baud of 9600
-  Serial.println("Start");
+  Wire.begin();        // join i2c bus (address optional for master)
+  Serial.begin(9600);  // start serial for output
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  Wire.requestFrom(2, 6);    // request 6 bytes from peripheral device #8
+  Wire.requestFrom(8, 6); // request 6 bytes from peripheral device #8
+  reqCount++;
+  Serial.println(reqCount);
 
   while (Wire.available()) { // peripheral may send less than requested
     char c = Wire.read(); // receive a byte as character
     Serial.print(c);         // print the character
   }
 
-  delay(500);
-  Serial.println("loop"); 
+  delay(2000);
 }
