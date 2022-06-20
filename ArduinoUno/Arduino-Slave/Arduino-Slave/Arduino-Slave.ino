@@ -51,7 +51,7 @@ void loop() {
   }
 
   finalSend = String(Ch1Val) + String(Ch2Val);
-  Serial.println(finalSend);
+  //Serial.println(finalSend);
 }
 
 // function that executes whenever data is requested by master
