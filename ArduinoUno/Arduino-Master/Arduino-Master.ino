@@ -18,14 +18,14 @@ void setup() {
 }
 
 void loop() {
-  Wire.requestFrom(8, 8); // request 6 bytes from peripheral device #8
+  Wire.requestFrom(4, 8); // request 6 bytes from peripheral device #8
   reqCount++;
-  Serial.println(reqCount);
+  //Serial.println(reqCount);
 
   while (Wire.available()) { // peripheral may send less than requested
     char c = Wire.read(); // receive a byte as character
     Serial.print(c);         // print the character
   }
 
-  delay(2000);
+  delay(500);
 }
