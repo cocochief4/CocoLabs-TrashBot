@@ -18,7 +18,7 @@ void setup() {
 }
 
 void loop() {
-  Wire.requestFrom(8, 6); // request 6 bytes from peripheral device #8
+  Wire.requestFrom(8, 8); // request 6 bytes from peripheral device #8
   reqCount++;
   Serial.println(reqCount);
 
