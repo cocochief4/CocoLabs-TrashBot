@@ -88,14 +88,14 @@ public class Robot extends TimedRobot {
       m_leftStick = new Joystick(1);
       m_rightStick = new Joystick(5);
   }
-  
+  (
   public void teleopInit() {
     
   }
 
   public void teleopPeriodic() {
-    double throttle = 0;
-    double steering = 0;
+    double throttle = (double) 0;
+    double steering = (double) 0;
     //Converting from the original values Arduino sends over to -1 to 1 scale
     if (throttle <= 1460 || throttle >= 1540) {
       throttle /= 500;
@@ -122,7 +122,64 @@ public class Robot extends TimedRobot {
     else if (theta <= 90 && theta > 45) {
       rMax = (1 / Math.sin(theta));
     }
-
+    //you can combine these two if statements into 1 as sin will be positive in both of these regions | rememeber to do it later 
+    else if (theta >= 90 && theta < 135) {
+      rMax = (1 / Math.sin(theta));
+    }
+    else if (theta >= 135 && theta < 180 ) {
+      rMax = (-1 / Math.cos(theta));
+    }
+    else if (theta >= 180 && theta < 225) {
+      rMax = (-1 / Math.cos(theta));
+    }
+    else if (theta >= 225 && theta < 270) {
+      rMax = (-1 / Math.sin(theta));
+    }
+    else if (theta >= 270 && theta < 315) {
+      rMax = (-1 / Math.sin(theta));
+    }
+    else { //case where theta <=360 yet >=315
+      rMax = (1 / Math.cos(theta))
+    }
+    //now scaling down when we scale to unit circle 
+    r *= (1/rMax);
+    //rotating 45 degrees (bruh)
+    theta = Math.ToDegrees(theta);
+    theta -= 45; //talk with chris about this i'm hella confused on how we rotate (i just converted to radians and then back)
+    theta = Math.ToRadians(theta);
+    //recalculation rMax
+    double rMax;
+    if (theta <= 45) {
+      rMax = (1 / Math.cos(theta));
+    }
+    else if (theta <= 90 && theta > 45) {
+      rMax = (1 / Math.sin(theta));
+    }
+    //you can combine these two if statements into 1 as sin will be positive in both of these regions | rememeber to do it later 
+    else if (theta >= 90 && theta < 135) {
+      rMax = (1 / Math.sin(theta));
+    }
+    else if (theta >= 135 && theta < 180 ) {
+      rMax = (-1 / Math.cos(theta));
+    }
+    else if (theta >= 180 && theta < 225) {
+      rMax = (-1 / Math.cos(theta));
+    }
+    else if (theta >= 225 && theta < 270) {
+      rMax = (-1 / Math.sin(theta));
+    }
+    else if (theta >= 270 && theta < 315) {
+      rMax = (-1 / Math.sin(theta));
+    }
+    else { //case where theta <=360 yet >=315
+      rMax = (1 / Math.cos(theta))
+    }
+    //scaling up again
+    r *= rMax;
+    double left;
+    double right;
+    left = r * Math.cos(theta);
+    right = r * Math.sin(theta);
     // m_myRobot.tankDrive(.5, .5);
     // System.out.println(testInput.get());
     // System.out.println(leftUpMotor.get());
