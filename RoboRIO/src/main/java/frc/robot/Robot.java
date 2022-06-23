@@ -103,6 +103,7 @@ public class Robot extends TimedRobot {
     throttle -= 3.0;
     steering /= 500.0;
     steering -= 3.0;
+    steering *= -1;
     //Converting to polar using (r, theta) | theta is in radians
     double r = Math.sqrt((throttle*throttle) + (steering*steering));
     double theta = Math.atan(steering/throttle);
@@ -171,6 +172,18 @@ public class Robot extends TimedRobot {
     double right;
     left = r * Math.cos(theta);
     right = r * Math.sin(theta);
+    if (left > 1) {
+      left = 1;
+    }
+    else if (right > 1) {
+      right = 1;
+    }
+    if (left <= -1) {
+      left = -1;
+    }
+    else if (right <= -1) {
+      right = -1;
+    }
     System.out.println(left + " " + right);
     // m_myRobot.tankDrive(.5, .5);
     // System.out.println(testInput.get());
