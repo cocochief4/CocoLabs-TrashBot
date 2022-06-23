@@ -84,7 +84,6 @@ public class Robot extends TimedRobot {
       rightDownMotor.restoreFactoryDefaults();
 
   }
-  (
   public void teleopInit() {
     
   }
@@ -92,7 +91,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     //reading from the arduino to the roborio (i2c)
     byte[] byteArr = new byte[8];
-    Wire.read(4, byteArr.size(), byteArr[]);
+    Wire.read(4, 8, byteArr);
     //converting the byte array into the two values of throttle and steering
     String bytes = new String(byteArr);
     String throttleS = bytes.substring(0, 4);
@@ -100,10 +99,10 @@ public class Robot extends TimedRobot {
     double throttle =  Double.parseDouble(throttleS);
     double steering =  Double.parseDouble(steeringS);
     //Converting from the original values Arduino sends over to -1 to 1 scale
-    throttle /= 500;
-    throttle -= 3;
-    steering /= 500;
-    steering -= 3;
+    throttle /= 500.0;
+    throttle -= 3.0;
+    steering /= 500.0;
+    steering -= 3.0;
     //Converting to polar using (r, theta) | theta is in radians
     double r = Math.sqrt((throttle*throttle) + (steering*steering));
     double theta = Math.atan(steering/throttle);
@@ -132,7 +131,7 @@ public class Robot extends TimedRobot {
       rMax = (-1.0 / Math.sin(theta));
     }
     else { //case where theta <=360 yet >=315
-      rMax = (1.0 / Math.cos(theta))
+      rMax = (1.0 / Math.cos(theta));
     }
     //now scaling down when we scale to unit circle 
     r *= (1.0/rMax);
@@ -164,7 +163,7 @@ public class Robot extends TimedRobot {
       rMax = (-1.0 / Math.sin(theta));
     }
     else { //case where theta <=360 yet >=315
-      rMax = (1.0 / Math.cos(theta))
+      rMax = (1.0 / Math.cos(theta));
     }
     //scaling up again
     r *= rMax;
