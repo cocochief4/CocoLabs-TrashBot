@@ -137,7 +137,7 @@ public class Robot extends TimedRobot {
     r *= (1.0/rMax);
     //rotating 45 degrees (bruh)
     theta *= 180 / Math.PI;
-    theta -= 45.0; //talk with chris about this i'm hella confused on how we rotate (i just converted to radians and then back)
+    theta += 45.0; //talk with chris about this i'm hella confused on how we rotate (i just converted to radians and then back)
     theta *= Math.PI / 180;
     //recalculation rMax
     if (theta <= (Math.PI / 4)) {
