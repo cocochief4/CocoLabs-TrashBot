@@ -83,10 +83,6 @@ public class Robot extends TimedRobot {
       rightUpMotor.restoreFactoryDefaults();
       rightDownMotor.restoreFactoryDefaults();
 
-      m_myRobot = new DifferentialDrive(leftGroup, rightGroup);
-
-      m_leftStick = new Joystick(1);
-      m_rightStick = new Joystick(5);
   }
   (
   public void teleopInit() {
@@ -94,85 +90,81 @@ public class Robot extends TimedRobot {
   }
 
   public void teleopPeriodic() {
-    double throttle = (double) 0;
-    double steering = (double) 0;
+    //reading from the arduino to the roborio (i2c)
+    byte[] byteArr = new byte[8];
+    Wire.read(4, byteArr.size(), byteArr[]);
+    //converting the byte array into the two values of throttle and steering
+    String bytes = new String(byteArr);
+    String throttleS = bytes.substring(0, 4);
+    String steeringS = bytes.substring(4);
+    double throttle =  Double.parseDouble(throttleS);
+    double steering =  Double.parseDouble(steeringS);
     //Converting from the original values Arduino sends over to -1 to 1 scale
-    if (throttle <= 1460 || throttle >= 1540) {
-      throttle /= 500;
-      throttle -= 3;
-    }
-    else {
-      throttle = 0;
-    }
-    if (steering <= 1460 || throttle >= 1540) {
-      steering /= 500;
-      steering -= 3;
-    }
-    else {
-      steering = 0;
-    }
+    throttle /= 500;
+    throttle -= 3;
+    steering /= 500;
+    steering -= 3;
     //Converting to polar using (r, theta) | theta is in radians
-    double hypoteneuse = Math.sqrt((throttle*throttle) + (steering*steering));
+    double r = Math.sqrt((throttle*throttle) + (steering*steering));
     double theta = Math.atan(steering/throttle);
     //Finding the max length r on the unit circle for a specific angle
     double rMax;
-    if (theta <= 45) {
-      rMax = (1 / Math.cos(theta));
+    if (theta <= 45.0) {
+      rMax = (1.0 / Math.cos(theta));
     }
-    else if (theta <= 90 && theta > 45) {
-      rMax = (1 / Math.sin(theta));
+    else if (theta < 90.0 && theta > 45.0) {
+      rMax = (1.0 / Math.sin(theta));
     }
     //you can combine these two if statements into 1 as sin will be positive in both of these regions | rememeber to do it later 
-    else if (theta >= 90 && theta < 135) {
-      rMax = (1 / Math.sin(theta));
+    else if (theta >= 90.0 && theta < 135.0) {
+      rMax = (1.0 / Math.sin(theta));
     }
-    else if (theta >= 135 && theta < 180 ) {
-      rMax = (-1 / Math.cos(theta));
+    else if (theta >= 135.0 && theta < 180.0) {
+      rMax = (-1.0 / Math.cos(theta));
     }
-    else if (theta >= 180 && theta < 225) {
-      rMax = (-1 / Math.cos(theta));
+    else if (theta >= 180.0 && theta < 225.0) {
+      rMax = (-1.0 / Math.cos(theta));
     }
-    else if (theta >= 225 && theta < 270) {
-      rMax = (-1 / Math.sin(theta));
+    else if (theta >= 225.0 && theta < 270.0) {
+      rMax = (-1.0 / Math.sin(theta));
     }
-    else if (theta >= 270 && theta < 315) {
-      rMax = (-1 / Math.sin(theta));
+    else if (theta >= 270.0 && theta < 315.0) {
+      rMax = (-1.0 / Math.sin(theta));
     }
     else { //case where theta <=360 yet >=315
-      rMax = (1 / Math.cos(theta))
+      rMax = (1.0 / Math.cos(theta))
     }
     //now scaling down when we scale to unit circle 
-    r *= (1/rMax);
+    r *= (1.0/rMax);
     //rotating 45 degrees (bruh)
     theta = Math.ToDegrees(theta);
-    theta -= 45; //talk with chris about this i'm hella confused on how we rotate (i just converted to radians and then back)
+    theta -= 45.0; //talk with chris about this i'm hella confused on how we rotate (i just converted to radians and then back)
     theta = Math.ToRadians(theta);
     //recalculation rMax
-    double rMax;
-    if (theta <= 45) {
-      rMax = (1 / Math.cos(theta));
+    if (theta <= 45.0) {
+      rMax = (1.0 / Math.cos(theta));
     }
-    else if (theta <= 90 && theta > 45) {
-      rMax = (1 / Math.sin(theta));
+    else if (theta <= 90.0 && theta > 45.0) {
+      rMax = (1.0 / Math.sin(theta));
     }
     //you can combine these two if statements into 1 as sin will be positive in both of these regions | rememeber to do it later 
-    else if (theta >= 90 && theta < 135) {
-      rMax = (1 / Math.sin(theta));
+    else if (theta >= 90.0 && theta < 135.0) {
+      rMax = (1.0 / Math.sin(theta));
     }
-    else if (theta >= 135 && theta < 180 ) {
-      rMax = (-1 / Math.cos(theta));
+    else if (theta >= 135.0 && theta < 180.0) {
+      rMax = (-1.0 / Math.cos(theta));
     }
-    else if (theta >= 180 && theta < 225) {
-      rMax = (-1 / Math.cos(theta));
+    else if (theta >= 180.0 && theta < 225.0) {
+      rMax = (-1.0 / Math.cos(theta));
     }
-    else if (theta >= 225 && theta < 270) {
-      rMax = (-1 / Math.sin(theta));
+    else if (theta >= 225.0 && theta < 270.0) {
+      rMax = (-1.0 / Math.sin(theta));
     }
-    else if (theta >= 270 && theta < 315) {
-      rMax = (-1 / Math.sin(theta));
+    else if (theta >= 270.0 && theta < 315.0) {
+      rMax = (-1.0 / Math.sin(theta));
     }
     else { //case where theta <=360 yet >=315
-      rMax = (1 / Math.cos(theta))
+      rMax = (1.0 / Math.cos(theta))
     }
     //scaling up again
     r *= rMax;

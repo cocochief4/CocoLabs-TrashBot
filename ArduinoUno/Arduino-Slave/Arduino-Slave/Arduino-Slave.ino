@@ -57,8 +57,8 @@ void loop() {
 // function that executes whenever data is requested by master
 // this function is registered as an event, see setup()
 void requestEvent() {
-  char buffer[32];
-  finalSend.toCharArray(buffer, 32);
+  char buffer[8];
+  finalSend.toCharArray(buffer, 8);
   Wire.write(buffer); // 
   //
   //requestCount++;
