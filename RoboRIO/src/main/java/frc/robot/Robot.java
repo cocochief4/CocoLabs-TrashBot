@@ -98,6 +98,7 @@ public class Robot extends TimedRobot {
     String steeringS = bytes.substring(4);
     double throttle =  Double.parseDouble(throttleS);
     double steering =  Double.parseDouble(steeringS);
+    //System.out.println(throttle + " " + steering);
     //Converting from the original values Arduino sends over to -1 to 1 scale
     throttle /= 500.0;
     throttle -= 3.0;
@@ -171,6 +172,7 @@ public class Robot extends TimedRobot {
     double right;
     left = r * Math.cos(theta);
     right = r * Math.sin(theta);
+    System.out.println(left + " " + right);
     // m_myRobot.tankDrive(.5, .5);
     // System.out.println(testInput.get());
     // System.out.println(leftUpMotor.get());
