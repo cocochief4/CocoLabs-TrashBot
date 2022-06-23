@@ -91,7 +91,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     //reading from the arduino to the roborio (i2c)
     byte[] byteArr = new byte[8];
-    Wire.read(4, 8, byteArr);
+    arduino.read(4, 8, byteArr);
     //converting the byte array into the two values of throttle and steering
     String bytes = new String(byteArr);
     String throttleS = bytes.substring(0, 4);
@@ -136,9 +136,9 @@ public class Robot extends TimedRobot {
     //now scaling down when we scale to unit circle 
     r *= (1.0/rMax);
     //rotating 45 degrees (bruh)
-    theta = Math.ToDegrees(theta);
+    theta *= Math.PI / 180.0;
     theta -= 45.0; //talk with chris about this i'm hella confused on how we rotate (i just converted to radians and then back)
-    theta = Math.ToRadians(theta);
+    theta *= 180.0 / Math.PI;
     //recalculation rMax
     if (theta <= 45.0) {
       rMax = (1.0 / Math.cos(theta));
