@@ -98,7 +98,6 @@ public class Robot extends TimedRobot {
     String steeringS = bytes.substring(4);
     double throttle =  Double.parseDouble(throttleS);
     double steering =  Double.parseDouble(steeringS);
-    //System.out.println(throttle + " " + steering);
     //Converting from the original values Arduino sends over to -1 to 1 scale
     throttle /= 500.0;
     throttle -= 3.0;
@@ -109,26 +108,26 @@ public class Robot extends TimedRobot {
     double theta = Math.atan(steering/throttle);
     //Finding the max length r on the unit circle for a specific angle
     double rMax;
-    if (theta <= 45.0) {
+    if (theta <= (Math.PI / 4)) {
       rMax = (1.0 / Math.cos(theta));
     }
-    else if (theta < 90.0 && theta > 45.0) {
+    else if (theta < (Math.PI / 2) && theta > (Math.PI / 4)) {
       rMax = (1.0 / Math.sin(theta));
     }
     //you can combine these two if statements into 1 as sin will be positive in both of these regions | rememeber to do it later 
-    else if (theta >= 90.0 && theta < 135.0) {
+    else if (theta >= (Math.PI / 2) && theta < (Math.PI * 3/4)) {
       rMax = (1.0 / Math.sin(theta));
     }
-    else if (theta >= 135.0 && theta < 180.0) {
+    else if (theta >= (Math.PI * 3/4) && theta < (Math.PI)) {
       rMax = (-1.0 / Math.cos(theta));
     }
-    else if (theta >= 180.0 && theta < 225.0) {
+    else if (theta >= (Math.PI) && theta < (Math.PI * 5/4)) {
       rMax = (-1.0 / Math.cos(theta));
     }
-    else if (theta >= 225.0 && theta < 270.0) {
+    else if (theta >= (Math.PI * 5/4) && theta < (Math.PI * 3/2)) {
       rMax = (-1.0 / Math.sin(theta));
     }
-    else if (theta >= 270.0 && theta < 315.0) {
+    else if (theta >= (Math.PI * 3/2) && theta < (Math.PI * 7/4)) {
       rMax = (-1.0 / Math.sin(theta));
     }
     else { //case where theta <=360 yet >=315
@@ -137,30 +136,30 @@ public class Robot extends TimedRobot {
     //now scaling down when we scale to unit circle 
     r *= (1.0/rMax);
     //rotating 45 degrees (bruh)
-    theta *= Math.PI / 180.0;
+    theta *= 180 / Math.PI;
     theta -= 45.0; //talk with chris about this i'm hella confused on how we rotate (i just converted to radians and then back)
-    theta *= 180.0 / Math.PI;
+    theta *= Math.PI / 180;
     //recalculation rMax
-    if (theta <= 45.0) {
+    if (theta <= (Math.PI / 4)) {
       rMax = (1.0 / Math.cos(theta));
     }
-    else if (theta <= 90.0 && theta > 45.0) {
+    else if (theta < (Math.PI / 2) && theta > (Math.PI / 4)) {
       rMax = (1.0 / Math.sin(theta));
     }
     //you can combine these two if statements into 1 as sin will be positive in both of these regions | rememeber to do it later 
-    else if (theta >= 90.0 && theta < 135.0) {
+    else if (theta >= (Math.PI / 2) && theta < (Math.PI * 3/4)) {
       rMax = (1.0 / Math.sin(theta));
     }
-    else if (theta >= 135.0 && theta < 180.0) {
+    else if (theta >= (Math.PI * 3/4) && theta < (Math.PI)) {
       rMax = (-1.0 / Math.cos(theta));
     }
-    else if (theta >= 180.0 && theta < 225.0) {
+    else if (theta >= (Math.PI) && theta < (Math.PI * 5/4)) {
       rMax = (-1.0 / Math.cos(theta));
     }
-    else if (theta >= 225.0 && theta < 270.0) {
+    else if (theta >= (Math.PI * 5/4) && theta < (Math.PI * 3/2)) {
       rMax = (-1.0 / Math.sin(theta));
     }
-    else if (theta >= 270.0 && theta < 315.0) {
+    else if (theta >= (Math.PI * 3/2) && theta < (Math.PI * 7/4)) {
       rMax = (-1.0 / Math.sin(theta));
     }
     else { //case where theta <=360 yet >=315
