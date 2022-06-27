@@ -82,6 +82,7 @@ public class Robot extends TimedRobot {
       leftDownMotor.restoreFactoryDefaults();
       rightUpMotor.restoreFactoryDefaults();
       rightDownMotor.restoreFactoryDefaults();
+      m_myRobot = new DifferentialDrive(leftGroup, rightGroup);
 
   }
   public void teleopInit() {
@@ -188,5 +189,8 @@ public class Robot extends TimedRobot {
     // m_myRobot.tankDrive(.5, .5);
     // System.out.println(testInput.get());
     // System.out.println(leftUpMotor.get());
+
+    //Run the Motors
+    m_myRobot.tankDrive(left, right);
   }
 }
