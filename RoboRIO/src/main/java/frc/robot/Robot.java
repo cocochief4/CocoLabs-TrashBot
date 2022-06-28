@@ -97,6 +97,7 @@ public class Robot extends TimedRobot {
     String bytes = new String(byteArr);
     String throttleS = bytes.substring(0, 4);
     String steeringS = bytes.substring(4);
+    System.out.println(throttleS + " " + steeringS);
     double throttle =  Double.parseDouble(throttleS);
     double steering =  Double.parseDouble(steeringS);
     //Converting from the original values Arduino sends over to -1 to 1 scale
