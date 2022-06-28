@@ -50,7 +50,7 @@ void loop() {
     Ch2Val = 1500;
   }
 
-  finalSend = String(Ch1Val) + String(Ch2Val);
+  finalSend = String(Ch2Val) + String(Ch1Val);
   //Serial.println(finalSend);
 }
 
