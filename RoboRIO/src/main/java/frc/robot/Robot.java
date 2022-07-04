@@ -91,15 +91,16 @@ public class Robot extends TimedRobot {
 
   public void teleopPeriodic() {
     //reading from the arduino to the roborio (i2c)
-    byte[] byteArr = new byte[8];
-    arduino.read(4, 8, byteArr);
+    byte[] byteArr = new byte[9]; //THE LAST BYTE DOES NOT READ
+    arduino.read(4, 9, byteArr);
     //converting the byte array into the two values of throttle and steering
     String bytes = new String(byteArr);
     String throttleS = bytes.substring(0, 4);
-    String steeringS = bytes.substring(4);
-    System.out.println(throttleS + " " + steeringS);
+    String steeringS = bytes.substring(4, 8);
+    System.out.println(steeringS + ", " + throttleS);
     double throttle =  Double.parseDouble(throttleS);
     double steering =  Double.parseDouble(steeringS);
+
     //Converting from the original values Arduino sends over to -1 to 1 scale
     throttle /= 500.0;
     throttle -= 3.0;
@@ -186,6 +187,14 @@ public class Robot extends TimedRobot {
     else if (right <= -1) {
       right = -1;
     }
+
+    //If the output scaled down is (0, 0), Then we make it stop, and not (NaN, NaN)
+    if (throttle == 0 && steering == 0) {
+      left = 0;
+      right = 0;
+    }
+
+
     System.out.println(left + " " + right);
     // m_myRobot.tankDrive(.5, .5);
     // System.out.println(testInput.get());
