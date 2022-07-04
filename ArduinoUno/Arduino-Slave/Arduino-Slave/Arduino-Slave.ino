@@ -33,12 +33,13 @@ void loop() {
   //Serial.println(requestCount);
   Ch1Val = pulseIn(Ch1Pin, HIGH);
   Ch2Val = pulseIn(Ch2Pin, HIGH);
+  
 
   if (Ch1Val < 1000) {
     Ch1Val = 1000;
   } else if (Ch1Val > 2000) {
     Ch1Val = 2000;
-  } else if (Ch1Val > 1460 && Ch1Val < 1540) {
+  } else if (Ch1Val > 1470 && Ch1Val < 1530) {
     Ch1Val = 1500;
   }
   
@@ -46,7 +47,7 @@ void loop() {
     Ch2Val = 1000;
   } else if (Ch2Val > 2000) {
     Ch2Val = 2000;
-  } else if (Ch2Val > 1460 && Ch2Val < 1540) {
+  } else if (Ch2Val > 1470 && Ch2Val < 1530) {
     Ch2Val = 1500;
   }
 
