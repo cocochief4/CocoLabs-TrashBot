@@ -92,13 +92,6 @@ public class Robot extends TimedRobot {
   }
 
   public void teleopPeriodic() {
-  
-
-
-
-
-
-  
     //reading from the arduino to the roborio (i2c)
     byte[] byteArr = new byte[9]; //THE LAST BYTE DOES NOT READ
     arduino.read(4, 9, byteArr);
@@ -113,15 +106,15 @@ public class Robot extends TimedRobot {
 
     TeleopMath RC = new TeleopMath(steering, throttle);
     System.out.println("start");
-    System.out.println(RC.CartToPolar(1, 1).toString());
-    System.out.println(RC.CartToPolar(0, 0).toString());
-    System.out.println(RC.CartToPolar(1, 0).toString());
-    System.out.println(RC.CartToPolar(0, 1).toString());
-    System.out.println(RC.CartToPolar(0, -1).toString());
-    System.out.println(RC.CartToPolar(-1, 0).toString());
-    System.out.println(RC.CartToPolar(-1, 1).toString());
-    System.out.println(RC.CartToPolar(-1, 0.5).toString());
-    System.out.println(RC.CartToPolar(-1, -1).toString());
+    System.out.println(RC.ScaleUp(1, 1).toString());
+    System.out.println(RC.ScaleUp(0, 0).toString());
+    System.out.println(RC.ScaleUp(1, 0).toString());
+    System.out.println(RC.ScaleUp(0, 1).toString());
+    System.out.println(RC.ScaleUp(0, -1).toString());
+    System.out.println(RC.ScaleUp(-1, 0).toString());
+    System.out.println(RC.ScaleUp(-1, 1).toString());
+    System.out.println(RC.ScaleUp(-1, 0.5).toString());
+    System.out.println(RC.ScaleUp(-1, -1).toString());
 
   /*
     //Converting from the original values Arduino sends over to -1 to 1 scale

@@ -1,17 +1,17 @@
 package frc.robot;
 
 public class EuclideanCoord {
-    Double x;
-    Double y;
+    Double Xeuclid;
+    Double Yeuclid;
 
-    public EuclideanCoord(double Xeuclid, double Yeuclid) {
-        x = Xeuclid;
-        y = Yeuclid;
+    public EuclideanCoord(double x, double y) {
+        Xeuclid = x;
+        Yeuclid = y;
     }
 
     public String toString() {
         String string = new String();
-        string = x.toString() + " " + y.toString();
+        string = Xeuclid.toString() + " " + Yeuclid.toString();
 
         return string;
     }
