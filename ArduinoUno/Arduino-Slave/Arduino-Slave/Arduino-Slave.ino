@@ -8,8 +8,8 @@
 // Created 29 March 2006
 
 // This example code is in the public domain.
-int Ch1Pin = 5;
-int Ch2Pin = 6;
+int Ch1Pin = 10;
+int Ch2Pin = 11;
 
 int Ch1Val;
 int Ch2Val;
@@ -50,15 +50,15 @@ void loop() {
     Ch2Val = 1500;
   }
 
-  finalSend = String(Ch2Val) + String(Ch1Val);
-  Serial.println(finalSend);
+  finalSend = String(Ch1Val) + String(Ch2Val);
+  Serial.println(finalSend + "*");
 }
 
 // function that executes whenever data is requested by master
 // this function is registered as an event, see setup()
 void requestEvent() {
-  char buffer[8];
-  finalSend.toCharArray(buffer, 8);
+  char buffer[9];
+  finalSend.toCharArray(buffer, 9);
   Wire.write(buffer); // 
   //
   //requestCount++;
