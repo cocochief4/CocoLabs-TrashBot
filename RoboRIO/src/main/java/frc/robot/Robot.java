@@ -107,6 +107,7 @@ public class Robot extends TimedRobot {
     System.out.println(control.RcToDifferential().toString());
   
     //Run the Motors
-    m_myRobot.tankDrive(control.RcToDifferential().xEuclid, control.RcToDifferential().yEuclid);
+    //m_myRobot.tankDrive(control.RcToDifferential().xEuclid, control.RcToDifferential().yEuclid);
+    m_myRobot.tankDrive(0.1, 0.1);
   }
 }
