@@ -3,6 +3,8 @@ package frc.robot;
 import java.lang.Math;
 
 public class TeleopMath {
+    private double Xcontroller;
+    private double Ycontroller;
 
     // When mapped onto a coordinate grid, X is steering and Y is throttle
     // pos X is turn right, neg X is turn left
@@ -10,15 +12,15 @@ public class TeleopMath {
 
     //Create a constructor
     protected TeleopMath(Double steering, double throttle) {
-        double Xcontroller = steering;
-        double Ycontroller = throttle;
+        Xcontroller = steering;
+        Ycontroller = throttle;
     }
 
     // Create a method to scale down the value
     // From 1000 - 2000 to -1 - 1
-    protected EuclideanCoord ScaleSquare(double x, double y) {
-        double Xscale = x/500 - 3.0;
-        double Yscale = y/500 - 3.0;
+    private EuclideanCoord ScaleSquare(EuclideanCoord coord) {
+        double Xscale = coord.xEuclid/500 - 3.0;
+        double Yscale = coord.yEuclid/500 - 3.0;
 
         EuclideanCoord euclideanCoord = new EuclideanCoord(Xscale, Yscale);
 
@@ -26,21 +28,21 @@ public class TeleopMath {
     }
 
     // Scale from a square to a unit circle
-    protected EuclideanCoord ScaleDown (double x, double y) {
+    private EuclideanCoord ScaleDown (EuclideanCoord coord) {
         double slope = 0;
         double xUnitSquare = 1;
         double yUnitSquare = 1;
         double hyp;
         double scaleFactor;
-        if (x == 0) {
+        if (coord.xEuclid == 0) {
             slope = 0;
             scaleFactor = 1;
         } else {
-            slope = y/x;
-            if (Math.abs(y/x) <= 1) {
+            slope = coord.yEuclid/coord.xEuclid;
+            if (Math.abs(coord.yEuclid/coord.xEuclid) <= 1) {
                 yUnitSquare = 1 * slope;
                 xUnitSquare = 1;
-            } else if (Math.abs(y/x) >= 1) {
+            } else if (Math.abs(coord.yEuclid/coord.xEuclid) >= 1) {
                 yUnitSquare = 1;
                 xUnitSquare = 1/slope;
             }
@@ -48,31 +50,31 @@ public class TeleopMath {
             scaleFactor = 1/hyp;
         }
 
-        xUnitSquare = x * scaleFactor;
-        yUnitSquare = y * scaleFactor;
+        xUnitSquare = coord.xEuclid * scaleFactor;
+        yUnitSquare = coord.yEuclid * scaleFactor;
 
         EuclideanCoord euclideanCoord = new EuclideanCoord(xUnitSquare, yUnitSquare);
         return euclideanCoord;
     }
 
     // Convert to polar coordinates (r and theta); theta is in deg
-    protected PolarCoord CartToPolar(double x, double y) {
-        double r = Math.sqrt(Math.pow(x, 2.0) + Math.pow(y, 2.0));
-        double theta = Math.atan((y/x));
+    private PolarCoord CartToPolar(EuclideanCoord coord) {
+        double r = Math.sqrt(Math.pow(coord.xEuclid, 2.0) + Math.pow(coord.yEuclid, 2.0));
+        double theta = Math.atan((coord.yEuclid/coord.xEuclid));
         theta = theta * (180/Math.PI);
         
         
-        if (x == 0 && y == 0) {
+        if (coord.xEuclid == 0 && coord.yEuclid == 0) {
             r = 0;
             theta = 0;
         }
-        if (y == 0 && x < 0) {
+        if (coord.yEuclid == 0 && coord.xEuclid < 0) {
             theta = 180;
         }
-        if (x < 0) {
-            if (y > 0) {
+        if (coord.xEuclid < 0) {
+            if (coord.yEuclid > 0) {
                 theta = theta + 180;
-            } else if (y < 0) {
+            } else if (coord.yEuclid < 0) {
                 theta = theta - 180;
             }
         }
@@ -81,8 +83,21 @@ public class TeleopMath {
         return polarCoord;
     }
 
+    // Convert to euclidean coordinates
+    private EuclideanCoord PolarToCart(PolarCoord coord) {
+        double x = Math.cos(coord.theta * Math.PI/180);
+        double y = Math.sin(coord.theta * Math.PI/180);
+        if (coord.r == 0) {
+            x = 0;
+            y = 0;
+        }
+
+        EuclideanCoord euclideanCoord = new EuclideanCoord(x, y);
+        return euclideanCoord;
+    }
+
     // Rotate by -45 deg
-    protected double driveConversion(double theta) {
+    private double driveConversion(double theta) {
         double thetaLocal = theta;
         if (thetaLocal < 0) {
             thetaLocal += 360;
@@ -96,21 +111,21 @@ public class TeleopMath {
     }
 
     // Scale Up The code
-    protected EuclideanCoord ScaleUp(double x, double y) {
+    private EuclideanCoord ScaleUp(EuclideanCoord coord) {
         double slope = 0;
         double xUnitSquare = 1;
         double yUnitSquare = 1;
         double hyp;
         double scaleFactor;
-        if (x == 0) {
+        if (coord.xEuclid == 0) {
             slope = 0;
             scaleFactor = 1;
         } else {
-            slope = y/x;
-            if (Math.abs(y/x) <= 1) {
+            slope = coord.yEuclid/coord.xEuclid;
+            if (Math.abs(coord.yEuclid/coord.xEuclid) <= 1) {
                 yUnitSquare = 1 * slope;
                 xUnitSquare = 1;
-            } else if (Math.abs(y/x) >= 1) {
+            } else if (Math.abs(coord.yEuclid/coord.xEuclid) >= 1) {
                 yUnitSquare = 1;
                 xUnitSquare = 1/slope;
             }
@@ -118,11 +133,22 @@ public class TeleopMath {
             scaleFactor = hyp/1;
         }
 
-        xUnitSquare = x * scaleFactor;
-        yUnitSquare = y * scaleFactor;
+        xUnitSquare = coord.xEuclid * scaleFactor;
+        yUnitSquare = coord.yEuclid * scaleFactor;
 
         EuclideanCoord euclideanCoord = new EuclideanCoord(xUnitSquare, yUnitSquare);
         return euclideanCoord;
     }
-}
 
+    protected EuclideanCoord RcToDifferential() {
+        EuclideanCoord RcCoord = new EuclideanCoord(Xcontroller, Ycontroller);
+        RcCoord = ScaleSquare(RcCoord);
+        RcCoord = ScaleDown(RcCoord);
+        PolarCoord RcPolar = CartToPolar(RcCoord);
+        RcPolar.theta = driveConversion(RcPolar.theta);
+        RcCoord = PolarToCart(RcPolar);
+        RcCoord = ScaleUp(RcCoord);
+        
+        return RcCoord;
+    }
+}

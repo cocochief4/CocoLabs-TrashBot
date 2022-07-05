@@ -103,18 +103,25 @@ public class Robot extends TimedRobot {
     double throttle =  Double.parseDouble(throttleS);
     double steering =  Double.parseDouble(steeringS);
 
-
+    
     TeleopMath RC = new TeleopMath(steering, throttle);
-    System.out.println("start");
-    System.out.println(RC.ScaleUp(1, 1).toString());
-    System.out.println(RC.ScaleUp(0, 0).toString());
-    System.out.println(RC.ScaleUp(1, 0).toString());
-    System.out.println(RC.ScaleUp(0, 1).toString());
-    System.out.println(RC.ScaleUp(0, -1).toString());
-    System.out.println(RC.ScaleUp(-1, 0).toString());
-    System.out.println(RC.ScaleUp(-1, 1).toString());
-    System.out.println(RC.ScaleUp(-1, 0.5).toString());
-    System.out.println(RC.ScaleUp(-1, -1).toString());
+    TeleopMath t1 = new TeleopMath(1500.0, 1500.0);
+    TeleopMath t2 = new TeleopMath(2000.0, 1500.0);
+    TeleopMath t3 = new TeleopMath(1500.0, 2000.0);
+    TeleopMath t4 = new TeleopMath(2000.0, 2000.0);
+    TeleopMath t5 = new TeleopMath(1000.0, 1000.0);
+    TeleopMath t6 = new TeleopMath(1000.0, 1500.0);
+    TeleopMath t7 = new TeleopMath(1500.0, 1000.0);
+    TeleopMath t8 = new TeleopMath(1000.0, 2000.0);
+
+    System.out.println(t1.RcToDifferential().toString());
+    System.out.println(t2.RcToDifferential().toString());
+    System.out.println(t3.RcToDifferential().toString());
+    System.out.println(t4.RcToDifferential().toString());
+    System.out.println(t5.RcToDifferential().toString());
+    System.out.println(t6.RcToDifferential().toString());
+    System.out.println(t7.RcToDifferential().toString());
+    System.out.println(t8.RcToDifferential().toString());
 
   /*
     //Converting from the original values Arduino sends over to -1 to 1 scale

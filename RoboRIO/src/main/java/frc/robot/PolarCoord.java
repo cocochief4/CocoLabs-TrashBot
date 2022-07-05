@@ -2,7 +2,7 @@ package frc.robot;
 
 public class PolarCoord {
     Double r;
-    Double theta;
+    Double theta; // Theta is in degrees
 
     public PolarCoord(double Rpolar, double Tpolar) {
         r = Rpolar;
