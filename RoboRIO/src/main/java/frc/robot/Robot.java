@@ -104,7 +104,7 @@ public class Robot extends TimedRobot {
     double steering =  Double.parseDouble(steeringS);
 
     TeleopMath control =  new TeleopMath(throttle, steering);
-    // System.out.println(control.RcToDifferential().toString());
+    System.out.println(control.RcToDifferential().toString());
   
     //Run the Motors
     m_myRobot.tankDrive(control.RcToDifferential().xEuclid, control.RcToDifferential().yEuclid);
