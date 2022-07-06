@@ -32,17 +32,21 @@ public class Robot extends TimedRobot {
   private Joystick m_leftStick;
   private Joystick m_rightStick;
 
-  private static final int leftUpDeviceID = 1; 
-  private static final int leftDownDeviceID = 2;
+  private static final int leftUpDeviceID = 3; 
+  private static final int leftDownDeviceID = 1;
   private CANSparkMax leftUpMotor;
   private CANSparkMax leftDownMotor;
   private MotorControllerGroup leftGroup;
 
-  private static final int rightUpDeviceID = 3;
-  private static final int rightDownDeviceID = 4;
+  private static final int rightUpDeviceID = 4;
+  private static final int rightDownDeviceID = 2;
   private CANSparkMax rightUpMotor;
   private CANSparkMax rightDownMotor;
   private MotorControllerGroup rightGroup;
+
+  private EuclideanCoord robotDrive = new EuclideanCoord(0.0, 0.0);
+  private EuclideanCoord oldDrive = new EuclideanCoord(0.0, 0.0);
+  private double rampMax = 0.01;
 
   private final I2C arduino = new I2C(Port.kOnboard, 4);
 
@@ -88,7 +92,9 @@ public class Robot extends TimedRobot {
 
   }
   public void teleopInit() {
-    
+    oldDrive.xEuclid = 0.0;
+    oldDrive.yEuclid = 0.0;
+
   }
 
   public void teleopPeriodic() {
@@ -104,10 +110,31 @@ public class Robot extends TimedRobot {
     double steering =  Double.parseDouble(steeringS);
 
     TeleopMath control =  new TeleopMath(throttle, steering);
-    System.out.println(control.RcToDifferential().toString());
+    //System.out.println(control.RcToDifferential().toString());
+
+    robotDrive = new EuclideanCoord(control.RcToDifferential().xEuclid, control.RcToDifferential().yEuclid);
+    
+    // Do ramp rate
+    // The teleopPeriodic() updates every 20 ms (50 times per second)
+    if (Math.abs(oldDrive.xEuclid - robotDrive.xEuclid) > rampMax) {
+      if (robotDrive.xEuclid > oldDrive.xEuclid) {
+        robotDrive.xEuclid += rampMax;
+      } else if (robotDrive.xEuclid < oldDrive.xEuclid) {
+        robotDrive.xEuclid -= rampMax;
+      }
+    }
+
+    if (Math.abs(oldDrive.yEuclid - robotDrive.yEuclid) > rampMax) {
+      if (robotDrive.yEuclid > oldDrive.yEuclid) {
+        robotDrive.yEuclid += rampMax;
+      } else if (robotDrive.yEuclid < oldDrive.yEuclid) {
+        robotDrive.yEuclid -= rampMax;
+      }
+    }
+
+    System.out.println(robotDrive.toString());
   
     //Run the Motors
-    //m_myRobot.tankDrive(control.RcToDifferential().xEuclid, control.RcToDifferential().yEuclid);
     m_myRobot.tankDrive(0.1, 0.1);
   }
 }

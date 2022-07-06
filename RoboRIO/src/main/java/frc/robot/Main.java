@@ -7,7 +7,6 @@
 
 package frc.robot;
 
-import frc.robot.TeleopMath;
 import edu.wpi.first.wpilibj.RobotBase;
 
 /**

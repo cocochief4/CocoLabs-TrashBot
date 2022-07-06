@@ -50,6 +50,7 @@ void loop() {
   } else if (Ch2Val > 1470 && Ch2Val < 1530) {
     Ch2Val = 1500;
   }
+  
 
   finalSend = String(Ch1Val) + String(Ch2Val);
   Serial.println(finalSend + "*");
