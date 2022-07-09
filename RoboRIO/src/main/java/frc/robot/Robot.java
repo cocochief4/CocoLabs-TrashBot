@@ -46,7 +46,7 @@ public class Robot extends TimedRobot {
 
   private EuclideanCoord robotDrive = new EuclideanCoord(0.0, 0.0);
   private EuclideanCoord oldDrive = new EuclideanCoord(0.0, 0.0);
-  private double rampMax = 0.01;
+  private double RAMP_MAX = 0.01;
 
   private final I2C arduino = new I2C(Port.kOnboard, 4);
 
@@ -91,9 +91,14 @@ public class Robot extends TimedRobot {
       m_myRobot = new DifferentialDrive(leftGroup, rightGroup);
 
   }
+  EuclideanCoord currentSpeed = new EuclideanCoord(-1, -1);
+  EuclideanCoord maxSpeed = new EuclideanCoord(1, 1);
+
   public void teleopInit() {
-    oldDrive.xEuclid = 0.0;
-    oldDrive.yEuclid = 0.0;
+    currentSpeed = new EuclideanCoord(1.0, 1.0);
+    maxSpeed = new EuclideanCoord(-1.0, -1.0);
+    System.out.print("Start ");
+    System.out.println(currentSpeed.toString());
 
   }
 
@@ -113,28 +118,15 @@ public class Robot extends TimedRobot {
     //System.out.println(control.RcToDifferential().toString());
 
     robotDrive = new EuclideanCoord(control.RcToDifferential().xEuclid, control.RcToDifferential().yEuclid);
-    
-    // Do ramp rate
-    // The teleopPeriodic() updates every 20 ms (50 times per second)
-    if (Math.abs(oldDrive.xEuclid - robotDrive.xEuclid) > rampMax) {
-      if (robotDrive.xEuclid > oldDrive.xEuclid) {
-        robotDrive.xEuclid += rampMax;
-      } else if (robotDrive.xEuclid < oldDrive.xEuclid) {
-        robotDrive.xEuclid -= rampMax;
-      }
-    }
 
-    if (Math.abs(oldDrive.yEuclid - robotDrive.yEuclid) > rampMax) {
-      if (robotDrive.yEuclid > oldDrive.yEuclid) {
-        robotDrive.yEuclid += rampMax;
-      } else if (robotDrive.yEuclid < oldDrive.yEuclid) {
-        robotDrive.yEuclid -= rampMax;
-      }
-    }
-
-    System.out.println(robotDrive.toString());
+    //System.out.println(robotDrive.toString());
   
     //Run the Motors
     m_myRobot.tankDrive(0.1, 0.1);
+
+    TeleopMath test = new TeleopMath(0.0, 0.0);
+    currentSpeed = test.CalcRamp(currentSpeed, maxSpeed, RAMP_MAX);
+
+    System.out.println(currentSpeed.toString());
   }
 }
