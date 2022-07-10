@@ -22,7 +22,7 @@ public class TeleopMath {
         double Xscale = coord.xEuclid/500 - 3.0;
         double Yscale = coord.yEuclid/500 - 3.0;
 
-        EuclideanCoord euclideanCoord = new EuclideanCoord(Xscale, Yscale);
+        EuclideanCoord euclideanCoord = new EuclideanCoord(-1 * Xscale, -1 * Yscale);
 
         return euclideanCoord;
     }
@@ -99,13 +99,7 @@ public class TeleopMath {
     // Rotate by -45 deg
     private double driveConversion(double theta) {
         double thetaLocal = theta;
-        if (thetaLocal < 0) {
-            thetaLocal += 360;
-        }
         thetaLocal -= 45;
-        if (thetaLocal > 180) {
-            thetaLocal -= 360;
-        }
 
         return thetaLocal;
     }
