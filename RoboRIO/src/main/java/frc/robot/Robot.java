@@ -108,19 +108,20 @@ public class Robot extends TimedRobot {
       byte[] byteArr = new byte[9]; //THE LAST BYTE DOES NOT READ
       arduino.read(4, 9, byteArr);
       //converting the byte array into the two values of throttle and steering
-
       String bytes = new String(byteArr);
-      String steeringS = bytes.substring(0, 4);
-      String throttleS = bytes.substring(4, 8);
+      String throttleS = bytes.substring(0, 4);
+      String steeringS = bytes.substring(4, 8);
+      //System.out.println(steeringS + ", " + throttleS);
       double throttle =  Double.parseDouble(throttleS);
       double steering =  Double.parseDouble(steeringS);
 
       TeleopMath control =  new TeleopMath(throttle, steering);
 
       robotSpeed = new EuclideanCoord(control.RcToDifferential().xEuclid, control.RcToDifferential().yEuclid);
+      //System.out.println(robotSpeed.toString());
 
       currentSpeed = control.CalcRamp(currentSpeed, robotSpeed, RAMP_MAX);
-
+    
       System.out.println(currentSpeed.toString());
       //Run the Motors
       m_myRobot.tankDrive(currentSpeed.xEuclid, currentSpeed.yEuclid);
