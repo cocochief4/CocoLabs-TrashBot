@@ -124,7 +124,7 @@ public class Robot extends TimedRobot {
     
       //System.out.println(currentSpeed.toString());
       //Run the Motors
-      m_myRobot.tankDrive(-1 * robotSpeed.yEuclid, robotSpeed.xEuclid);
+      m_myRobot.tankDrive(-1 * currentSpeed.yEuclid, currentSpeed.xEuclid);
     }
     
     startCooldown -= 1;
