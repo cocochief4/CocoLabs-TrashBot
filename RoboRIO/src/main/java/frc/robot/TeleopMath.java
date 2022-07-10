@@ -18,9 +18,9 @@ public class TeleopMath {
 
     // Create a method to scale down the value
     // From 1000 - 2000 to -1 - 1
-    private EuclideanCoord ScaleSquare(EuclideanCoord coord) {
-        double Xscale = coord.xEuclid/500 - 3.0;
-        double Yscale = coord.yEuclid/500 - 3.0;
+    private EuclideanCoord ScaleToUnitSquare (EuclideanCoord coord) {
+        double Xscale = (coord.xEuclid/500.0 - 3.0);
+        double Yscale = (coord.yEuclid/500.0 - 3.0);
 
         EuclideanCoord euclideanCoord = new EuclideanCoord(Xscale, Yscale);
 
@@ -28,12 +28,14 @@ public class TeleopMath {
     }
 
     // Scale from a square to a unit circle
-    private EuclideanCoord ScaleDown (EuclideanCoord coord) {
+    private EuclideanCoord ScaleSquareToUnitCircle (EuclideanCoord coord) {
         double slope = 0;
         double xUnitSquare = 1;
         double yUnitSquare = 1;
         double hyp;
         double scaleFactor;
+        double xOutput;
+        double yOutput;
         if (coord.xEuclid == 0) {
             slope = 0;
             scaleFactor = 1;
@@ -49,11 +51,10 @@ public class TeleopMath {
             hyp = Math.sqrt(Math.pow(xUnitSquare, 2) + Math.pow(yUnitSquare, 2));
             scaleFactor = 1/hyp;
         }
+        xOutput = coord.xEuclid * scaleFactor;
+        yOutput = coord.yEuclid * scaleFactor;
 
-        xUnitSquare = coord.xEuclid * scaleFactor;
-        yUnitSquare = coord.yEuclid * scaleFactor;
-
-        EuclideanCoord euclideanCoord = new EuclideanCoord(xUnitSquare, yUnitSquare);
+        EuclideanCoord euclideanCoord = new EuclideanCoord(xOutput, yOutput);
         return euclideanCoord;
     }
 
@@ -85,8 +86,8 @@ public class TeleopMath {
 
     // Convert to euclidean coordinates
     private EuclideanCoord PolarToCart(PolarCoord coord) {
-        double x = Math.cos(coord.theta * Math.PI/180);
-        double y = Math.sin(coord.theta * Math.PI/180);
+        double x = coord.r * Math.cos(coord.theta * Math.PI/180);
+        double y = coord.r * Math.sin(coord.theta * Math.PI/180);
         if (coord.r == 0) {
             x = 0;
             y = 0;
@@ -171,8 +172,8 @@ public class TeleopMath {
 
     protected EuclideanCoord RcToDifferential() {
         EuclideanCoord RcCoord = new EuclideanCoord(Xcontroller, Ycontroller);
-        RcCoord = ScaleSquare(RcCoord);
-        RcCoord = ScaleDown(RcCoord);
+        RcCoord = ScaleToUnitSquare(RcCoord);
+        RcCoord = ScaleSquareToUnitCircle(RcCoord);
         PolarCoord RcPolar = CartToPolar(RcCoord);
         RcPolar.theta = driveConversion(RcPolar.theta);
         RcCoord = PolarToCart(RcPolar);
