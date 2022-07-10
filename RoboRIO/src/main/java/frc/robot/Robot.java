@@ -109,8 +109,8 @@ public class Robot extends TimedRobot {
       arduino.read(4, 9, byteArr);
       //converting the byte array into the two values of throttle and steering
       String bytes = new String(byteArr);
-      String throttleS = bytes.substring(0, 4);
-      String steeringS = bytes.substring(4, 8);
+      String steeringS = bytes.substring(0, 4);
+      String throttleS = bytes.substring(4, 8);
       //System.out.println(steeringS + ", " + throttleS);
       double throttle =  Double.parseDouble(throttleS);
       double steering =  Double.parseDouble(steeringS);
