@@ -157,37 +157,16 @@ public class TeleopMath {
     
         if (Math.abs(currentSpeed.yEuclid - inputSpeed.yEuclid) > rampMax) {
             if (inputSpeed.yEuclid > currentSpeed.yEuclid) {
-            inputSpeed.yEuclid = currentSpeed.yEuclid + rampMax;
+            outputSpeed.yEuclid = currentSpeed.yEuclid + rampMax;
             } else if (inputSpeed.yEuclid < currentSpeed.yEuclid) {
             outputSpeed.yEuclid = currentSpeed.yEuclid - rampMax;
             }
         } else {
             outputSpeed.yEuclid = inputSpeed.yEuclid;
+
         }
 
         return outputSpeed;
-    }
-
-    protected EuclideanCoord CalcRamp(double oldX, double oldY, EuclideanCoord newSpeed, double rampMax) {
-        EuclideanCoord outputDrive = new EuclideanCoord(0, 0);
-
-        if (Math.abs(oldX - newSpeed.xEuclid) > rampMax) {
-            if (newSpeed.xEuclid > oldX) {
-            newSpeed.xEuclid += rampMax;
-            } else if (newSpeed.xEuclid < oldX) {
-            outputDrive.xEuclid = newSpeed.xEuclid -= rampMax;
-            }
-        }
-    
-        if (Math.abs(oldY - newSpeed.yEuclid) > rampMax) {
-            if (newSpeed.yEuclid > oldY) {
-            newSpeed.yEuclid += rampMax;
-            } else if (newSpeed.yEuclid < oldY) {
-            outputDrive.yEuclid = newSpeed.yEuclid -= rampMax;
-            }
-        }
-
-        return outputDrive;
     }
 
     protected EuclideanCoord RcToDifferential() {

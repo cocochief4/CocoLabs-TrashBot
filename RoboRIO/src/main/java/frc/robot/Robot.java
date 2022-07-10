@@ -44,7 +44,7 @@ public class Robot extends TimedRobot {
   private CANSparkMax rightDownMotor;
   private MotorControllerGroup rightGroup;
 
-  private EuclideanCoord robotDrive = new EuclideanCoord(0.0, 0.0);
+  private EuclideanCoord robotSpeed = new EuclideanCoord(0.0, 0.0);
   private EuclideanCoord oldDrive = new EuclideanCoord(0.0, 0.0);
   private double RAMP_MAX = 0.01;
 
@@ -91,42 +91,42 @@ public class Robot extends TimedRobot {
       m_myRobot = new DifferentialDrive(leftGroup, rightGroup);
 
   }
-  EuclideanCoord currentSpeed = new EuclideanCoord(-1, -1);
-  EuclideanCoord maxSpeed = new EuclideanCoord(1, 1);
+  EuclideanCoord currentSpeed = new EuclideanCoord(0, 0);
+  int startCooldown = 50; // Timer to force the all of the motors to 0,
+                          // as there is a jump for no reason at all
 
   public void teleopInit() {
-    currentSpeed = new EuclideanCoord(1.0, 1.0);
-    maxSpeed = new EuclideanCoord(-1.0, -1.0);
-    System.out.print("Start ");
-    System.out.println(currentSpeed.toString());
+    currentSpeed = new EuclideanCoord(0, 0);
+    System.out.print("Start!");
+    startCooldown = 50;
 
   }
 
   public void teleopPeriodic() {
-    //reading from the arduino to the roborio (i2c)
-    byte[] byteArr = new byte[9]; //THE LAST BYTE DOES NOT READ
-    arduino.read(4, 9, byteArr);
-    //converting the byte array into the two values of throttle and steering
-    String bytes = new String(byteArr);
-    String throttleS = bytes.substring(0, 4);
-    String steeringS = bytes.substring(4, 8);
-    //System.out.println(steeringS + ", " + throttleS);
-    double throttle =  Double.parseDouble(throttleS);
-    double steering =  Double.parseDouble(steeringS);
+    if (startCooldown < 0) {
+      //reading from the arduino to the roborio (i2c)
+      byte[] byteArr = new byte[9]; //THE LAST BYTE DOES NOT READ
+      arduino.read(4, 9, byteArr);
+      //converting the byte array into the two values of throttle and steering
+      String bytes = new String(byteArr);
+      String throttleS = bytes.substring(0, 4);
+      String steeringS = bytes.substring(4, 8);
+      //System.out.println(steeringS + ", " + throttleS);
+      double throttle =  Double.parseDouble(throttleS);
+      double steering =  Double.parseDouble(steeringS);
 
-    TeleopMath control =  new TeleopMath(throttle, steering);
-    //System.out.println(control.RcToDifferential().toString());
+      TeleopMath control =  new TeleopMath(throttle, steering);
 
-    robotDrive = new EuclideanCoord(control.RcToDifferential().xEuclid, control.RcToDifferential().yEuclid);
+      robotSpeed = new EuclideanCoord(control.RcToDifferential().xEuclid, control.RcToDifferential().yEuclid);
+      //System.out.println(robotSpeed.toString());
 
-    //System.out.println(robotDrive.toString());
-  
-    //Run the Motors
-    m_myRobot.tankDrive(0.1, 0.1);
-
-    TeleopMath test = new TeleopMath(0.0, 0.0);
-    currentSpeed = test.CalcRamp(currentSpeed, maxSpeed, RAMP_MAX);
-
-    System.out.println(currentSpeed.toString());
+      currentSpeed = control.CalcRamp(currentSpeed, robotSpeed, RAMP_MAX);
+    
+      System.out.println(currentSpeed.toString());
+      //Run the Motors
+      m_myRobot.tankDrive(currentSpeed.xEuclid, currentSpeed.yEuclid);
+    }
+    
+    startCooldown -= 1;
   }
 }
