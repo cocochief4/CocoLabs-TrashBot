@@ -115,16 +115,16 @@ public class Robot extends TimedRobot {
       double throttle =  Double.parseDouble(throttleS);
       double steering =  Double.parseDouble(steeringS);
 
-      TeleopMath control =  new TeleopMath(throttle, steering);
+      TeleopMath control =  new TeleopMath(steering, throttle);
 
       robotSpeed = new EuclideanCoord(control.RcToDifferential().xEuclid, control.RcToDifferential().yEuclid);
-      //System.out.println(robotSpeed.toString());
+      System.out.println(robotSpeed.toString());
 
       currentSpeed = control.CalcRamp(currentSpeed, robotSpeed, RAMP_MAX);
     
-      System.out.println(currentSpeed.toString());
+      //System.out.println(currentSpeed.toString());
       //Run the Motors
-      m_myRobot.tankDrive(currentSpeed.xEuclid, currentSpeed.yEuclid);
+      m_myRobot.tankDrive(-1 * currentSpeed.yEuclid, currentSpeed.xEuclid);
     }
     
     startCooldown -= 1;
