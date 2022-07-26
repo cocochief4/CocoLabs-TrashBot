@@ -33,7 +33,7 @@ void loop() {
   //Serial.println(requestCount);
   Ch1Val = pulseIn(Ch1Pin, HIGH);
   Ch2Val = pulseIn(Ch2Pin, HIGH);
-  
+
 
   if (Ch1Val < 1000) {
     Ch1Val = 1000;
@@ -42,7 +42,7 @@ void loop() {
   } else if (Ch1Val > 1470 && Ch1Val < 1530) {
     Ch1Val = 1500;
   }
-  
+
   if (Ch2Val < 1000) {
     Ch2Val = 1000;
   } else if (Ch2Val > 2000) {
@@ -50,7 +50,7 @@ void loop() {
   } else if (Ch2Val > 1470 && Ch2Val < 1530) {
     Ch2Val = 1500;
   }
-  
+
 
   finalSend = String(Ch1Val) + String(Ch2Val);
   Serial.println(finalSend + "*");
@@ -61,7 +61,7 @@ void loop() {
 void requestEvent() {
   char buffer[9];
   finalSend.toCharArray(buffer, 9);
-  Wire.write(buffer); // 
+  Wire.write(buffer); //
   //
   //requestCount++;
 }
