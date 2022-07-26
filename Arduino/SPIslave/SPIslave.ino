@@ -1,69 +1,64 @@
+// Slave
 #include <SparkFun_u-blox_GNSS_Arduino_Library.h> //For GNSS
 #include <u-blox_config_keys.h>
 #include <u-blox_structs.h>
-#include <SPI.h> //SPI Library
 #include <Wire.h> //Needed for I2C to GNSS
 
-#define sendSize 25
+#define sendSize 26
 
-int i;
 String finalSend;
-volatile boolean active;
-volatile int pos;
-volatile char buf[sendSize] = "2834u9";
 
 SFE_UBLOX_GNSS myGNSS;
 long lastTime = 0; //Simple local timer. Limits amount if I2C traffic to u-blox module.
 
-byte StringToByte(char * src){
-    return byte(atoi(src));
-}
-
-void setup() {
-  Serial.begin(115200); //Start Serial Monitor
-
+void setup (void)
+{
+  Serial.begin(115200);
   Wire.begin(); //Begin I2C Protocol
   if (myGNSS.begin() == false) //Connect to the u-blox module using Wire port
   {
     Serial.println(F("u-blox GNSS not detected at default I2C address. Please check wiring. Freezing."));
   }
-  
-    SPI.begin(); //Begin SPI Protocol
-    SPCR |= _BV(SPE); //Turn on Slave mode
-    SPCR |= _BV(SPIE);
-    SPI.attachInterrupt(); //Interuupt ON is set for SPI commnucation
 
-    i = 0;
-    
-}
+  // have to send on master in, *slave out*
+  pinMode(MISO, OUTPUT);
 
-//Interrupt Routine function
+  // turn on SPI in slave mode
+  SPCR |= bit(SPE);
+
+  // turn on interrupts
+  SPCR |= bit(SPIE);
+}  // end of setup
+
+volatile char buf [sendSize];
+volatile int pos;
+volatile bool active;
+volatile String buffer;
+
+// SPI interrupt routine
 ISR (SPI_STC_vect)
 {
-  Serial.println("interrupted");
   byte c = SPDR;
-  Serial.println(c);
 
   if (c == 1)  // starting new sequence?
     {
-      active = true;
-      pos = -1;
-      SPDR = buf [pos++];   // send first byte
-      
-      return;
+    finalSend.toCharArray(buf, sendSize);
+    active = true;
+    pos = 0;
+    SPDR = buf [pos++];   // send first byte
+    return;
     }
 
   if (!active)
     {
-      SPDR = 0;
-      return;
+    SPDR = 0;
+    return;
     }
 
   SPDR = buf [pos];
-  if (buf [pos] == 0 || ++pos >= sizeof (buf)) {
+  if (buf [pos] == 0 || ++pos >= sizeof (buf))
     active = false;
-  }
-}
+}  // end of interrupt service routine (ISR) SPI_STC_vect
 
 void loop() {
   if (myGNSS.begin() == false) //Connect to the u-blox module using Wire port
@@ -101,7 +96,7 @@ void loop() {
       longString.concat(" ");
     }
     
-    finalSend = latString + "," + longString + "," + RTK;
+    finalSend = " " + latString + "," + longString + "," + RTK;
     Serial.println(finalSend);
   }
-}
+}  // end of loop

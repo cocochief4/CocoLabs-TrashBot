@@ -2,6 +2,8 @@
 
 #include <SPI.h>
 
+#define sendSize 26
+
 void setup (void)
 {
   Serial.begin (115200);
@@ -21,11 +23,11 @@ void setup (void)
 
 void loop (void)
 {
-  char buf [20];
+  char buf [sendSize];
 
   // enable Slave Select
   digitalWrite(SS, LOW);    
-  SPI.transfer (1);   // initiate transmission
+   ;   // initiate transmission
   for (int pos = 0; pos < sizeof (buf) - 1; pos++)
     {
     delayMicroseconds (15);
