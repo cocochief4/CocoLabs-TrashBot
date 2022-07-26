@@ -11,7 +11,6 @@ public class SpanningTreeCoverageAlgorithm {
 
     static class node {
         //each node is defined as the bottom right corner of the square
-        //we first must generate each node by checking each square and 
     }
 
     public static void Main(String[] args) {
