@@ -127,6 +127,17 @@ public class Robot extends TimedRobot {
       m_myRobot.tankDrive(-1 * currentSpeed.yEuclid, currentSpeed.xEuclid);
     }
     
+
     startCooldown -= 1;
+  }
+
+  public void autonomousInit() {
+    //do we just wait for the gps to work? possibly need to implement a wait function here
+    Area map = new Area(); //This should have the default preset values defined in Area.java
+    
+  }
+
+  public void autonomousPeriodic() {
+
   }
 }
