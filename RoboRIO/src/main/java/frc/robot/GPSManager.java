@@ -11,7 +11,9 @@ public class GPSManager {
     private static Port port = Port.kOnboardCS0;
     private static SPI gps = new SPI(port);
 
-    private static final int sendSize = 26;
+    private static final int sendSize = 28;
+
+    private static int Previousflag = 1; // Detect any change in the flag that comes in from the Arduino
   
     // Constructor
     // Here we will be creating private constructor
@@ -36,7 +38,7 @@ public class GPSManager {
 
     protected static LatLongFixStruct GetDataFromGPS() {
         byte[] buffer = new byte[sendSize];
-        byte[] sendBytes = {0};
+        byte[] sendBytes = new byte[28];
 
         gps.transaction(sendBytes, buffer, sendSize);
 
@@ -45,13 +47,21 @@ public class GPSManager {
         String lat = strArr[0];
         String lon = strArr[1];
         String fix = strArr[2];
+        String flag = strArr[3];
         lat.substring(1, lat.length());
         lat.trim();
         lon.trim();
 
-        LatLongFixStruct gpsCoords = new LatLongFixStruct(Long.parseLong(lat), Long.parseLong(lon), Short.parseShort(fix));
+        if (Previousflag != Integer.parseInt(flag)) {
+            flag = "2";
+
+        }
+
+        LatLongFixStruct gpsCoords = new LatLongFixStruct(Long.parseLong(lat), Long.parseLong(lon),
+            Short.parseShort(fix), Short.parseShort(flag));
 
         return gpsCoords;
+
     }
 
 }

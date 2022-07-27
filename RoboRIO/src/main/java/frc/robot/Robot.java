@@ -55,7 +55,7 @@ public class Robot extends TimedRobot {
 
   private DigitalInput testInput = new DigitalInput(0);
 
-  private LatLongFixStruct gpsCoords = new LatLongFixStruct(0L, 0L, (short)0);
+  private LatLongFixStruct gpsCoords = new LatLongFixStruct(0L, 0L, (short)0, (short)0);
 
   @Override
   public void robotInit() {
@@ -109,9 +109,9 @@ public class Robot extends TimedRobot {
   }
 
   public void teleopPeriodic() {
-    if (clock.millis() % 1000 == 0) {
-      GPSManager.getInstance();
-      gpsCoords = GPSManager.GetDataFromGPS();
+    gpsCoords = GPSManager.GetDataFromGPS();
+    if (gpsCoords.flag == 2) {
+      System.out.println(gpsCoords.toString());
     }
 
     //reading from the arduino to the roborio (i2c)
