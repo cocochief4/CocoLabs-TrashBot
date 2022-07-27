@@ -14,7 +14,7 @@ public class Area {
     boolean[][] map;
 
     public Area() {
-        // Inputs will be taken eventually; for now, we are using the default example that we have defined
+        // Inputs will be taken eventually; for now, we are using the example that we have defined
         xDimension = 8;
         yDimension = 12;
         boolean[][] arr = new boolean[12][8];
