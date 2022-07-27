@@ -4,9 +4,10 @@
 #include <u-blox_structs.h>
 #include <Wire.h> //Needed for I2C to GNSS
 
-#define sendSize 26
+#define sendSize 28
 
 String finalSend;
+int toggleFlag;
 
 SFE_UBLOX_GNSS myGNSS;
 long lastTime = 0; //Simple local timer. Limits amount if I2C traffic to u-blox module.
@@ -28,6 +29,8 @@ void setup (void)
 
   // turn on interrupts
   SPCR |= bit(SPIE);
+
+  toggleFlag = 0;
 }  // end of setup
 
 volatile byte buf [sendSize];
@@ -96,7 +99,12 @@ void loop() {
       longString.concat(" ");
     }
     
-    finalSend = " " + latString + "," + longString + "," + RTK;
+    if (toggleFlag == 1) {
+      toggleFlag = 0;
+    } else {
+      toggleFlag = 1;
+    }
+    finalSend = " " + latString + "," + longString + "," + RTK + "," + String(toggleFlag);
     Serial.println(finalSend);
   }
 }  // end of loop
