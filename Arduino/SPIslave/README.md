@@ -1,0 +1,1 @@
+In order for the code to compile, you must include the GNSS Arduino library by going to *Sketch -> Include Library -> Add Zip Library*, then add `SparkFun_u-blox_GNSS_Arduino_Library-main.zip`
