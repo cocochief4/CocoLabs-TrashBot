@@ -30,7 +30,6 @@ void setup (void)
   SPCR |= bit(SPIE);
 }  // end of setup
 
-volatile char buf [sendSize];
 volatile int pos;
 volatile bool active;
 volatile String buffer;
@@ -38,6 +37,7 @@ volatile String buffer;
 // SPI interrupt routine
 ISR (SPI_STC_vect)
 {
+  char buf [sendSize];
   byte c = SPDR;
 
   if (c == 1)  // starting new sequence?
