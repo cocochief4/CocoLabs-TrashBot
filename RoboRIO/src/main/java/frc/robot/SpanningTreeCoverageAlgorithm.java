@@ -1,15 +1,18 @@
+//No one clam should have all that chowder.
+
 package frc.robot;
 
 import java.util.*;
 
-/** Add your docs here. */
 public class SpanningTreeCoverageAlgorithm {
 
-    private ArrayList<node> nodeArr = new ArrayList<node>();
-    private boolean[][] map;
-    private int col;
-    private int row;
+    private ArrayList<node> nodeArr = new ArrayList<node>(); //an arraylist of valid nodes
+    private boolean[][] map; //the actual matrice
+    private int col; //dimension x
+    private int row; //dimension y
+    private ArrayList<node>[] adjancencyNodes;
 
+    //the class node
     private class node {
         int xNode;
         int yNode;
@@ -21,6 +24,7 @@ public class SpanningTreeCoverageAlgorithm {
         }
     }
 
+    //generate valid nodes
     private void generateNode() {
         for (int i = 1; i<row; i+=2) {
             for (int j = 1; j<col; j+=2) {
@@ -30,14 +34,16 @@ public class SpanningTreeCoverageAlgorithm {
                 }
             }
         }    
+    }
+
+    //creates an adjacency graph for DFS/BFS
+    private void adjacencyGraphGenerate() {
+        //i'm not going to start on this quite yet because i still need to consult with chris about the pure part of the algorithm
 
     }
 
     public void stc(boolean[][] arr, int x, int y) {
         map = arr;
-
-        
-
 
     }
 
