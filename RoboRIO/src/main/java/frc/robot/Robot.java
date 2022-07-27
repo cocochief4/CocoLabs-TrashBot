@@ -10,6 +10,7 @@ package frc.robot;
 import frc.robot.*;
 
 import java.util.*;
+import java.time.*;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -50,8 +51,11 @@ public class Robot extends TimedRobot {
 
   private final I2C arduino = new I2C(Port.kOnboard, 4);
 
+  private Clock clock = Clock.systemDefaultZone();
 
   private DigitalInput testInput = new DigitalInput(0);
+
+  private LatLongFixStruct gpsCoords = new LatLongFixStruct(0L, 0L, (short)0);
 
   @Override
   public void robotInit() {
@@ -99,22 +103,29 @@ public class Robot extends TimedRobot {
     currentSpeed = new EuclideanCoord(0, 0);
     System.out.print("Start!");
     startCooldown = 50;
+    GPSManager.getInstance();
+    gpsCoords = GPSManager.GetDataFromGPS();
 
   }
 
   public void teleopPeriodic() {
-    if (startCooldown < 0) {
-      //reading from the arduino to the roborio (i2c)
-      byte[] byteArr = new byte[9]; //THE LAST BYTE DOES NOT READ
-      arduino.read(4, 9, byteArr);
-      //converting the byte array into the two values of throttle and steering
-      String bytes = new String(byteArr);
-      String steeringS = bytes.substring(0, 4);
-      String throttleS = bytes.substring(4, 8);
-      //System.out.println(steeringS + ", " + throttleS);
-      double throttle =  Double.parseDouble(throttleS);
-      double steering =  Double.parseDouble(steeringS);
+    if (clock.millis() % 1000 == 0) {
+      GPSManager.getInstance();
+      gpsCoords = GPSManager.GetDataFromGPS();
+    }
 
+    //reading from the arduino to the roborio (i2c)
+    byte[] byteArr = new byte[9]; //THE LAST BYTE DOES NOT READ
+    arduino.read(4, 9, byteArr);
+    //converting the byte array into the two values of throttle and steering
+    String bytes = new String(byteArr);
+    String steeringS = bytes.substring(0, 4);
+    String throttleS = bytes.substring(4, 8);
+    //System.out.println(steeringS + ", " + throttleS);
+    double throttle =  Double.parseDouble(throttleS);
+    double steering =  Double.parseDouble(steeringS);
+
+      if (startCooldown < 0) {
       TeleopMath control =  new TeleopMath(steering, throttle);
 
       robotSpeed = new EuclideanCoord(control.RcToDifferential().xEuclid, control.RcToDifferential().yEuclid);

@@ -30,7 +30,7 @@ void setup (void)
   SPCR |= bit(SPIE);
 }  // end of setup
 
-volatile char buf [sendSize];
+volatile byte buf [sendSize];
 volatile int pos;
 volatile bool active;
 volatile String buffer;
@@ -42,7 +42,7 @@ ISR (SPI_STC_vect)
 
   if (c == 1)  // starting new sequence?
     {
-    finalSend.toCharArray(buf, sendSize);
+    finalSend.getBytes(buf, sendSize);
     active = true;
     pos = 0;
     SPDR = buf [pos++];   // send first byte
