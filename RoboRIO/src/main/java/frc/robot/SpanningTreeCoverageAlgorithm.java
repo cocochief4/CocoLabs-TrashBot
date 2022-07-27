@@ -11,6 +11,9 @@ public class SpanningTreeCoverageAlgorithm {
     private int col; //dimension x
     private int row; //dimension y
     private ArrayList<node>[] adjancencyNodes;
+    private HashMap<node, Integer> nodeInteger = new HashMap<node, Integer>();
+    private HashMap<Integer, node> integerNode = new HashMap<Integer, node>();
+    
 
     //the class node
     private class node {
@@ -38,8 +41,15 @@ public class SpanningTreeCoverageAlgorithm {
 
     //creates an adjacency graph for DFS/BFS
     private void adjacencyGraphGenerate() {
-        //i'm not going to start on this quite yet because i still need to consult with chris about the pure part of the algorithm
-
+        //initialize adjacencyNodes
+        adjancencyNodes = new ArrayList[nodeArr.size()];
+        for (int i = 0; i<nodeArr.size(); i++) {
+            adjancencyNodes[i] = new ArrayList<node>();
+        }
+        //creating the adjancency list by going through each node and adding its neighbors to the adjacency list
+        for (node n : nodeArr) {
+            
+        }
     }
 
     public void stc(boolean[][] arr, int x, int y) {
