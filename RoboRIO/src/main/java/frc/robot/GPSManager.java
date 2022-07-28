@@ -36,13 +36,16 @@ public class GPSManager {
         return single_instance;
     }
 
-    protected static LatLongFixStruct GetDataFromGPS() {
+    protected static void GetDataFromGPS() {
         byte[] buffer = new byte[sendSize];
-        byte[] sendBytes = new byte[28];
+        byte[] sendBytes = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 
+            13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27};
 
         gps.transaction(sendBytes, buffer, sendSize);
 
         String strBuf = new String(buffer);
+        System.out.println(strBuf);
+        /*
         String[] strArr = strBuf.split(",", 0);
         String lat = strArr[0];
         String lon = strArr[1];
@@ -61,6 +64,7 @@ public class GPSManager {
             Short.parseShort(fix), Short.parseShort(flag));
 
         return gpsCoords;
+        */
 
     }
 

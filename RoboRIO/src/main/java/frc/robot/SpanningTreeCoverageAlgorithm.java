@@ -1,7 +1,7 @@
 //No one clam should have all that chowder.
 
-package frc.robot;
 
+package frc.robot;
 import java.util.*;
 
 public class SpanningTreeCoverageAlgorithm {

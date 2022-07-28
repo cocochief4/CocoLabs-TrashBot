@@ -104,12 +104,12 @@ public class Robot extends TimedRobot {
     System.out.print("Start!");
     startCooldown = 50;
     GPSManager.getInstance();
-    gpsCoords = GPSManager.GetDataFromGPS();
+    GPSManager.GetDataFromGPS();
 
   }
 
   public void teleopPeriodic() {
-    gpsCoords = GPSManager.GetDataFromGPS();
+    GPSManager.GetDataFromGPS();
     if (gpsCoords.flag == 2) {
       System.out.println(gpsCoords.toString());
     }
