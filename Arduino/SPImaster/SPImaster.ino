@@ -17,7 +17,7 @@ void setup (void)
   SPI.begin ();
 
   // Slow down the master a bit
-  SPI.setClockDivider(SPI_CLOCK_DIV8);
+  SPI.setClockDivider(SPI_CLOCK_DIV16);
 
 }  // end of setup
 
@@ -27,7 +27,7 @@ void loop (void)
 
   // enable Slave Select
   digitalWrite(SS, LOW);    
-  SPI.transfer(1);   // initiate transmission
+  SPI.transfer(1); // initiate transmission
   for (int pos = 0; pos < sizeof (buf) - 1; pos++)
     {
     delayMicroseconds (15);
@@ -46,5 +46,5 @@ void loop (void)
   Serial.print ("We received: ");
   Serial.println (buf);
 
-  delay (1000);  // 1 second delay 
+  delay (200);  // 5 times per sec
 }  // end of loop
