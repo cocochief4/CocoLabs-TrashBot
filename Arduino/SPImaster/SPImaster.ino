@@ -27,7 +27,7 @@ void loop (void)
 
   // enable Slave Select
   digitalWrite(SS, LOW);    
-   ;   // initiate transmission
+  SPI.transfer(1);   // initiate transmission
   for (int pos = 0; pos < sizeof (buf) - 1; pos++)
     {
     delayMicroseconds (15);
