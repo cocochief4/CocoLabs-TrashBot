@@ -113,7 +113,7 @@ public class Robot extends TimedRobot {
     if (gpsCoords.flag == 2) {
       System.out.println(gpsCoords.toString());
     }
-
+/*
     //reading from the arduino to the roborio (i2c)
     byte[] byteArr = new byte[9]; //THE LAST BYTE DOES NOT READ
     arduino.read(4, 9, byteArr);
@@ -137,7 +137,7 @@ public class Robot extends TimedRobot {
       //Run the Motors
       m_myRobot.tankDrive(-1 * currentSpeed.yEuclid, currentSpeed.xEuclid);
     }
-    
+    */
 
     startCooldown -= 1;
   }

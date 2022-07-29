@@ -22,8 +22,9 @@ public class GPSManager {
     {
         gps.setMSBFirst();
 		gps.setChipSelectActiveLow();
-		gps.setClockRate(1000);
-		gps.setClockActiveLow();
+		gps.setClockRate(500000);
+		gps.setClockActiveHigh();
+        gps.setSampleDataOnLeadingEdge();
     }
   
     // Static method
@@ -41,7 +42,7 @@ public class GPSManager {
         byte[] sendBytes = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 
             13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27};
 
-        gps.transaction(sendBytes, buffer, sendSize);
+        System.out.println(gps.transaction(sendBytes, buffer, sendSize));
 
         String strBuf = new String(buffer);
         System.out.println(strBuf);

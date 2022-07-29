@@ -17,7 +17,7 @@ void setup (void)
   SPI.begin ();
 
   // Slow down the master a bit
-  SPI.setClockDivider(SPI_CLOCK_DIV16);
+  SPI.beginTransaction(SPISettings(500000, MSBFIRST, SPI_MODE0));
 
 }  // end of setup
 
