@@ -7,12 +7,18 @@
 #define sendSize 26
 
 String finalSend;
-long latitude;
-long longitude;
-byte RTK;
+int32_t latitude;
+int32_t longitude;
+int32_t RTK;
 
 SFE_UBLOX_GNSS myGNSS;
 long lastTime = 0; //Simple local timer. Limits amount if I2C traffic to u-blox module.
+
+typedef union
+{
+  int32_t number;
+  uint16_t bytes[2];
+} INT32UNION_t;
 
 void setup (void)
 {
@@ -40,13 +46,11 @@ volatile String buffer;
 // SPI interrupt routine
 ISR (SPI_STC_vect)
 {
-  int32_t buf[3];
+  INT32UNION_t buf[3];
   buf[0] = latitude;
   buf[1] = longitude;
   buf[2] = RTK;
-  char *byteBuffer = (char *) buf;
-  Serial.print("Size of ByteBuffer: ");
-  Serial.println(sizeof(byteBuffer));
+  Serial.println(buf[0].bytes[0]);
 
   byte c = SPDR;
 
