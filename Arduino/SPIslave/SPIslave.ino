@@ -7,6 +7,9 @@
 #define sendSize 26
 
 String finalSend;
+long latitude;
+long longitude;
+byte RTK;
 
 SFE_UBLOX_GNSS myGNSS;
 long lastTime = 0; //Simple local timer. Limits amount if I2C traffic to u-blox module.
@@ -37,15 +40,22 @@ volatile String buffer;
 // SPI interrupt routine
 ISR (SPI_STC_vect)
 {
-  byte buf [sendSize];
+  int32_t buf[3];
+  buf[0] = latitude;
+  buf[1] = longitude;
+  buf[2] = RTK;
+  char *byteBuffer = (char *) buf;
+  Serial.print("Size of ByteBuffer: ");
+  Serial.println(sizeof(byteBuffer));
+
   byte c = SPDR;
 
   if (c == 1)  // starting new sequence?
     {
-    finalSend.toCharArray(buf, sendSize);
+ //   finalSend.toCharArray(buf, sendSize);
     active = true;
     pos = 0;
-    SPDR = buf [pos++];   // send first byte
+    //SPDR = buf [pos++];   // send first byte
     return;
     }
 
@@ -55,7 +65,7 @@ ISR (SPI_STC_vect)
     return;
     }
 
-  SPDR = buf [pos];
+  //SPDR = buf [pos];
   if (buf [pos] == 0 || ++pos >= sizeof (buf))
     active = false;
 }  // end of interrupt service routine (ISR) SPI_STC_vect
@@ -71,15 +81,15 @@ void loop() {
   {
     lastTime = millis(); //Update the timer
 
-    long latitude = myGNSS.getLatitude();
+    latitude = myGNSS.getLatitude();
     Serial.print(F("Lat: "));
     Serial.print(latitude);
 
-    long longitude = myGNSS.getLongitude();
+    longitude = myGNSS.getLongitude();
     Serial.print(F(" Long: "));
     Serial.print(longitude);
 
-    byte RTK = myGNSS.getCarrierSolutionType();
+    RTK = myGNSS.getCarrierSolutionType();
     Serial.print(" RTK: ");
     Serial.print(RTK);
     if (RTK == 0) Serial.print(F(" (No solution)"));
