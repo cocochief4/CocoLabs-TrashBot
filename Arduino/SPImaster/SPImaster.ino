@@ -1,11 +1,20 @@
 // master
 
+#include <Wire.h>
 #include <SPI.h>
 
-#define sendSize 26
+#define sendSize 29
+
+long spiCounter;
+long i2cCounter;
+char buf[sendSize];
+char i2cBuf[sendSize];
 
 void setup (void)
 {
+  Wire.begin(8);                // join i2c bus with address #8
+  Wire.onRequest(requestEvent);
+  
   Serial.begin (115200);
   Serial.println ("Starting");
 
@@ -23,28 +32,39 @@ void setup (void)
 
 void loop (void)
 {
-  char buf [sendSize];
-
-  // enable Slave Select
-  digitalWrite(SS, LOW);    
-  SPI.transfer(1); // initiate transmission
-  for (int pos = 0; pos < sizeof (buf) - 1; pos++)
-    {
-    delayMicroseconds (15);
-    buf [pos] = SPI.transfer (0);
-    if (buf [pos] == 0)
+  if (spiCounter > 100000) {
+    spiCounter = 0;
+    
+    // enable Slave Select
+    digitalWrite(SS, LOW);    
+    SPI.transfer(1); // initiate transmission
+    for (int pos = 0; pos < sizeof (buf) - 1; pos++)
       {
-      break;
+      delayMicroseconds (15);
+      buf [pos] = SPI.transfer (0);
+      if (buf [pos] == 0)
+        {
+        break;
+        }
       }
+    
+    buf [sizeof (buf) - 1] = 0;  // ensure terminating null
+    
+    // disable Slave Select
+    digitalWrite(SS, HIGH);
+    
+    Serial.print ("We received: ");
+    Serial.println (buf);
+
+    for (int i = 0; i < sendSize; i++) {
+      i2cBuf[i] = buf[i];
     }
-
-  buf [sizeof (buf) - 1] = 0;  // ensure terminating null
-
-  // disable Slave Select
-  digitalWrite(SS, HIGH);
-
-  Serial.print ("We received: ");
-  Serial.println (buf);
-
-  delay (200);  // 5 times per sec
+  }
+  spiCounter++;
+  
 }  // end of loop
+
+
+void requestEvent() {
+  Wire.write(i2cBuf);
+}
