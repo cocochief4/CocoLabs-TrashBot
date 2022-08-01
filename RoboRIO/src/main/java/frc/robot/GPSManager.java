@@ -22,4 +22,16 @@ public class GPSManager {
         return arduinoReceive;
     }
 
+    protected static LatLongFixStruct ParseGPSData {
+        String data = GetDataFromGPS();
+        if (data.length() == 29) {
+            data = data.substring(0, 29);
+            int numOfCommas;
+            boolean commas = true;
+            while (commas == true) {
+                 
+            }
+        }
+    }
+
 }
