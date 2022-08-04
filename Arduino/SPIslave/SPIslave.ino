@@ -1,4 +1,5 @@
 // Slave
+#include <SoftwareSerial.h>
 #include <SparkFun_u-blox_GNSS_Arduino_Library.h> //For GNSS
 #include <u-blox_config_keys.h>
 #include <u-blox_structs.h>
@@ -8,12 +9,16 @@
 
 String finalSend;
 byte toggleFlag;
+char buffer[sendSize];
 
 SFE_UBLOX_GNSS myGNSS;
 long lastTime = 0; //Simple local timer. Limits amount if I2C traffic to u-blox module.
 
+SoftwareSerial softSerial(0, 1);
+
 void setup (void)
 {
+  softSerial.begin(115200);
   Serial.begin(115200);
   Wire.begin(); //Begin I2C Protocol
   if (myGNSS.begin() == false) //Connect to the u-blox module using Wire port
@@ -33,7 +38,6 @@ void setup (void)
 
 volatile int pos;
 volatile bool active;
-volatile String buffer;
 
 // SPI interrupt routine
 ISR (SPI_STC_vect)
@@ -104,5 +108,7 @@ void loop() {
     
     finalSend = " " + latString + "," + longString + "," + RTK + "," + toggleFlag + "*";
     Serial.println(finalSend);
+    
+    softSerial.print(finalSend);
   }
 }  // end of loop
