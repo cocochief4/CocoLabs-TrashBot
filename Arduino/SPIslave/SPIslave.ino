@@ -14,7 +14,7 @@ char buffer[sendSize];
 SFE_UBLOX_GNSS myGNSS;
 long lastTime = 0; //Simple local timer. Limits amount if I2C traffic to u-blox module.
 
-SoftwareSerial softSerial(0, 1);
+SoftwareSerial softSerial(8, 9);
 
 void setup (void)
 {

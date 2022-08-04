@@ -12,7 +12,7 @@ char i2cBuf[sendSize];
 String receiveFromUART;
 byte toggle;
 
-SoftwareSerial softSerial(0, 1);
+SoftwareSerial softSerial(8, 9);
 
 void setup (void)
 {
