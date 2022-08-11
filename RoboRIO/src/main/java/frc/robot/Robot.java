@@ -49,7 +49,7 @@ public class Robot extends TimedRobot {
   private EuclideanCoord oldDrive = new EuclideanCoord(0.0, 0.0);
   private double RAMP_MAX = 0.01;
 
-  private final I2C arduino = new I2C(Port.kOnboard, 4);
+  private final I2C RCArduino = new I2C(Port.kOnboard, 4);
 
   private Clock clock = Clock.systemDefaultZone();
 
@@ -103,20 +103,22 @@ public class Robot extends TimedRobot {
     currentSpeed = new EuclideanCoord(0, 0);
     System.out.print("Start!");
     startCooldown = 50;
-    GPSManager.getInstance();
-    GPSManager.GetDataFromGPS();
+    GPSManager.ParseGPSData((byte) 0);
 
   }
 
   public void teleopPeriodic() {
-    GPSManager.GetDataFromGPS();
-    if (gpsCoords.flag == 2) {
-      System.out.println(gpsCoords.toString());
+    LatLongFixStruct latLongFixStruct = GPSManager.ParseGPSData((byte) 0);
+    if (latLongFixStruct == null) {
+      // System.out.println("null");
+    } else {
+      System.out.println(latLongFixStruct.toString());
     }
-/*
+
+    /*
     //reading from the arduino to the roborio (i2c)
     byte[] byteArr = new byte[9]; //THE LAST BYTE DOES NOT READ
-    arduino.read(4, 9, byteArr);
+    RCArduino.read(4, 9, byteArr);
     //converting the byte array into the two values of throttle and steering
     String bytes = new String(byteArr);
     String steeringS = bytes.substring(0, 4);

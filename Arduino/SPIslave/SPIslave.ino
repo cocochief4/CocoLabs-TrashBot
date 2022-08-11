@@ -1,27 +1,24 @@
 // Slave
+#include <SoftwareSerial.h>
 #include <SparkFun_u-blox_GNSS_Arduino_Library.h> //For GNSS
 #include <u-blox_config_keys.h>
 #include <u-blox_structs.h>
 #include <Wire.h> //Needed for I2C to GNSS
 
-#define sendSize 26
+#define sendSize 29
 
 String finalSend;
-int32_t latitude;
-int32_t longitude;
-int32_t RTK;
+byte toggleFlag;
+char buffer[sendSize];
 
 SFE_UBLOX_GNSS myGNSS;
 long lastTime = 0; //Simple local timer. Limits amount if I2C traffic to u-blox module.
 
-typedef union
-{
-  int32_t number;
-  uint16_t bytes[2];
-} INT32UNION_t;
+SoftwareSerial softSerial(8, 9);
 
 void setup (void)
 {
+  softSerial.begin(115200);
   Serial.begin(115200);
   Wire.begin(); //Begin I2C Protocol
   if (myGNSS.begin() == false) //Connect to the u-blox module using Wire port
@@ -41,17 +38,11 @@ void setup (void)
 
 volatile int pos;
 volatile bool active;
-volatile String buffer;
 
 // SPI interrupt routine
 ISR (SPI_STC_vect)
 {
-  INT32UNION_t buf[3];
-  buf[0] = latitude;
-  buf[1] = longitude;
-  buf[2] = RTK;
-  Serial.println(buf[0].bytes[0]);
-
+  char buf [sendSize];
   byte c = SPDR;
 
   if (c == 1)  // starting new sequence?
@@ -84,6 +75,11 @@ void loop() {
   if (millis() - lastTime > 1000)
   {
     lastTime = millis(); //Update the timer
+    if (toggleFlag == 1) {
+      toggleFlag = 0;
+    } else {
+      toggleFlag = 1;
+    }
 
     latitude = myGNSS.getLatitude();
     Serial.print(F("Lat: "));
@@ -110,7 +106,9 @@ void loop() {
       longString.concat(" ");
     }
     
-    finalSend = " " + latString + "," + longString + "," + RTK;
+    finalSend = " " + latString + "," + longString + "," + RTK + "," + toggleFlag + "*";
     Serial.println(finalSend);
+    
+    softSerial.print(finalSend);
   }
 }  // end of loop

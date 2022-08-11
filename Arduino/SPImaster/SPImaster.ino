@@ -1,50 +1,54 @@
 // master
-
+#include <SoftwareSerial.h>
+#include <Wire.h>
 #include <SPI.h>
 
-#define sendSize 26
+#define sendSize 29
+
+long spiCounter;
+long i2cCounter;
+char buf[sendSize];
+char i2cBuf[sendSize];
+String receiveFromUART;
+byte toggle;
+
+SoftwareSerial softSerial(8, 9);
 
 void setup (void)
 {
+  Wire.begin(8);                // join i2c bus with address #8
+  Wire.onRequest(requestEvent);
+
+  softSerial.begin(115200);
+  
   Serial.begin (115200);
-  Serial.println ("Starting");
+  //Serial.println ("Starting");
 
   digitalWrite(SS, HIGH);  // ensure SS stays high for now
 
   // Put SCK, MOSI, SS pins into output mode
   // also put SCK, MOSI into LOW state, and SS into HIGH state.
   // Then put SPI hardware into Master mode and turn SPI on
-  SPI.begin ();
+  //SPI.begin ();
 
   // Slow down the master a bit
-  SPI.beginTransaction(SPISettings(500000, MSBFIRST, SPI_MODE0));
+  //SPI.setClockDivider(SPI_CLOCK_DIV16);
 
 }  // end of setup
 
 void loop (void)
 {
-  char buf [sendSize];
-
-  // enable Slave Select
-  digitalWrite(SS, LOW);    
-  SPI.transfer(1); // initiate transmission
-  for (int pos = 0; pos < sizeof (buf) - 1; pos++)
-    {
-    delayMicroseconds (15);
-    buf [pos] = SPI.transfer (0);
-    if (buf [pos] == 0)
-      {
-      break;
-      }
-    }
-
-  buf [sizeof (buf) - 1] = 0;  // ensure terminating null
-
-  // disable Slave Select
-  digitalWrite(SS, HIGH);
-
-  Serial.print ("We received: ");
-  Serial.println (buf);
-
-  delay (200);  // 5 times per sec
+  int i = 0;
+  if (softSerial.available()) {
+    receiveFromUART = softSerial.readStringUntil('*');
+    receiveFromUART.toCharArray(i2cBuf, sendSize);
+    Serial.println(i2cBuf);
+  }
+  
+  
 }  // end of loop
+
+
+void requestEvent() {
+  Wire.write(i2cBuf);
+}

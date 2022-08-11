@@ -1,73 +1,105 @@
 package frc.robot;
 
-import edu.wpi.first.wpilibj.SPI;
-import edu.wpi.first.wpilibj.SPI.Port;;
+import edu.wpi.first.wpilibj.I2C;
+import edu.wpi.first.wpilibj.I2C.Port;
 
 public class GPSManager {
     // Static variable reference of single_instance
     // of type Singleton
-    private static GPSManager single_instance = null;
-
-    private static Port port = Port.kOnboardCS0;
-    private static SPI gps = new SPI(port);
-
-    private static final int sendSize = 26;
+    private final static I2C GPSArduino = new I2C(Port.kOnboard, 8);
+    private static final int sendSize = 27;
 
     private static int Previousflag = 1; // Detect any change in the flag that comes in from the Arduino
-  
-    // Constructor
-    // Here we will be creating private constructor
-    // restricted to this class itself
-    private GPSManager()
-    {
-        gps.setMSBFirst();
-		gps.setChipSelectActiveLow();
-		gps.setClockRate(500000);
-		gps.setClockActiveHigh();
-        gps.setSampleDataOnLeadingEdge();
-    }
-  
-    // Static method
-    // Static method to create instance of Singleton class
-    public static GPSManager getInstance()
-    {
-        if (single_instance == null) {
-            single_instance = new GPSManager();
-        }
-        return single_instance;
+
+    protected static String GetDataFromGPS() {
+        //reading from the arduino to the roborio (i2c)
+        byte[] byteArr = new byte[sendSize]; //THE LAST BYTE DOES NOT READ
+        GPSArduino.read(4, sendSize, byteArr);
+        //converting the byte array into the two values of throttle and stee
+        String arduinoReceive = new String(byteArr);
+
+        return arduinoReceive;
     }
 
+    private static long ConvertToLong(String longString) {
+        try {
+            return Long.parseLong(longString);
 
-    protected static void GetDataFromGPS() {
-        byte[] buffer = new byte[sendSize];
-        byte[] sendBytes = {1, 0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 
-            13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25};
-
-        gps.transaction(sendBytes, buffer, sendSize);
-
-        String strBuf = new String(buffer);
-        System.out.println(strBuf);
-        /*
-        String[] strArr = strBuf.split(",", 0);
-        String lat = strArr[0];
-        String lon = strArr[1];
-        String fix = strArr[2];
-        String flag = strArr[3];
-        lat.substring(1, lat.length());
-        lat.trim();
-        lon.trim();
-
-        if (Previousflag != Integer.parseInt(flag)) {
-            flag = "2";
-
+        } catch (NumberFormatException e) {
+            return 9223372036854775807L;
         }
+    }
 
-        LatLongFixStruct gpsCoords = new LatLongFixStruct(Long.parseLong(lat), Long.parseLong(lon),
-            Short.parseShort(fix), Short.parseShort(flag));
+    private static short ConvertToShort(String shortString) {
+        try {
+            return Short.parseShort(shortString);
 
-        return gpsCoords;
-        */
+        } catch (NumberFormatException e) {
+            return (short) 32767;
+        }
+    }
 
+    protected static LatLongFixStruct ParseGPSData(byte callOrigin) {
+        LatLongFixStruct latLongFixStruct = new LatLongFixStruct(0L, 0L, (short)0, (short)0);
+
+        String data = GetDataFromGPS();
+        if (data.length() == sendSize) {
+            data = data.substring(0, sendSize);
+            data.trim();
+
+            String[] strArr = new String[4];
+            int numOfValues = 0;
+
+            strArr = data.split(",");
+
+            numOfValues = strArr.length;
+
+            // System.out.println("size check");
+            // System.out.println(numOfValues);
+            // System.out.println(GPSManager.GetDataFromGPS().toString());
+
+            if (numOfValues == 4) {
+                long latitude = ConvertToLong(strArr[0].trim());
+                // System.out.println("String arr 0:" + strArr[0]);
+                long longitude = ConvertToLong(strArr[1]);
+                short fix = ConvertToShort(strArr[2]);
+                short flag = ConvertToShort(strArr[3]);
+                // System.out.println("commas check");
+                // System.out.println("Long: " + long1 + ", " + long2);
+
+                if (Previousflag != flag) {
+                    Previousflag = flag;
+                    if (latitude != 9223372036854775807L && longitude != 9223372036854775807L
+                        && fix != 32767 && flag != 32767) {
+                        // System.out.println("no corruption");
+                        if (callOrigin == 0) {  // If called from setup
+                            latLongFixStruct.latitude = latitude;
+                            latLongFixStruct.longitude = longitude;
+                            latLongFixStruct.fix = fix;
+                            latLongFixStruct.flag = flag;
+
+                            return latLongFixStruct;
+
+                        } else if (callOrigin == 1) {
+                            if (Previousflag != Short.parseShort(strArr[3])) {
+                                latLongFixStruct.latitude = latitude;
+                                latLongFixStruct.longitude = longitude;
+                                latLongFixStruct.fix = fix;
+                                latLongFixStruct.flag = flag;
+
+                                return latLongFixStruct;
+                            }
+                            return null;
+                        }
+                        return null;
+                    }
+                    return null;
+                }
+                return null;
+            }
+            return null;
+        }
+        return null;
     }
 
 }
