@@ -107,8 +107,8 @@ public class Robot extends TimedRobot {
     }
 
     //reading from the arduino to the roborio (i2c)
-    byte[] byteArr = new byte[9]; //THE LAST BYTE DOES NOT READ
-    RCArduino.read(4, 9, byteArr);
+    byte[] byteArr = new byte[13]; //THE LAST BYTE DOES NOT READ
+    RCArduino.read(4, 13, byteArr);
 
     //converting the byte array into the two values of throttle and steering
     String bytes = new String(byteArr);
@@ -116,20 +116,26 @@ public class Robot extends TimedRobot {
     // Parse I2C data from the PWM Arduino
     String steeringS = bytes.substring(0, 4);
     String throttleS = bytes.substring(4, 8);
+    String killSwitchS = bytes.substring(8, 12);
     double throttle =  Double.parseDouble(throttleS);
     double steering =  Double.parseDouble(steeringS);
+    double killSwitch = Double.parseDouble(killSwitchS);
 
-      // Set a cooldown before starting the motors
-      if (startCooldown < 0) {
-      TeleopDrive(throttle, steering);
+    // Set a cooldown before starting the motors
+    if (startCooldown < 0) {
+      if (killSwitch < 1500) {
+        TeleopDrive(throttle, steering);
+      } else {
+        //do we just wait for the gps to work? possibly need to implement a wait function here
+        Area map = new Area(); //This should have the default preset values defined in Area.java
+      }
     }
 
     startCooldown -= 1;
   }
 
   public void autonomousInit() {
-    //do we just wait for the gps to work? possibly need to implement a wait function here
-    Area map = new Area(); //This should have the default preset values defined in Area.java
+
     
   }
 
