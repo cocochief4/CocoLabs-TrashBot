@@ -108,7 +108,7 @@ public class Robot extends TimedRobot {
   }
 
   public void teleopPeriodic() {
-    System.out.println(GPSManager.GetDataFromGPS());
+    GPSManager.ParseGPSData((byte) 0);
 
     /*
     //reading from the arduino to the roborio (i2c)
