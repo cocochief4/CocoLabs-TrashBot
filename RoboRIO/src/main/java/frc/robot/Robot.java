@@ -116,6 +116,7 @@ public class Robot extends TimedRobot {
     }
 
     /*
+    UNCOMMENT WHEN ROBORIO IS PUT BACK ON THE ROBOT
     //reading from the arduino to the roborio (i2c)
     byte[] byteArr = new byte[9]; //THE LAST BYTE DOES NOT READ
     RCArduino.read(4, 9, byteArr);
