@@ -85,6 +85,8 @@ public class Robot extends TimedRobot {
     startCooldown = 50;
     GPSManager.ParseGPSData((byte) 0);
 
+    //do we just wait for the gps to work? possibly need to implement a wait function here
+    Area map = new Area(); //This should have the default preset values defined in Area.java
   }
 
   private void TeleopDrive(double throttle, double steering) {
@@ -123,11 +125,10 @@ public class Robot extends TimedRobot {
 
     // Set a cooldown before starting the motors
     if (startCooldown < 0) {
-      if (killSwitch < 1500) {
+      if (killSwitch < 1500) {  // Teleoperated code
         TeleopDrive(throttle, steering);
-      } else {
-        //do we just wait for the gps to work? possibly need to implement a wait function here
-        Area map = new Area(); //This should have the default preset values defined in Area.java
+      } else {  // Autonomous code
+        
       }
     }
 
