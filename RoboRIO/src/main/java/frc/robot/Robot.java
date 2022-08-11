@@ -103,12 +103,17 @@ public class Robot extends TimedRobot {
     currentSpeed = new EuclideanCoord(0, 0);
     System.out.print("Start!");
     startCooldown = 50;
-    GPSManager.GetDataFromGPS();
+    GPSManager.ParseGPSData((byte) 0);
 
   }
 
   public void teleopPeriodic() {
-    GPSManager.ParseGPSData((byte) 0);
+    LatLongFixStruct latLongFixStruct = GPSManager.ParseGPSData((byte) 0);
+    if (latLongFixStruct == null) {
+      // System.out.println("null");
+    } else {
+      System.out.println(latLongFixStruct.toString());
+    }
 
     /*
     //reading from the arduino to the roborio (i2c)

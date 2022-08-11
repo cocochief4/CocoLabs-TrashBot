@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj.I2C.Port;
 public class GPSManager {
     // Static variable reference of single_instance
     // of type Singleton
-    private static GPSManager single_instance = null;
     private final static I2C GPSArduino = new I2C(Port.kOnboard, 8);
     private static final int sendSize = 27;
 
@@ -53,44 +52,40 @@ public class GPSManager {
 
             strArr = data.split(",");
 
-            numOfValues = (short) strArr.length;
+            numOfValues = strArr.length;
 
-            System.out.println("size check");
-            System.out.println(numOfValues);
+            // System.out.println("size check");
+            // System.out.println(numOfValues);
             // System.out.println(GPSManager.GetDataFromGPS().toString());
 
             if (numOfValues == 4) {
-                long long1 = ConvertToLong(strArr[0].trim());
-                System.out.println("String arr 0:" + strArr[0]);
-                long long2 = ConvertToLong(strArr[1]);
-                short short1 = ConvertToShort(strArr[2]);
-                short short2 = ConvertToShort(strArr[3]);
-                System.out.println("commas check");
-                System.out.println("Long: " + long1 + ", " + long2);
+                long latitude = ConvertToLong(strArr[0].trim());
+                // System.out.println("String arr 0:" + strArr[0]);
+                long longitude = ConvertToLong(strArr[1]);
+                short fix = ConvertToShort(strArr[2]);
+                short flag = ConvertToShort(strArr[3]);
+                // System.out.println("commas check");
+                // System.out.println("Long: " + long1 + ", " + long2);
 
-                if (Previousflag != Short.parseShort(strArr[3])) {
-
-                    if (long1 != 9223372036854775807L && long2 != 9223372036854775807L
-                        && short1 != 32767 && short2 != 32767) {
-                        System.out.println("no corruption");
+                if (Previousflag != flag) {
+                    Previousflag = flag;
+                    if (latitude != 9223372036854775807L && longitude != 9223372036854775807L
+                        && fix != 32767 && flag != 32767) {
+                        // System.out.println("no corruption");
                         if (callOrigin == 0) {  // If called from setup
-                            latLongFixStruct.latitude = Long.parseLong(strArr[0].trim());
-                            latLongFixStruct.longitude = Long.parseLong(strArr[1]);
-                            latLongFixStruct.fix = Short.parseShort(strArr[2]);
-                            latLongFixStruct.flag = Short.parseShort(strArr[3]);
-
-                            Previousflag = Short.parseShort(strArr[3]);
+                            latLongFixStruct.latitude = latitude;
+                            latLongFixStruct.longitude = longitude;
+                            latLongFixStruct.fix = fix;
+                            latLongFixStruct.flag = flag;
 
                             return latLongFixStruct;
 
                         } else if (callOrigin == 1) {
                             if (Previousflag != Short.parseShort(strArr[3])) {
-                                latLongFixStruct.latitude = Long.parseLong(strArr[0]);
-                                latLongFixStruct.longitude = Long.parseLong(strArr[1]);
-                                latLongFixStruct.fix = Short.parseShort(strArr[2]);
-                                latLongFixStruct.flag = Short.parseShort(strArr[3]);
-
-                                Previousflag = Short.parseShort(strArr[3]);
+                                latLongFixStruct.latitude = latitude;
+                                latLongFixStruct.longitude = longitude;
+                                latLongFixStruct.fix = fix;
+                                latLongFixStruct.flag = flag;
 
                                 return latLongFixStruct;
                             }
