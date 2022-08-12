@@ -10,11 +10,11 @@
 // This example code is in the public domain.
 int ch1Pin = 10;
 int ch2Pin = 11;
-int ch9Pin = 9;
+int ch8Pin = 9;
 
 int ch1Val;
 int ch2Val;
-int ch9Val;
+int ch8Val;
 
 String finalSend;
 
@@ -28,7 +28,7 @@ void setup() {
 
   pinMode(ch1Pin, INPUT);
   pinMode(ch2Pin, INPUT);
-  pinMode(ch9Pin, INPUT);
+  pinMode(ch8Pin, INPUT);
 }
 
 void loop() {
@@ -36,7 +36,7 @@ void loop() {
   //Serial.println(requestCount);
   ch1Val = pulseIn(ch1Pin, HIGH);
   ch2Val = pulseIn(ch2Pin, HIGH);
-  ch9Val = pulseIn(ch9Pin, HIGH);
+  ch8Val = pulseIn(ch8Pin, HIGH);
 
 
   if (ch1Val < 1000) {
@@ -55,8 +55,14 @@ void loop() {
     ch2Val = 1500;
   }
 
+  if (ch8Val < 1500) {
+    ch8Val = 1000;
+  } else if (ch8Val > 1500) {
+    ch8Val = 2000;
+  }
 
-  finalSend = String(ch1Val) + String(ch2Val) + String(ch9Val);
+
+  finalSend = String(ch1Val) + String(ch2Val) + String(ch8Val);
   Serial.println(finalSend + "*");
 }
 
