@@ -23,17 +23,18 @@ public class STC {
     boolean[][] map; //the actual boolean array
 
     ArrayList<latLong> nodes; //list of usable nodes
+    latLong startNode; //the starting node
     HashMap<latLong, Integer> nodeToNodeNum; //a map that's useful for figuring out my life
     ArrayList<node>[] adjacencyGraph; //an adjacency graph for which nodes are adjacent to each other
-    boolean[] visited;
+    boolean[] visited; //the visted array for DFS
 
     //Class Declaration
 
-    private class latLong {
+    protected class latLong {
         double Lat;
         double Long;
 
-        private latLong (double latitude, double longitude) {
+        protected latLong (double latitude, double longitude) {
             Lat = latitude;
             Long = longitude;
         }
@@ -231,7 +232,7 @@ public class STC {
         }
     }
 
-    private latLong toClosestNode() {
+    private void toClosestNode() {
         double minDist = 10000000;
         latLong placeholder;
         int savedI = 0;
@@ -242,8 +243,7 @@ public class STC {
                 savedI = i;
             }
         }
-        placeholder = nodes.get(savedI);
-        return placeholder;
+        startNode = nodes.get(savedI);
     }
  
     private void navigate(latLong after) {
@@ -289,10 +289,17 @@ public class STC {
 
     private void preDfs() {
         visited = new boolean[nodes.size()];
+        dfs(startNode);
     }
 
-    private void dfs() {
-        
+    private void dfs(latLong currNode) {
+        int currNodeNum = nodeToNodeNum.get(currNode);
+        visited[currNodeNum] = true;
+        for (int i = 0; i<adjacencyGraph[currNodeNum].size(); i++) {
+            if (visited[adjacencyGraph[currNodeNum].get(i).nodeNum] == false) {
+                dfs(nodes.get(adjacencyGraph[currNodeNum].get(i).nodeNum));
+            }
+        }
     }
 
     //Main Method
