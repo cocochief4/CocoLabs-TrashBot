@@ -119,18 +119,22 @@ public class Robot extends TimedRobot {
     String steeringS = bytes.substring(0, 4);
     String throttleS = bytes.substring(4, 8);
     String killSwitchS = bytes.substring(8, 12);
+    System.out.println(killSwitchS);
+
     double throttle =  Double.parseDouble(throttleS);
     double steering =  Double.parseDouble(steeringS);
-    double killSwitch = Double.parseDouble(killSwitchS);
+    // double killSwitch = Double.parseDouble(killSwitchS);
 
     // Set a cooldown before starting the motors
-    if (startCooldown < 0) {
-      if (killSwitch < 1500) {  // Teleoperated code
-        TeleopDrive(throttle, steering);
-      } else {  // Autonomous code
-        
-      }
-    }
+
+    TeleopDrive(throttle, steering);
+    // if (startCooldown < 0) {
+    //   if (killSwitch < 1500) {  // Teleoperated code
+    //     TeleopDrive(throttle, steering);
+    //   } else {  // Autonomous code
+    //     System.out.println("Autonomous mode");
+    //   }
+    // }
 
     startCooldown -= 1;
   }
