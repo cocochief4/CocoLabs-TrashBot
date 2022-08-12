@@ -81,15 +81,15 @@ void loop() {
       toggleFlag = 1;
     }
 
-    latitude = myGNSS.getLatitude();
+    long latitude = myGNSS.getLatitude();
     Serial.print(F("Lat: "));
     Serial.print(latitude);
 
-    longitude = myGNSS.getLongitude();
+    long longitude = myGNSS.getLongitude();
     Serial.print(F(" Long: "));
     Serial.print(longitude);
 
-    RTK = myGNSS.getCarrierSolutionType();
+    byte RTK = myGNSS.getCarrierSolutionType();
     Serial.print(" RTK: ");
     Serial.print(RTK);
     if (RTK == 0) Serial.print(F(" (No solution)"));
