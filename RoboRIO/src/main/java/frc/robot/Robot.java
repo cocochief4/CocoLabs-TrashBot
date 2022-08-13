@@ -17,6 +17,8 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.I2C;
 
+import java.math.*;
+
 public class Robot extends TimedRobot {
   private DifferentialDrive m_myRobot;
 
@@ -37,6 +39,8 @@ public class Robot extends TimedRobot {
   private final double RAMP_MAX = 0.02;
 
   private final I2C RCArduino = new I2C(Port.kOnboard, 4);
+
+  private int driveType = 0; // 0 is Teleop, 1 is Autonomous
 
   @Override
   public void robotInit() {
@@ -90,7 +94,9 @@ public class Robot extends TimedRobot {
   }
 
   private void TeleopDrive(double throttle, double steering) {
-    TeleopMath control =  new TeleopMath(steering, throttle);
+    if (throttle != 9223372036854775807L && steering != 9223372036854775807L) {
+      TeleopMath control =  new TeleopMath(steering, throttle);
+    
 
       robotSpeed = new EuclideanCoord(control.RcToDifferential().xEuclid, control.RcToDifferential().yEuclid);
       System.out.println(robotSpeed.toString());
@@ -98,6 +104,8 @@ public class Robot extends TimedRobot {
 
       // Ramp rate
       currentSpeed = control.CalcRamp(currentSpeed, robotSpeed, RAMP_MAX);
+
+    }
 
       //Run the Motors
       m_myRobot.tankDrive(-1 * currentSpeed.yEuclid, currentSpeed.xEuclid);
@@ -129,9 +137,17 @@ public class Robot extends TimedRobot {
     // Set a cooldown before starting the motors
     
     if (startCooldown < 0) {
-      if (killSwitch < 1500) {  // Teleoperated code
+      if (Math.abs((int) killSwitch - driveType) > 500) {
+        while (currentSpeed.xEuclid != 0 && currentSpeed.yEuclid != 0) {
+          TeleopDrive(1500, 1500); // 1000 - 2000, 1500 is "0"
+        }
+      }
+
+      if (killSwitch > 1500) {  // Teleoperated code
         TeleopDrive(throttle, steering);
+        driveType = (int) killSwitch;
       } else {  // Autonomous code
+        driveType = (int) killSwitch;
         System.out.println("Autonomous mode");
       }
     }
