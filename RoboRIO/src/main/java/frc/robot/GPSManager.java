@@ -21,7 +21,7 @@ public class GPSManager {
         return arduinoReceive;
     }
 
-    private static long ConvertToLong(String longString) {
+    protected static long ConvertToLong(String longString) {
         try {
             return Long.parseLong(longString);
 
@@ -30,7 +30,7 @@ public class GPSManager {
         }
     }
 
-    private static short ConvertToShort(String shortString) {
+    protected static short ConvertToShort(String shortString) {
         try {
             return Short.parseShort(shortString);
 

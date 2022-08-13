@@ -120,11 +120,11 @@ public class Robot extends TimedRobot {
     String steeringS = bytes.substring(0, 4);
     String throttleS = bytes.substring(4, 8);
     String killSwitchS = bytes.substring(8, 12);
-    // System.out.println(killSwitchS);
+    System.out.println(killSwitchS);
 
-    double throttle =  Double.parseDouble(throttleS);
-    double steering =  Double.parseDouble(steeringS);
-    double killSwitch = Double.parseDouble(killSwitchS);
+    double throttle =  GPSManager.ConvertToLong(throttleS);
+    double steering =  GPSManager.ConvertToLong(steeringS);
+    double killSwitch = GPSManager.ConvertToLong(killSwitchS);
 
     // Set a cooldown before starting the motors
     
