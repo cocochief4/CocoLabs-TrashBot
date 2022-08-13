@@ -93,7 +93,7 @@ public class Robot extends TimedRobot {
     TeleopMath control =  new TeleopMath(steering, throttle);
 
       robotSpeed = new EuclideanCoord(control.RcToDifferential().xEuclid, control.RcToDifferential().yEuclid);
-      // System.out.println(robotSpeed.toString());
+      System.out.println(robotSpeed.toString());
       System.out.println("Teleop mode ON");
 
       // Ramp rate
