@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.I2C;
@@ -77,6 +78,12 @@ public class Robot extends TimedRobot {
       leftDownMotor.restoreFactoryDefaults();
       rightUpMotor.restoreFactoryDefaults();
       rightDownMotor.restoreFactoryDefaults();
+
+      leftUpMotor.setIdleMode(IdleMode.kCoast);
+      leftDownMotor.setIdleMode(IdleMode.kCoast);
+      rightUpMotor.setIdleMode(IdleMode.kCoast);
+      rightDownMotor.setIdleMode(IdleMode.kCoast);
+
       m_myRobot = new DifferentialDrive(leftGroup, rightGroup);
 
   }
