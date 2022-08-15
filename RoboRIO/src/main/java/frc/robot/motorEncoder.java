@@ -3,14 +3,14 @@ package frc.robot;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 
-public class motorEncoder {
+public class MotorEncoder {
     protected final int SPIN_PER_REVOLUTION = 125;
 
     CANSparkMax motor;
     RelativeEncoder encoder;
     RelativeEncoder altEncoder;
 
-    protected motorEncoder(CANSparkMax Motor) {
+    protected MotorEncoder(CANSparkMax Motor) {
         motor = Motor;
         encoder = motor.getEncoder();
         altEncoder = motor.getAlternateEncoder(SPIN_PER_REVOLUTION);

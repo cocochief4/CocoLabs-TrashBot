@@ -112,45 +112,50 @@ public class Robot extends TimedRobot {
   }
 
   public void teleopPeriodic() {
-    LatLongFixStruct latLongFixStruct = GPSManager.ParseGPSData((byte) 0);
-    if (latLongFixStruct != null) {
-      System.out.println(latLongFixStruct.toString());
-    }
+    MotorEncoder motorEncoder = new MotorEncoder(rightUpMotor);
+    motorEncoder.getDistance();
 
-    //reading from the arduino to the roborio (i2c)
-    byte[] byteArr = new byte[13]; //THE LAST BYTE DOES NOT READ
-    RCArduino.read(4, 13, byteArr);
+    m_myRobot.tankDrive(0.1, 0.1);
 
-    //converting the byte array into the two values of throttle and steering
-    String bytes = new String(byteArr);
+    // LatLongFixStruct latLongFixStruct = GPSManager.ParseGPSData((byte) 0);
+    // if (latLongFixStruct != null) {
+    //   System.out.println(latLongFixStruct.toString());
+    // }
 
-    // Parse I2C data from the PWM Arduino
-    String steeringS = bytes.substring(0, 4);
-    String throttleS = bytes.substring(4, 8);
-    String killSwitchS = bytes.substring(8, 12);
-    System.out.println(killSwitchS);
+    // //reading from the arduino to the roborio (i2c)
+    // byte[] byteArr = new byte[13]; //THE LAST BYTE DOES NOT READ
+    // RCArduino.read(4, 13, byteArr);
 
-    double throttle =  GPSManager.ConvertToLong(throttleS);
-    double steering =  GPSManager.ConvertToLong(steeringS);
-    double killSwitch = GPSManager.ConvertToLong(killSwitchS);
+    // //converting the byte array into the two values of throttle and steering
+    // String bytes = new String(byteArr);
 
-    // Set a cooldown before starting the motors
+    // // Parse I2C data from the PWM Arduino
+    // String steeringS = bytes.substring(0, 4);
+    // String throttleS = bytes.substring(4, 8);
+    // String killSwitchS = bytes.substring(8, 12);
+    // System.out.println(killSwitchS);
+
+    // double throttle =  GPSManager.ConvertToLong(throttleS);
+    // double steering =  GPSManager.ConvertToLong(steeringS);
+    // double killSwitch = GPSManager.ConvertToLong(killSwitchS);
+
+    // // Set a cooldown before starting the motors
     
-    if (startCooldown < 0) {
-      if (Math.abs((int) killSwitch - driveType) > 500) {
-        while (currentSpeed.xEuclid != 0 && currentSpeed.yEuclid != 0) {
-          TeleopDrive(1500, 1500); // 1000 - 2000, 1500 is "0"
-        }
-      }
+    // if (startCooldown < 0) {
+    //   if (Math.abs((int) killSwitch - driveType) > 500) {
+    //     while (currentSpeed.xEuclid != 0 && currentSpeed.yEuclid != 0) {
+    //       TeleopDrive(1500, 1500); // 1000 - 2000, 1500 is "0"
+    //     }
+    //   }
 
-      if (killSwitch > 1500) {  // Teleoperated code
-        TeleopDrive(throttle, steering);
-        driveType = (int) killSwitch;
-      } else {  // Autonomous code
-        driveType = (int) killSwitch;
-        System.out.println("Autonomous mode");
-      }
-    }
+    //   if (killSwitch > 1500) {  // Teleoperated code
+    //     TeleopDrive(throttle, steering);
+    //     driveType = (int) killSwitch;
+    //   } else {  // Autonomous code
+    //     driveType = (int) killSwitch;
+    //     System.out.println("Autonomous mode");
+    //   }
+    // }
 
     startCooldown -= 1;
   }
