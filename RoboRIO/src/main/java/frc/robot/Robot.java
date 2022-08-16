@@ -112,10 +112,10 @@ public class Robot extends TimedRobot {
   }
 
   public void teleopPeriodic() {
-    MotorEncoder motorEncoder = new MotorEncoder(rightUpMotor);
-    motorEncoder.getDistance();
-
-    m_myRobot.tankDrive(0.1, 0.1);
+    System.out.println(LidarManager.ParseLidar().toString());
+    
+    // MotorEncoder motorEncoder = new MotorEncoder(rightUpMotor);
+    // motorEncoder.getDistance();
 
     // LatLongFixStruct latLongFixStruct = GPSManager.ParseGPSData((byte) 0);
     // if (latLongFixStruct != null) {
@@ -157,8 +157,8 @@ public class Robot extends TimedRobot {
     //   }
     // }
 
-    startCooldown -= 1;
-  }
+    // startCooldown -= 1;
+  } // End of TeleopPeriodic()
 
   public void autonomousInit() {
 

@@ -47,7 +47,7 @@ RPLidar lidar;
 
 #define RPLIDAR_MOTOR 3 // The PWM pin for control the speed of RPLIDAR's motor.
                         // This pin should connected with the RPLIDAR's MOTOCTRL signal 
-#define sendSize 13
+#define sendSize 15
 
 String i2cSend;
 char i2cBuf[sendSize];
@@ -84,7 +84,7 @@ void loop() {
 
       String qualityS = String(quality);
       
-      i2cSend = distanceS + angleS + qualityS + "*";
+      i2cSend = distanceS + "," + angleS + "," + qualityS + "*";
       i2cSend.toCharArray(i2cBuf, sendSize);
     }
     
