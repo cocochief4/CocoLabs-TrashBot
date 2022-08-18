@@ -155,12 +155,16 @@ public class Robot extends TimedRobot {
         TeleopDrive(throttle, steering);
         driveType = (int) killSwitch;
 
-        if (lidarStruct.angle > -30 && lidarStruct.angle < 30) {
-          if (lidarStruct.distance > 525) {
-            //Run the Motors
-            m_myRobot.tankDrive(-1 * currentSpeed.yEuclid, currentSpeed.xEuclid);
+        if (lidarStruct != null) {
+          if (lidarStruct.angle > -30 && lidarStruct.angle < 30) {
+            if (lidarStruct.distance > 525) {
+              //Run the Motors
+              m_myRobot.tankDrive(-1 * currentSpeed.yEuclid, currentSpeed.xEuclid);
+            } else {
+              System.out.println("Emergency Stopped!");
+            }
           } else {
-            System.out.println("Emergency Stopped!");
+            m_myRobot.tankDrive(-1 * currentSpeed.yEuclid, currentSpeed.xEuclid);
           }
         } else {
           m_myRobot.tankDrive(-1 * currentSpeed.yEuclid, currentSpeed.xEuclid);
