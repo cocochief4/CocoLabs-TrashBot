@@ -96,7 +96,6 @@ public class Robot extends TimedRobot {
   private void TeleopDrive(double throttle, double steering) {
     if (throttle != 9223372036854775807L && steering != 9223372036854775807L) {
       TeleopMath control =  new TeleopMath(steering, throttle);
-    
 
       robotSpeed = new EuclideanCoord(control.RcToDifferential().xEuclid, control.RcToDifferential().yEuclid);
       System.out.println(robotSpeed.toString());
@@ -107,57 +106,72 @@ public class Robot extends TimedRobot {
 
     }
 
-      //Run the Motors
-      m_myRobot.tankDrive(-1 * currentSpeed.yEuclid, currentSpeed.xEuclid);
+      
   }
 
   public void teleopPeriodic() {
-    System.out.println(LidarManager.ParseLidar().toString());
+    LidarStruct lidarStruct = LidarManager.ParseLidar();
+    //System.out.println(lidarStruct.toString());
     
-    // MotorEncoder motorEncoder = new MotorEncoder(rightUpMotor);
-    // motorEncoder.getDistance();
+    MotorEncoder motorEncoder = new MotorEncoder(rightUpMotor);
+    motorEncoder.getDistance();
 
-    // LatLongFixStruct latLongFixStruct = GPSManager.ParseGPSData((byte) 0);
-    // if (latLongFixStruct != null) {
-    //   System.out.println(latLongFixStruct.toString());
-    // }
+    LatLongFixStruct latLongFixStruct = GPSManager.ParseGPSData((byte) 0);
+    if (latLongFixStruct != null) {
+      System.out.print("GPS in Robot:");
+      System.out.println(latLongFixStruct.toString());
+    }
 
-    // //reading from the arduino to the roborio (i2c)
-    // byte[] byteArr = new byte[13]; //THE LAST BYTE DOES NOT READ
-    // RCArduino.read(4, 13, byteArr);
+    //reading from the arduino to the roborio (i2c)
+    byte[] byteArr = new byte[13]; //THE LAST BYTE DOES NOT READ
+    RCArduino.read(4, 13, byteArr);
 
-    // //converting the byte array into the two values of throttle and steering
-    // String bytes = new String(byteArr);
+    //converting the byte array into the two values of throttle and steering
+    String bytes = new String(byteArr);
 
-    // // Parse I2C data from the PWM Arduino
-    // String steeringS = bytes.substring(0, 4);
-    // String throttleS = bytes.substring(4, 8);
-    // String killSwitchS = bytes.substring(8, 12);
-    // System.out.println(killSwitchS);
+    // Parse I2C data from the PWM Arduino
+    String steeringS = bytes.substring(0, 4);
+    String throttleS = bytes.substring(4, 8);
+    String killSwitchS = bytes.substring(8, 12);
+    System.out.println(killSwitchS);
 
-    // double throttle =  GPSManager.ConvertToLong(throttleS);
-    // double steering =  GPSManager.ConvertToLong(steeringS);
-    // double killSwitch = GPSManager.ConvertToLong(killSwitchS);
+    double throttle =  GPSManager.ConvertToLong(throttleS);
+    double steering =  GPSManager.ConvertToLong(steeringS);
+    double killSwitch = GPSManager.ConvertToLong(killSwitchS);
 
-    // // Set a cooldown before starting the motors
+    // Set a cooldown before starting the motors
     
-    // if (startCooldown < 0) {
-    //   if (Math.abs((int) killSwitch - driveType) > 500) {
-    //     while (currentSpeed.xEuclid != 0 && currentSpeed.yEuclid != 0) {
-    //       TeleopDrive(1500, 1500); // 1000 - 2000, 1500 is "0"
-    //     }
-    //   }
+    if (startCooldown < 0) {
+      if (Math.abs((int) killSwitch - driveType) > 500) {
+        while (currentSpeed.xEuclid != 0 && currentSpeed.yEuclid != 0) {
+          TeleopDrive(1500, 1500); // 1000 - 2000, 1500 is "0"
 
-    //   if (killSwitch > 1500) {  // Teleoperated code
-    //     TeleopDrive(throttle, steering);
-    //     driveType = (int) killSwitch;
-    //   } else {  // Autonomous code
-    //     driveType = (int) killSwitch;
-    //     System.out.println("Autonomous mode");
-    //   }
-    // }
+          //Stop the motors
+          m_myRobot.tankDrive(-1 * currentSpeed.yEuclid, currentSpeed.xEuclid);
+        }
+      }
 
-    // startCooldown -= 1;
+      if (killSwitch > 1500) {  // Teleoperated code
+        TeleopDrive(throttle, steering);
+        driveType = (int) killSwitch;
+
+        if (lidarStruct.angle > -30 && lidarStruct.angle < 30) {
+          if (lidarStruct.distance > 525) {
+            //Run the Motors
+            m_myRobot.tankDrive(-1 * currentSpeed.yEuclid, currentSpeed.xEuclid);
+          } else {
+            System.out.println("Emergency Stopped!");
+          }
+        } else {
+          m_myRobot.tankDrive(-1 * currentSpeed.yEuclid, currentSpeed.xEuclid);
+        }
+      } else {  // Autonomous code
+        driveType = (int) killSwitch;
+        System.out.println("Autonomous mode");
+      }
+    }
+
+    startCooldown -= 1;
   } // End of TeleopPeriodic()
 
   public void autonomousInit() {

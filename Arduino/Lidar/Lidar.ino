@@ -47,12 +47,14 @@ RPLidar lidar;
 
 #define RPLIDAR_MOTOR 3 // The PWM pin for control the speed of RPLIDAR's motor.
                         // This pin should connected with the RPLIDAR's MOTOCTRL signal 
-#define sendSize 15
+#define sendSize 16
 
 String i2cSend;
 char i2cBuf[sendSize];
+char buf[sendSize];
                         
 void setup() {
+  Serial.begin(115200);
   Wire.begin(2); //begin with Wire address #2
   Wire.onRequest(requestEvent);
   
@@ -61,34 +63,41 @@ void setup() {
   
   // set pin modes
   pinMode(RPLIDAR_MOTOR, OUTPUT);
+  Serial.println("Serial Start");
 }
 
 void loop() {
   if (IS_OK(lidar.waitPoint())) {
-    if (lidar.getCurrentPoint().startBit = true) {
-      float distance = lidar.getCurrentPoint().distance; //distance value in mm unit; 2 floating points
-      float angle    = lidar.getCurrentPoint().angle; //anglue value in degree; 2 floating points
-      bool  startBit = lidar.getCurrentPoint().startBit; //whether this point is belong to a new scan
-      byte  quality  = lidar.getCurrentPoint().quality; //quality of the current measurement
-      
-      //perform data processing here...
-      String distanceS = String(distance * 100);
-      while (distanceS.length() < 6) {
-        distanceS = distanceS + " ";
-      }
-      
-      String angleS = String(angle * 100);
-      while (angleS.length() < 5) {
-        angleS = distanceS + " ";
-      }
+    float distance = lidar.getCurrentPoint().distance; //distance value in mm unit; 2 floating points
+    float angle    = lidar.getCurrentPoint().angle; //anglue value in degree; 2 floating points
+    bool  startBit = lidar.getCurrentPoint().startBit; //whether this point is belong to a new scan
+    byte  quality  = lidar.getCurrentPoint().quality; //quality of the current measurement
+    
+    //perform data processing here...
+    int distanceInt = distance * 100;
+    String distanceS = String(distanceInt);
+    while (distanceS.length() < 6) {
+      distanceS = distanceS + " ";
+    }
 
-      String qualityS = String(quality);
-      
-      i2cSend = distanceS + "," + angleS + "," + qualityS + "*";
-      i2cSend.toCharArray(i2cBuf, sendSize);
+    int angleInt = angle * 100;
+    String angleS = String(angleInt);
+    while (angleS.length() < 5) {
+      angleS = angleS + " ";
+    }
+
+    String qualityS = String(quality);
+    while (qualityS.length() < 2) {
+      qualityS = qualityS + " ";
     }
     
+    i2cSend = distanceS + "," + angleS + "," + qualityS + "*";
+    i2cSend.toCharArray(buf, sendSize);
+
+    Serial.println(i2cSend);
+    
   } else {
+    Serial.println("Lidar ded");
     analogWrite(RPLIDAR_MOTOR, 0); //stop the rplidar motor
     
     // try to detect RPLIDAR... 
@@ -105,5 +114,8 @@ void loop() {
 }
 
 void requestEvent() {
+  for (int i = 0; i < sendSize; i++) {
+    i2cBuf[i] = buf[i];
+  }
   Wire.write(i2cBuf);
 }
