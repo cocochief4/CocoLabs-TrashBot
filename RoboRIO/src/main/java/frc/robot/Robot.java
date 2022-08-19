@@ -49,7 +49,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
-    NavXManager
+    NavXManager.RInit();
 
     /* Note that the PIDController GUI should be added automatically to */
     /* the Test-mode dashboard, allowing manual tuning of the Turn */

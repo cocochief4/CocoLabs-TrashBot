@@ -3,8 +3,6 @@ package frc.robot;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.I2C.Port;
 
-import java.lang.NumberFormatException;
-
 public class LidarManager {
     private final static I2C LidarArduino = new I2C(Port.kOnboard, 2);
     private static final int sendSize = 16;
