@@ -18,33 +18,45 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.I2C;
 
-import java.math.*;
-
 public class Robot extends TimedRobot {
-  private DifferentialDrive m_myRobot;
+
+  /* The following PID Controller coefficients will need to be tuned */
+  /* to match the dynamics of your drive system. Note that the */
+  /* SmartDashboard in Test mode has support for helping you tune */
+  /* controllers by displaying a form where you can enter new P, I, */
+  /* and D constants and test the mechanism. */
+
+  private static DifferentialDrive m_myRobot;
 
   private static final int leftUpDeviceID = 3; 
   private static final int leftDownDeviceID = 1;
-  private CANSparkMax leftUpMotor;
-  private CANSparkMax leftDownMotor;
-  private MotorControllerGroup leftGroup;
+  protected static CANSparkMax leftUpMotor;
+  protected static CANSparkMax leftDownMotor;
+  protected static MotorControllerGroup leftGroup;
 
   private static final int rightUpDeviceID = 4;
   private static final int rightDownDeviceID = 2;
-  private CANSparkMax rightUpMotor;
-  private CANSparkMax rightDownMotor;
-  private MotorControllerGroup rightGroup;
+  protected static CANSparkMax rightUpMotor;
+  protected static CANSparkMax rightDownMotor;
+  protected static MotorControllerGroup rightGroup;
 
-  private EuclideanCoord robotSpeed = new EuclideanCoord(0.0, 0.0);
-  private EuclideanCoord currentSpeed = new EuclideanCoord(0, 0);
-  private final double RAMP_MAX = 0.02;
+  protected static EuclideanCoord robotSpeed = new EuclideanCoord(0.0, 0.0);
+  protected static EuclideanCoord currentSpeed = new EuclideanCoord(0, 0);
+  protected static final double RAMP_MAX = 0.01;
 
-  private final I2C RCArduino = new I2C(Port.kOnboard, 4);
+  private static final I2C RCArduino = new I2C(Port.kOnboard, 4);
 
-  private int driveType = 0; // 0 is Teleop, 1 is Autonomous
+  private static int driveType = 0; // 0 is Teleop, 1 is Autonomous
 
   @Override
   public void robotInit() {
+    NavXManager.RInit();
+
+    /* Note that the PIDController GUI should be added automatically to */
+    /* the Test-mode dashboard, allowing manual tuning of the Turn */
+    /* Controller's P, I and D coefficients. */
+    /* Typically, only the P value needs to be modified. */
+    
     /**
      * SPARK MAX controllers are intialized over CAN by constructing a CANSparkMax object
      * 
@@ -101,9 +113,10 @@ public class Robot extends TimedRobot {
   }
 
   private void TeleopDrive(double throttle, double steering) {
+    //System.out.println(NavXManager.getData().toString());
+
     if (throttle != 9223372036854775807L && steering != 9223372036854775807L) {
       TeleopMath control =  new TeleopMath(steering, throttle);
-    
 
       robotSpeed = new EuclideanCoord(control.RcToDifferential().xEuclid, control.RcToDifferential().yEuclid);
       System.out.println(robotSpeed.toString());
@@ -114,13 +127,14 @@ public class Robot extends TimedRobot {
 
     }
 
-      //Run the Motors
-      m_myRobot.tankDrive(-1 * currentSpeed.yEuclid, currentSpeed.xEuclid);
+      
   }
 
   public void teleopPeriodic() {
+
     LatLongFixStruct latLongFixStruct = GPSManager.ParseGPSData((byte) 0);
     if (latLongFixStruct != null) {
+      System.out.print("GPS in Robot:");
       System.out.println(latLongFixStruct.toString());
     }
 
@@ -147,12 +161,18 @@ public class Robot extends TimedRobot {
       if (Math.abs((int) killSwitch - driveType) > 500) {
         while (currentSpeed.xEuclid != 0 && currentSpeed.yEuclid != 0) {
           TeleopDrive(1500, 1500); // 1000 - 2000, 1500 is "0"
+
+          //Stop the motors
+          m_myRobot.tankDrive(-1 * currentSpeed.yEuclid, currentSpeed.xEuclid);
         }
       }
 
       if (killSwitch > 1500) {  // Teleoperated code
         TeleopDrive(throttle, steering);
         driveType = (int) killSwitch;
+
+        m_myRobot.tankDrive(-1 * currentSpeed.yEuclid, currentSpeed.xEuclid);
+        
       } else {  // Autonomous code
         driveType = (int) killSwitch;
         System.out.println("Autonomous mode");
@@ -160,7 +180,7 @@ public class Robot extends TimedRobot {
     }
 
     startCooldown -= 1;
-  }
+  } // End of TeleopPeriodic()
 
   public void autonomousInit() {
 

@@ -18,7 +18,7 @@ public class TeleopMath {
 
     // Create a method to scale down the value
     // From 1000 - 2000 to -1 - 1
-    private EuclideanCoord ScaleToUnitSquare (EuclideanCoord coord) {
+    protected EuclideanCoord ScaleToUnitSquare (EuclideanCoord coord) {
         double Xscale = (coord.xEuclid/500.0 - 3.0);
         double Yscale = (coord.yEuclid/500.0 - 3.0);
 
@@ -28,7 +28,7 @@ public class TeleopMath {
     }
 
     // Scale from a square to a unit circle
-    private EuclideanCoord ScaleSquareToUnitCircle (EuclideanCoord coord) {
+    protected EuclideanCoord ScaleSquareToUnitCircle (EuclideanCoord coord) {
         double slope = 0;
         double xUnitSquare = 1;
         double yUnitSquare = 1;
@@ -59,7 +59,7 @@ public class TeleopMath {
     }
 
     // Convert to polar coordinates (r and theta); theta is in deg
-    private PolarCoord CartToPolar(EuclideanCoord coord) {
+    protected PolarCoord CartToPolar(EuclideanCoord coord) {
         double r = Math.sqrt(Math.pow(coord.xEuclid, 2.0) + Math.pow(coord.yEuclid, 2.0));
         double theta = Math.atan((coord.yEuclid/coord.xEuclid));
         theta = theta * (180/Math.PI);
@@ -85,7 +85,7 @@ public class TeleopMath {
     }
 
     // Convert to euclidean coordinates
-    private EuclideanCoord PolarToCart(PolarCoord coord) {
+    protected EuclideanCoord PolarToCart(PolarCoord coord) {
         double x = coord.r * Math.cos(coord.theta * Math.PI/180);
         double y = coord.r * Math.sin(coord.theta * Math.PI/180);
         if (coord.r == 0) {
@@ -98,7 +98,7 @@ public class TeleopMath {
     }
 
     // Rotate by -45 deg
-    private double driveConversion(double theta) {
+    protected double driveConversion(double theta) {
         double thetaLocal = theta;
         if (thetaLocal < 0) {
             thetaLocal += 360;
@@ -112,7 +112,7 @@ public class TeleopMath {
     }
 
     // Scale Up The code
-    private EuclideanCoord ScaleUp(EuclideanCoord coord) {
+    protected EuclideanCoord ScaleUp(EuclideanCoord coord) {
         double slope = 0;
         double xUnitSquare = 1;
         double yUnitSquare = 1;

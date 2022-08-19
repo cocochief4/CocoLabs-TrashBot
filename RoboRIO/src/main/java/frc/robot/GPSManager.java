@@ -41,8 +41,10 @@ public class GPSManager {
 
     protected static LatLongFixStruct ParseGPSData(byte callOrigin) {
         LatLongFixStruct latLongFixStruct = new LatLongFixStruct(0L, 0L, (short)0, (short)0);
+        // System.out.println("called GPS");
 
         String data = GetDataFromGPS();
+        //System.out.println("GPS:" + data);
         if (data.length() == sendSize) {
             data = data.substring(0, sendSize);
             data.trim();
@@ -78,6 +80,9 @@ public class GPSManager {
                             latLongFixStruct.fix = fix;
                             latLongFixStruct.flag = flag;
 
+                            // System.out.print("latlong:");
+                            //System.out.println(latLongFixStruct.toString());
+                            
                             return latLongFixStruct;
 
                         } else if (callOrigin == 1) {
@@ -86,6 +91,9 @@ public class GPSManager {
                                 latLongFixStruct.longitude = longitude;
                                 latLongFixStruct.fix = fix;
                                 latLongFixStruct.flag = flag;
+                                
+                                // System.out.print("latlong:");
+                                // System.out.println(latLongFixStruct.toString());
 
                                 return latLongFixStruct;
                             }

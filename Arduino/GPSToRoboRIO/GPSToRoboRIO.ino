@@ -41,8 +41,8 @@ void loop (void)
   int i = 0;
   if (softSerial.available()) {
     receiveFromUART = softSerial.readStringUntil('*');
-    receiveFromUART.toCharArray(i2cBuf, sendSize);
-    Serial.println(i2cBuf);
+    receiveFromUART.toCharArray(buf, sendSize);
+    Serial.println(buf);
   }
   
   
@@ -50,5 +50,8 @@ void loop (void)
 
 
 void requestEvent() {
+  for (int i = 0; i < sendSize; i++) {
+    i2cBuf[i] = buf[i];
+  }
   Wire.write(i2cBuf);
 }
