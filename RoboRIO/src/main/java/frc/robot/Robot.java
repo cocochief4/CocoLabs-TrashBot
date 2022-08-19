@@ -25,31 +25,31 @@ public class Robot extends TimedRobot {
   /* controllers by displaying a form where you can enter new P, I, */
   /* and D constants and test the mechanism. */
 
-  private DifferentialDrive m_myRobot;
+  private static DifferentialDrive m_myRobot;
 
   private static final int leftUpDeviceID = 3; 
   private static final int leftDownDeviceID = 1;
-  private CANSparkMax leftUpMotor;
-  private CANSparkMax leftDownMotor;
-  private MotorControllerGroup leftGroup;
+  protected static CANSparkMax leftUpMotor;
+  protected static CANSparkMax leftDownMotor;
+  protected static MotorControllerGroup leftGroup;
 
   private static final int rightUpDeviceID = 4;
   private static final int rightDownDeviceID = 2;
-  private CANSparkMax rightUpMotor;
-  private CANSparkMax rightDownMotor;
-  private MotorControllerGroup rightGroup;
+  protected static CANSparkMax rightUpMotor;
+  protected static CANSparkMax rightDownMotor;
+  protected static MotorControllerGroup rightGroup;
 
-  private EuclideanCoord robotSpeed = new EuclideanCoord(0.0, 0.0);
-  private EuclideanCoord currentSpeed = new EuclideanCoord(0, 0);
-  private final double RAMP_MAX = 0.01;
+  protected static EuclideanCoord robotSpeed = new EuclideanCoord(0.0, 0.0);
+  protected static EuclideanCoord currentSpeed = new EuclideanCoord(0, 0);
+  protected static final double RAMP_MAX = 0.01;
 
-  private final I2C RCArduino = new I2C(Port.kOnboard, 4);
+  private static final I2C RCArduino = new I2C(Port.kOnboard, 4);
 
-  private int driveType = 0; // 0 is Teleop, 1 is Autonomous
+  private static int driveType = 0; // 0 is Teleop, 1 is Autonomous
 
   @Override
   public void robotInit() {
-    NavXManager.RInit();
+    NavXManager
 
     /* Note that the PIDController GUI should be added automatically to */
     /* the Test-mode dashboard, allowing manual tuning of the Turn */
@@ -124,13 +124,6 @@ public class Robot extends TimedRobot {
   }
 
   public void teleopPeriodic() {
-    //LidarStruct lidarStruct = LidarManager.ParseLidar();
-    // if (lidarStruct != null) {
-    //   System.out.println(lidarStruct.toString());
-    // }
-    
-    MotorEncoder motorEncoder = new MotorEncoder(rightUpMotor);
-    motorEncoder.getDistance();
 
     LatLongFixStruct latLongFixStruct = GPSManager.ParseGPSData((byte) 0);
     if (latLongFixStruct != null) {
