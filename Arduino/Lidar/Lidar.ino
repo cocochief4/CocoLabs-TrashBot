@@ -107,7 +107,8 @@ void loop() {
        lidar.startScan();
        
        // start motor rotating at max allowed speed
-       analogWrite(RPLIDAR_MOTOR, 200);
+       Serial.println("Speed");
+       analogWrite(RPLIDAR_MOTOR, 250);
        delay(1000);
     }
   }

@@ -16,10 +16,20 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.I2C;
+import com.kauailabs.navx.frc.AHRS;
 
-import java.math.*;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.wpilibj.Timer;
 
 public class Robot extends TimedRobot {
+
+  /* The following PID Controller coefficients will need to be tuned */
+  /* to match the dynamics of your drive system. Note that the */
+  /* SmartDashboard in Test mode has support for helping you tune */
+  /* controllers by displaying a form where you can enter new P, I, */
+  /* and D constants and test the mechanism. */
+
   private DifferentialDrive m_myRobot;
 
   private static final int leftUpDeviceID = 3; 
@@ -36,7 +46,7 @@ public class Robot extends TimedRobot {
 
   private EuclideanCoord robotSpeed = new EuclideanCoord(0.0, 0.0);
   private EuclideanCoord currentSpeed = new EuclideanCoord(0, 0);
-  private final double RAMP_MAX = 0.02;
+  private final double RAMP_MAX = 0.01;
 
   private final I2C RCArduino = new I2C(Port.kOnboard, 4);
 
@@ -44,6 +54,13 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
+    NavXManager.RInit();
+
+    /* Note that the PIDController GUI should be added automatically to */
+    /* the Test-mode dashboard, allowing manual tuning of the Turn */
+    /* Controller's P, I and D coefficients. */
+    /* Typically, only the P value needs to be modified. */
+    
     /**
      * SPARK MAX controllers are intialized over CAN by constructing a CANSparkMax object
      * 
@@ -94,6 +111,8 @@ public class Robot extends TimedRobot {
   }
 
   private void TeleopDrive(double throttle, double steering) {
+    //System.out.println(NavXManager.getData().toString());
+
     if (throttle != 9223372036854775807L && steering != 9223372036854775807L) {
       TeleopMath control =  new TeleopMath(steering, throttle);
 
@@ -110,8 +129,10 @@ public class Robot extends TimedRobot {
   }
 
   public void teleopPeriodic() {
-    LidarStruct lidarStruct = LidarManager.ParseLidar();
-    //System.out.println(lidarStruct.toString());
+    //LidarStruct lidarStruct = LidarManager.ParseLidar();
+    // if (lidarStruct != null) {
+    //   System.out.println(lidarStruct.toString());
+    // }
     
     MotorEncoder motorEncoder = new MotorEncoder(rightUpMotor);
     motorEncoder.getDistance();
@@ -155,20 +176,8 @@ public class Robot extends TimedRobot {
         TeleopDrive(throttle, steering);
         driveType = (int) killSwitch;
 
-        if (lidarStruct != null) {
-          if (lidarStruct.angle > -30 && lidarStruct.angle < 30) {
-            if (lidarStruct.distance > 525) {
-              //Run the Motors
-              m_myRobot.tankDrive(-1 * currentSpeed.yEuclid, currentSpeed.xEuclid);
-            } else {
-              System.out.println("Emergency Stopped!");
-            }
-          } else {
-            m_myRobot.tankDrive(-1 * currentSpeed.yEuclid, currentSpeed.xEuclid);
-          }
-        } else {
-          m_myRobot.tankDrive(-1 * currentSpeed.yEuclid, currentSpeed.xEuclid);
-        }
+        m_myRobot.tankDrive(-1 * currentSpeed.yEuclid, currentSpeed.xEuclid);
+        
       } else {  // Autonomous code
         driveType = (int) killSwitch;
         System.out.println("Autonomous mode");

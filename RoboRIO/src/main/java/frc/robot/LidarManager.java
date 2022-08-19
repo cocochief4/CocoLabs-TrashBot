@@ -62,7 +62,7 @@ public class LidarManager {
             byte quality = Byte.parseByte(lidarBuf[2]);
 
             lidarStruct = new LidarStruct(distanceInt, angleInt, quality);
-            System.out.println(lidarStruct.toString());
+            // System.out.println(lidarStruct.toString());
 
             return lidarStruct;
         }
