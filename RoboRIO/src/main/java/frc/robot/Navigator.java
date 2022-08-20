@@ -10,7 +10,8 @@ public class Navigator {
     private static Timer timer;
 
     private static final double TIRE_MULTIPLIER = Math.PI * 13;
-    private static final double RADIANS_MULTIPLIER = Math.PI/180;
+    protected static final double RADIANS_MULTIPLIER = Math.PI/180;
+    protected static final double DEGREES_MULTIPLIER = 180/Math.PI;
 
     private static NavigatorStruct location;
     private static double previousTimePollEncoder = 0; // In seconds

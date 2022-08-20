@@ -3,7 +3,8 @@ package frc.robot;
 public class AutonomousDrive {
     static EuclideanCoord previousSpeed = new EuclideanCoord(0, 0);
 
-    public static void drive(EuclideanCoord throttleSteering) {
+    public static void drive(double throttle, double steering) {
+        EuclideanCoord throttleSteering = new EuclideanCoord(steering, throttle);
         TeleopMath teleopMath = new TeleopMath(throttleSteering.xEuclid, throttleSteering.yEuclid);
         throttleSteering = teleopMath.ScaleToUnitSquare(throttleSteering);
         PolarCoord polar = teleopMath.CartToPolar(throttleSteering);

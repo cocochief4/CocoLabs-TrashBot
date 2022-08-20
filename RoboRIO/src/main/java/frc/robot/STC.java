@@ -30,16 +30,6 @@ public class STC {
 
     //Class Declaration
 
-    protected class latLong {
-        double Lat;
-        double Long;
-
-        protected latLong (double latitude, double longitude) {
-            Lat = latitude;
-            Long = longitude;
-        }
-    }
-
     private class node {
         int nodeNum;
         int direction; //1 = north, 2 = east, 3 = south, 4 = west
