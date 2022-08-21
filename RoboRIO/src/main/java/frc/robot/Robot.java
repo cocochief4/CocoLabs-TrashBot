@@ -171,7 +171,7 @@ public class Robot extends TimedRobot {
       } else {  // Autonomous code
         driveType = (int) killSwitch;
         System.out.println("Autonomous mode");
-        PathHandler.GoTo();
+        // PathHandler.GoTo();
       }
     }
 
