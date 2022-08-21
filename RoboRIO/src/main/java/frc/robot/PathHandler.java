@@ -11,7 +11,7 @@ public class PathHandler {
     protected static NavigatorStruct calibStartPos = new NavigatorStruct(0, 0, 0);
     protected static NavigatorStruct calibEndPos = new NavigatorStruct(0, 0, 0);
 
-    private static void calibrate() {
+    private static void calibrate() { // WORK ON CALIBRATE
         if (haveTurned = false) {
             haveStartedCalib = true;
         } else {
