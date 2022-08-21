@@ -13,9 +13,9 @@ public class PathHandler {
 
     private static void calibrate() {
         if (haveTurned = false) {
-
+            haveStartedCalib = true;
         } else {
-            // FINISH CALIBRATE
+            haveStartedCalib = false;
         }
 
     }
