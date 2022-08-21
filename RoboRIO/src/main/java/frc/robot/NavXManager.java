@@ -17,6 +17,8 @@ public class NavXManager {
 
     static final double kToleranceDegrees = 2.0f;
 
+    static double yawDeltaFromNorth = 0;
+
     public static void RInit() {
         try {
             /***********************************************************************
@@ -46,6 +48,7 @@ public class NavXManager {
 
     public static ImuStruct getData() {
         ImuStruct imuStruct = new ImuStruct(ahrs.getYaw(), ahrs.getVelocityX(), ahrs.getVelocityY(), ahrs.getVelocityZ());
+        imuStruct.yaw += yawDeltaFromNorth;
 
         return imuStruct;
     }

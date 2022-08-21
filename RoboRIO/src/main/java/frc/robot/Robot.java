@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 
+import java.nio.file.Path;
+
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
@@ -160,7 +162,7 @@ public class Robot extends TimedRobot {
         }
       }
 
-      if (killSwitch > 1500) {  // Teleoperated code
+      if (killSwitch < 1500) {  // Teleoperated code
         TeleopDrive(throttle, steering);
         driveType = (int) killSwitch;
 
@@ -169,6 +171,7 @@ public class Robot extends TimedRobot {
       } else {  // Autonomous code
         driveType = (int) killSwitch;
         System.out.println("Autonomous mode");
+        PathHandler.GoTo();
       }
     }
 
