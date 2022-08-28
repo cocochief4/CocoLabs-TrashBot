@@ -98,7 +98,7 @@ void loop() {
     
   } else {
     Serial.println("Lidar ded");
-    analogWrite(RPLIDAR_MOTOR, 0); //stop the rplidar motor
+    analogWrite(RPLIDAR_MOTOR, 250); //stop the rplidar motor
     
     // try to detect RPLIDAR... 
     rplidar_response_device_info_t info;

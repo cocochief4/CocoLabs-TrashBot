@@ -115,7 +115,7 @@ public class Robot extends TimedRobot {
 
       robotSpeed = new EuclideanCoord(control.RcToDifferential().xEuclid, control.RcToDifferential().yEuclid);
       System.out.println(robotSpeed.toString());
-      System.out.println("Teleop mode ON");
+      // System.out.println("Teleop mode ON");
 
       // Ramp rate
       currentSpeed = control.CalcRamp(currentSpeed, robotSpeed, RAMP_MAX);
@@ -170,7 +170,7 @@ public class Robot extends TimedRobot {
         
       } else {  // Autonomous code
         driveType = (int) killSwitch;
-        System.out.println("Autonomous mode");
+        // System.out.println("Autonomous mode");
         // PathHandler.GoTo();
       }
     }
