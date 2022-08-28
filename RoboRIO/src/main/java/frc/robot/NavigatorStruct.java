@@ -17,7 +17,7 @@ public class NavigatorStruct {
     public String toString() {
         String string = new String();
         string = "Lat,Long,Distance,Direction " + latitude.toString() + " " 
-                + longitude.toString() + " " + distance.toString() + " " + direction.toString();
+        + longitude.toString() + " " + distance.toString() + " " + direction.toString();
 
         return string;
     }
