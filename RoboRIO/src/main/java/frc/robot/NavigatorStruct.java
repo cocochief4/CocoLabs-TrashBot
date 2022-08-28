@@ -4,17 +4,20 @@ public class NavigatorStruct {
     Double latitude;
     Double longitude;
     Double direction;
+    Double distance;
 
-    public NavigatorStruct(double Latitutude, double Longitude, double dDirection) {
+    public NavigatorStruct(double Latitutude, double Longitude, double Direction, double Distance) {
         latitude = Latitutude;
         longitude = Longitude;
-        direction = dDirection;
+        direction = Direction;
+        distance = Distance;
 
     }
 
     public String toString() {
         String string = new String();
-        string = latitude.toString() + " " + longitude.toString() + " " + direction.toString();
+        string = "Lat,Long,Distance,Direction " + latitude.toString() + " " 
+                + longitude.toString() + " " + distance.toString() + " " + direction.toString();
 
         return string;
     }

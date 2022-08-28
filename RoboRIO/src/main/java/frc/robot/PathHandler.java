@@ -8,14 +8,24 @@ public class PathHandler {
     protected static boolean haveStartedCalib = false;
     protected static double distanceWithoutTurning = 0;
 
-    protected static NavigatorStruct calibStartPos = new NavigatorStruct(0, 0, 0);
-    protected static NavigatorStruct calibEndPos = new NavigatorStruct(0, 0, 0);
+    protected static NavigatorStruct calibStartPos = new NavigatorStruct(0, 0, 0, 0);
+    protected static NavigatorStruct calibEndPos = new NavigatorStruct(0, 0, 0, 0);
 
     private static void calibrate() { // WORK ON CALIBRATE
         if (haveTurned = false) {
             haveStartedCalib = true;
+            calibStartPos = Navigator.getLocation();
         } else {
             haveStartedCalib = false;
+        }
+
+        if (haveStartedCalib == true) {
+            NavigatorStruct location = Navigator.getLocation();
+            distanceWithoutTurning += location.distance;
+        } else {
+            if (distanceWithoutTurning > 2) {
+                calibEndPos = Navigator.getLocation();
+            }
         }
 
     }

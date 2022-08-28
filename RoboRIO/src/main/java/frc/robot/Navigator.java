@@ -34,7 +34,8 @@ public class Navigator {
     }
 
     private static NavigatorStruct LatLongToNav(LatLongFixStruct latLongFixStruct) {
-        NavigatorStruct navigatorStruct = new NavigatorStruct(latLongFixStruct.latitude, latLongFixStruct.longitude, location.direction);
+        NavigatorStruct navigatorStruct = new NavigatorStruct(latLongFixStruct.latitude, 
+                                                            latLongFixStruct.longitude, location.direction, (double) 0);
         return navigatorStruct;
     }
     
@@ -58,6 +59,7 @@ public class Navigator {
                     navigatorStruct.latitude += latChange;
                     navigatorStruct.longitude += lonChange;
                     navigatorStruct.direction = (double) NavXManager.getData().yaw;
+                    navigatorStruct.distance = magnitude;
 
                     return navigatorStruct;
                     
@@ -67,9 +69,16 @@ public class Navigator {
                 }
 
         } else {
-                navigatorStruct = LatLongToNav(gps);
-                navigatorStruct.direction = (double) NavXManager.getData().yaw * -1;
-                return navigatorStruct;
+            EncoderStruct encoderStruct = MotorEncoder.getVelocity();
+            double timeBetweenPolls = Math.abs(encoderStruct.time - previousTimePollEncoder);
+            double avgVelocity = (previousVelocity + ((encoderStruct.lVelocity + encoderStruct.rVelocity)/2))/2;
+            double magnitude = avgVelocity * timeBetweenPolls; // In feet
+            magnitude *= TIRE_MULTIPLIER;
+
+            navigatorStruct = LatLongToNav(gps);
+            navigatorStruct.direction = (double) NavXManager.getData().yaw * -1;
+            navigatorStruct.direction = magnitude;
+            return navigatorStruct;
         }
     }
 }
