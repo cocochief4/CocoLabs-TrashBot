@@ -114,8 +114,8 @@ public class Robot extends TimedRobot {
       TeleopMath control =  new TeleopMath(steering, throttle);
 
       robotSpeed = new EuclideanCoord(control.RcToDifferential().xEuclid, control.RcToDifferential().yEuclid);
-      System.out.println(robotSpeed.toString());
-      // System.out.println("Teleop mode ON");
+      // System.out.println(robotSpeed.toString());
+      System.out.println("Teleop mode ON");
 
       // Ramp rate
       currentSpeed = control.CalcRamp(currentSpeed, robotSpeed, RAMP_MAX);
@@ -144,7 +144,7 @@ public class Robot extends TimedRobot {
     String steeringS = bytes.substring(0, 4);
     String throttleS = bytes.substring(4, 8);
     String killSwitchS = bytes.substring(8, 12);
-    System.out.println(killSwitchS);
+    // System.out.println(killSwitchS);
 
     double throttle =  GPSManager.ConvertToLong(throttleS);
     double steering =  GPSManager.ConvertToLong(steeringS);
@@ -170,7 +170,7 @@ public class Robot extends TimedRobot {
         
       } else {  // Autonomous code
         driveType = (int) killSwitch;
-        // System.out.println("Autonomous mode");
+        System.out.println("Autonomous mode");
         // PathHandler.GoTo();
       }
     }
