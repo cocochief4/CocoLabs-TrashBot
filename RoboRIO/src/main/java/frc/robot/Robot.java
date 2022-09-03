@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 
+import com.kauailabs.navx.*;
+
 import java.nio.file.Path;
 
 import com.revrobotics.CANSparkMax;
