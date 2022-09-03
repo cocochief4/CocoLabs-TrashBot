@@ -5,8 +5,8 @@ public class AutonomousDrive {
 
     public static void drive(double throttle, double steering) {
         EuclideanCoord throttleSteering = new EuclideanCoord(steering, throttle);
-        TeleopMath teleopMath = new TeleopMath(throttleSteering.xEuclid, throttleSteering.yEuclid);
-        throttleSteering = teleopMath.ScaleToUnitSquare(throttleSteering);
+        TeleopMath teleopMath = new TeleopMath(steering, throttle);
+        throttleSteering = teleopMath.ScaleSquareToUnitCircle(throttleSteering);
         PolarCoord polar = teleopMath.CartToPolar(throttleSteering);
         polar.theta = teleopMath.driveConversion(polar.theta);
         throttleSteering = teleopMath.PolarToCart(polar);
