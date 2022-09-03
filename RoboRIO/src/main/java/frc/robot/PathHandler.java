@@ -25,13 +25,11 @@ public class PathHandler {
         } else {
             if (distanceWithoutTurning > 2) {
                 calibEndPos = Navigator.getLocation();
-                double absLat = calibStartPos.latitude - calibEndPos.latitude;
-                double absLong = calibStartPos.longitude - calibEndPos.longitude;
-                double tan = Math.atan(absLong/absLat) * Navigator.DEGREES_MULTIPLIER;
-                double yawTan;
-                if (calibStartPos.direction < 0) {
-                    calibStartPos.direction += 360;
-                }
+                double deltaLat = calibStartPos.latitude - calibEndPos.latitude;
+                double deltaLong = calibStartPos.longitude - calibEndPos.longitude;
+                double tan = Math.atan(deltaLong/deltaLat) * Navigator.DEGREES_MULTIPLIER;
+                double yawTan = calibEndPos.direction;
+                NavXManager.yawDeltaFromNorth = yawTan-tan;
             }
         }
 
