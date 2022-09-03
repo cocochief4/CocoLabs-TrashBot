@@ -45,7 +45,7 @@ public class Robot extends TimedRobot {
 
   protected static EuclideanCoord robotSpeed = new EuclideanCoord(0.0, 0.0);
   protected static EuclideanCoord currentSpeed = new EuclideanCoord(0, 0);
-  protected static final double RAMP_MAX = 0.01;
+  protected static final double RAMP_MAX = 0.015;
 
   private static final I2C RCArduino = new I2C(Port.kOnboard, 4);
 
