@@ -16,7 +16,7 @@ public class LatLongFixStruct {
 
     public String toString() {
         String string = new String();
-        string = latitude.toString() + " " + longitude.toString() + " " + fix.toString();
+        string = "LatLong: " + latitude.toString() + " " + longitude.toString() + " " + fix.toString();
 
         return string;
     }

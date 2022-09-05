@@ -19,13 +19,14 @@ public class Navigator {
 
     protected static void init() {
         LatLongFixStruct gps = null;
-        while (gps == null) {
+        int i = 0;
+        while (gps == null && i < 10000) {
             gps = GPSManager.ParseGPSData((byte) 1);
+            i++;
+            // System.out.println(i);
         }
 
-        location.latitude = gps.latitude * 10E-7;
-        location.longitude = gps.longitude * 10E-7;
-        location.direction = 0d; // Need calibrate function
+        location = new NavigatorStruct(gps.latitude * 10E-7, gps.longitude * 10E-7, 0d, 0d); // Need calibrate function
                                  // Direction is how many degrees from North (positive is west of, negative is east of)
 
         timer = new Timer();
@@ -41,6 +42,7 @@ public class Navigator {
     
     protected static NavigatorStruct getLocation() {
         NavigatorStruct navigatorStruct = location;
+        System.out.println(location.toString());
 
         LatLongFixStruct gps = GPSManager.ParseGPSData((byte) 1);
         if (gps == null) { // No GPS Reading
@@ -49,12 +51,13 @@ public class Navigator {
                     double timeBetweenPolls = Math.abs(encoderStruct.time - previousTimePollEncoder);
                     double avgVelocity = (previousVelocity + ((encoderStruct.lVelocity + encoderStruct.rVelocity)/2))/2;
                     double magnitude = avgVelocity * timeBetweenPolls;
-                    magnitude *= TIRE_MULTIPLIER;
+                    magnitude *= TIRE_MULTIPLIER; // Change back to Decimal degrees?
                     double latChange = Math.cos(NavXManager.getData().yaw * RADIANS_MULTIPLIER) * magnitude;
                     double lonChange = Math.sin(NavXManager.getData().yaw * RADIANS_MULTIPLIER) * magnitude;
 
                     latChange *= FOOT_TO_DD;
                     lonChange *= FOOT_TO_DD;
+                    // Figure out which unit we are in
 
                     navigatorStruct.latitude += latChange;
                     navigatorStruct.longitude += lonChange;

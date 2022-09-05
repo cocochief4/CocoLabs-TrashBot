@@ -41,6 +41,7 @@ public class MotorEncoder {
         lVelocity /= SPIN_PER_REVOLUTION;
 
         EncoderStruct encoderStruct = new EncoderStruct(rVelocity, lVelocity, timer.get());
+        System.out.println(encoderStruct.toString());
 
         return encoderStruct;
     }

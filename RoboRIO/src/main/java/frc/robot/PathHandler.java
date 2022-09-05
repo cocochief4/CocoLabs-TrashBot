@@ -48,7 +48,7 @@ public class PathHandler {
         double nodeRelativeTheta = nodeThetaFromNorth - location.direction * Navigator.RADIANS_MULTIPLIER;
         if (Math.abs(relativeNodeLocation.Lat) > 5E10-7 && 
             Math.abs(relativeNodeLocation.Long) > 5E10-7) { // If we have not arrived at target node...
-            if (Math.abs(nodeRelativeTheta * Navigator.DEGREES_MULTIPLIER) < 1) { // Go forward
+            if (Math.abs(Math.toDegrees(nodeRelativeTheta)) < 1) { // Go forward
                 haveTurned = false;
                 AutonomousDrive.drive(1, 0);
             } else { // Turn

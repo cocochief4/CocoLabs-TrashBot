@@ -42,7 +42,7 @@ public class NavXManager {
           turnController.close();
     }
 
-    public static void Calibrate() {
+    public static void Calibrate() { // Is this called?
         ahrs.calibrate();
     }
 

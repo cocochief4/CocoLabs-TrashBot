@@ -100,6 +100,8 @@ public class Robot extends TimedRobot {
                           // as there is a jump for no reason at all
 
   public void teleopInit() {
+    Navigator.init();
+    MotorEncoder.init();
     currentSpeed = new EuclideanCoord(0, 0);
     System.out.print("Start!");
     startCooldown = 50;
@@ -118,6 +120,7 @@ public class Robot extends TimedRobot {
       robotSpeed = new EuclideanCoord(control.RcToDifferential().xEuclid, control.RcToDifferential().yEuclid);
       // System.out.println(robotSpeed.toString());
       System.out.println("Teleop mode ON");
+      System.out.println(MotorEncoder.getVelocity().toString());
 
       // Ramp rate
       currentSpeed = control.CalcRamp(currentSpeed, robotSpeed, RAMP_MAX);
@@ -128,6 +131,7 @@ public class Robot extends TimedRobot {
   }
 
   public void teleopPeriodic() {
+    System.out.println("teleopperidoie");
 
     LatLongFixStruct latLongFixStruct = GPSManager.ParseGPSData((byte) 0);
     if (latLongFixStruct != null) {

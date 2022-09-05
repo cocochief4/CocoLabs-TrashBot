@@ -58,7 +58,7 @@ public class GPSManager {
 
             // System.out.println("size check");
             // System.out.println(numOfValues);
-            // System.out.println(GPSManager.GetDataFromGPS().toString());
+            System.out.println(GPSManager.GetDataFromGPS().toString());
 
             if (numOfValues == 4) {
                 long latitude = ConvertToLong(strArr[0].trim());
@@ -92,7 +92,6 @@ public class GPSManager {
                                 latLongFixStruct.fix = fix;
                                 latLongFixStruct.flag = flag;
                                 
-                                // System.out.print("latlong:");
                                 // System.out.println(latLongFixStruct.toString());
 
                                 return latLongFixStruct;
