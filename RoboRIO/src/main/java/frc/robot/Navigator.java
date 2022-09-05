@@ -32,6 +32,7 @@ public class Navigator {
         timer = new Timer();
         timer.reset();
         previousTimePollEncoder = timer.get();
+        System.out.println("Navigator Init Finished!");
     }
 
     private static NavigatorStruct LatLongToNav(LatLongFixStruct latLongFixStruct) {

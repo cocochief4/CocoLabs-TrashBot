@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 
+import edu.wpi.first.wpilibj.SerialPort.*;
+
 import com.kauailabs.navx.*;
 
 import java.nio.file.Path;
@@ -100,7 +102,6 @@ public class Robot extends TimedRobot {
                           // as there is a jump for no reason at all
 
   public void teleopInit() {
-    Navigator.init();
     MotorEncoder.init();
     currentSpeed = new EuclideanCoord(0, 0);
     System.out.print("Start!");
@@ -119,8 +120,9 @@ public class Robot extends TimedRobot {
 
       robotSpeed = new EuclideanCoord(control.RcToDifferential().xEuclid, control.RcToDifferential().yEuclid);
       // System.out.println(robotSpeed.toString());
-      System.out.println("Teleop mode ON");
-      System.out.println(MotorEncoder.getVelocity().toString());
+      // System.out.println("Teleop mode ON");
+      // System.out.println(MotorEncoder.getVelocity().toString());
+      // System.out.println(NavXManager.getData().toString());
 
       // Ramp rate
       currentSpeed = control.CalcRamp(currentSpeed, robotSpeed, RAMP_MAX);
@@ -131,7 +133,7 @@ public class Robot extends TimedRobot {
   }
 
   public void teleopPeriodic() {
-    System.out.println("teleopperidoie");
+    // System.out.println("teleopperidoie");
 
     LatLongFixStruct latLongFixStruct = GPSManager.ParseGPSData((byte) 0);
     if (latLongFixStruct != null) {
@@ -160,6 +162,7 @@ public class Robot extends TimedRobot {
     
     if (startCooldown < 0) {
       if (Math.abs((int) killSwitch - driveType) > 500) {
+        Navigator.init();
         while (currentSpeed.xEuclid != 0 && currentSpeed.yEuclid != 0) {
           TeleopDrive(1500, 1500); // 1000 - 2000, 1500 is "0"
 

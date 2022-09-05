@@ -24,7 +24,7 @@ void setup (void)
   Serial.begin (115200);
   //Serial.println ("Starting");
 
-  digitalWrite(SS, HIGH);  // ensure SS stays high for now
+  // digitalWrite(SS, HIGH);  // ensure SS stays high for now
 
   // Put SCK, MOSI, SS pins into output mode
   // also put SCK, MOSI into LOW state, and SS into HIGH state.
@@ -39,7 +39,7 @@ void setup (void)
 void loop (void)
 {
   int i = 0;
-  if (softSerial.available()) {
+  while (softSerial.available()) {
     receiveFromUART = softSerial.readStringUntil('*');
     receiveFromUART.toCharArray(buf, sendSize);
     Serial.println(buf);

@@ -27,7 +27,7 @@ public class PathHandler {
                 calibEndPos = Navigator.getLocation();
                 double deltaLat = calibStartPos.latitude - calibEndPos.latitude;
                 double deltaLong = calibStartPos.longitude - calibEndPos.longitude;
-                double tan = Math.atan(deltaLong/deltaLat) * Navigator.DEGREES_MULTIPLIER;
+                double tan = Math.toDegrees(Math.atan(deltaLong/deltaLat));
                 double yawTan = calibEndPos.direction;
                 NavXManager.yawDeltaFromNorth = yawTan-tan;
             }
