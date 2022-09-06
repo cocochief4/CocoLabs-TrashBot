@@ -21,7 +21,7 @@ public class Navigator {
         LatLongFixStruct gps = null;
         int i = 0;
         while (gps == null && i < 10000) {
-            gps = GPSManager.ParseGPSData((byte) 1);
+            gps = ArduinoManager.getGPS();
             i++;
             // System.out.println(i);
         }
@@ -45,7 +45,7 @@ public class Navigator {
         NavigatorStruct navigatorStruct = location;
         System.out.println(location.toString());
 
-        LatLongFixStruct gps = GPSManager.ParseGPSData((byte) 1);
+        LatLongFixStruct gps = ArduinoManager.getGPS();
         if (gps == null) { // No GPS Reading
                 EncoderStruct encoderStruct = MotorEncoder.getVelocity();
                 if (Math.abs(encoderStruct.lVelocity - encoderStruct.rVelocity) < 0.015) { // Moving forward

@@ -53,6 +53,8 @@ public class Robot extends TimedRobot {
 
   private static int driveType = 0; // 0 is Teleop, 1 is Autonomous
 
+  private static Byte previousMode = 0; // 0 is Teleop, 1 is Autonomous
+
   @Override
   public void robotInit() {
     NavXManager.RInit();
@@ -98,7 +100,7 @@ public class Robot extends TimedRobot {
       m_myRobot = new DifferentialDrive(leftGroup, rightGroup);
 
   }
-  int startCooldown = 50; // Timer to force the all of the motors to 0,
+  int startCooldown = 100; // Timer to force the all of the motors to 0,
                           // as there is a jump for no reason at all
 
   public void teleopInit() {
@@ -106,7 +108,6 @@ public class Robot extends TimedRobot {
     currentSpeed = new EuclideanCoord(0, 0);
     System.out.print("Start!");
     startCooldown = 50;
-    GPSManager.ParseGPSData((byte) 0);
 
     //do we just wait for the gps to work? possibly need to implement a wait function here
     Area map = new Area(); //This should have the default preset values defined in Area.java
@@ -133,58 +134,13 @@ public class Robot extends TimedRobot {
   }
 
   public void teleopPeriodic() {
-    // System.out.println("teleopperidoie");
-
-    LatLongFixStruct latLongFixStruct = GPSManager.ParseGPSData((byte) 0);
-    if (latLongFixStruct != null) {
-      System.out.print("GPS in Robot:");
-      System.out.println(latLongFixStruct.toString());
+    while (startCooldown > 0) {
+      startCooldown -= 1;
     }
 
-    //reading from the arduino to the roborio (i2c)
-    byte[] byteArr = new byte[13]; //THE LAST BYTE DOES NOT READ
-    RCArduino.read(4, 13, byteArr);
+    System.out.println(ArduinoManager.get().toString());
 
-    //converting the byte array into the two values of throttle and steering
-    String bytes = new String(byteArr);
 
-    // Parse I2C data from the PWM Arduino
-    String steeringS = bytes.substring(0, 4);
-    String throttleS = bytes.substring(4, 8);
-    String killSwitchS = bytes.substring(8, 12);
-    // System.out.println(killSwitchS);
-
-    double throttle =  GPSManager.ConvertToLong(throttleS);
-    double steering =  GPSManager.ConvertToLong(steeringS);
-    double killSwitch = GPSManager.ConvertToLong(killSwitchS);
-
-    // Set a cooldown before starting the motors
-    
-    if (startCooldown < 0) {
-      if (Math.abs((int) killSwitch - driveType) > 500) {
-        Navigator.init();
-        while (currentSpeed.xEuclid != 0 && currentSpeed.yEuclid != 0) {
-          TeleopDrive(1500, 1500); // 1000 - 2000, 1500 is "0"
-
-          //Stop the motors
-          m_myRobot.tankDrive(-1 * currentSpeed.yEuclid, currentSpeed.xEuclid);
-        }
-      }
-
-      if (killSwitch < 1500) {  // Teleoperated code
-        TeleopDrive(throttle, steering);
-        driveType = (int) killSwitch;
-
-        m_myRobot.tankDrive(-1 * currentSpeed.yEuclid, currentSpeed.xEuclid);
-        
-      } else {  // Autonomous code
-        driveType = (int) killSwitch;
-        System.out.println("Autonomous mode");
-        PathHandler.GoTo();
-      }
-    }
-
-    startCooldown -= 1;
   } // End of TeleopPeriodic()
 
   public void autonomousInit() {

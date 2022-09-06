@@ -4,8 +4,7 @@ void setup() {
 }
 int i = 0;
 void loop() {
-  delay(50);
-  Serial.write(i);
+  Serial.println(i);
   i++;
 
 }

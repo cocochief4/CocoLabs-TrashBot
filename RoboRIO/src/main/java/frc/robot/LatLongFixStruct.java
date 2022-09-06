@@ -4,13 +4,11 @@ public class LatLongFixStruct {
     Long latitude;
     Long longitude;
     Short fix; //0 = No fix, 1 = Floating fix, 2 = Fixed fix
-    Short flag;
 
-    public LatLongFixStruct(long lat, long lon, short Fix, short Flag) {
+    public LatLongFixStruct(long lat, long lon, short Fix) {
         latitude = lat;
         longitude = lon;
         fix = Fix;
-        flag = Flag;
 
     }
 
