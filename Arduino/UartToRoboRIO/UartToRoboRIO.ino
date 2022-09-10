@@ -5,7 +5,7 @@ void setup() {
 int i = 0;
 void loop() {
   delay(10);
-  Serial3.print(i);
+  Serial3.print(String(i) + "|");
   i++;
 
 }

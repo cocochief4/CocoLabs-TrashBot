@@ -6,12 +6,21 @@ import edu.wpi.first.wpilibj.SerialPort.StopBits;
 
 public class ArduinoManager {
     private static SerialPort arduino = new SerialPort(115200, Port.kMXP, 8, Parity.kOdd, StopBits.kOne);
+    protected static String queueBuf = "";
 
     protected static String getData() {
         String read = arduino.readString();
-        System.out.print("read: ");
-        System.out.println(read);
-        return read;
+        queueBuf += read;
+        System.out.println("queue:" + queueBuf.toString());
+        if (queueBuf.indexOf("|") != -1) {
+            String realRead = queueBuf.substring(0, queueBuf.indexOf("|"));
+            // queueBuf.substring(queueBuf.indexOf("|") + 1);
+            System.out.print("read: ");
+            System.out.println(realRead);
+            return realRead;
+        } else {
+            return read;
+        }
     }
 
     static ArduinoMegaStruct get() {
@@ -19,7 +28,7 @@ public class ArduinoManager {
         LatLongFixStruct gpsStruct;
 
         String data = getData();
-        String dataArr[] = data.split("L");
+        String dataArr[] = data.split("|");
         String rc = dataArr[0];
         String gps = dataArr[1];
         if (rc.toString() == "N") {
