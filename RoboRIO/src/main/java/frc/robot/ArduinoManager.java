@@ -22,8 +22,8 @@ public class ArduinoManager {
             if (queueBuf.length() > 20) {
                 queueBuf = queueBuf.substring(queueBuf.substring(0, queueBuf.lastIndexOf("|")).lastIndexOf("|")+1);
             }
-            System.out.print("endbuf");
-            System.out.println(queueBuf);
+            // System.out.print("endbuf");
+            // System.out.println(queueBuf);
             return realRead;
         } else {
             return read;
@@ -35,7 +35,7 @@ public class ArduinoManager {
         LatLongFixStruct gpsStruct;
 
         String data = getData();
-        String dataArr[] = data.split("|");
+        String dataArr[] = data.split("_");
         String rc = dataArr[0];
         String gps = dataArr[1];
         if (rc.toString() == "N") {
