@@ -28,7 +28,7 @@ SFE_UBLOX_GNSS myGNSS;
 void setup() {
   // Init Serials
   Serial.begin(115200);
-  Serial1.begin(115200, SERIAL_8O1);
+  Serial3.begin(115200, SERIAL_8O1);
   
   pinMode(rc1Pin, INPUT);
   pinMode(rc2Pin, INPUT);
@@ -70,9 +70,9 @@ void loop() {
     }
   }
 
-  uartSend = rcStr + "," + String(rc8Val) + "*" + gpsStr;
+  uartSend = rcStr + "," + String(rc8Val) + "L" + gpsStr;
 
-  Serial1.println(uartSend);
+  Serial3.println(uartSend);
   Serial.println(uartSend);
   
 } // End of Loop

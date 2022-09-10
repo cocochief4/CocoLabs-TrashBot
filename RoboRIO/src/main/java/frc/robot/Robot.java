@@ -138,7 +138,7 @@ public class Robot extends TimedRobot {
       startCooldown -= 1;
     }
 
-    System.out.println(ArduinoManager.get().toString());
+    ArduinoManager.getData();
 
 
   } // End of TeleopPeriodic()

@@ -7,9 +7,10 @@ import edu.wpi.first.wpilibj.SerialPort.StopBits;
 public class ArduinoManager {
     private static SerialPort arduino = new SerialPort(115200, Port.kMXP, 8, Parity.kOdd, StopBits.kOne);
 
-    private static String getData() {
+    protected static String getData() {
         String read = arduino.readString();
-
+        System.out.print("read: ");
+        System.out.println(read);
         return read;
     }
 
@@ -18,7 +19,7 @@ public class ArduinoManager {
         LatLongFixStruct gpsStruct;
 
         String data = getData();
-        String dataArr[] = data.split("*");
+        String dataArr[] = data.split("L");
         String rc = dataArr[0];
         String gps = dataArr[1];
         if (rc.toString() == "N") {
