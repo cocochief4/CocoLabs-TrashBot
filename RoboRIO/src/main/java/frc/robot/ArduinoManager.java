@@ -11,12 +11,19 @@ public class ArduinoManager {
     protected static String getData() {
         String read = arduino.readString();
         queueBuf += read;
-        System.out.println("queue:" + queueBuf.toString());
+        // System.out.println("origin queubuf" + queueBuf);;
+        // System.out.println("queue:" + queueBuf.toString());
         if (queueBuf.indexOf("|") != -1) {
             String realRead = queueBuf.substring(0, queueBuf.indexOf("|"));
-            // queueBuf.substring(queueBuf.indexOf("|") + 1);
-            System.out.print("read: ");
-            System.out.println(realRead);
+            queueBuf = queueBuf.substring(queueBuf.indexOf("|") + 1);
+            System.out.println("read" + realRead);
+            // System.out.print("midbuf");
+            // System.out.println(queueBuf);
+            if (queueBuf.length() > 20) {
+                queueBuf = queueBuf.substring(queueBuf.substring(0, queueBuf.lastIndexOf("|")).lastIndexOf("|")+1);
+            }
+            System.out.print("endbuf");
+            System.out.println(queueBuf);
             return realRead;
         } else {
             return read;
