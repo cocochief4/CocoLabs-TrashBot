@@ -16,7 +16,7 @@ public class ArduinoManager {
         if (queueBuf.indexOf("|") != -1) {
             String realRead = queueBuf.substring(0, queueBuf.indexOf("|"));
             queueBuf = queueBuf.substring(queueBuf.indexOf("|") + 1);
-            System.out.println("read" + realRead);
+            System.out.println(realRead);
             // System.out.print("midbuf");
             // System.out.println(queueBuf);
             if (queueBuf.length() > 20) {
