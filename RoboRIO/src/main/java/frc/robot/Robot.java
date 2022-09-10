@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import package.stcpack.*;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
