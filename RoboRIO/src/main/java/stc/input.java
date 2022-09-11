@@ -2,14 +2,14 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package stcpack;
+package stc;
 
 /** Add your docs here. */
 public class input {
 
-    static latLong initialPos;
-    static latLong[] vertices; //the vertices that bound our park
-    static ArrayList<latLong>[] obstacles; //the array of arraylists for obstacle points
+    public static latLong initialPos;
+    public static latLong[] vertices; //the vertices that bound our park
+    public static ArrayList<latLong>[] obstacles; //the array of arraylists for obstacle points
 
     /*
     In the input method, you manually type in the vertices and the obstacles.

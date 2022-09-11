@@ -17,23 +17,20 @@ public class stc {
     
     //Global Variable Declaration
 
-    static latLong initialPos;
-    static latLong[] vertices; //the vertices that bound our park
-    static ArrayList<latLong>[] obstacles; //the array of arraylists for obstacle points
     static latLong zeroPoint; //the top left most point in the array
     static latLong farPoint; //the max point used for defining the boolean array
     static Polygon vertexMap; //the polygon for the vertices; used for determining the boolean array
     static Polygon[] obstacleMap; //an array that holds the obstacles; used for determining the boolean array
-    static boolean[][] map; //the actual boolean array
+    public static boolean[][] map; //the actual boolean array
 
     static ArrayList<latLong> nodes; //list of usable nodes
     static latLong startNode; //the starting node
     static HashMap<latLong, Integer> nodeToNodeNum; //a map that's useful for figuring out my life
-    // ^ is useless because of the way that hashcodes work
+    // needs to be worked on with the .equals() command
     static ArrayList<node>[] adjacencyGraph; //an adjacency graph for which nodes are adjacent to each other
     static boolean[] visited; //the visted array for DFS
     static ArrayList<node>[] connected; //the connected array for DFS
-    static ArrayList<latLong> finalNavigate; //the final output to chris
+    public static ArrayList<latLong> finalNavigate; //the final output to chris
     static latLong startPos;
 
     //Class Declaration
