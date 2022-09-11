@@ -2,7 +2,10 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package stc;
+package stcpack;
+import java.util.*;
+
+import stcpack.stc.*;
 
 /** Add your docs here. */
 public class input {
@@ -16,7 +19,7 @@ public class input {
     It is also used for init'ing the variables.
      */
 
-    public static void input() { 
+    public static void Input() { 
         initialPos = new latLong(37.3453149 - 0.00000137477975, -122.0160824 + 0.00000137477975); //update this
         int nVertices = 4; //4 is just a placeholder for now
         vertices = new latLong[nVertices];

@@ -1,11 +1,12 @@
 
-package stc;
+package stcpack;
 
 import java.awt.Polygon;
 import java.awt.Graphics;
 //import java.text.DecimalFormat;
 import java.util.*;
 
+import stcpack.input.*;
 
 /*
 Note for this program:
@@ -13,7 +14,7 @@ A lot of this processing could be done at the same time; however, for the sake o
 */
 
 /** Add your docs here. */
-public class stc {
+public class stc extends stcpack.input {
     
     //Global Variable Declaration
 
@@ -35,17 +36,17 @@ public class stc {
 
     //Class Declaration
 
-    private static class latLong {
+    public static class latLong {
         double Lat;
         double Long;
 
-        private latLong (double latitude, double longitude) {
+        latLong (double latitude, double longitude) {
             Lat = latitude;
             Long = longitude;
         }
     }
 
-    private static class node {
+    public static class node {
         int nodeNum;
         int direction; //1 = north, 2 = east, 3 = south, 4 = west
 
@@ -657,7 +658,7 @@ public class stc {
 
     public static ArrayList<latLong> spanningTreeCoverageAlgorithm() {
         //the entire input function
-        input();
+        Input();
         //determine zeroPoint (needed for later functions)
         determineZeroPoint();
         //convert everything that is in lat, long into feet, feet from the zero point
@@ -682,7 +683,7 @@ public class stc {
 
     public static void main(String[] args) {
         //the entire input function
-        input();
+        Input();
         //determine zeroPoint (needed for later functions)
         determineZeroPoint();
         //convert everything that is in lat, long into feet, feet from the zero point

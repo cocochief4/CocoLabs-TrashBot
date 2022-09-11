@@ -7,13 +7,11 @@
 
 package frc.robot;
 
-import stc.*;
-
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
-
+import stcpack.*;
 import edu.wpi.first.wpilibj.SerialPort.*;
 
 import com.kauailabs.navx.*;
