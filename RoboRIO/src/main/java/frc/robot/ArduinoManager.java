@@ -26,6 +26,7 @@ public class ArduinoManager {
             // System.out.println(queueBuf);
             return realRead;
         } else {
+            System.out.println("data ded");
             return read;
         }
     }
@@ -33,12 +34,15 @@ public class ArduinoManager {
     static ArduinoMegaStruct get() {
         RcStruct rcStruct;
         LatLongFixStruct gpsStruct;
-
-        String data = getData();
+        String data = "";
+        while (data.equals("")) {
+            data = getData();
+        }
+        // System.out.println("data:" + data.toString());
         String dataArr[] = data.split("_");
         String rc = dataArr[0];
         String gps = dataArr[1];
-        if (rc.toString() == "N") {
+        if (rc.equals("N")) {
             rcStruct = null;
         } else {
             String rcArr[] = rc.split(",");
@@ -46,7 +50,7 @@ public class ArduinoManager {
                 Byte.parseByte(rcArr[2]));
         }
 
-        if (gps.toString() == "N") {
+        if (gps.equals("N")) {
             gpsStruct = null;
         } else {
             String gpsArr[] = gps.split(",");

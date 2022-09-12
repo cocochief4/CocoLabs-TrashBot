@@ -11,6 +11,18 @@ public class ArduinoMegaStruct {
 
     public String toString() {
         String string = new String();
+        String rcStr;
+        String gpsStr;
+        if (rc == null) {
+            rcStr = "null";
+        } else {
+            rcStr = rc.toString();
+        }
+        if (gps == null) {
+            gpsStr = "null";
+        } else {
+            gpsStr = gps.toString();
+        }
         
         string = "RC*GPS" + rc.toString() + "*" + gps.toString();
 
