@@ -46,12 +46,15 @@ void setup() {
 void loop() {
   String gpsStr;
   String rcStr;
-
+  String rc8Str;
+  
   rc8Val = pulseIn(rc8Pin, HIGH);
   if (rc8Val < 1500) {
     rc8Val = 0;
+    rc8Str = ",0";
   } else if (rc8Val > 1500) {
     rc8Val = 1;
+    rc8Str = "";
   }
 
   if (rc8Val == 0) {
@@ -70,7 +73,7 @@ void loop() {
     }
   }
 
-  uartSend = rcStr + "," + String(rc8Val) + "_" + gpsStr + "|";
+  uartSend = rcStr + rc8Str + "_" + gpsStr + "|";
 
   Serial3.print(uartSend);
   Serial.println(uartSend);

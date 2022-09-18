@@ -27,7 +27,7 @@ public class ArduinoManager {
             return realRead;
         } else {
             read = "";
-            System.out.println("data ded");
+            // System.out.println("data ded");
             return read;
         }
     }
