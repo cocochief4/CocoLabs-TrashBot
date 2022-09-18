@@ -1,12 +1,12 @@
 package frc.robot;
 
-public class NavigatorStruct {
+public class NavigatorData {
     Double latitude;
     Double longitude;
     Double direction;
     Double distance;
 
-    public NavigatorStruct(double Latitutude, double Longitude, double Direction, double Distance) {
+    public NavigatorData(double Latitutude, double Longitude, double Direction, double Distance) {
         latitude = Latitutude;
         longitude = Longitude;
         direction = Direction;

@@ -46,8 +46,8 @@ public class NavXManager {
         ahrs.calibrate();
     }
 
-    public static ImuStruct getData() {
-        ImuStruct imuStruct = new ImuStruct(ahrs.getYaw(), ahrs.getVelocityX(), ahrs.getVelocityY(), ahrs.getVelocityZ());
+    public static ImuData getData() {
+        ImuData imuStruct = new ImuData(ahrs.getYaw(), ahrs.getVelocityX(), ahrs.getVelocityY(), ahrs.getVelocityZ());
         imuStruct.yaw += yawDeltaFromNorth;
 
         return imuStruct;

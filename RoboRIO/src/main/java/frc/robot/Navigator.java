@@ -13,12 +13,12 @@ public class Navigator {
     protected static final double RADIANS_MULTIPLIER = Math.PI/180;
     protected static final double DEGREES_MULTIPLIER = 180/Math.PI;
 
-    private static NavigatorStruct location;
+    private static NavigatorData location;
     private static double previousTimePollEncoder = 0; // In seconds
     private static double previousVelocity = 0;
 
     protected static void init() {
-        LatLongFixStruct gps = null;
+        LatLongFixData gps = null;
         int i = 0;
         while (gps == null && i < 10000) {
             gps = ArduinoManager.getGPS();
@@ -26,7 +26,7 @@ public class Navigator {
             // System.out.println(i);
         }
 
-        location = new NavigatorStruct(gps.latitude * 10E-7, gps.longitude * 10E-7, 0d, 0d); // Need calibrate function
+        location = new NavigatorData(gps.latitude * 10E-7, gps.longitude * 10E-7, 0d, 0d); // Need calibrate function
                                  // Direction is how many degrees from North (positive is west of, negative is east of)
 
         timer = new Timer();
@@ -35,17 +35,17 @@ public class Navigator {
         System.out.println("Navigator Init Finished!");
     }
 
-    private static NavigatorStruct LatLongToNav(LatLongFixStruct latLongFixStruct) {
-        NavigatorStruct navigatorStruct = new NavigatorStruct(latLongFixStruct.latitude, 
+    private static NavigatorData LatLongToNav(LatLongFixData latLongFixStruct) {
+        NavigatorData navigatorStruct = new NavigatorData(latLongFixStruct.latitude, 
                                                             latLongFixStruct.longitude, location.direction, (double) 0);
         return navigatorStruct;
     }
     
-    protected static NavigatorStruct getLocation() {
-        NavigatorStruct navigatorStruct = location;
+    protected static NavigatorData getLocation() {
+        NavigatorData navigatorStruct = location;
         System.out.println(location.toString());
 
-        LatLongFixStruct gps = ArduinoManager.getGPS();
+        LatLongFixData gps = ArduinoManager.getGPS();
         if (gps == null) { // No GPS Reading
                 EncoderStruct encoderStruct = MotorEncoder.getVelocity();
                 if (Math.abs(encoderStruct.lVelocity - encoderStruct.rVelocity) < 0.015) { // Moving forward

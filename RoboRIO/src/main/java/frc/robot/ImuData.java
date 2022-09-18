@@ -1,12 +1,12 @@
 package frc.robot;
 
-public class ImuStruct {
+public class ImuData {
     public float yaw;
     public float xVelocity;
     public float yVelocity;
     public float zVelocity;
 
-    public ImuStruct(float Yaw, float VelocityX, float VelocityY, float VelocityZ) {
+    public ImuData(float Yaw, float VelocityX, float VelocityY, float VelocityZ) {
         yaw = Yaw;
         xVelocity = VelocityX;
         yVelocity = VelocityY;

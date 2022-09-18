@@ -8,8 +8,8 @@ public class PathHandler {
     protected static boolean haveStartedCalib = false;
     protected static double distanceWithoutTurning = 0;
 
-    protected static NavigatorStruct calibStartPos = new NavigatorStruct(0, 0, 0, 0);
-    protected static NavigatorStruct calibEndPos = new NavigatorStruct(0, 0, 0, 0);
+    protected static NavigatorData calibStartPos = new NavigatorData(0, 0, 0, 0);
+    protected static NavigatorData calibEndPos = new NavigatorData(0, 0, 0, 0);
 
     private static void calibrate() { // WORK ON CALIBRATE
         if (haveTurned = false) {
@@ -20,7 +20,7 @@ public class PathHandler {
         }
 
         if (haveStartedCalib == true) {
-            NavigatorStruct location = Navigator.getLocation();
+            NavigatorData location = Navigator.getLocation();
             distanceWithoutTurning += location.distance;
         } else {
             if (distanceWithoutTurning > 2) {
@@ -36,7 +36,7 @@ public class PathHandler {
     }
 
     public static void GoTo() {
-        NavigatorStruct location = Navigator.getLocation();
+        NavigatorData location = Navigator.getLocation();
         latLong relativeNodeLocation = new latLong(location.latitude, location.longitude);
         if (nextNode == null) {
             nextNode.Lat += ((Math.random()-0.5) * 2) * 10E-6;
