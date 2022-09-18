@@ -3,10 +3,12 @@ package frc.robot;
 public class ArduinoMegaData {
     RcData rc;
     LatLongFixData gps;
+    Long timestamp = 0L;
 
-    public ArduinoMegaData(RcData RC, LatLongFixData GPS) {
+    public ArduinoMegaData(RcData RC, LatLongFixData GPS, long Timestamp) {
         rc = RC;
         gps = GPS;
+        timestamp = Timestamp;
     }
 
     public String toString() {
@@ -24,7 +26,7 @@ public class ArduinoMegaData {
             gpsStr = gps.toString();
         }
         
-        string = "RC*GPS" + rcStr + "*" + gpsStr;
+        string = "RC*GPS*Timestamp:" + rcStr + "*" + gpsStr + "*" + timestamp.toString();
 
         return string;
     }

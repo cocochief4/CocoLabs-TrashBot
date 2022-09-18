@@ -62,7 +62,7 @@ public class ArduinoManager {
                     Long.parseLong(gpsArr[1]), Byte.parseByte(gpsArr[2]));
             }
 
-            ArduinoMegaData localArduinoMegaData = new ArduinoMegaData(rcStruct, gpsStruct);
+            ArduinoMegaData localArduinoMegaData = new ArduinoMegaData(rcStruct, gpsStruct, System.currentTimeMillis());
             arduinoMegaData = localArduinoMegaData;
             return true;
         } else {
