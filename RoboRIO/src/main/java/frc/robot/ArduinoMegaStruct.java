@@ -24,7 +24,7 @@ public class ArduinoMegaStruct {
             gpsStr = gps.toString();
         }
         
-        string = "RC*GPS" + rc.toString() + "*" + gps.toString();
+        string = "RC*GPS" + rcStr + "*" + gpsStr;
 
         return string;
     }

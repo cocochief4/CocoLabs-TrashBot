@@ -72,7 +72,7 @@ void loop() {
 
   uartSend = rcStr + "," + String(rc8Val) + "_" + gpsStr + "|";
 
-  Serial3.println(uartSend);
+  Serial3.print(uartSend);
   Serial.println(uartSend);
   
 } // End of Loop

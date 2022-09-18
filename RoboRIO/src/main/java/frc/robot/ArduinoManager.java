@@ -26,6 +26,7 @@ public class ArduinoManager {
             // System.out.println(queueBuf);
             return realRead;
         } else {
+            read = "";
             System.out.println("data ded");
             return read;
         }
@@ -38,8 +39,9 @@ public class ArduinoManager {
         while (data.equals("")) {
             data = getData();
         }
-        // System.out.println("data:" + data.toString());
+        System.out.println("data:" + data.toString());
         String dataArr[] = data.split("_");
+        System.out.println("dataArr:" + dataArr.length);
         String rc = dataArr[0];
         String gps = dataArr[1];
         if (rc.equals("N")) {
