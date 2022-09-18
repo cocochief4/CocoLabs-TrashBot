@@ -32,7 +32,7 @@ public class ArduinoManager {
         }
     }
 
-    static ArduinoMegaStruct get() {
+    static ArduinoMegaData get() {
         RcStruct rcStruct;
         LatLongFixStruct gpsStruct;
         String data = "";
@@ -60,20 +60,20 @@ public class ArduinoManager {
                 Long.parseLong(gpsArr[1]), Byte.parseByte(gpsArr[2]));
         }
 
-        ArduinoMegaStruct arduinoMegaStruct = new ArduinoMegaStruct(rcStruct, gpsStruct);
+        ArduinoMegaData arduinoMegaData = new ArduinoMegaData(rcStruct, gpsStruct);
 
-        return arduinoMegaStruct;
+        return arduinoMegaData;
     }
 
     static LatLongFixStruct getGPS() {
-        ArduinoMegaStruct arduinoMegaStruct = get();
+        ArduinoMegaData arduinoMegaData = get();
         
-        return arduinoMegaStruct.gps;
+        return arduinoMegaData.gps;
     }
 
     static RcStruct getRC() {
-        ArduinoMegaStruct arduinoMegaStruct = get();
+        ArduinoMegaData arduinoMegaData = get();
         
-        return arduinoMegaStruct.rc;
+        return arduinoMegaData.rc;
     }
 }

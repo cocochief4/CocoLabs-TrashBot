@@ -1,10 +1,10 @@
 package frc.robot;
 
-public class ArduinoMegaStruct {
+public class ArduinoMegaData {
     RcStruct rc;
     LatLongFixStruct gps;
 
-    public ArduinoMegaStruct(RcStruct RC, LatLongFixStruct GPS) {
+    public ArduinoMegaData(RcStruct RC, LatLongFixStruct GPS) {
         rc = RC;
         gps = GPS;
     }
