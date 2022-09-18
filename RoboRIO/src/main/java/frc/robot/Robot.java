@@ -104,6 +104,11 @@ public class Robot extends TimedRobot {
                           // as there is a jump for no reason at all
 
   public void teleopInit() {
+    boolean arduinoData = false;
+    while (arduinoData == false) {
+      arduinoData = ArduinoManager.getArduinoMegaData();
+      System.out.println("arduino init");
+    }
     MotorEncoder.init();
     currentSpeed = new EuclideanCoord(0, 0);
     System.out.print("Start!");
@@ -138,7 +143,8 @@ public class Robot extends TimedRobot {
       startCooldown -= 1;
     }
 
-    System.out.println(ArduinoManager.get().toString());
+    ArduinoManager.getArduinoMegaData();
+    System.out.println(ArduinoManager.arduinoMegaData);
 
 
   } // End of TeleopPeriodic()

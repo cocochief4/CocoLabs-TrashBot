@@ -1,14 +1,18 @@
 package frc.robot;
+
 import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.SerialPort.Parity;
 import edu.wpi.first.wpilibj.SerialPort.Port;
 import edu.wpi.first.wpilibj.SerialPort.StopBits;
 
 public class ArduinoManager {
+    static ArduinoMegaData arduinoMegaData;
+    
+
     private static SerialPort arduino = new SerialPort(115200, Port.kMXP, 8, Parity.kOdd, StopBits.kOne);
     protected static String queueBuf = "";
 
-    protected static String getData() {
+    protected static String readUARTData() {
         String read = arduino.readString();
         queueBuf += read;
         // System.out.println("origin queubuf" + queueBuf);;
@@ -32,48 +36,45 @@ public class ArduinoManager {
         }
     }
 
-    static ArduinoMegaData get() {
+    static boolean getArduinoMegaData() {
         RcData rcStruct;
         LatLongFixData gpsStruct;
-        String data = "";
-        while (data.equals("")) {
-            data = getData();
-        }
-        System.out.println("data:" + data.toString());
-        String dataArr[] = data.split("_");
-        System.out.println("dataArr:" + dataArr.length);
-        String rc = dataArr[0];
-        String gps = dataArr[1];
-        if (rc.equals("N")) {
-            rcStruct = null;
+        String data = readUARTData();
+        if (data.equals("") != true) {
+            System.out.println("data:" + data.toString());
+            String dataArr[] = data.split("_");
+            System.out.println("dataArr:" + dataArr.length);
+            String rc = dataArr[0];
+            String gps = dataArr[1];
+            if (rc.equals("N")) {
+                rcStruct = null;
+            } else {
+                String rcArr[] = rc.split(",");
+                rcStruct = new RcData(Long.parseLong(rcArr[1]), Long.parseLong(rcArr[0]), 
+                    Byte.parseByte(rcArr[2]));
+            }
+
+            if (gps.equals("N")) {
+                gpsStruct = null;
+            } else {
+                String gpsArr[] = gps.split(",");
+                gpsStruct = new LatLongFixData(Long.parseLong(gpsArr[0]), 
+                    Long.parseLong(gpsArr[1]), Byte.parseByte(gpsArr[2]));
+            }
+
+            ArduinoMegaData localArduinoMegaData = new ArduinoMegaData(rcStruct, gpsStruct);
+            arduinoMegaData = localArduinoMegaData;
+            return true;
         } else {
-            String rcArr[] = rc.split(",");
-            rcStruct = new RcData(Long.parseLong(rcArr[1]), Long.parseLong(rcArr[0]), 
-                Byte.parseByte(rcArr[2]));
+            return false;
         }
-
-        if (gps.equals("N")) {
-            gpsStruct = null;
-        } else {
-            String gpsArr[] = gps.split(",");
-            gpsStruct = new LatLongFixData(Long.parseLong(gpsArr[0]), 
-                Long.parseLong(gpsArr[1]), Byte.parseByte(gpsArr[2]));
-        }
-
-        ArduinoMegaData arduinoMegaData = new ArduinoMegaData(rcStruct, gpsStruct);
-
-        return arduinoMegaData;
     }
 
     static LatLongFixData getGPS() {
-        ArduinoMegaData arduinoMegaData = get();
-        
         return arduinoMegaData.gps;
     }
 
     static RcData getRC() {
-        ArduinoMegaData arduinoMegaData = get();
-        
         return arduinoMegaData.rc;
     }
 }
