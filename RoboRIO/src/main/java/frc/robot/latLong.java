@@ -1,10 +1,10 @@
 package frc.robot;
 
 public class latLong {
-    double Lat;
-    double Long;
+    public double Lat;
+    public double Long;
 
-    protected latLong (double latitude, double longitude) {
+    public latLong (double latitude, double longitude) {
         Lat = latitude;
         Long = longitude;
     }

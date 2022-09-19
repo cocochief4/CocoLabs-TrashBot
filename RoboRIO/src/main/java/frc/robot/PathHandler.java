@@ -1,7 +1,11 @@
 package frc.robot;
 
+import java.util.ArrayList;
+
+import stcpack.stc.node;
+
 public class PathHandler {
-    private static latLong[] nodeArr; // GAYWALA
+    private static ArrayList<latLong> nodeArr;
     private static latLong nextNode = null;
 
     protected static boolean haveTurned = false;
@@ -10,6 +14,14 @@ public class PathHandler {
 
     protected static NavigatorData calibStartPos = new NavigatorData(0, 0, 0, 0);
     protected static NavigatorData calibEndPos = new NavigatorData(0, 0, 0, 0);
+
+    private static int index = 0;
+
+    protected static void init() {
+        latLong initPos = new latLong(ArduinoManager.getGPS().latitude, ArduinoManager.getGPS().longitude);
+        stcpack.stc.spanningTreeCoverageAlgorithm(initPos);
+        nodeArr = stcpack.stc.finalNavigate;
+    }
 
     private static void calibrate() { // WORK ON CALIBRATE
         if (haveTurned = false) {
@@ -39,8 +51,8 @@ public class PathHandler {
         NavigatorData location = Navigator.getLocation();
         latLong relativeNodeLocation = new latLong(location.latitude, location.longitude);
         if (nextNode == null) {
-            nextNode.Lat += ((Math.random()-0.5) * 2) * 10E-6;
-            nextNode.Long += ((Math.random()-0.5) * 2) * 10E-6;
+            nextNode.Lat = nodeArr.get(index).Lat;
+            nextNode.Long = nodeArr.get(index).Long;
         }
         relativeNodeLocation.Lat = nextNode.Lat - location.latitude;
         relativeNodeLocation.Long = nextNode.Long - location.longitude;

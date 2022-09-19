@@ -5,7 +5,7 @@ import java.awt.Polygon;
 import java.awt.Graphics;
 //import java.text.DecimalFormat;
 import java.util.*;
-
+import frc.robot.*;
 
 /*
 Note for this program:
@@ -35,6 +35,7 @@ public class stc extends stcpack.input {
 
     //Class Declaration
 
+    /*
     public static class latLong {
         double Lat;
         double Long;
@@ -44,6 +45,7 @@ public class stc extends stcpack.input {
             Long = longitude;
         }
     }
+    */
 
     public static class node {
         int nodeNum;
@@ -655,7 +657,8 @@ public class stc extends stcpack.input {
 
     //Main Method
 
-    public static ArrayList<latLong> spanningTreeCoverageAlgorithm() {
+    public static void spanningTreeCoverageAlgorithm(latLong initialPosition) {
+        initialPos = new latLong(initialPosition.Lat, initialPosition.Long);
         //the entire input function
         Input();
         //determine zeroPoint (needed for later functions)
@@ -677,7 +680,6 @@ public class stc extends stcpack.input {
         //the final output is the finalNavigate array once the function is done
         output();
         //printing out the final navigate array
-        return finalNavigate;
     }
 
     public static void main(String[] args) {

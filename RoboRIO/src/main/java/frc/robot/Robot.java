@@ -113,6 +113,7 @@ public class Robot extends TimedRobot {
     currentSpeed = new EuclideanCoord(0, 0);
     System.out.print("Start!");
     startCooldown = 50;
+    PathHandler.init();
 
   }
 
@@ -148,7 +149,6 @@ public class Robot extends TimedRobot {
   } // End of TeleopPeriodic()
 
   public void autonomousInit() {
-
     
   }
 
