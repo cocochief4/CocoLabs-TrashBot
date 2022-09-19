@@ -6,7 +6,6 @@ import java.awt.Graphics;
 //import java.text.DecimalFormat;
 import java.util.*;
 
-import stcpack.input.*;
 
 /*
 Note for this program:
