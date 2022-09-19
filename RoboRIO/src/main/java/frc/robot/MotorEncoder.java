@@ -1,12 +1,9 @@
 package frc.robot;
 
 import com.revrobotics.RelativeEncoder;
-import edu.wpi.first.wpilibj.Timer;
 
 public class MotorEncoder {
-    private static Timer timer;
-
-    private static final int SPIN_PER_REVOLUTION = 125;
+    private static final int GEAR_RATIO = 125;
 
     public static double time; // Time in seconds
 
@@ -20,9 +17,6 @@ public class MotorEncoder {
         rightDownEncoder = Robot.rightDownMotor.getEncoder();
         leftUpEncoder = Robot.leftUpMotor.getEncoder();
         leftDownEncoder = Robot.leftDownMotor.getEncoder();
-
-        timer = new Timer();
-        timer.reset();
     }
 
     protected static EncoderStruct getVelocity() {
@@ -31,16 +25,10 @@ public class MotorEncoder {
         double lUpVelocity = leftUpEncoder.getVelocity();
         double lDownVelocity = leftDownEncoder.getVelocity();
 
-        double rVelocity = rUpVelocity + rDownVelocity;
-        double lVelocity = lUpVelocity + lDownVelocity;
+        double rVelocity = (rUpVelocity + rDownVelocity)*0.5/GEAR_RATIO;
+        double lVelocity = (lUpVelocity + lDownVelocity)*0.5/GEAR_RATIO;
 
-        rVelocity /= 2;
-        rVelocity /= SPIN_PER_REVOLUTION;
-
-        lVelocity /= 2;
-        lVelocity /= SPIN_PER_REVOLUTION;
-
-        EncoderStruct encoderStruct = new EncoderStruct(rVelocity, lVelocity, timer.get());
+        EncoderStruct encoderStruct = new EncoderStruct(rVelocity, lVelocity, System.currentTimeMillis());
         System.out.println(encoderStruct.toString());
 
         return encoderStruct;

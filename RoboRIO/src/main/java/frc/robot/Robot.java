@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
-
+import stcpack.*;
 import edu.wpi.first.wpilibj.SerialPort.*;
 
 import com.kauailabs.navx.*;
@@ -114,8 +114,6 @@ public class Robot extends TimedRobot {
     System.out.print("Start!");
     startCooldown = 50;
 
-    //do we just wait for the gps to work? possibly need to implement a wait function here
-    Area map = new Area(); //This should have the default preset values defined in Area.java
   }
 
   private void TeleopDrive(double throttle, double steering) {
