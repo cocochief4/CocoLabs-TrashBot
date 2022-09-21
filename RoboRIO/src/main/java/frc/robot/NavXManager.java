@@ -5,6 +5,8 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.I2C;
+import edu.wpi.first.wpilibj.SerialPort;
+import edu.wpi.first.wpilibj.I2C.Port;
 
 public class NavXManager {
     public static double rotateToAngleRate;
@@ -20,6 +22,10 @@ public class NavXManager {
     static double yawDeltaFromNorth = 0;
 
     public static void RInit() {
+        if (ahrs != null) {
+            return;
+        }
+
         try {
             /***********************************************************************
              * navX-MXP: - Communication via RoboRIO MXP (SPI, I2C) and USB. - See
@@ -33,17 +39,22 @@ public class NavXManager {
              * 
              * Multiple navX-model devices on a single robot are supported.
              ************************************************************************/
-            ahrs = new AHRS(I2C.Port.kMXP);
+            ahrs = new AHRS(SerialPort.Port.kUSB1);
           } catch (RuntimeException ex) {
             DriverStation.reportError("Error instantiating navX MXP:  " + ex.getMessage(), true);
           }
           PIDController turnController = new PIDController(kP, kI, kD);
           turnController.enableContinuousInput(-180.0f, 180.0f);
           turnController.close();
+        //   Calibrate();
+        //   ahrs.zeroYaw();
     }
 
     public static void Calibrate() { // Is this called?
         ahrs.calibrate();
+    }
+    protected static void resetYaw() {
+        ahrs.reset();
     }
 
     public static ImuData getData() {

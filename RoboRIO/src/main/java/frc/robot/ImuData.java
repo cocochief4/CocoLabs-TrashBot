@@ -14,7 +14,7 @@ public class ImuData {
     }
 
     public String toString() {
-        String string = "IMU Data: " + yaw + ", " + xVelocity + ", " + yVelocity + ", " + zVelocity;
+        String string = "IMU Data (yaw (deg), x, y, z): " + yaw + ", " + xVelocity + ", " + yVelocity + ", " + zVelocity;
         
         return string;
     }

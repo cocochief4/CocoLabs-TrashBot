@@ -2,8 +2,6 @@ package frc.robot;
 
 import java.util.ArrayList;
 
-import stcpack.stc.node;
-
 public class PathHandler {
     private static ArrayList<latLong> nodeArr;
     private static latLong nextNode = null;
@@ -51,6 +49,7 @@ public class PathHandler {
         NavigatorData location = Navigator.getLocation();
         latLong relativeNodeLocation = new latLong(location.latitude, location.longitude);
         if (nextNode == null) {
+            // TODO: Add case for if nodeArr is finished
             nextNode.Lat = nodeArr.get(index).Lat;
             nextNode.Long = nodeArr.get(index).Long;
         }
