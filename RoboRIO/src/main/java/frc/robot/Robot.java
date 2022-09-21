@@ -106,9 +106,12 @@ public class Robot extends TimedRobot {
   public void teleopInit() {
     boolean arduinoData = false;
     while (arduinoData == false) {
-      arduinoData = ArduinoManager.getArduinoMegaData();
+      arduinoData = ArduinoManager.init();
       System.out.println("arduino init");
     }
+    // System.out.println("Init Enable");
+    // NavXManager.RInit();
+    // System.out.println("Init Disable");
     MotorEncoder.init();
     currentSpeed = new EuclideanCoord(0, 0);
     System.out.print("Start!");
@@ -138,12 +141,8 @@ public class Robot extends TimedRobot {
   }
 
   public void teleopPeriodic() {
-    if (startCooldown > 0) {
-      startCooldown -= 1;
-    }
 
-    ArduinoManager.getArduinoMegaData();
-    System.out.println(ArduinoManager.arduinoMegaData);
+    System.out.println(NavXManager.getData().toString());
 
 
   } // End of TeleopPeriodic()

@@ -36,6 +36,44 @@ public class ArduinoManager {
         }
     }
 
+    static boolean init() {
+        RcData rcStruct;
+        LatLongFixData gpsStruct;
+        String data = readUARTData();
+        if (data.equals("") != true) {
+            System.out.println("data:" + data.toString());
+            String dataArr[] = data.split("_");
+            System.out.println("dataArr:" + dataArr.length);
+            String rc = dataArr[0];
+            String gps = dataArr[1];
+            if (rc.equals("N")) {
+                rcStruct = null;
+            } else {
+                String rcArr[] = rc.split(",");
+                rcStruct = new RcData(Long.parseLong(rcArr[1]), Long.parseLong(rcArr[0]), 
+                    Byte.parseByte(rcArr[2]));
+            }
+
+            if (gps.equals("N")) {
+                gpsStruct = null;
+            } else {
+                String gpsArr[] = gps.split(",");
+                gpsStruct = new LatLongFixData(Long.parseLong(gpsArr[0]), 
+                    Long.parseLong(gpsArr[1]), Byte.parseByte(gpsArr[2]));
+            }
+
+            ArduinoMegaData localArduinoMegaData = new ArduinoMegaData(rcStruct, gpsStruct, System.currentTimeMillis());
+            arduinoMegaData = localArduinoMegaData;
+            if (gpsStruct != null) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
     static boolean getArduinoMegaData() {
         RcData rcStruct;
         LatLongFixData gpsStruct;
