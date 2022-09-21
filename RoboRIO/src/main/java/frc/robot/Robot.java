@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
@@ -57,7 +58,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
-    NavXManager.RInit();
+    // NavXManager.RInit();
 
     /* Note that the PIDController GUI should be added automatically to */
     /* the Test-mode dashboard, allowing manual tuning of the Turn */
@@ -104,14 +105,15 @@ public class Robot extends TimedRobot {
                           // as there is a jump for no reason at all
 
   public void teleopInit() {
+    NavXManager.RInit();
     boolean arduinoData = false;
     while (arduinoData == false) {
       arduinoData = ArduinoManager.init();
-      System.out.println("arduino init");
     }
-    // System.out.println("Init Enable");
-    // NavXManager.RInit();
-    // System.out.println("Init Disable");
+    // resetYaw MUST BE DELAYED FROM RInit as RInit Calibration overrides resetYaw request.
+    // ArduinoManager.init() has a init time of around 3 sec, varies though
+    Timer.delay(1.5);
+    NavXManager.resetYaw();
     MotorEncoder.init();
     currentSpeed = new EuclideanCoord(0, 0);
     System.out.print("Start!");
@@ -142,6 +144,7 @@ public class Robot extends TimedRobot {
 
   public void teleopPeriodic() {
 
+    // NavXManager.RInit();
     System.out.println(NavXManager.getData().toString());
 
 
