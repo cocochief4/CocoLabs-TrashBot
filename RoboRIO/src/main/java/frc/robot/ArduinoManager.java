@@ -20,7 +20,7 @@ public class ArduinoManager {
         if (queueBuf.indexOf("|") != -1) {
             String realRead = queueBuf.substring(0, queueBuf.indexOf("|"));
             queueBuf = queueBuf.substring(queueBuf.indexOf("|") + 1);
-            System.out.println(realRead);
+            // System.out.println(realRead);
             // System.out.print("midbuf");
             // System.out.println(queueBuf);
             if (queueBuf.length() > 20) {
@@ -40,11 +40,11 @@ public class ArduinoManager {
         RcData rcStruct;
         GPSLatLongData gpsStruct;
         String data = readUARTData();
-        System.out.println("data:" + data);
+        // System.out.println("data:" + data);
         if (data.equals("") != true) {
-            System.out.println("data:" + data.toString());
+            // System.out.println("data:" + data.toString());
             String dataArr[] = data.split("_");
-            System.out.println("dataArr:" + dataArr.length);
+            // System.out.println("dataArr:" + dataArr.length);
             String rc = dataArr[0];
             String gps = dataArr[1];
             if (rc.equals("N")) {
@@ -80,9 +80,9 @@ public class ArduinoManager {
         GPSLatLongData gpsStruct = arduinoMegaData.gps;
         String data = readUARTData();
         if (data.equals("") != true) {
-            System.out.println("data:" + data.toString());
+            // System.out.println("data:" + data.toString());
             String dataArr[] = data.split("_");
-            System.out.println("dataArr:" + dataArr.length);
+            // System.out.println("dataArr:" + dataArr.length);
             String rc = dataArr[0];
             String gps = dataArr[1];
             if (rc.equals("N")) {
