@@ -8,10 +8,9 @@ public class Navigator {
     private static final double FOOT_TO_DD = 2.7495495495495496E-6;
 
     private static Timer timer;
-
-    private static final double TIRE_MULTIPLIER = Math.PI * 13;
-    protected static final double RADIANS_MULTIPLIER = Math.PI/180;
-    protected static final double DEGREES_MULTIPLIER = 180/Math.PI;
+    
+    protected static final double RADIANS_MULTIPLIER = Math.PI/180f;
+    protected static final double DEGREES_MULTIPLIER = 180f/Math.PI;
 
     private static NavigatorData location;
     private static double previousTimePollEncoder = 0; // In seconds
@@ -52,7 +51,6 @@ public class Navigator {
                     double timeBetweenPolls = Math.abs(encoderStruct.time - previousTimePollEncoder);
                     double avgVelocity = (previousVelocity + ((encoderStruct.lVelocity + encoderStruct.rVelocity)/2))/2;
                     double magnitude = avgVelocity * timeBetweenPolls;
-                    magnitude *= TIRE_MULTIPLIER; // Change back to Decimal degrees?
                     double latChange = Math.cos(NavXManager.getData().yaw * RADIANS_MULTIPLIER) * magnitude;
                     double lonChange = Math.sin(NavXManager.getData().yaw * RADIANS_MULTIPLIER) * magnitude;
 
@@ -77,7 +75,6 @@ public class Navigator {
             double timeBetweenPolls = Math.abs(encoderStruct.time - previousTimePollEncoder);
             double avgVelocity = (previousVelocity + ((encoderStruct.lVelocity + encoderStruct.rVelocity)/2))/2;
             double magnitude = avgVelocity * timeBetweenPolls; // In feet
-            magnitude *= TIRE_MULTIPLIER;
 
             navigatorStruct = LatLongToNav(gps);
             navigatorStruct.direction = (double) NavXManager.getData().yaw * -1;
