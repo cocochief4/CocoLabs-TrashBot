@@ -9,67 +9,56 @@ public class Navigator {
     protected static final double RADIANS_MULTIPLIER = Math.PI/180f;
     protected static final double DEGREES_MULTIPLIER = 180f/Math.PI;
 
+    protected static final double DD_LONG_TO_DOUBLE = 10E-7;
+
     private static NavigatorData location;
-    private static long previousTimePollEncoder = 0l; // In millis
-    private static double previousVelocity = 0;
 
     protected static void init() {
         GPSLatLongData gps = null;
         gps = ArduinoManager.getGPS();
 
-        location = new NavigatorData(gps.latitude * 10E-7, gps.longitude * 10E-7, 0d, 0d); // Need calibrate function
+        location = new NavigatorData(gps.latitude * DD_LONG_TO_DOUBLE, gps.longitude * DD_LONG_TO_DOUBLE, 0d, 0d, System.currentTimeMillis()); // Need calibrate function
                                  // Direction is how many degrees from North (positive is west of, negative is east of)
-
-        previousTimePollEncoder = System.currentTimeMillis();
         System.out.println("Navigator Init Finished!");
     }
 
-    private static NavigatorData LatLongToNav(GPSLatLongData latLongFixStruct) {
-        NavigatorData navigatorStruct = new NavigatorData(latLongFixStruct.latitude, 
-                                                            latLongFixStruct.longitude, location.direction, (double) 0);
-        return navigatorStruct;
-    }
+    // private static NavigatorData LatLongToNav(GPSLatLongData latLongFixStruct) {
+    //     NavigatorData navigatorStruct = new NavigatorData(latLongFixStruct.latitude, 
+    //                                                         latLongFixStruct.longitude, location.yawFromNorth, (double) 0, System.currentTimeMillis());
+    //     return navigatorStruct;
+    // }
     
     protected static NavigatorData getLocation() {
-        NavigatorData navigatorStruct = location;
         System.out.println(location.toString());
 
+        double localYawFromNorth = NavXManager.getData().yawFromNorth;
+
         GPSLatLongData gps = ArduinoManager.getGPS();
-        if (gps == null) { // No GPS Reading
-                EncoderStruct encoderStruct = MotorEncoder.getVelocity();
-                if (Math.abs(encoderStruct.lVelocity - encoderStruct.rVelocity) < 0.015) { // Moving forward
-                    double timeBetweenPolls = Math.abs(encoderStruct.time - previousTimePollEncoder);
-                    double avgVelocity = (previousVelocity + ((encoderStruct.lVelocity + encoderStruct.rVelocity)/2))/2;
-                    double magnitude = avgVelocity * timeBetweenPolls;
-                    double latChange = Math.cos(NavXManager.getData().yawFromNorth * RADIANS_MULTIPLIER) * magnitude;
-                    double lonChange = Math.sin(NavXManager.getData().yawFromNorth * RADIANS_MULTIPLIER) * magnitude;
-
-                    latChange *= FOOT_TO_DD;
-                    lonChange *= FOOT_TO_DD;
-                    // Figure out which unit we are in
-
-                    navigatorStruct.latitude += latChange;
-                    navigatorStruct.longitude += lonChange;
-                    navigatorStruct.direction = (double) NavXManager.getData().yawFromNorth;
-                    navigatorStruct.distance = magnitude;
-
-                    return navigatorStruct;
-                    
-                } else { // Stay in same place, most likely turning
-                    navigatorStruct.direction = (double) NavXManager.getData().yawFromNorth * -1;
-                    return navigatorStruct;
-                }
-
-        } else {
-            EncoderStruct encoderStruct = MotorEncoder.getVelocity();
-            double timeBetweenPolls = Math.abs(encoderStruct.time - previousTimePollEncoder);
-            double avgVelocity = (previousVelocity + ((encoderStruct.lVelocity + encoderStruct.rVelocity)/2))/2;
-            double magnitude = avgVelocity * timeBetweenPolls; // In feet
-
-            navigatorStruct = LatLongToNav(gps);
-            navigatorStruct.direction = (double) NavXManager.getData().yawFromNorth * -1;
-            navigatorStruct.direction = magnitude;
-            return navigatorStruct;
+        EncoderStruct encoderStruct = MotorEncoder.getVelocity();
+        double gpsDistance = 0;
+        if (gps.timeStamp > location.timeStamp) { // GPS Reading
+            location.timeStamp = gps.timeStamp;
+            gpsDistance = Math.sqrt(Math.pow(Math.abs(location.latitude - gps.latitude), 2) + 
+                                                        Math.pow(Math.abs(location.longitude - gps.longitude), 2));
+            location.latitude = gps.latitude * DD_LONG_TO_DOUBLE;
+            location.longitude = gps.longitude * DD_LONG_TO_DOUBLE;
         }
+        if (Math.abs(encoderStruct.lVelocity - encoderStruct.rVelocity) < 0.015) { // Moving forward
+            double timeBetweenPolls = Math.abs(encoderStruct.time - location.timeStamp);
+            double avgVelocity = (encoderStruct.lVelocity + encoderStruct.rVelocity)/2;
+            double distanceTraveled = avgVelocity * timeBetweenPolls;
+            double latChange = Math.cos(localYawFromNorth * RADIANS_MULTIPLIER) * distanceTraveled * FOOT_TO_DD;
+            double lonChange = Math.sin(localYawFromNorth * RADIANS_MULTIPLIER) * distanceTraveled * FOOT_TO_DD;
+
+            location.latitude += latChange;
+            location.longitude += lonChange;
+            location.distanceFromLastReading = distanceTraveled + gpsDistance;
+        
+        } else {
+            location.distanceFromLastReading = 0d;
+        }
+        location.timeStamp = System.currentTimeMillis();
+        location.yawFromNorth = (double) localYawFromNorth;
+        return location;
     }
 }

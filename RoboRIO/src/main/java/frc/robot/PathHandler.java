@@ -10,8 +10,8 @@ public class PathHandler {
     protected static boolean haveStartedCalib = false;
     protected static double distanceWithoutTurning = 0;
 
-    protected static NavigatorData calibStartPos = new NavigatorData(0, 0, 0, 0);
-    protected static NavigatorData calibEndPos = new NavigatorData(0, 0, 0, 0);
+    protected static NavigatorData calibStartPos = new NavigatorData(0d, 0d, 0d, 0d, System.currentTimeMillis());
+    protected static NavigatorData calibEndPos = new NavigatorData(0, 0, 0, 0, System.currentTimeMillis());
 
     private static int index = 0;
 
@@ -31,14 +31,14 @@ public class PathHandler {
 
         if (haveStartedCalib == true) {
             NavigatorData location = Navigator.getLocation();
-            distanceWithoutTurning += location.distance;
+            distanceWithoutTurning += location.distanceFromLastReading;
         } else {
             if (distanceWithoutTurning > 2) {
                 calibEndPos = Navigator.getLocation();
                 double deltaLat = calibStartPos.latitude - calibEndPos.latitude;
                 double deltaLong = calibStartPos.longitude - calibEndPos.longitude;
                 double tan = Math.toDegrees(Math.atan(deltaLong/deltaLat));
-                double yawTan = calibEndPos.direction;
+                double yawTan = calibEndPos.yawFromNorth;
                 NavXManager.yawDeltaFromNorth = yawTan-tan;
             }
         }
@@ -56,7 +56,7 @@ public class PathHandler {
         relativeNodeLocation.Lat = nextNode.Lat - location.latitude;
         relativeNodeLocation.Long = nextNode.Long - location.longitude;
         double nodeThetaFromNorth = Math.atan((relativeNodeLocation.Lat/relativeNodeLocation.Long) * Navigator.RADIANS_MULTIPLIER);
-        double nodeRelativeTheta = nodeThetaFromNorth - location.direction * Navigator.RADIANS_MULTIPLIER;
+        double nodeRelativeTheta = nodeThetaFromNorth - location.yawFromNorth * Navigator.RADIANS_MULTIPLIER;
         if (Math.abs(relativeNodeLocation.Lat) > 5E10-7 && 
             Math.abs(relativeNodeLocation.Long) > 5E10-7) { // If we have not arrived at target node...
             if (Math.abs(Math.toDegrees(nodeRelativeTheta)) < 1) { // Go forward

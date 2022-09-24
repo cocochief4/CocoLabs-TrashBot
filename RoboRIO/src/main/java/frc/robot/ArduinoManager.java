@@ -59,7 +59,7 @@ public class ArduinoManager {
             } else {
                 String gpsArr[] = gps.split(",");
                 gpsStruct = new GPSLatLongData(Long.parseLong(gpsArr[0]), 
-                    Long.parseLong(gpsArr[1]), Byte.parseByte(gpsArr[2]));
+                    Long.parseLong(gpsArr[1]), Byte.parseByte(gpsArr[2]), System.currentTimeMillis());
             }
 
             ArduinoMegaData localArduinoMegaData = new ArduinoMegaData(rcStruct, gpsStruct, System.currentTimeMillis());
@@ -97,7 +97,7 @@ public class ArduinoManager {
             } else {
                 String gpsArr[] = gps.split(",");
                 gpsStruct = new GPSLatLongData(Long.parseLong(gpsArr[0]), 
-                    Long.parseLong(gpsArr[1]), Byte.parseByte(gpsArr[2]));
+                    Long.parseLong(gpsArr[1]), Byte.parseByte(gpsArr[2]), System.currentTimeMillis());
             }
 
             ArduinoMegaData localArduinoMegaData = new ArduinoMegaData(rcStruct, gpsStruct, System.currentTimeMillis());
