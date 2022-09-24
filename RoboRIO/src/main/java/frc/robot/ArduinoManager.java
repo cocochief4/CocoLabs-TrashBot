@@ -40,6 +40,7 @@ public class ArduinoManager {
         RcData rcStruct;
         GPSLatLongData gpsStruct;
         String data = readUARTData();
+        System.out.println("data:" + data);
         if (data.equals("") != true) {
             System.out.println("data:" + data.toString());
             String dataArr[] = data.split("_");

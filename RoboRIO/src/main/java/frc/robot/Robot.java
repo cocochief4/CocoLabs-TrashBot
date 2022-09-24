@@ -108,7 +108,8 @@ public class Robot extends TimedRobot {
     NavXManager.RInit();
     boolean arduinoData = false;
     while (arduinoData == false) {
-      arduinoData = ArduinoManager.init(); // Must be before Navigator Init
+      arduinoData = ArduinoManager.init();
+      System.out.println("inint"); // Must be before Navigator Init
     }
     // resetYaw MUST BE DELAYED FROM RInit as RInit Calibration overrides resetYaw request.
     // ArduinoManager.init() has a init time of around 3 sec, varies though
@@ -146,7 +147,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     ArduinoManager.getArduinoMegaData();
     if (ArduinoManager.getRC() == null) {
-      m_myRobot.tankDrive(0.5, 0.5);
+      m_myRobot.tankDrive(-0.5, 0.5);
       System.out.println(Navigator.getLocation().toString());
     } else {
       TeleopDrive(ArduinoManager.getRC().steering, ArduinoManager.getRC().throttle);
