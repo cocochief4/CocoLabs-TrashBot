@@ -59,7 +59,7 @@ public class NavXManager {
 
     public static ImuData getData() {
         ImuData imuStruct = new ImuData(ahrs.getYaw(), ahrs.getVelocityX(), ahrs.getVelocityY(), ahrs.getVelocityZ());
-        imuStruct.yaw += yawDeltaFromNorth;
+        imuStruct.yawFromNorth += yawDeltaFromNorth;
 
         return imuStruct;
     }

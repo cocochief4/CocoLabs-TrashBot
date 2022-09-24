@@ -8,7 +8,7 @@ public class Navigator {
     private static final double FOOT_TO_DD = 2.7495495495495496E-6;
 
     private static Timer timer;
-    
+
     protected static final double RADIANS_MULTIPLIER = Math.PI/180f;
     protected static final double DEGREES_MULTIPLIER = 180f/Math.PI;
 
@@ -51,8 +51,8 @@ public class Navigator {
                     double timeBetweenPolls = Math.abs(encoderStruct.time - previousTimePollEncoder);
                     double avgVelocity = (previousVelocity + ((encoderStruct.lVelocity + encoderStruct.rVelocity)/2))/2;
                     double magnitude = avgVelocity * timeBetweenPolls;
-                    double latChange = Math.cos(NavXManager.getData().yaw * RADIANS_MULTIPLIER) * magnitude;
-                    double lonChange = Math.sin(NavXManager.getData().yaw * RADIANS_MULTIPLIER) * magnitude;
+                    double latChange = Math.cos(NavXManager.getData().yawFromNorth * RADIANS_MULTIPLIER) * magnitude;
+                    double lonChange = Math.sin(NavXManager.getData().yawFromNorth * RADIANS_MULTIPLIER) * magnitude;
 
                     latChange *= FOOT_TO_DD;
                     lonChange *= FOOT_TO_DD;
@@ -60,13 +60,13 @@ public class Navigator {
 
                     navigatorStruct.latitude += latChange;
                     navigatorStruct.longitude += lonChange;
-                    navigatorStruct.direction = (double) NavXManager.getData().yaw;
+                    navigatorStruct.direction = (double) NavXManager.getData().yawFromNorth;
                     navigatorStruct.distance = magnitude;
 
                     return navigatorStruct;
                     
                 } else { // Stay in same place, most likely turning
-                    navigatorStruct.direction = (double) NavXManager.getData().yaw * -1;
+                    navigatorStruct.direction = (double) NavXManager.getData().yawFromNorth * -1;
                     return navigatorStruct;
                 }
 
@@ -77,7 +77,7 @@ public class Navigator {
             double magnitude = avgVelocity * timeBetweenPolls; // In feet
 
             navigatorStruct = LatLongToNav(gps);
-            navigatorStruct.direction = (double) NavXManager.getData().yaw * -1;
+            navigatorStruct.direction = (double) NavXManager.getData().yawFromNorth * -1;
             navigatorStruct.direction = magnitude;
             return navigatorStruct;
         }
