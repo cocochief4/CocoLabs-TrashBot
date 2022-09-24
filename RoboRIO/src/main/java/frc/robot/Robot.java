@@ -149,8 +149,8 @@ public class Robot extends TimedRobot {
       m_myRobot.tankDrive(0.5, 0.5);
       System.out.println(Navigator.getLocation().toString());
     } else {
-      TeleopDrive(ArduinoManager.getRC().throttle, ArduinoManager.getRC().steering);
-      m_myRobot.tankDrive(robotSpeed.xEuclid, robotSpeed.yEuclid);
+      TeleopDrive(ArduinoManager.getRC().steering, ArduinoManager.getRC().throttle);
+      m_myRobot.tankDrive(currentSpeed.xEuclid * -1, currentSpeed.yEuclid * -1);
     }
 
 
