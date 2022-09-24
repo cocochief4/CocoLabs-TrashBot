@@ -108,16 +108,17 @@ public class Robot extends TimedRobot {
     NavXManager.RInit();
     boolean arduinoData = false;
     while (arduinoData == false) {
-      arduinoData = ArduinoManager.init();
+      arduinoData = ArduinoManager.init(); // Must be before Navigator Init
     }
     // resetYaw MUST BE DELAYED FROM RInit as RInit Calibration overrides resetYaw request.
     // ArduinoManager.init() has a init time of around 3 sec, varies though
     Timer.delay(1.5);
-    NavXManager.resetYaw();
-    MotorEncoder.init();
+    NavXManager.resetYaw(); // Must be before Nav init
+    MotorEncoder.init(); // Must be before Nav init
     currentSpeed = new EuclideanCoord(0, 0);
     System.out.print("Start!");
     startCooldown = 50;
+    Navigator.init();
     PathHandler.init();
 
   }

@@ -38,7 +38,7 @@ public class ArduinoManager {
 
     static boolean init() {
         RcData rcStruct;
-        LatLongFixData gpsStruct;
+        GPSLatLongData gpsStruct;
         String data = readUARTData();
         if (data.equals("") != true) {
             System.out.println("data:" + data.toString());
@@ -58,7 +58,7 @@ public class ArduinoManager {
                 gpsStruct = null;
             } else {
                 String gpsArr[] = gps.split(",");
-                gpsStruct = new LatLongFixData(Long.parseLong(gpsArr[0]), 
+                gpsStruct = new GPSLatLongData(Long.parseLong(gpsArr[0]), 
                     Long.parseLong(gpsArr[1]), Byte.parseByte(gpsArr[2]));
             }
 
@@ -76,7 +76,7 @@ public class ArduinoManager {
 
     static boolean getArduinoMegaData() {
         RcData rcStruct;
-        LatLongFixData gpsStruct;
+        GPSLatLongData gpsStruct;
         String data = readUARTData();
         if (data.equals("") != true) {
             System.out.println("data:" + data.toString());
@@ -96,7 +96,7 @@ public class ArduinoManager {
                 gpsStruct = null;
             } else {
                 String gpsArr[] = gps.split(",");
-                gpsStruct = new LatLongFixData(Long.parseLong(gpsArr[0]), 
+                gpsStruct = new GPSLatLongData(Long.parseLong(gpsArr[0]), 
                     Long.parseLong(gpsArr[1]), Byte.parseByte(gpsArr[2]));
             }
 
@@ -108,7 +108,7 @@ public class ArduinoManager {
         }
     }
 
-    static LatLongFixData getGPS() {
+    static GPSLatLongData getGPS() {
         return arduinoMegaData.gps;
     }
 

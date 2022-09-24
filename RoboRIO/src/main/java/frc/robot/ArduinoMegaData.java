@@ -2,10 +2,10 @@ package frc.robot;
 
 public class ArduinoMegaData {
     RcData rc;
-    LatLongFixData gps;
+    GPSLatLongData gps;
     Long timestamp = 0L;
 
-    public ArduinoMegaData(RcData RC, LatLongFixData GPS, long Timestamp) {
+    public ArduinoMegaData(RcData RC, GPSLatLongData GPS, long Timestamp) {
         rc = RC;
         gps = GPS;
         timestamp = Timestamp;

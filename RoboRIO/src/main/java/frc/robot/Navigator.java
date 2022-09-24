@@ -1,40 +1,30 @@
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Timer;
 import java.lang.Math;
 
 public class Navigator {
     //Use 1 ft = 0.0000027495 decimal degrees; 495 is the repetend but it shouldn't matter that much because we are getting down to 
     private static final double FOOT_TO_DD = 2.7495495495495496E-6;
 
-    private static Timer timer;
-
     protected static final double RADIANS_MULTIPLIER = Math.PI/180f;
     protected static final double DEGREES_MULTIPLIER = 180f/Math.PI;
 
     private static NavigatorData location;
-    private static double previousTimePollEncoder = 0; // In seconds
+    private static long previousTimePollEncoder = 0l; // In millis
     private static double previousVelocity = 0;
 
     protected static void init() {
-        LatLongFixData gps = null;
-        int i = 0;
-        while (gps == null && i < 10000) {
-            gps = ArduinoManager.getGPS();
-            i++;
-            // System.out.println(i);
-        }
+        GPSLatLongData gps = null;
+        gps = ArduinoManager.getGPS();
 
         location = new NavigatorData(gps.latitude * 10E-7, gps.longitude * 10E-7, 0d, 0d); // Need calibrate function
                                  // Direction is how many degrees from North (positive is west of, negative is east of)
 
-        timer = new Timer();
-        timer.reset();
-        previousTimePollEncoder = timer.get();
+        previousTimePollEncoder = System.currentTimeMillis();
         System.out.println("Navigator Init Finished!");
     }
 
-    private static NavigatorData LatLongToNav(LatLongFixData latLongFixStruct) {
+    private static NavigatorData LatLongToNav(GPSLatLongData latLongFixStruct) {
         NavigatorData navigatorStruct = new NavigatorData(latLongFixStruct.latitude, 
                                                             latLongFixStruct.longitude, location.direction, (double) 0);
         return navigatorStruct;
@@ -44,7 +34,7 @@ public class Navigator {
         NavigatorData navigatorStruct = location;
         System.out.println(location.toString());
 
-        LatLongFixData gps = ArduinoManager.getGPS();
+        GPSLatLongData gps = ArduinoManager.getGPS();
         if (gps == null) { // No GPS Reading
                 EncoderStruct encoderStruct = MotorEncoder.getVelocity();
                 if (Math.abs(encoderStruct.lVelocity - encoderStruct.rVelocity) < 0.015) { // Moving forward

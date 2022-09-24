@@ -2,10 +2,14 @@ package frc.robot;
 
 import com.revrobotics.RelativeEncoder;
 
+import stcpack.stc;
+
 public class MotorEncoder {
     private static final float GEAR_RATIO = 125f;
 
-    private static final double TIRE_MULTIPLIER = Math.PI * 13f;
+    private static final double MILLIS_PER_MINUTE = 60000;
+
+    private static final double TIRE_MULTIPLIER = Math.PI * 13d/12d;
 
     public static double time; // Time in seconds
 
@@ -27,10 +31,10 @@ public class MotorEncoder {
         double lUpVelocity = leftUpEncoder.getVelocity();
         double lDownVelocity = leftDownEncoder.getVelocity();
 
-        double rVelocity = (rUpVelocity + rDownVelocity)*0.5*TIRE_MULTIPLIER/GEAR_RATIO; // Feet per sec
-        double lVelocity = (lUpVelocity + lDownVelocity)*0.5*TIRE_MULTIPLIER/GEAR_RATIO; // Feet per sec
+        double rVelocity = (rUpVelocity + rDownVelocity)*0.5*TIRE_MULTIPLIER/GEAR_RATIO/MILLIS_PER_MINUTE; // Feet per millis
+        double lVelocity = (lUpVelocity + lDownVelocity)*0.5*TIRE_MULTIPLIER/GEAR_RATIO/MILLIS_PER_MINUTE; // Feet per millis
 
-        EncoderStruct encoderStruct = new EncoderStruct(rVelocity, lVelocity, System.currentTimeMillis()); // Feet per sec
+        EncoderStruct encoderStruct = new EncoderStruct(rVelocity, lVelocity, System.currentTimeMillis()); // Feet per millis
         System.out.println(encoderStruct.toString());
 
         return encoderStruct;

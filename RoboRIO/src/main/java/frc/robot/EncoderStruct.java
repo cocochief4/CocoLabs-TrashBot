@@ -3,9 +3,9 @@ package frc.robot;
 public class EncoderStruct {
     Double rVelocity;
     Double lVelocity;
-    Double time; // Time in seconds
+    Long time; // Time in millis
 
-    public EncoderStruct(double rightVelocity, double leftVelocity, double timeStamp) {
+    public EncoderStruct(double rightVelocity, double leftVelocity, long timeStamp) {
         rVelocity = rightVelocity;
         lVelocity = leftVelocity;
         time = timeStamp;
