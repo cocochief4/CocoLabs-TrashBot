@@ -144,9 +144,14 @@ public class Robot extends TimedRobot {
   }
 
   public void teleopPeriodic() {
-
-    // NavXManager.RInit();
-    System.out.println(NavXManager.getData().toString());
+    ArduinoManager.getArduinoMegaData();
+    if (ArduinoManager.getRC() == null) {
+      m_myRobot.tankDrive(0.5, 0.5);
+      System.out.println(Navigator.getLocation().toString());
+    } else {
+      TeleopDrive(ArduinoManager.getRC().throttle, ArduinoManager.getRC().steering);
+      m_myRobot.tankDrive(robotSpeed.xEuclid, robotSpeed.yEuclid);
+    }
 
 
   } // End of TeleopPeriodic()

@@ -76,7 +76,7 @@ public class ArduinoManager {
 
     static boolean getArduinoMegaData() {
         RcData rcStruct;
-        GPSLatLongData gpsStruct;
+        GPSLatLongData gpsStruct = arduinoMegaData.gps;
         String data = readUARTData();
         if (data.equals("") != true) {
             System.out.println("data:" + data.toString());
@@ -93,7 +93,6 @@ public class ArduinoManager {
             }
 
             if (gps.equals("N")) {
-                gpsStruct = null;
             } else {
                 String gpsArr[] = gps.split(",");
                 gpsStruct = new GPSLatLongData(Long.parseLong(gpsArr[0]), 

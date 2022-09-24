@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class PathHandler {
     private static ArrayList<latLong> nodeArr;
-    private static latLong nextNode = null;
 
     protected static boolean haveTurned = false;
     protected static boolean haveStartedCalib = false;
@@ -45,19 +44,14 @@ public class PathHandler {
 
     }
 
-    public static void GoTo() {
+    public static boolean GoTo(latLong nextNode) {
         NavigatorData location = Navigator.getLocation();
         latLong relativeNodeLocation = new latLong(location.latitude, location.longitude);
-        if (nextNode == null) {
-            // TODO: Add case for if nodeArr is finished
-            nextNode.Lat = nodeArr.get(index).Lat;
-            nextNode.Long = nodeArr.get(index).Long;
-        }
         relativeNodeLocation.Lat = nextNode.Lat - location.latitude;
         relativeNodeLocation.Long = nextNode.Long - location.longitude;
-        double nodeThetaFromNorth = Math.atan((relativeNodeLocation.Lat/relativeNodeLocation.Long) * Navigator.RADIANS_MULTIPLIER);
-        double nodeRelativeTheta = nodeThetaFromNorth - location.yawFromNorth * Navigator.RADIANS_MULTIPLIER;
-        if (Math.abs(relativeNodeLocation.Lat) > 5E10-7 && 
+        double nodeThetaFromNorth = Math.atan(Math.toRadians(relativeNodeLocation.Long/relativeNodeLocation.Lat));
+        double nodeRelativeTheta = Math.toRadians(nodeThetaFromNorth - location.yawFromNorth);
+        if (Math.abs(relativeNodeLocation.Lat) > 5E10-7 || 
             Math.abs(relativeNodeLocation.Long) > 5E10-7) { // If we have not arrived at target node...
             if (Math.abs(Math.toDegrees(nodeRelativeTheta)) < 1) { // Go forward
                 haveTurned = false;
@@ -73,8 +67,16 @@ public class PathHandler {
             }
 
             calibrate();
+            return false;
         } else {
-            nextNode = null;
+            return true;
+        }
+    }
+
+    public static void autonomousMainLoop() {
+        boolean targetAchieved = GoTo(nodeArr.get(index));
+        if (targetAchieved) {
+            index++;
         }
     }
 }
