@@ -13,6 +13,12 @@ public class Navigator {
 
     private static NavigatorData location;
 
+    protected static boolean haveTurned = false;
+    protected static boolean haveStartedCalib = false;
+    protected static double distanceWithoutTurning = 0;
+    protected static GPSLatLongData calibStartPos = new GPSLatLongData(0, 0, (short) 0, System.currentTimeMillis());
+    protected static GPSLatLongData calibEndPos = new GPSLatLongData(0, 0, (short) 0, System.currentTimeMillis());
+
     protected static void init() {
         GPSLatLongData gps = null;
         gps = ArduinoManager.getGPS();
@@ -28,6 +34,34 @@ public class Navigator {
     //     return navigatorStruct;
     // }
     
+    protected static void calibrate() { // WORK ON CALIBRATE
+        if (haveTurned == false) {
+            GPSLatLongData gpsLatLongData = ArduinoManager.getGPS();
+            System.out.println("calibStart: " + gpsLatLongData + "real: " + calibStartPos);
+            if (System.currentTimeMillis() - gpsLatLongData.timeStamp < 50) {
+                haveStartedCalib = true;
+                calibStartPos = gpsLatLongData;
+            }
+        } else {
+            haveStartedCalib = false;
+        }
+
+        if (haveStartedCalib == false) {
+            GPSLatLongData gpsLatLongData = ArduinoManager.getGPS();
+            if (gpsLatLongData.timeStamp != calibStartPos.timeStamp) {
+                calibEndPos = gpsLatLongData;
+                System.out.println("end pos gps: " + gpsLatLongData.toString() + ", real: " + calibEndPos);
+                double deltaLat = calibStartPos.latitude - calibEndPos.latitude;
+                double deltaLong = calibStartPos.longitude - calibEndPos.longitude;
+                double tan = Math.toDegrees(Math.atan(deltaLong/deltaLat));
+                double yawTan = NavXManager.getData().yawFromNorth;
+                NavXManager.yawDeltaFromNorth = yawTan-tan;
+            }
+        }
+
+    }
+
+
     protected static NavigatorData getLocation() {
         System.out.println(location.toString());
 

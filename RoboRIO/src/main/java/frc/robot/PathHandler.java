@@ -20,7 +20,7 @@ public class PathHandler {
         nodeArr = stcpack.stc.finalNavigate;
     }
 
-    private static void calibrate() { // WORK ON CALIBRATE
+    protected static void calibrate() { // WORK ON CALIBRATE
         if (haveTurned = false) {
             haveStartedCalib = true;
             calibStartPos = Navigator.getLocation();

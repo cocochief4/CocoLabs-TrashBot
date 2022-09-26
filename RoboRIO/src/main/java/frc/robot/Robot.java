@@ -109,7 +109,7 @@ public class Robot extends TimedRobot {
     boolean arduinoData = false;
     while (arduinoData == false) {
       arduinoData = ArduinoManager.init();
-      System.out.println("inint"); // Must be before Navigator Init
+      System.out.println("init"); // Must be before Navigator Init
     }
     // resetYaw MUST BE DELAYED FROM RInit as RInit Calibration overrides resetYaw request.
     // ArduinoManager.init() has a init time of around 3 sec, varies though
@@ -121,10 +121,12 @@ public class Robot extends TimedRobot {
     startCooldown = 50;
     Navigator.init();
     PathHandler.init();
+    NavXManager.resetYaw();
 
   }
 
   private void TeleopDrive(double throttle, double steering) {
+    i = 0;
     //System.out.println(NavXManager.getData().toString());
 
     if (throttle != 9223372036854775807L && steering != 9223372036854775807L) {
@@ -143,18 +145,36 @@ public class Robot extends TimedRobot {
 
       
   }
-
+  int i = 0;
+  boolean previousState = true; // true is auto, false is teleop
+  
   public void teleopPeriodic() {
+    System.out.println(i);
     ArduinoManager.getArduinoMegaData();
     if (ArduinoManager.getRC() == null) {
-      m_myRobot.tankDrive(-0.5, 0.5);
-      System.out.println(Navigator.getLocation().toString());
+      if (i < 300) {
+        // System.out.println("cooldown");
+        m_myRobot.tankDrive(-0.5, 0.5);
+        PathHandler.haveTurned = false;
+        Navigator.calibrate();
+        // System.out.println(i);
+      } else if (i > 300) {
+        Navigator.calibrate();
+        m_myRobot.tankDrive(0, 0);
+        System.out.println("Yaw from north: " + NavXManager.getData().yawFromNorth);
+        System.out.println("Start pos:" + Navigator.calibStartPos.toString());
+        System.out.println("End pos: " + Navigator.calibEndPos.toString());
+        System.out.println("raw yaw: " + NavXManager.getData().yawFromNorth);
+      }
     } else {
-      TeleopDrive(ArduinoManager.getRC().steering, ArduinoManager.getRC().throttle);
-      m_myRobot.tankDrive(currentSpeed.xEuclid * -1, currentSpeed.yEuclid * -1);
+      if (previousState) {
+        previousState = false;
+        i = 0;
+      }
+      TeleopDrive(ArduinoManager.getRC().steering, ArduinoManager.getRC().throttle * -1);
+      m_myRobot.tankDrive(currentSpeed.xEuclid, currentSpeed.yEuclid);
     }
-
-
+    i++;
   } // End of TeleopPeriodic()
 
   public void autonomousInit() {

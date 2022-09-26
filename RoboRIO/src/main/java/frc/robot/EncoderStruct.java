@@ -13,7 +13,8 @@ public class EncoderStruct {
 
     public String toString() {
         String string = new String();
-        string = "Velocity (left right): " + lVelocity.toString() + ", " + rVelocity.toString() + " Time: " + time.toString();
+        Double localLVelocity = lVelocity * -1;
+        string = "Velocity (left (negated), right): " + localLVelocity.toString() + ", " + rVelocity.toString() + " Time: " + time.toString();
 
         return string;
     }
