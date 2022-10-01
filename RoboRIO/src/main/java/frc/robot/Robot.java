@@ -136,9 +136,10 @@ public class Robot extends TimedRobot {
     ArduinoManager.getArduinoMegaData();
     if (ArduinoManager.getRC() == null) {
       boolean arrived = PathHandler.GoTo(new latLong(373453108E-7, -1220160366E-7));
-      System.out.println(NavXManager.getData().yawFromNorth);
+      System.out.println("Yaw From North" + NavXManager.getData().yawFromNorth);
       if (arrived) {
         m_myRobot.tankDrive(0, 0);
+        System.out.println("arrived");
       }
     } else {
       if (previousState) {

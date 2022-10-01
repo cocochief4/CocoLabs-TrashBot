@@ -65,7 +65,7 @@ public class Navigator {
 
 
     protected static NavigatorData getLocation() {
-        System.out.println(location.toString());
+        // System.out.println(location.toString());
 
         double localYawFromNorth = NavXManager.getData().yawFromNorth;
 

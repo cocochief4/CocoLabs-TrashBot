@@ -2,8 +2,6 @@ package frc.robot;
 
 import com.revrobotics.RelativeEncoder;
 
-import stcpack.stc;
-
 public class MotorEncoder {
     private static final float GEAR_RATIO = 125f;
 
@@ -35,7 +33,6 @@ public class MotorEncoder {
         double lVelocity = (lUpVelocity + lDownVelocity)*0.5*TIRE_MULTIPLIER/GEAR_RATIO/MILLIS_PER_MINUTE; // Feet per millis
 
         EncoderStruct encoderStruct = new EncoderStruct(rVelocity, lVelocity, System.currentTimeMillis()); // Feet per millis
-        System.out.println(encoderStruct.toString());
 
         return encoderStruct;
     }

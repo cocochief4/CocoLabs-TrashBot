@@ -49,22 +49,23 @@ public class PathHandler {
 */
     public static boolean GoTo(latLong nextNode) {
         NavigatorData location = Navigator.getLocation();
-        latLong relativeNodeLocation = new latLong(location.latitude, location.longitude);
-        relativeNodeLocation.Lat = nextNode.Lat - location.latitude;
-        relativeNodeLocation.Long = nextNode.Long - location.longitude;
-        double nodeThetaFromNorth = Math.atan(Math.toRadians(relativeNodeLocation.Long/relativeNodeLocation.Lat));
-        double nodeRelativeTheta = Math.toRadians(nodeThetaFromNorth - location.yawFromNorth);
+        latLong relativeNodeLocation = new latLong(nextNode.Lat - location.latitude, nextNode.Long - location.longitude);
+        double nodeThetaFromNorth = Math.toDegrees(Math.atan2(relativeNodeLocation.Long, relativeNodeLocation.Lat));
+        double nodeRelativeTheta = nodeThetaFromNorth - location.yawFromNorth;
         if (Math.abs(relativeNodeLocation.Lat) > 5E10-7 || 
             Math.abs(relativeNodeLocation.Long) > 5E10-7) { // If we have not arrived at target node...
-            if (Math.abs(Math.toDegrees(nodeRelativeTheta)) < 1) { // Go forward
+            if (Math.abs(nodeRelativeTheta) < 1) { // Go forward
                 haveTurned = false;
+                System.out.println("Driving");
                 AutonomousDrive.drive(MAX_DRIVE_SPEED, 0);
             } else { // Turn
                 haveTurned = true;
                 distanceWithoutTurning = 0;
                 if (nodeRelativeTheta < 0) {
+                    System.out.println("Turning");
                     AutonomousDrive.drive(0, -MAX_TURN_SPEED);
                 } else if (nodeRelativeTheta > 0) {
+                    System.out.println("Turning");
                     AutonomousDrive.drive(0, MAX_TURN_SPEED);
                 }
             }
