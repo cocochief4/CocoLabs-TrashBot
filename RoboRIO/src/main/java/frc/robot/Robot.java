@@ -130,29 +130,25 @@ public class Robot extends TimedRobot {
 
       
   // }
-  int i = 0;
   boolean previousState = true; // true is auto, false is teleop
   
   public void teleopPeriodic() {
     ArduinoManager.getArduinoMegaData();
     if (ArduinoManager.getRC() == null) {
-      if (i < 300) {
-        boolean arrived = PathHandler.GoTo(new latLong(373453108E-7, -1220160366E-7));
-        if (arrived) {
-          m_myRobot.tankDrive(0, 0);
-        }
+      boolean arrived = PathHandler.GoTo(new latLong(373453108E-7, -1220160366E-7));
+      System.out.println(NavXManager.getData().yawFromNorth);
+      if (arrived) {
+        m_myRobot.tankDrive(0, 0);
       }
     } else {
       if (previousState) {
         previousState = false;
-        i = 0;
       }
       RcData rcData = ArduinoManager.getRC();
       EuclideanCoord steeringThrottle = new EuclideanCoord(rcData.steering, rcData.throttle);
       steeringThrottle = new TeleopMath(0d, 0d).ScaleToUnitSquare(steeringThrottle);
       AutonomousDrive.drive(steeringThrottle.yEuclid, steeringThrottle.xEuclid);
     }
-    i++;
   } // End of TeleopPeriodic()
 
   public void autonomousInit() {

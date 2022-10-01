@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class PathHandler {
     private static final float MAX_DRIVE_SPEED = 0.5f;
-    private static final float MAX_TURN_SPEED = 0.5f;
+    private static final float MAX_TURN_SPEED = 0.25f;
 
     private static ArrayList<latLong> nodeArr;
 
@@ -22,7 +22,7 @@ public class PathHandler {
         stcpack.stc.spanningTreeCoverageAlgorithm(initPos);
         nodeArr = stcpack.stc.finalNavigate;
     }
-
+/*
     protected static void calibrate() { // WORK ON CALIBRATE
         if (haveTurned = false) {
             haveStartedCalib = true;
@@ -46,7 +46,7 @@ public class PathHandler {
         }
 
     }
-
+*/
     public static boolean GoTo(latLong nextNode) {
         NavigatorData location = Navigator.getLocation();
         latLong relativeNodeLocation = new latLong(location.latitude, location.longitude);
@@ -69,7 +69,6 @@ public class PathHandler {
                 }
             }
 
-            calibrate();
             return false;
         } else {
             return true;

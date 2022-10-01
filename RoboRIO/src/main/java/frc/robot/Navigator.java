@@ -34,6 +34,7 @@ public class Navigator {
     //     return navigatorStruct;
     // }
     
+/*  
     protected static void calibrate() { // WORK ON CALIBRATE
         if (haveTurned == false) {
             GPSLatLongData gpsLatLongData = ArduinoManager.getGPS();
@@ -59,7 +60,8 @@ public class Navigator {
             }
         }
 
-    }
+    } 
+*/
 
 
     protected static NavigatorData getLocation() {
