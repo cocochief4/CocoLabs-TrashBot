@@ -11,7 +11,7 @@ public class AutonomousDrive {
         polar.theta = teleopMath.driveConversion(polar.theta);
         throttleSteering = teleopMath.PolarToCart(polar);
         throttleSteering = teleopMath.ScaleUp(throttleSteering);
-        throttleSteering = teleopMath.CalcRamp(previousSpeed, throttleSteering, Robot.RAMP_MAX);
+        // throttleSteering = teleopMath.CalcRamp(previousSpeed, throttleSteering, Robot.RAMP_MAX);
         previousSpeed = throttleSteering;
 
         Robot.m_myRobot.tankDrive(throttleSteering.yEuclid * -1, throttleSteering.xEuclid);

@@ -3,7 +3,7 @@ package frc.robot;
 import java.util.ArrayList;
 
 public class PathHandler {
-    private static final float MAX_DRIVE_SPEED = 0.5f;
+    private static final float MAX_DRIVE_SPEED = 0.25f;
     private static final float MAX_TURN_SPEED = 0.25f;
 
     private static ArrayList<latLong> nodeArr;
