@@ -51,7 +51,7 @@ public class ArduinoManager {
                 rcStruct = null;
             } else {
                 String rcArr[] = rc.split(",");
-                rcStruct = new RcData(Long.parseLong(rcArr[1]), Long.parseLong(rcArr[0]), 
+                rcStruct = new RcData(Integer.parseInt(rcArr[1]), Integer.parseInt(rcArr[0]), 
                     Byte.parseByte(rcArr[2]));
             }
 
@@ -89,7 +89,7 @@ public class ArduinoManager {
                 rcStruct = null;
             } else {
                 String rcArr[] = rc.split(",");
-                rcStruct = new RcData(Long.parseLong(rcArr[1]), Long.parseLong(rcArr[0]), 
+                rcStruct = new RcData(Integer.parseInt(rcArr[1]), Integer.parseInt(rcArr[0]), 
                     Byte.parseByte(rcArr[2]));
             }
 

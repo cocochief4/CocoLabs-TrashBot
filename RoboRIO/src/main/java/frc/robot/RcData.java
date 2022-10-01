@@ -1,11 +1,11 @@
 package frc.robot;
 
 public class RcData {
-    Long throttle;
-    Long steering;
+    Integer throttle;
+    Integer steering;
     Byte modeSwitch;
 
-    public RcData(Long Throttle, Long Steering, Byte Mode) {
+    public RcData(Integer Throttle, Integer Steering, Byte Mode) {
         throttle = Throttle;
         steering = Steering;
         modeSwitch = Mode;

@@ -3,12 +3,14 @@ package frc.robot;
 import java.util.ArrayList;
 
 public class PathHandler {
-    private static final float MAX_DRIVE_SPEED = 0.25f;
-    private static final float MAX_TURN_SPEED = 0.25f;
+    private static final double MAX_DRIVE_SPEED = 0.5d;
+    private static final double MAX_TURN_SPEED = 0.5d;
+    protected static EuclideanCoord autoDrive = new EuclideanCoord(0d, 0d);
 
     private static ArrayList<latLong> nodeArr;
 
     protected static boolean haveTurned = false;
+    protected static boolean turning = false;
     protected static boolean haveStartedCalib = false;
     protected static double distanceWithoutTurning = 0;
 
@@ -21,9 +23,11 @@ public class PathHandler {
         latLong initPos = new latLong(ArduinoManager.getGPS().latitude, ArduinoManager.getGPS().longitude);
         stcpack.stc.spanningTreeCoverageAlgorithm(initPos);
         nodeArr = stcpack.stc.finalNavigate;
+        autoDrive.xEuclid = 0d;
+        autoDrive.yEuclid = 0d;
     }
 /*
-    protected static void calibrate() { // WORK ON CALIBRATE
+    protected static void calibrate() { 
         if (haveTurned = false) {
             haveStartedCalib = true;
             calibStartPos = Navigator.getLocation();
@@ -55,20 +59,59 @@ public class PathHandler {
         double nodeRelativeTheta = nodeThetaFromNorth - location.yawFromNorth;
         if (Math.abs(relativeNodeLocation.Lat) > 5E-7 || 
             Math.abs(relativeNodeLocation.Long) > 5E-7) { // If we have not arrived at target node...
-            if (Math.abs(nodeRelativeTheta) < 3) { // Go forward
-                haveTurned = false;
+            if (haveTurned) {
+                if (Math.abs(nodeRelativeTheta) > 0.5) {
+                    turning = true;
+                    haveTurned = true;
+                    if (nodeRelativeTheta < 0) {
+                        System.out.println("Turning");
+                        if (Math.abs(autoDrive.xEuclid) < MAX_TURN_SPEED) {
+                            autoDrive.xEuclid -= 0.1;
+                            if (autoDrive.yEuclid > 0d) {
+                                autoDrive.yEuclid -= 0.1;
+                            } else if (autoDrive.yEuclid < 0d) {
+                                autoDrive.yEuclid = 0d;
+                            }
+                        }
+                        AutonomousDrive.drive(autoDrive.yEuclid, autoDrive.xEuclid);
+                    } else if (nodeRelativeTheta > 0) {
+                        if (Math.abs(autoDrive.xEuclid) < MAX_TURN_SPEED) {
+                            autoDrive.xEuclid += 0.1;
+                            if (autoDrive.yEuclid > 0d) {
+                                autoDrive.yEuclid += 0.1;
+                            } else if (autoDrive.yEuclid < 0d) {
+                                autoDrive.yEuclid = 0d;
+                            }
+                        }
+                        System.out.println("Turning");
+                        AutonomousDrive.drive(autoDrive.yEuclid, autoDrive.xEuclid);
+                    }
+                } else {
+                    haveTurned = false;
+                    turning = false;
+                }
+            }
+            if (Math.abs(nodeRelativeTheta) < 5 && turning == false) { // Go forward
                 System.out.println("Driving");
-                AutonomousDrive.drive(MAX_DRIVE_SPEED, 0);
+                if (autoDrive.yEuclid < MAX_DRIVE_SPEED) {
+                    autoDrive.yEuclid += 0.1;
+                } else if (autoDrive.yEuclid > MAX_DRIVE_SPEED) {
+                    autoDrive.yEuclid = MAX_DRIVE_SPEED;
+                }
+                if (Math.abs(autoDrive.xEuclid) > 0.06) {
+                    if (autoDrive.xEuclid < 0) {
+                        autoDrive.xEuclid += 0.1;
+                    } else if (autoDrive.xEuclid > 0) {
+                        autoDrive.xEuclid -= 0.1;
+                    } else {
+                        autoDrive.xEuclid = 0d;
+                    }
+                }
+                AutonomousDrive.drive(autoDrive.yEuclid, autoDrive.xEuclid);
             } else { // Turn
                 haveTurned = true;
                 distanceWithoutTurning = 0;
-                if (nodeRelativeTheta < 0) {
-                    System.out.println("Turning");
-                    AutonomousDrive.drive(0, -MAX_TURN_SPEED);
-                } else if (nodeRelativeTheta > 0) {
-                    System.out.println("Turning");
-                    AutonomousDrive.drive(0, MAX_TURN_SPEED);
-                }
+                turning = true;
             }
 
             return false;
