@@ -134,7 +134,6 @@ public class Robot extends TimedRobot {
   boolean previousState = true; // true is auto, false is teleop
   
   public void teleopPeriodic() {
-    System.out.println(i);
     ArduinoManager.getArduinoMegaData();
     if (ArduinoManager.getRC() == null) {
       if (i < 300) {
@@ -149,10 +148,8 @@ public class Robot extends TimedRobot {
         i = 0;
       }
       RcData rcData = ArduinoManager.getRC();
-      System.out.println("rcData:" + rcData.toString());
       EuclideanCoord steeringThrottle = new EuclideanCoord(rcData.steering, rcData.throttle);
       steeringThrottle = new TeleopMath(0d, 0d).ScaleToUnitSquare(steeringThrottle);
-      System.out.println("steeringThrottle" + steeringThrottle.toString());
       AutonomousDrive.drive(steeringThrottle.yEuclid, steeringThrottle.xEuclid);
     }
     i++;
