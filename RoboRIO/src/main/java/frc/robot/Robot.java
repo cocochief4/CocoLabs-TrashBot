@@ -9,20 +9,11 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
-import stcpack.*;
-import edu.wpi.first.wpilibj.SerialPort.*;
-
-import com.kauailabs.navx.*;
-
-import java.nio.file.Path;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-
-import edu.wpi.first.wpilibj.I2C;
 
 public class Robot extends TimedRobot {
 
@@ -49,12 +40,6 @@ public class Robot extends TimedRobot {
   protected static EuclideanCoord robotSpeed = new EuclideanCoord(0.0, 0.0);
   protected static EuclideanCoord currentSpeed = new EuclideanCoord(0, 0);
   protected static final double RAMP_MAX = 0.015;
-
-  private static final I2C RCArduino = new I2C(Port.kOnboard, 4);
-
-  private static int driveType = 0; // 0 is Teleop, 1 is Autonomous
-
-  private static Byte previousMode = 0; // 0 is Teleop, 1 is Autonomous
 
   @Override
   public void robotInit() {
@@ -125,26 +110,26 @@ public class Robot extends TimedRobot {
 
   }
 
-  private void TeleopDrive(double throttle, double steering) {
-    i = 0;
-    //System.out.println(NavXManager.getData().toString());
+  // private void TeleopDrive(double throttle, double steering) {
+  //   i = 0;
+  //   //System.out.println(NavXManager.getData().toString());
 
-    if (throttle != 9223372036854775807L && steering != 9223372036854775807L) {
-      TeleopMath control =  new TeleopMath(steering, throttle);
+  //   if (throttle != 9223372036854775807L && steering != 9223372036854775807L) {
+  //     TeleopMath control =  new TeleopMath(steering, throttle);
 
-      robotSpeed = new EuclideanCoord(control.RcToDifferential().xEuclid, control.RcToDifferential().yEuclid);
-      // System.out.println(robotSpeed.toString());
-      // System.out.println("Teleop mode ON");
-      // System.out.println(MotorEncoder.getVelocity().toString());
-      // System.out.println(NavXManager.getData().toString());
+  //     robotSpeed = new EuclideanCoord(control.RcToDifferential().xEuclid, control.RcToDifferential().yEuclid);
+  //     // System.out.println(robotSpeed.toString());
+  //     // System.out.println("Teleop mode ON");
+  //     // System.out.println(MotorEncoder.getVelocity().toString());
+  //     // System.out.println(NavXManager.getData().toString());
 
-      // Ramp rate
-      currentSpeed = control.CalcRamp(currentSpeed, robotSpeed, RAMP_MAX);
+  //     // Ramp rate
+  //     currentSpeed = control.CalcRamp(currentSpeed, robotSpeed, RAMP_MAX);
 
-    }
+  //   }
 
       
-  }
+  // }
   int i = 0;
   boolean previousState = true; // true is auto, false is teleop
   
@@ -153,26 +138,20 @@ public class Robot extends TimedRobot {
     ArduinoManager.getArduinoMegaData();
     if (ArduinoManager.getRC() == null) {
       if (i < 300) {
-        // System.out.println("cooldown");
-        m_myRobot.tankDrive(-0.5, 0.5);
-        PathHandler.haveTurned = false;
-        Navigator.calibrate();
-        // System.out.println(i);
-      } else if (i > 300) {
-        Navigator.calibrate();
-        m_myRobot.tankDrive(0, 0);
-        System.out.println("Yaw from north: " + NavXManager.getData().yawFromNorth);
-        System.out.println("Start pos:" + Navigator.calibStartPos.toString());
-        System.out.println("End pos: " + Navigator.calibEndPos.toString());
-        System.out.println("raw yaw: " + NavXManager.getData().yawFromNorth);
+        boolean arrived = PathHandler.GoTo(new latLong(373453108E-7, -1220160366E-7));
+        if (arrived) {
+          m_myRobot.tankDrive(0, 0);
+        }
       }
     } else {
       if (previousState) {
         previousState = false;
         i = 0;
       }
-      TeleopDrive(ArduinoManager.getRC().steering, ArduinoManager.getRC().throttle * -1);
-      m_myRobot.tankDrive(currentSpeed.xEuclid, currentSpeed.yEuclid);
+      RcData rcData = ArduinoManager.getRC();
+      EuclideanCoord steeringThrottle = new EuclideanCoord(rcData.steering, rcData.throttle);
+      steeringThrottle = new TeleopMath(0d, 0d).ScaleToUnitSquare(steeringThrottle);
+      AutonomousDrive.drive(steeringThrottle.yEuclid, steeringThrottle.xEuclid);
     }
     i++;
   } // End of TeleopPeriodic()

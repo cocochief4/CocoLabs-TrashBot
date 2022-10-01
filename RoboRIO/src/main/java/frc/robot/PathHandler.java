@@ -3,6 +3,9 @@ package frc.robot;
 import java.util.ArrayList;
 
 public class PathHandler {
+    private static final float MAX_DRIVE_SPEED = 0.5f;
+    private static final float MAX_TURN_SPEED = 0.5f;
+
     private static ArrayList<latLong> nodeArr;
 
     protected static boolean haveTurned = false;
@@ -55,14 +58,14 @@ public class PathHandler {
             Math.abs(relativeNodeLocation.Long) > 5E10-7) { // If we have not arrived at target node...
             if (Math.abs(Math.toDegrees(nodeRelativeTheta)) < 1) { // Go forward
                 haveTurned = false;
-                AutonomousDrive.drive(1, 0);
+                AutonomousDrive.drive(MAX_DRIVE_SPEED, 0);
             } else { // Turn
                 haveTurned = true;
                 distanceWithoutTurning = 0;
                 if (nodeRelativeTheta < 0) {
-                    AutonomousDrive.drive(0, -0.5);
+                    AutonomousDrive.drive(0, -MAX_TURN_SPEED);
                 } else if (nodeRelativeTheta > 0) {
-                    AutonomousDrive.drive(0, 0.5);
+                    AutonomousDrive.drive(0, MAX_TURN_SPEED);
                 }
             }
 
