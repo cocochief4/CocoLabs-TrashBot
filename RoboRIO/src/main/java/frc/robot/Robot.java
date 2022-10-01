@@ -149,8 +149,10 @@ public class Robot extends TimedRobot {
         i = 0;
       }
       RcData rcData = ArduinoManager.getRC();
+      System.out.println("rcData:" + rcData.toString());
       EuclideanCoord steeringThrottle = new EuclideanCoord(rcData.steering, rcData.throttle);
       steeringThrottle = new TeleopMath(0d, 0d).ScaleToUnitSquare(steeringThrottle);
+      System.out.println("steeringThrottle" + steeringThrottle.toString());
       AutonomousDrive.drive(steeringThrottle.yEuclid, steeringThrottle.xEuclid);
     }
     i++;
