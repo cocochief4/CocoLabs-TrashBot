@@ -55,7 +55,7 @@ public class PathHandler {
         double nodeRelativeTheta = nodeThetaFromNorth - location.yawFromNorth;
         if (Math.abs(relativeNodeLocation.Lat) > 5E-7 || 
             Math.abs(relativeNodeLocation.Long) > 5E-7) { // If we have not arrived at target node...
-            if (Math.abs(nodeRelativeTheta) < 1) { // Go forward
+            if (Math.abs(nodeRelativeTheta) < 3) { // Go forward
                 haveTurned = false;
                 System.out.println("Driving");
                 AutonomousDrive.drive(MAX_DRIVE_SPEED, 0);
