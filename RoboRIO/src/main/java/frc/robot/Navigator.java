@@ -9,7 +9,7 @@ public class Navigator {
     protected static final double RADIANS_MULTIPLIER = Math.PI/180f;
     protected static final double DEGREES_MULTIPLIER = 180f/Math.PI;
 
-    protected static final double DD_LONG_TO_DOUBLE = 10E-7;
+    protected static final double DD_LONG_TO_DOUBLE = 1E-7;
 
     private static NavigatorData location;
 

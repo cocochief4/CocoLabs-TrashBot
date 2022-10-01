@@ -50,10 +50,11 @@ public class PathHandler {
     public static boolean GoTo(latLong nextNode) {
         NavigatorData location = Navigator.getLocation();
         latLong relativeNodeLocation = new latLong(nextNode.Lat - location.latitude, nextNode.Long - location.longitude);
+        System.out.println("Node Relative Location:" + relativeNodeLocation.toString(relativeNodeLocation));
         double nodeThetaFromNorth = Math.toDegrees(Math.atan2(relativeNodeLocation.Long, relativeNodeLocation.Lat));
         double nodeRelativeTheta = nodeThetaFromNorth - location.yawFromNorth;
-        if (Math.abs(relativeNodeLocation.Lat) > 5E10-7 || 
-            Math.abs(relativeNodeLocation.Long) > 5E10-7) { // If we have not arrived at target node...
+        if (Math.abs(relativeNodeLocation.Lat) > 5E-7 || 
+            Math.abs(relativeNodeLocation.Long) > 5E-7) { // If we have not arrived at target node...
             if (Math.abs(nodeRelativeTheta) < 1) { // Go forward
                 haveTurned = false;
                 System.out.println("Driving");
@@ -72,6 +73,7 @@ public class PathHandler {
 
             return false;
         } else {
+            System.out.println("location" + location.toString());
             return true;
         }
     }
