@@ -1,0 +1,6048 @@
+[
+    {
+        "messageType": 2,
+        "timestamp": 138.6712646484375,
+        "seqNumber": -30676,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.6715087890625,
+        "seqNumber": -30675,
+        "line": "Yaw From North-0.5864197"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.69140625,
+        "seqNumber": -30674,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17837501136015"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.691650390625,
+        "seqNumber": -30673,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.69189453125,
+        "seqNumber": -30672,
+        "line": "Yaw From North-0.5843445"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.7109375,
+        "seqNumber": -30671,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17520118323515"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.711181640625,
+        "seqNumber": -30670,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.71142578125,
+        "seqNumber": -30669,
+        "line": "Yaw From North-0.58751833"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.73095703125,
+        "seqNumber": -30668,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17796302405546"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.7313232421875,
+        "seqNumber": -30667,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.7315673828125,
+        "seqNumber": -30666,
+        "line": "Yaw From North-0.5847565"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.7508544921875,
+        "seqNumber": -30665,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17878699866483"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.751220703125,
+        "seqNumber": -30664,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.75146484375,
+        "seqNumber": -30663,
+        "line": "Yaw From North-0.5839325"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.7711181640625,
+        "seqNumber": -30662,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.18716407386015"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.7718505859375,
+        "seqNumber": -30661,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.7720947265625,
+        "seqNumber": -30660,
+        "line": "Yaw From North-0.57555544"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.7908935546875,
+        "seqNumber": -30659,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.18695045081327"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.7913818359375,
+        "seqNumber": -30658,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.7916259765625,
+        "seqNumber": -30657,
+        "line": "Yaw From North-0.57576907"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.811279296875,
+        "seqNumber": -30656,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.19065833655546"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.8115234375,
+        "seqNumber": -30655,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.811767578125,
+        "seqNumber": -30654,
+        "line": "Yaw From North-0.5720612"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.8309326171875,
+        "seqNumber": -30653,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.18273902503202"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.831298828125,
+        "seqNumber": -30652,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.8314208984375,
+        "seqNumber": -30651,
+        "line": "Yaw From North-0.5799805"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.8511962890625,
+        "seqNumber": -30650,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17298865882108"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.8514404296875,
+        "seqNumber": -30649,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.8516845703125,
+        "seqNumber": -30648,
+        "line": "Yaw From North-0.58973086"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.8714599609375,
+        "seqNumber": -30647,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17674232093046"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.8717041015625,
+        "seqNumber": -30646,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.8719482421875,
+        "seqNumber": -30645,
+        "line": "Yaw From North-0.5859772"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.8912353515625,
+        "seqNumber": -30644,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.1931607779617"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.8916015625,
+        "seqNumber": -30643,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.8922119140625,
+        "seqNumber": -30642,
+        "line": "Yaw From North-0.56955874"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.9111328125,
+        "seqNumber": -30641,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.16870093909452"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.911376953125,
+        "seqNumber": -30640,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.91162109375,
+        "seqNumber": -30639,
+        "line": "Yaw From North-0.5940186"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.9315185546875,
+        "seqNumber": -30638,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.16377235022733"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.931884765625,
+        "seqNumber": -30637,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.93212890625,
+        "seqNumber": -30636,
+        "line": "Yaw From North-0.59894717"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.951171875,
+        "seqNumber": -30635,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.16845679846952"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.9515380859375,
+        "seqNumber": -30634,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.9517822265625,
+        "seqNumber": -30633,
+        "line": "Yaw From North-0.5942627"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.9710693359375,
+        "seqNumber": -30632,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17535377112577"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.9715576171875,
+        "seqNumber": -30631,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.9718017578125,
+        "seqNumber": -30630,
+        "line": "Yaw From North-0.58736575"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.990966796875,
+        "seqNumber": -30629,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17918372718046"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.991455078125,
+        "seqNumber": -30628,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 138.9915771484375,
+        "seqNumber": -30627,
+        "line": "Yaw From North-0.5835358"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.011474609375,
+        "seqNumber": -30626,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.18772864905546"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.01171875,
+        "seqNumber": -30625,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.0120849609375,
+        "seqNumber": -30624,
+        "line": "Yaw From North-0.57499087"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.0313720703125,
+        "seqNumber": -30623,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.18919349280546"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.03173828125,
+        "seqNumber": -30622,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.031982421875,
+        "seqNumber": -30621,
+        "line": "Yaw From North-0.573526"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.0513916015625,
+        "seqNumber": -30620,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.16970801917265"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.0516357421875,
+        "seqNumber": -30619,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.0521240234375,
+        "seqNumber": -30618,
+        "line": "Yaw From North-0.5930115"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.0712890625,
+        "seqNumber": -30617,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.16412330237577"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.0716552734375,
+        "seqNumber": -30616,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.07177734375,
+        "seqNumber": -30615,
+        "line": "Yaw From North-0.5985962"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.0911865234375,
+        "seqNumber": -30614,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.1862027701492"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.091552734375,
+        "seqNumber": -30613,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.091796875,
+        "seqNumber": -30612,
+        "line": "Yaw From North-0.57651675"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.111328125,
+        "seqNumber": -30611,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.19436622229765"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.111572265625,
+        "seqNumber": -30610,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.1123046875,
+        "seqNumber": -30609,
+        "line": "Yaw From North-0.5683533"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.1314697265625,
+        "seqNumber": -30608,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.18041968909452"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.1317138671875,
+        "seqNumber": -30607,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.1319580078125,
+        "seqNumber": -30606,
+        "line": "Yaw From North-0.5822998"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.1514892578125,
+        "seqNumber": -30605,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17456031409452"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.1522216796875,
+        "seqNumber": -30604,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.1524658203125,
+        "seqNumber": -30603,
+        "line": "Yaw From North-0.5881592"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.1715087890625,
+        "seqNumber": -30602,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.1724088248367"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.1717529296875,
+        "seqNumber": -30601,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.171875,
+        "seqNumber": -30600,
+        "line": "Yaw From North-0.5903107"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.1920166015625,
+        "seqNumber": -30599,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.18206763831327"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.1923828125,
+        "seqNumber": -30598,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.1925048828125,
+        "seqNumber": -30597,
+        "line": "Yaw From North-0.5806519"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.21142578125,
+        "seqNumber": -30596,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17182899085233"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.211669921875,
+        "seqNumber": -30595,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.2117919921875,
+        "seqNumber": -30594,
+        "line": "Yaw From North-0.5908905"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.2314453125,
+        "seqNumber": -30593,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.16075110999296"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.231689453125,
+        "seqNumber": -30592,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.23193359375,
+        "seqNumber": -30591,
+        "line": "Yaw From North-0.6019684"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.25146484375,
+        "seqNumber": -30590,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.16477943030546"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.251708984375,
+        "seqNumber": -30589,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.251953125,
+        "seqNumber": -30588,
+        "line": "Yaw From North-0.5979401"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.2713623046875,
+        "seqNumber": -30587,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.18566871253202"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.2716064453125,
+        "seqNumber": -30586,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.2718505859375,
+        "seqNumber": -30585,
+        "line": "Yaw From North-0.5770508"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.291748046875,
+        "seqNumber": -30584,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.18200660315702"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.29248046875,
+        "seqNumber": -30583,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.292724609375,
+        "seqNumber": -30582,
+        "line": "Yaw From North-0.5807129"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.310791015625,
+        "seqNumber": -30581,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17419410315702"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.3111572265625,
+        "seqNumber": -30580,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.3114013671875,
+        "seqNumber": -30579,
+        "line": "Yaw From North-0.5885254"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.3310546875,
+        "seqNumber": -30578,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.18409705725858"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.3314208984375,
+        "seqNumber": -30577,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.3316650390625,
+        "seqNumber": -30576,
+        "line": "Yaw From North-0.57862246"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.351318359375,
+        "seqNumber": -30575,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.18565345374296"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.3516845703125,
+        "seqNumber": -30574,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.3519287109375,
+        "seqNumber": -30573,
+        "line": "Yaw From North-0.57706606"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.37109375,
+        "seqNumber": -30572,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.1812436637039"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.3717041015625,
+        "seqNumber": -30571,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.372314453125,
+        "seqNumber": -30570,
+        "line": "Yaw From North-0.58147585"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.3909912109375,
+        "seqNumber": -30569,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17930579749296"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.391357421875,
+        "seqNumber": -30568,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.391845703125,
+        "seqNumber": -30567,
+        "line": "Yaw From North-0.5834137"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.4112548828125,
+        "seqNumber": -30566,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17022681800077"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.4117431640625,
+        "seqNumber": -30565,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.412841796875,
+        "seqNumber": -30564,
+        "line": "Yaw From North-0.5924927"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.4381103515625,
+        "seqNumber": -30563,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17857337561796"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.4384765625,
+        "seqNumber": -30562,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.438720703125,
+        "seqNumber": -30561,
+        "line": "Yaw From North-0.58414614"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.4512939453125,
+        "seqNumber": -30560,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17161536780546"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.4520263671875,
+        "seqNumber": -30559,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.4522705078125,
+        "seqNumber": -30558,
+        "line": "Yaw From North-0.59110415"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.4716796875,
+        "seqNumber": -30557,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.16966224280546"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.4720458984375,
+        "seqNumber": -30556,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.4722900390625,
+        "seqNumber": -30555,
+        "line": "Yaw From North-0.5930573"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.49267578125,
+        "seqNumber": -30554,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17571998206327"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.4930419921875,
+        "seqNumber": -30553,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.493896484375,
+        "seqNumber": -30552,
+        "line": "Yaw From North-0.58699954"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.511474609375,
+        "seqNumber": -30551,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17903113928983"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.514892578125,
+        "seqNumber": -30550,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.51513671875,
+        "seqNumber": -30549,
+        "line": "Yaw From North-0.5836884"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.53076171875,
+        "seqNumber": -30548,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.1772153433914"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.531005859375,
+        "seqNumber": -30547,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.53125,
+        "seqNumber": -30546,
+        "line": "Yaw From North-0.5855042"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.5506591796875,
+        "seqNumber": -30545,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17773414221952"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.551025390625,
+        "seqNumber": -30544,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.55126953125,
+        "seqNumber": -30543,
+        "line": "Yaw From North-0.5849854"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.571044921875,
+        "seqNumber": -30542,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17312598792265"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.5714111328125,
+        "seqNumber": -30541,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.571533203125,
+        "seqNumber": -30540,
+        "line": "Yaw From North-0.5895935"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.5906982421875,
+        "seqNumber": -30539,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17407203284452"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.591064453125,
+        "seqNumber": -30538,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.59130859375,
+        "seqNumber": -30537,
+        "line": "Yaw From North-0.5886475"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.6107177734375,
+        "seqNumber": -30536,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17491126624296"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.611083984375,
+        "seqNumber": -30535,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.611328125,
+        "seqNumber": -30534,
+        "line": "Yaw From North-0.58780825"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.6307373046875,
+        "seqNumber": -30533,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.1753842887039"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.6309814453125,
+        "seqNumber": -30532,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.6312255859375,
+        "seqNumber": -30531,
+        "line": "Yaw From North-0.5873352"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.6507568359375,
+        "seqNumber": -30530,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17190528479765"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.6510009765625,
+        "seqNumber": -30529,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.6512451171875,
+        "seqNumber": -30528,
+        "line": "Yaw From North-0.59081423"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.6715087890625,
+        "seqNumber": -30527,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17756629553983"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.6717529296875,
+        "seqNumber": -30526,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.672119140625,
+        "seqNumber": -30525,
+        "line": "Yaw From North-0.5851532"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.6910400390625,
+        "seqNumber": -30524,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.18460059729765"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.69140625,
+        "seqNumber": -30523,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.6920166015625,
+        "seqNumber": -30522,
+        "line": "Yaw From North-0.5781189"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.710693359375,
+        "seqNumber": -30521,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.16677833167265"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.7110595703125,
+        "seqNumber": -30520,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.7113037109375,
+        "seqNumber": -30519,
+        "line": "Yaw From North-0.5959412"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.7310791015625,
+        "seqNumber": -30518,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.1672818717117"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.7313232421875,
+        "seqNumber": -30517,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.7315673828125,
+        "seqNumber": -30516,
+        "line": "Yaw From North-0.59543765"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.750732421875,
+        "seqNumber": -30515,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17372108069608"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.7510986328125,
+        "seqNumber": -30514,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.7513427734375,
+        "seqNumber": -30513,
+        "line": "Yaw From North-0.58899844"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.770751953125,
+        "seqNumber": -30512,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17762733069608"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.7720947265625,
+        "seqNumber": -30511,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.7723388671875,
+        "seqNumber": -30510,
+        "line": "Yaw From North-0.5850922"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.7906494140625,
+        "seqNumber": -30509,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.16261268225858"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.791015625,
+        "seqNumber": -30508,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.791259765625,
+        "seqNumber": -30507,
+        "line": "Yaw From North-0.60010684"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.8111572265625,
+        "seqNumber": -30506,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.15090919104765"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.8115234375,
+        "seqNumber": -30505,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.811767578125,
+        "seqNumber": -30504,
+        "line": "Yaw From North-0.6118103"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.8306884765625,
+        "seqNumber": -30503,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.14697242346952"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.8310546875,
+        "seqNumber": -30502,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.831298828125,
+        "seqNumber": -30501,
+        "line": "Yaw From North-0.6157471"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.850830078125,
+        "seqNumber": -30500,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.15635657874296"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.8515625,
+        "seqNumber": -30499,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.8516845703125,
+        "seqNumber": -30498,
+        "line": "Yaw From North-0.60636294"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.8707275390625,
+        "seqNumber": -30497,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.15957618323515"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.8709716796875,
+        "seqNumber": -30496,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.8712158203125,
+        "seqNumber": -30495,
+        "line": "Yaw From North-0.60314333"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.8909912109375,
+        "seqNumber": -30494,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.15565467444608"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.8912353515625,
+        "seqNumber": -30493,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.8914794921875,
+        "seqNumber": -30492,
+        "line": "Yaw From North-0.60706484"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.9107666015625,
+        "seqNumber": -30491,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.15391517249296"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.9110107421875,
+        "seqNumber": -30490,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.9112548828125,
+        "seqNumber": -30489,
+        "line": "Yaw From North-0.60880435"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.930908203125,
+        "seqNumber": -30488,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.1573178824539"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.93115234375,
+        "seqNumber": -30487,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.931396484375,
+        "seqNumber": -30486,
+        "line": "Yaw From North-0.60540164"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.9510498046875,
+        "seqNumber": -30485,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.1623990592117"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.9515380859375,
+        "seqNumber": -30484,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.951904296875,
+        "seqNumber": -30483,
+        "line": "Yaw From North-0.60032046"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.9708251953125,
+        "seqNumber": -30482,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.1663510855789"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.9710693359375,
+        "seqNumber": -30481,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.9713134765625,
+        "seqNumber": -30480,
+        "line": "Yaw From North-0.59636843"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.99072265625,
+        "seqNumber": -30479,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.16998267737577"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.9910888671875,
+        "seqNumber": -30478,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 139.9912109375,
+        "seqNumber": -30477,
+        "line": "Yaw From North-0.59273684"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.0107421875,
+        "seqNumber": -30476,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.16954017249296"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.010986328125,
+        "seqNumber": -30475,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.01123046875,
+        "seqNumber": -30474,
+        "line": "Yaw From North-0.59317935"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.0311279296875,
+        "seqNumber": -30473,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.3151829776398"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.031494140625,
+        "seqNumber": -30472,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.03173828125,
+        "seqNumber": -30471,
+        "line": "Yaw From North-0.5980927"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.05078125,
+        "seqNumber": -30470,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.31710558506168"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.0511474609375,
+        "seqNumber": -30469,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.0513916015625,
+        "seqNumber": -30468,
+        "line": "Yaw From North-0.59617007"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.0711669921875,
+        "seqNumber": -30467,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.31829577060856"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.071533203125,
+        "seqNumber": -30466,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.07177734375,
+        "seqNumber": -30465,
+        "line": "Yaw From North-0.5949799"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.0911865234375,
+        "seqNumber": -30464,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.31203966709293"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.0914306640625,
+        "seqNumber": -30463,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.0916748046875,
+        "seqNumber": -30462,
+        "line": "Yaw From North-0.601236"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.11083984375,
+        "seqNumber": -30461,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.30524950596012"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.1112060546875,
+        "seqNumber": -30460,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.1114501953125,
+        "seqNumber": -30459,
+        "line": "Yaw From North-0.60802615"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.130859375,
+        "seqNumber": -30458,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.31161242099918"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.131103515625,
+        "seqNumber": -30457,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.13134765625,
+        "seqNumber": -30456,
+        "line": "Yaw From North-0.60166323"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.151123046875,
+        "seqNumber": -30455,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.30897265049137"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.1513671875,
+        "seqNumber": -30454,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.1517333984375,
+        "seqNumber": -30453,
+        "line": "Yaw From North-0.604303"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.171142578125,
+        "seqNumber": -30452,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.31001024814762"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.17138671875,
+        "seqNumber": -30451,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.1717529296875,
+        "seqNumber": -30450,
+        "line": "Yaw From North-0.6032654"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.191162109375,
+        "seqNumber": -30449,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.30964403721012"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.1915283203125,
+        "seqNumber": -30448,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.1917724609375,
+        "seqNumber": -30447,
+        "line": "Yaw From North-0.6053864"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.2113037109375,
+        "seqNumber": -30446,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.31263475986637"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.211669921875,
+        "seqNumber": -30445,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.2119140625,
+        "seqNumber": -30444,
+        "line": "Yaw From North-0.6006409"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.231201171875,
+        "seqNumber": -30443,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.31747179599918"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.2315673828125,
+        "seqNumber": -30442,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.231689453125,
+        "seqNumber": -30441,
+        "line": "Yaw From North-0.59580386"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.250732421875,
+        "seqNumber": -30440,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.31521349521793"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.2510986328125,
+        "seqNumber": -30439,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.251220703125,
+        "seqNumber": -30438,
+        "line": "Yaw From North-0.59806216"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.2708740234375,
+        "seqNumber": -30437,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.3176243838898"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.271484375,
+        "seqNumber": -30436,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.271728515625,
+        "seqNumber": -30435,
+        "line": "Yaw From North-0.59565127"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.2908935546875,
+        "seqNumber": -30434,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.32093554111637"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.291259765625,
+        "seqNumber": -30433,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.2923583984375,
+        "seqNumber": -30432,
+        "line": "Yaw From North-0.5923401"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.3109130859375,
+        "seqNumber": -30431,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.32261400791324"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.311279296875,
+        "seqNumber": -30430,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.312255859375,
+        "seqNumber": -30429,
+        "line": "Yaw From North-0.59066164"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.3306884765625,
+        "seqNumber": -30428,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.32587938877262"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.3309326171875,
+        "seqNumber": -30427,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.331787109375,
+        "seqNumber": -30426,
+        "line": "Yaw From North-0.58739626"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.3507080078125,
+        "seqNumber": -30425,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.32540636631168"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.3509521484375,
+        "seqNumber": -30424,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.3515625,
+        "seqNumber": -30423,
+        "line": "Yaw From North-0.5878693"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.3707275390625,
+        "seqNumber": -30422,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.3253148135773"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.3712158203125,
+        "seqNumber": -30421,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.3714599609375,
+        "seqNumber": -30420,
+        "line": "Yaw From North-0.58796084"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.3907470703125,
+        "seqNumber": -30419,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.32209520908512"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.39111328125,
+        "seqNumber": -30418,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.3917236328125,
+        "seqNumber": -30417,
+        "line": "Yaw From North-0.59118044"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.41064453125,
+        "seqNumber": -30416,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.32618456455387"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.4110107421875,
+        "seqNumber": -30415,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.4112548828125,
+        "seqNumber": -30414,
+        "line": "Yaw From North-0.5870911"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.4306640625,
+        "seqNumber": -30413,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.32497912021793"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.430908203125,
+        "seqNumber": -30412,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.4320068359375,
+        "seqNumber": -30411,
+        "line": "Yaw From North-0.58829653"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.4508056640625,
+        "seqNumber": -30410,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.32171373935856"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.451171875,
+        "seqNumber": -30409,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.451904296875,
+        "seqNumber": -30408,
+        "line": "Yaw From North-0.5915619"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.470703125,
+        "seqNumber": -30407,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.3192570743195"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.470947265625,
+        "seqNumber": -30406,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.4720458984375,
+        "seqNumber": -30405,
+        "line": "Yaw From North-0.5940186"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.4908447265625,
+        "seqNumber": -30404,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.31886034580387"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.4913330078125,
+        "seqNumber": -30403,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.4921875,
+        "seqNumber": -30402,
+        "line": "Yaw From North-0.5944153"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.5107421875,
+        "seqNumber": -30401,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.31782274814762"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.510986328125,
+        "seqNumber": -30400,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.5118408203125,
+        "seqNumber": -30399,
+        "line": "Yaw From North-0.5954529"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.53076171875,
+        "seqNumber": -30398,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.3176243838898"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.531005859375,
+        "seqNumber": -30397,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.53125,
+        "seqNumber": -30396,
+        "line": "Yaw From North-0.59565127"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.5506591796875,
+        "seqNumber": -30395,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.31429796787418"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.551025390625,
+        "seqNumber": -30394,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.55126953125,
+        "seqNumber": -30393,
+        "line": "Yaw From North-0.5989777"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.5706787109375,
+        "seqNumber": -30392,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.31507616611637"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.5709228515625,
+        "seqNumber": -30391,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.5711669921875,
+        "seqNumber": -30390,
+        "line": "Yaw From North-0.5981995"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.5909423828125,
+        "seqNumber": -30389,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.31568651767887"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.5911865234375,
+        "seqNumber": -30388,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.5914306640625,
+        "seqNumber": -30387,
+        "line": "Yaw From North-0.59758914"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.611328125,
+        "seqNumber": -30386,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.31588488193668"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.6116943359375,
+        "seqNumber": -30385,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.612548828125,
+        "seqNumber": -30384,
+        "line": "Yaw From North-0.59076846"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.630859375,
+        "seqNumber": -30383,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.32220202060856"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.6312255859375,
+        "seqNumber": -30382,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.6318359375,
+        "seqNumber": -30381,
+        "line": "Yaw From North-0.59107363"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.6507568359375,
+        "seqNumber": -30380,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.322064691507"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.6510009765625,
+        "seqNumber": -30379,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.65185546875,
+        "seqNumber": -30378,
+        "line": "Yaw From North-0.59121096"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.6707763671875,
+        "seqNumber": -30377,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.32465868564762"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.6710205078125,
+        "seqNumber": -30376,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.6717529296875,
+        "seqNumber": -30375,
+        "line": "Yaw From North-0.58861697"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.6907958984375,
+        "seqNumber": -30374,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.32571154209293"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.691162109375,
+        "seqNumber": -30373,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.6915283203125,
+        "seqNumber": -30372,
+        "line": "Yaw From North-0.5875641"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.7108154296875,
+        "seqNumber": -30371,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.32955675693668"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.7110595703125,
+        "seqNumber": -30370,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.71533203125,
+        "seqNumber": -30369,
+        "line": "Yaw From North-0.5888916"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.7308349609375,
+        "seqNumber": -30368,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.32021837803043"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.731201171875,
+        "seqNumber": -30367,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.732666015625,
+        "seqNumber": -30366,
+        "line": "Yaw From North-0.5930573"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.750732421875,
+        "seqNumber": -30365,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.3190892276398"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.7509765625,
+        "seqNumber": -30364,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.751708984375,
+        "seqNumber": -30363,
+        "line": "Yaw From North-0.5941864"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.770751953125,
+        "seqNumber": -30362,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.32471972080387"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.77099609375,
+        "seqNumber": -30361,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.7718505859375,
+        "seqNumber": -30360,
+        "line": "Yaw From North-0.58855593"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.790771484375,
+        "seqNumber": -30359,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.32430773349918"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.7911376953125,
+        "seqNumber": -30358,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.79150390625,
+        "seqNumber": -30357,
+        "line": "Yaw From North-0.5889679"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.8109130859375,
+        "seqNumber": -30356,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.32331591221012"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.8118896484375,
+        "seqNumber": -30355,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.8121337890625,
+        "seqNumber": -30354,
+        "line": "Yaw From North-0.58995974"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.8309326171875,
+        "seqNumber": -30353,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.32327013584293"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.831298828125,
+        "seqNumber": -30352,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.83154296875,
+        "seqNumber": -30351,
+        "line": "Yaw From North-0.5900055"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.8509521484375,
+        "seqNumber": -30350,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.3249486026398"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.851318359375,
+        "seqNumber": -30349,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.8514404296875,
+        "seqNumber": -30348,
+        "line": "Yaw From North-0.58832705"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.8709716796875,
+        "seqNumber": -30347,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.32497912021793"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.871337890625,
+        "seqNumber": -30346,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.87158203125,
+        "seqNumber": -30345,
+        "line": "Yaw From North-0.58829653"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.8912353515625,
+        "seqNumber": -30344,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.32418566318668"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.8914794921875,
+        "seqNumber": -30343,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.8917236328125,
+        "seqNumber": -30342,
+        "line": "Yaw From North-0.58909"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.9107666015625,
+        "seqNumber": -30341,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.32406359287418"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.9110107421875,
+        "seqNumber": -30340,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.9112548828125,
+        "seqNumber": -30339,
+        "line": "Yaw From North-0.58921206"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.9306640625,
+        "seqNumber": -30338,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.32488756748356"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.9310302734375,
+        "seqNumber": -30337,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.9312744140625,
+        "seqNumber": -30336,
+        "line": "Yaw From North-0.5883881"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.95068359375,
+        "seqNumber": -30335,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.32407885166324"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.9510498046875,
+        "seqNumber": -30334,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.9512939453125,
+        "seqNumber": -30333,
+        "line": "Yaw From North-0.5891968"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.9710693359375,
+        "seqNumber": -30332,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.32160692783512"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.9713134765625,
+        "seqNumber": -30331,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.9716796875,
+        "seqNumber": -30330,
+        "line": "Yaw From North-0.5916687"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.9910888671875,
+        "seqNumber": -30329,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.32200365635074"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.991455078125,
+        "seqNumber": -30328,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 140.99169921875,
+        "seqNumber": -30327,
+        "line": "Yaw From North-0.591272"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.0107421875,
+        "seqNumber": -30326,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.32778673740543"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.0111083984375,
+        "seqNumber": -30325,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.01123046875,
+        "seqNumber": -30324,
+        "line": "Yaw From North-0.5854889"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.03076171875,
+        "seqNumber": -30323,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6699999999379997E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.32197313877262"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.0311279296875,
+        "seqNumber": -30322,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.03125,
+        "seqNumber": -30321,
+        "line": "Yaw From North-0.5913025"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.05126953125,
+        "seqNumber": -30320,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17280555335233"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.051513671875,
+        "seqNumber": -30319,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.0517578125,
+        "seqNumber": -30318,
+        "line": "Yaw From North-0.58991396"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.0711669921875,
+        "seqNumber": -30317,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17390418616483"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.0714111328125,
+        "seqNumber": -30316,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.0716552734375,
+        "seqNumber": -30315,
+        "line": "Yaw From North-0.58881533"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.09130859375,
+        "seqNumber": -30314,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17474341956327"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.0916748046875,
+        "seqNumber": -30313,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.0919189453125,
+        "seqNumber": -30312,
+        "line": "Yaw From North-0.5879761"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.1112060546875,
+        "seqNumber": -30311,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17153907386015"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.1114501953125,
+        "seqNumber": -30310,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.1116943359375,
+        "seqNumber": -30309,
+        "line": "Yaw From North-0.59118044"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.131103515625,
+        "seqNumber": -30308,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.16760230628202"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.1314697265625,
+        "seqNumber": -30307,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.1317138671875,
+        "seqNumber": -30306,
+        "line": "Yaw From North-0.5937439"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.1514892578125,
+        "seqNumber": -30305,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.1713559683914"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.1517333984375,
+        "seqNumber": -30304,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.1519775390625,
+        "seqNumber": -30303,
+        "line": "Yaw From North-0.59136355"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.1707763671875,
+        "seqNumber": -30302,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.16926551428983"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.171142578125,
+        "seqNumber": -30301,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.17138671875,
+        "seqNumber": -30300,
+        "line": "Yaw From North-0.593454"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.191162109375,
+        "seqNumber": -30299,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.1712338980789"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.1915283203125,
+        "seqNumber": -30298,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.1917724609375,
+        "seqNumber": -30297,
+        "line": "Yaw From North-0.5914856"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.2110595703125,
+        "seqNumber": -30296,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17410255042265"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.21142578125,
+        "seqNumber": -30295,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.211669921875,
+        "seqNumber": -30294,
+        "line": "Yaw From North-0.58861697"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.231201171875,
+        "seqNumber": -30293,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17205787268827"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.2315673828125,
+        "seqNumber": -30292,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.231689453125,
+        "seqNumber": -30291,
+        "line": "Yaw From North-0.59066164"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.2510986328125,
+        "seqNumber": -30290,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17333961096952"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.2513427734375,
+        "seqNumber": -30289,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.2515869140625,
+        "seqNumber": -30288,
+        "line": "Yaw From North-0.5893799"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.271240234375,
+        "seqNumber": -30287,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17230201331327"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.271484375,
+        "seqNumber": -30286,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.271728515625,
+        "seqNumber": -30285,
+        "line": "Yaw From North-0.5904175"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.2911376953125,
+        "seqNumber": -30284,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.1739957388992"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.29150390625,
+        "seqNumber": -30283,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.291748046875,
+        "seqNumber": -30282,
+        "line": "Yaw From North-0.5887238"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.310791015625,
+        "seqNumber": -30281,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.16815162268827"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.31103515625,
+        "seqNumber": -30280,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.311279296875,
+        "seqNumber": -30279,
+        "line": "Yaw From North-0.5945679"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.330810546875,
+        "seqNumber": -30278,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17102027503202"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.3314208984375,
+        "seqNumber": -30277,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.3316650390625,
+        "seqNumber": -30276,
+        "line": "Yaw From North-0.59169924"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.3507080078125,
+        "seqNumber": -30275,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17213416663358"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.3509521484375,
+        "seqNumber": -30274,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.3511962890625,
+        "seqNumber": -30273,
+        "line": "Yaw From North-0.59058535"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.3707275390625,
+        "seqNumber": -30272,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17303443518827"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.3709716796875,
+        "seqNumber": -30271,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.3714599609375,
+        "seqNumber": -30270,
+        "line": "Yaw From North-0.5896851"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.3907470703125,
+        "seqNumber": -30269,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17422462073515"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.3909912109375,
+        "seqNumber": -30268,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.3912353515625,
+        "seqNumber": -30267,
+        "line": "Yaw From North-0.5884949"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.4107666015625,
+        "seqNumber": -30266,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17732215491483"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.4110107421875,
+        "seqNumber": -30265,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.4112548828125,
+        "seqNumber": -30264,
+        "line": "Yaw From North-0.58539736"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.43115234375,
+        "seqNumber": -30263,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17446876136015"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.4315185546875,
+        "seqNumber": -30262,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.4317626953125,
+        "seqNumber": -30261,
+        "line": "Yaw From North-0.58825076"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.451171875,
+        "seqNumber": -30260,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17504859534452"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.4515380859375,
+        "seqNumber": -30259,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.45166015625,
+        "seqNumber": -30258,
+        "line": "Yaw From North-0.5876709"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.470703125,
+        "seqNumber": -30257,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17492652503202"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.4713134765625,
+        "seqNumber": -30256,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.4718017578125,
+        "seqNumber": -30255,
+        "line": "Yaw From North-0.587793"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.49072265625,
+        "seqNumber": -30254,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17828345862577"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.4910888671875,
+        "seqNumber": -30253,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.4913330078125,
+        "seqNumber": -30252,
+        "line": "Yaw From North-0.58443606"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.510986328125,
+        "seqNumber": -30251,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17517066565702"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.5113525390625,
+        "seqNumber": -30250,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.5115966796875,
+        "seqNumber": -30249,
+        "line": "Yaw From North-0.58754885"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.53076171875,
+        "seqNumber": -30248,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17793250647733"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.531005859375,
+        "seqNumber": -30247,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.53125,
+        "seqNumber": -30246,
+        "line": "Yaw From North-0.584787"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.55078125,
+        "seqNumber": -30245,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17507911292265"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.55126953125,
+        "seqNumber": -30244,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.551513671875,
+        "seqNumber": -30243,
+        "line": "Yaw From North-0.5876404"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.571044921875,
+        "seqNumber": -30242,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17565894690702"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.5714111328125,
+        "seqNumber": -30241,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.5716552734375,
+        "seqNumber": -30240,
+        "line": "Yaw From North-0.5870606"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.591064453125,
+        "seqNumber": -30239,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.1744840201492"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.5914306640625,
+        "seqNumber": -30238,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.591552734375,
+        "seqNumber": -30237,
+        "line": "Yaw From North-0.5882355"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.6107177734375,
+        "seqNumber": -30236,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17597938147733"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.6109619140625,
+        "seqNumber": -30235,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.6112060546875,
+        "seqNumber": -30234,
+        "line": "Yaw From North-0.58674014"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.6307373046875,
+        "seqNumber": -30233,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17565894690702"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.631103515625,
+        "seqNumber": -30232,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.6312255859375,
+        "seqNumber": -30231,
+        "line": "Yaw From North-0.5870606"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.6510009765625,
+        "seqNumber": -30230,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17626929846952"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.6512451171875,
+        "seqNumber": -30229,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.6514892578125,
+        "seqNumber": -30228,
+        "line": "Yaw From North-0.5864502"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.670654296875,
+        "seqNumber": -30227,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17614722815702"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.6710205078125,
+        "seqNumber": -30226,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.6712646484375,
+        "seqNumber": -30225,
+        "line": "Yaw From North-0.5865723"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.69091796875,
+        "seqNumber": -30224,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17805457678983"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.6912841796875,
+        "seqNumber": -30223,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.69140625,
+        "seqNumber": -30222,
+        "line": "Yaw From North-0.58466494"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.710693359375,
+        "seqNumber": -30221,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.1745297965164"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.7109375,
+        "seqNumber": -30220,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.711181640625,
+        "seqNumber": -30219,
+        "line": "Yaw From North-0.5881897"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.730712890625,
+        "seqNumber": -30218,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17434669104765"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.73095703125,
+        "seqNumber": -30217,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.731201171875,
+        "seqNumber": -30216,
+        "line": "Yaw From North-0.5883728"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.7506103515625,
+        "seqNumber": -30215,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17433143225858"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.7509765625,
+        "seqNumber": -30214,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.75146484375,
+        "seqNumber": -30213,
+        "line": "Yaw From North-0.5883881"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.770751953125,
+        "seqNumber": -30212,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.18188453284452"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.77099609375,
+        "seqNumber": -30211,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.771240234375,
+        "seqNumber": -30210,
+        "line": "Yaw From North-0.580835"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.790771484375,
+        "seqNumber": -30209,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17634559241483"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.791259765625,
+        "seqNumber": -30208,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.79150390625,
+        "seqNumber": -30207,
+        "line": "Yaw From North-0.5863739"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.8106689453125,
+        "seqNumber": -30206,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17681861487577"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.81103515625,
+        "seqNumber": -30205,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.811279296875,
+        "seqNumber": -30204,
+        "line": "Yaw From North-0.5859009"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.8306884765625,
+        "seqNumber": -30203,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.1824185904617"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.8310546875,
+        "seqNumber": -30202,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.831298828125,
+        "seqNumber": -30201,
+        "line": "Yaw From North-0.5803009"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.8507080078125,
+        "seqNumber": -30200,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17903113928983"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.8516845703125,
+        "seqNumber": -30199,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.8519287109375,
+        "seqNumber": -30198,
+        "line": "Yaw From North-0.5836884"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.870849609375,
+        "seqNumber": -30197,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17695594397733"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.871337890625,
+        "seqNumber": -30196,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.87158203125,
+        "seqNumber": -30195,
+        "line": "Yaw From North-0.5857636"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.89111328125,
+        "seqNumber": -30194,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.1745297965164"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.891357421875,
+        "seqNumber": -30193,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.8916015625,
+        "seqNumber": -30192,
+        "line": "Yaw From North-0.5881897"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.9110107421875,
+        "seqNumber": -30191,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17944312659452"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.9112548828125,
+        "seqNumber": -30190,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.9114990234375,
+        "seqNumber": -30189,
+        "line": "Yaw From North-0.5832764"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.930908203125,
+        "seqNumber": -30188,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.1779477652664"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.9312744140625,
+        "seqNumber": -30187,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.9315185546875,
+        "seqNumber": -30186,
+        "line": "Yaw From North-0.58477175"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.950927734375,
+        "seqNumber": -30185,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.1792447623367"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.9512939453125,
+        "seqNumber": -30184,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.95263671875,
+        "seqNumber": -30183,
+        "line": "Yaw From North-0.58347476"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.970703125,
+        "seqNumber": -30182,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17596412268827"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.970947265625,
+        "seqNumber": -30181,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.971923828125,
+        "seqNumber": -30180,
+        "line": "Yaw From North-0.5867554"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.99072265625,
+        "seqNumber": -30179,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.18025184241483"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.9910888671875,
+        "seqNumber": -30178,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 141.9918212890625,
+        "seqNumber": -30177,
+        "line": "Yaw From North-0.5824677"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.0108642578125,
+        "seqNumber": -30176,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17930579749296"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.01123046875,
+        "seqNumber": -30175,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.011962890625,
+        "seqNumber": -30174,
+        "line": "Yaw From North-0.5834137"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.03076171875,
+        "seqNumber": -30173,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.1803891715164"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.031005859375,
+        "seqNumber": -30172,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.03125,
+        "seqNumber": -30171,
+        "line": "Yaw From North-0.58233035"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.05078125,
+        "seqNumber": -30170,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.800000008411189E-6, Node relavtive Yaw: -165.17597938147733"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.0511474609375,
+        "seqNumber": -30169,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.0513916015625,
+        "seqNumber": -30168,
+        "line": "Yaw From North-0.58674014"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.0709228515625,
+        "seqNumber": -30167,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.3754752296374"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.0711669921875,
+        "seqNumber": -30166,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.071533203125,
+        "seqNumber": -30165,
+        "line": "Yaw From North-0.5882813"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.0908203125,
+        "seqNumber": -30164,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.37382728041865"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.0911865234375,
+        "seqNumber": -30163,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.091552734375,
+        "seqNumber": -30162,
+        "line": "Yaw From North-0.5899292"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.11083984375,
+        "seqNumber": -30161,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.37558204116084"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.1112060546875,
+        "seqNumber": -30160,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.112060546875,
+        "seqNumber": -30159,
+        "line": "Yaw From North-0.58817446"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.1309814453125,
+        "seqNumber": -30158,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.37819129409053"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.13134765625,
+        "seqNumber": -30157,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.1317138671875,
+        "seqNumber": -30156,
+        "line": "Yaw From North-0.5855652"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.15087890625,
+        "seqNumber": -30155,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.37933570327021"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.1512451171875,
+        "seqNumber": -30154,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.1522216796875,
+        "seqNumber": -30153,
+        "line": "Yaw From North-0.5844208"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.1707763671875,
+        "seqNumber": -30152,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.37932044448115"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.171142578125,
+        "seqNumber": -30151,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.1715087890625,
+        "seqNumber": -30150,
+        "line": "Yaw From North-0.58443606"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.1907958984375,
+        "seqNumber": -30149,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.37457496108271"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.1910400390625,
+        "seqNumber": -30148,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.1917724609375,
+        "seqNumber": -30147,
+        "line": "Yaw From North-0.58918154"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.210693359375,
+        "seqNumber": -30146,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.37524634780146"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.2110595703125,
+        "seqNumber": -30145,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.211669921875,
+        "seqNumber": -30144,
+        "line": "Yaw From North-0.58851016"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.2308349609375,
+        "seqNumber": -30143,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.37538367690303"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.2313232421875,
+        "seqNumber": -30142,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.2315673828125,
+        "seqNumber": -30141,
+        "line": "Yaw From North-0.5883728"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.250732421875,
+        "seqNumber": -30140,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.37509375991084"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.2513427734375,
+        "seqNumber": -30139,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.2515869140625,
+        "seqNumber": -30138,
+        "line": "Yaw From North-0.58866274"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.271240234375,
+        "seqNumber": -30137,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.37880164565303"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.271484375,
+        "seqNumber": -30136,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.27197265625,
+        "seqNumber": -30135,
+        "line": "Yaw From North-0.58495486"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.290771484375,
+        "seqNumber": -30134,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.3749106544421"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.291015625,
+        "seqNumber": -30133,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.291748046875,
+        "seqNumber": -30132,
+        "line": "Yaw From North-0.58884585"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.3109130859375,
+        "seqNumber": -30131,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.37924415053584"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.3111572265625,
+        "seqNumber": -30130,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.3118896484375,
+        "seqNumber": -30129,
+        "line": "Yaw From North-0.58451235"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.3310546875,
+        "seqNumber": -30128,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.3790152686999"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.3314208984375,
+        "seqNumber": -30127,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.332275390625,
+        "seqNumber": -30126,
+        "line": "Yaw From North-0.58474123"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.350830078125,
+        "seqNumber": -30125,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.38009864272334"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.351318359375,
+        "seqNumber": -30124,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.3516845703125,
+        "seqNumber": -30123,
+        "line": "Yaw From North-0.58365786"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.3707275390625,
+        "seqNumber": -30122,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.37890845717646"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.37109375,
+        "seqNumber": -30121,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.3719482421875,
+        "seqNumber": -30120,
+        "line": "Yaw From North-0.5826355"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.3907470703125,
+        "seqNumber": -30119,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.38234168471553"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.3909912109375,
+        "seqNumber": -30118,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.3917236328125,
+        "seqNumber": -30117,
+        "line": "Yaw From North-0.5814148"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.41064453125,
+        "seqNumber": -30116,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.37823707045771"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.4110107421875,
+        "seqNumber": -30115,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.4117431640625,
+        "seqNumber": -30114,
+        "line": "Yaw From North-0.58551943"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.4306640625,
+        "seqNumber": -30113,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.37741309584834"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.4310302734375,
+        "seqNumber": -30112,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.4317626953125,
+        "seqNumber": -30111,
+        "line": "Yaw From North-0.5863434"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.450927734375,
+        "seqNumber": -30110,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.38217383803584"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.4512939453125,
+        "seqNumber": -30109,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.4515380859375,
+        "seqNumber": -30108,
+        "line": "Yaw From North-0.58158267"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.470703125,
+        "seqNumber": -30107,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.3824332374499"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.4716796875,
+        "seqNumber": -30106,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.471923828125,
+        "seqNumber": -30105,
+        "line": "Yaw From North-0.58132327"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.4908447265625,
+        "seqNumber": -30104,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.3813346046374"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.4913330078125,
+        "seqNumber": -30103,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.4920654296875,
+        "seqNumber": -30102,
+        "line": "Yaw From North-0.5824219"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.5107421875,
+        "seqNumber": -30101,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.38112098159053"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.510986328125,
+        "seqNumber": -30100,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.51123046875,
+        "seqNumber": -30099,
+        "line": "Yaw From North-0.5826355"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.5306396484375,
+        "seqNumber": -30098,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.37776404799678"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.531005859375,
+        "seqNumber": -30097,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.53125,
+        "seqNumber": -30096,
+        "line": "Yaw From North-0.58599246"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.5509033203125,
+        "seqNumber": -30095,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.3819449561999"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.55126953125,
+        "seqNumber": -30094,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.552001953125,
+        "seqNumber": -30093,
+        "line": "Yaw From North-0.58181155"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.5709228515625,
+        "seqNumber": -30092,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.37811500014521"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.5711669921875,
+        "seqNumber": -30091,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.5718994140625,
+        "seqNumber": -30090,
+        "line": "Yaw From North-0.5856415"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.5906982421875,
+        "seqNumber": -30089,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.38080054702021"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.5909423828125,
+        "seqNumber": -30088,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.5911865234375,
+        "seqNumber": -30087,
+        "line": "Yaw From North-0.58295596"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.6107177734375,
+        "seqNumber": -30086,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.38057166518428"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.6109619140625,
+        "seqNumber": -30085,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.6112060546875,
+        "seqNumber": -30084,
+        "line": "Yaw From North-0.58318484"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.6307373046875,
+        "seqNumber": -30083,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.37945777358271"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.6309814453125,
+        "seqNumber": -30082,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.6318359375,
+        "seqNumber": -30081,
+        "line": "Yaw From North-0.58429873"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.6507568359375,
+        "seqNumber": -30080,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.37988501967646"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.6510009765625,
+        "seqNumber": -30079,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.6517333984375,
+        "seqNumber": -30078,
+        "line": "Yaw From North-0.5838715"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.670654296875,
+        "seqNumber": -30077,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.37916785659053"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.6708984375,
+        "seqNumber": -30076,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.6715087890625,
+        "seqNumber": -30075,
+        "line": "Yaw From North-0.58458865"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.6910400390625,
+        "seqNumber": -30074,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.37838965834834"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.69140625,
+        "seqNumber": -30073,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.691650390625,
+        "seqNumber": -30072,
+        "line": "Yaw From North-0.58536685"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.710693359375,
+        "seqNumber": -30071,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.37983924330928"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.7110595703125,
+        "seqNumber": -30070,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.7113037109375,
+        "seqNumber": -30069,
+        "line": "Yaw From North-0.58391726"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.7305908203125,
+        "seqNumber": -30068,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.37777930678584"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.7310791015625,
+        "seqNumber": -30067,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.7313232421875,
+        "seqNumber": -30066,
+        "line": "Yaw From North-0.5859772"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.7510986328125,
+        "seqNumber": -30065,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.38029700698115"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.7515869140625,
+        "seqNumber": -30064,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.7518310546875,
+        "seqNumber": -30063,
+        "line": "Yaw From North-0.5834595"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.77099609375,
+        "seqNumber": -30062,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.38165503920771"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.771240234375,
+        "seqNumber": -30061,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.771728515625,
+        "seqNumber": -30060,
+        "line": "Yaw From North-0.58210146"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.791015625,
+        "seqNumber": -30059,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.37916785659053"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.7913818359375,
+        "seqNumber": -30058,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.7916259765625,
+        "seqNumber": -30057,
+        "line": "Yaw From North-0.58458865"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.8106689453125,
+        "seqNumber": -30056,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.38220435561396"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.81103515625,
+        "seqNumber": -30055,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.811279296875,
+        "seqNumber": -30054,
+        "line": "Yaw From North-0.58155215"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.8306884765625,
+        "seqNumber": -30053,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.3788931983874"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.8310546875,
+        "seqNumber": -30052,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.8311767578125,
+        "seqNumber": -30051,
+        "line": "Yaw From North-0.5848633"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.8509521484375,
+        "seqNumber": -30050,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.38366919936396"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.851318359375,
+        "seqNumber": -30049,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.8515625,
+        "seqNumber": -30048,
+        "line": "Yaw From North-0.5800873"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.8709716796875,
+        "seqNumber": -30047,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.38310462416865"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.871337890625,
+        "seqNumber": -30046,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.87158203125,
+        "seqNumber": -30045,
+        "line": "Yaw From North-0.5806519"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.8914794921875,
+        "seqNumber": -30044,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.3817008155749"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.891845703125,
+        "seqNumber": -30043,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.89208984375,
+        "seqNumber": -30042,
+        "line": "Yaw From North-0.5820557"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.9111328125,
+        "seqNumber": -30041,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.38154822768428"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.9114990234375,
+        "seqNumber": -30040,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.9117431640625,
+        "seqNumber": -30039,
+        "line": "Yaw From North-0.5822083"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.9310302734375,
+        "seqNumber": -30038,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.37871009291865"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.931396484375,
+        "seqNumber": -30037,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.9315185546875,
+        "seqNumber": -30036,
+        "line": "Yaw From North-0.5850464"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.951171875,
+        "seqNumber": -30035,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.3822348731921"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.9515380859375,
+        "seqNumber": -30034,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.9517822265625,
+        "seqNumber": -30033,
+        "line": "Yaw From North-0.58152163"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.970703125,
+        "seqNumber": -30032,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.38330298842646"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.970947265625,
+        "seqNumber": -30031,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.97119140625,
+        "seqNumber": -30030,
+        "line": "Yaw From North-0.5804535"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.9913330078125,
+        "seqNumber": -30029,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.3815787452624"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.99169921875,
+        "seqNumber": -30028,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 142.991943359375,
+        "seqNumber": -30027,
+        "line": "Yaw From North-0.58217776"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.010986328125,
+        "seqNumber": -30026,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.38212806166865"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.0115966796875,
+        "seqNumber": -30025,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.0118408203125,
+        "seqNumber": -30024,
+        "line": "Yaw From North-0.58162844"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.0308837890625,
+        "seqNumber": -30023,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.3801596778796"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.03125,
+        "seqNumber": -30022,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.031494140625,
+        "seqNumber": -30021,
+        "line": "Yaw From North-0.5835968"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.0506591796875,
+        "seqNumber": -30020,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.37910682143428"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.051025390625,
+        "seqNumber": -30019,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.0511474609375,
+        "seqNumber": -30018,
+        "line": "Yaw From North-0.5846497"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.0709228515625,
+        "seqNumber": -30017,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6800000000548607E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.37907630385615"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.0712890625,
+        "seqNumber": -30016,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.071533203125,
+        "seqNumber": -30015,
+        "line": "Yaw From North-0.5846802"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.0909423828125,
+        "seqNumber": -30014,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.4297226317024"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.0911865234375,
+        "seqNumber": -30013,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.0927734375,
+        "seqNumber": -30012,
+        "line": "Yaw From North-0.5853516"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.11083984375,
+        "seqNumber": -30011,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.4299667723274"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.1112060546875,
+        "seqNumber": -30010,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.1114501953125,
+        "seqNumber": -30009,
+        "line": "Yaw From North-0.58391726"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.130859375,
+        "seqNumber": -30008,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.42584689928051"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.1312255859375,
+        "seqNumber": -30007,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.1322021484375,
+        "seqNumber": -30006,
+        "line": "Yaw From North-0.58803713"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.1507568359375,
+        "seqNumber": -30005,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.4277695067024"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.151123046875,
+        "seqNumber": -30004,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.1514892578125,
+        "seqNumber": -30003,
+        "line": "Yaw From North-0.5861145"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.1707763671875,
+        "seqNumber": -30002,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.4260605223274"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.171142578125,
+        "seqNumber": -30001,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.1717529296875,
+        "seqNumber": -30000,
+        "line": "Yaw From North-0.5878235"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.1907958984375,
+        "seqNumber": -29999,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.42902072740551"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.191162109375,
+        "seqNumber": -29998,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.1923828125,
+        "seqNumber": -29997,
+        "line": "Yaw From North-0.5850769"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.2108154296875,
+        "seqNumber": -29996,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.43181308580395"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.2110595703125,
+        "seqNumber": -29995,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.21142578125,
+        "seqNumber": -29994,
+        "line": "Yaw From North-0.58207095"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.2315673828125,
+        "seqNumber": -29993,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.43201145006176"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.23193359375,
+        "seqNumber": -29992,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.232666015625,
+        "seqNumber": -29991,
+        "line": "Yaw From North-0.5818726"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.2508544921875,
+        "seqNumber": -29990,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.42804416490551"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.2510986328125,
+        "seqNumber": -29989,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.2515869140625,
+        "seqNumber": -29988,
+        "line": "Yaw From North-0.58583987"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.2708740234375,
+        "seqNumber": -29987,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.4268692381477"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.2711181640625,
+        "seqNumber": -29986,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.2716064453125,
+        "seqNumber": -29985,
+        "line": "Yaw From North-0.5870148"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.2908935546875,
+        "seqNumber": -29984,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.43091281724926"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.291259765625,
+        "seqNumber": -29983,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.2916259765625,
+        "seqNumber": -29982,
+        "line": "Yaw From North-0.5829712"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.310791015625,
+        "seqNumber": -29981,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.4263046629524"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.31103515625,
+        "seqNumber": -29980,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.311279296875,
+        "seqNumber": -29979,
+        "line": "Yaw From North-0.58757937"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.330810546875,
+        "seqNumber": -29978,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.42505344224926"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.3311767578125,
+        "seqNumber": -29977,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.33203125,
+        "seqNumber": -29976,
+        "line": "Yaw From North-0.5888306"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.350830078125,
+        "seqNumber": -29975,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.42851718736645"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.35107421875,
+        "seqNumber": -29974,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.3514404296875,
+        "seqNumber": -29973,
+        "line": "Yaw From North-0.58536685"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.370849609375,
+        "seqNumber": -29972,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.42274936510083"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.3712158203125,
+        "seqNumber": -29971,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.373046875,
+        "seqNumber": -29970,
+        "line": "Yaw From North-0.59113467"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.3907470703125,
+        "seqNumber": -29969,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.42754062486645"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.3909912109375,
+        "seqNumber": -29968,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.391357421875,
+        "seqNumber": -29967,
+        "line": "Yaw From North-0.5863434"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.41064453125,
+        "seqNumber": -29966,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.42744907213208"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.410888671875,
+        "seqNumber": -29965,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.4117431640625,
+        "seqNumber": -29964,
+        "line": "Yaw From North-0.58643496"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.4306640625,
+        "seqNumber": -29963,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.42511447740551"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.430908203125,
+        "seqNumber": -29962,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.4317626953125,
+        "seqNumber": -29961,
+        "line": "Yaw From North-0.58876956"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.4512939453125,
+        "seqNumber": -29960,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.42761691881176"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.4515380859375,
+        "seqNumber": -29959,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.451904296875,
+        "seqNumber": -29958,
+        "line": "Yaw From North-0.5862671"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.470703125,
+        "seqNumber": -29957,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.42734226060864"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.470947265625,
+        "seqNumber": -29956,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.4718017578125,
+        "seqNumber": -29955,
+        "line": "Yaw From North-0.5865418"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.49072265625,
+        "seqNumber": -29954,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.42401584459301"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.490966796875,
+        "seqNumber": -29953,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.49169921875,
+        "seqNumber": -29952,
+        "line": "Yaw From North-0.5898682"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.5107421875,
+        "seqNumber": -29951,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.4241836912727"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.51123046875,
+        "seqNumber": -29950,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.511962890625,
+        "seqNumber": -29949,
+        "line": "Yaw From North-0.58757937"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.53076171875,
+        "seqNumber": -29948,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.4299209959602"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.5311279296875,
+        "seqNumber": -29947,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.5313720703125,
+        "seqNumber": -29946,
+        "line": "Yaw From North-0.58396304"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.55078125,
+        "seqNumber": -29945,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.42952426744458"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.551025390625,
+        "seqNumber": -29944,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.55126953125,
+        "seqNumber": -29943,
+        "line": "Yaw From North-0.58435977"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.5706787109375,
+        "seqNumber": -29942,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.4312637693977"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.5709228515625,
+        "seqNumber": -29941,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.5711669921875,
+        "seqNumber": -29940,
+        "line": "Yaw From North-0.58262026"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.5906982421875,
+        "seqNumber": -29939,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.42456516099926"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.5909423828125,
+        "seqNumber": -29938,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.5911865234375,
+        "seqNumber": -29937,
+        "line": "Yaw From North-0.5893189"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.611328125,
+        "seqNumber": -29936,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.42192539049145"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.6116943359375,
+        "seqNumber": -29935,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.6119384765625,
+        "seqNumber": -29934,
+        "line": "Yaw From North-0.6023346"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.6307373046875,
+        "seqNumber": -29933,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.41212924791333"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.6309814453125,
+        "seqNumber": -29932,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.6312255859375,
+        "seqNumber": -29931,
+        "line": "Yaw From North-0.6017548"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.650634765625,
+        "seqNumber": -29930,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.41008457017895"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.6510009765625,
+        "seqNumber": -29929,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.6512451171875,
+        "seqNumber": -29928,
+        "line": "Yaw From North-0.60379946"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.6707763671875,
+        "seqNumber": -29927,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.41823276353833"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.6710205078125,
+        "seqNumber": -29926,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.67138671875,
+        "seqNumber": -29925,
+        "line": "Yaw From North-0.59565127"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.69091796875,
+        "seqNumber": -29924,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.42165073228833"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.691162109375,
+        "seqNumber": -29923,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.6915283203125,
+        "seqNumber": -29922,
+        "line": "Yaw From North-0.5922333"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.7108154296875,
+        "seqNumber": -29921,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.43359836412426"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.711669921875,
+        "seqNumber": -29920,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.713134765625,
+        "seqNumber": -29919,
+        "line": "Yaw From North-0.5900055"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.730712890625,
+        "seqNumber": -29918,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.41217502428051"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.73095703125,
+        "seqNumber": -29917,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.731689453125,
+        "seqNumber": -29916,
+        "line": "Yaw From North-0.601709"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.7506103515625,
+        "seqNumber": -29915,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.4022110350227"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.7510986328125,
+        "seqNumber": -29914,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.751708984375,
+        "seqNumber": -29913,
+        "line": "Yaw From North-0.611673"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.7706298828125,
+        "seqNumber": -29912,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.4007919676399"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.77099609375,
+        "seqNumber": -29911,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.771728515625,
+        "seqNumber": -29910,
+        "line": "Yaw From North-0.61309206"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.790771484375,
+        "seqNumber": -29909,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.42270358873364"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.791259765625,
+        "seqNumber": -29908,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.7919921875,
+        "seqNumber": -29907,
+        "line": "Yaw From North-0.59118044"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.8106689453125,
+        "seqNumber": -29906,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.4319961912727"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.8109130859375,
+        "seqNumber": -29905,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.8116455078125,
+        "seqNumber": -29904,
+        "line": "Yaw From North-0.58188784"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.830810546875,
+        "seqNumber": -29903,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.4282577879524"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.8311767578125,
+        "seqNumber": -29902,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.8314208984375,
+        "seqNumber": -29901,
+        "line": "Yaw From North-0.58562624"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.8507080078125,
+        "seqNumber": -29900,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.42143710924145"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.85205078125,
+        "seqNumber": -29899,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.8524169921875,
+        "seqNumber": -29898,
+        "line": "Yaw From North-0.5924469"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.8707275390625,
+        "seqNumber": -29897,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.42810520006176"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.8709716796875,
+        "seqNumber": -29896,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.8714599609375,
+        "seqNumber": -29895,
+        "line": "Yaw From North-0.58577883"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.8907470703125,
+        "seqNumber": -29894,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.43791660142895"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.89111328125,
+        "seqNumber": -29893,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.89208984375,
+        "seqNumber": -29892,
+        "line": "Yaw From North-0.57596743"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.91064453125,
+        "seqNumber": -29891,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.43855747056958"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.9110107421875,
+        "seqNumber": -29890,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.9117431640625,
+        "seqNumber": -29889,
+        "line": "Yaw From North-0.57532656"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.9307861328125,
+        "seqNumber": -29888,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.41756137681958"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.931884765625,
+        "seqNumber": -29887,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.9326171875,
+        "seqNumber": -29886,
+        "line": "Yaw From North-0.60428774"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.95068359375,
+        "seqNumber": -29885,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.4221084959602"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.951171875,
+        "seqNumber": -29884,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.953369140625,
+        "seqNumber": -29883,
+        "line": "Yaw From North-0.59177554"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.9708251953125,
+        "seqNumber": -29882,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.43327792955395"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.9710693359375,
+        "seqNumber": -29881,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.9715576171875,
+        "seqNumber": -29880,
+        "line": "Yaw From North-0.5806061"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.99072265625,
+        "seqNumber": -29879,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.43062290025708"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.9910888671875,
+        "seqNumber": -29878,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 143.991455078125,
+        "seqNumber": -29877,
+        "line": "Yaw From North-0.58326113"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.010986328125,
+        "seqNumber": -29876,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.42131503892895"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.0113525390625,
+        "seqNumber": -29875,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.0120849609375,
+        "seqNumber": -29874,
+        "line": "Yaw From North-0.592569"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.031005859375,
+        "seqNumber": -29873,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.41658481431958"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.03125,
+        "seqNumber": -29872,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.0322265625,
+        "seqNumber": -29871,
+        "line": "Yaw From North-0.59313357"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.051513671875,
+        "seqNumber": -29870,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.43332370592114"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.0518798828125,
+        "seqNumber": -29869,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.0523681640625,
+        "seqNumber": -29868,
+        "line": "Yaw From North-0.5805603"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.07080078125,
+        "seqNumber": -29867,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.43152316881176"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.071044921875,
+        "seqNumber": -29866,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.0712890625,
+        "seqNumber": -29865,
+        "line": "Yaw From North-0.58236086"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.091064453125,
+        "seqNumber": -29864,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.42929538560864"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.0914306640625,
+        "seqNumber": -29863,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.091796875,
+        "seqNumber": -29862,
+        "line": "Yaw From North-0.58458865"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.1112060546875,
+        "seqNumber": -29861,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.42108615709301"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.111572265625,
+        "seqNumber": -29860,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.1116943359375,
+        "seqNumber": -29859,
+        "line": "Yaw From North-0.5927979"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.131103515625,
+        "seqNumber": -29858,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.42978366685864"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.13134765625,
+        "seqNumber": -29857,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.131591796875,
+        "seqNumber": -29856,
+        "line": "Yaw From North-0.58410037"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.151123046875,
+        "seqNumber": -29855,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.43544467760083"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.1513671875,
+        "seqNumber": -29854,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.1519775390625,
+        "seqNumber": -29853,
+        "line": "Yaw From North-0.57843935"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.171142578125,
+        "seqNumber": -29852,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.42921909166333"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.1715087890625,
+        "seqNumber": -29851,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.1717529296875,
+        "seqNumber": -29850,
+        "line": "Yaw From North-0.58466494"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.191162109375,
+        "seqNumber": -29849,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.42770847154614"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.19140625,
+        "seqNumber": -29848,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.191650390625,
+        "seqNumber": -29847,
+        "line": "Yaw From North-0.58617556"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.2109375,
+        "seqNumber": -29846,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.4310654051399"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.2113037109375,
+        "seqNumber": -29845,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.2115478515625,
+        "seqNumber": -29844,
+        "line": "Yaw From North-0.5828186"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.2315673828125,
+        "seqNumber": -29843,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.43697055650708"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.232421875,
+        "seqNumber": -29842,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.2327880859375,
+        "seqNumber": -29841,
+        "line": "Yaw From North-0.5769135"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.251220703125,
+        "seqNumber": -29840,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.43780978990551"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.25146484375,
+        "seqNumber": -29839,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.2518310546875,
+        "seqNumber": -29838,
+        "line": "Yaw From North-0.57607424"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.2713623046875,
+        "seqNumber": -29837,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.45282443834301"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.271728515625,
+        "seqNumber": -29836,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.2723388671875,
+        "seqNumber": -29835,
+        "line": "Yaw From North-0.5610596"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.291259765625,
+        "seqNumber": -29834,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.46286472154614"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.29150390625,
+        "seqNumber": -29833,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.291748046875,
+        "seqNumber": -29832,
+        "line": "Yaw From North-0.5510193"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.3111572265625,
+        "seqNumber": -29831,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.46399387193676"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.3114013671875,
+        "seqNumber": -29830,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.312744140625,
+        "seqNumber": -29829,
+        "line": "Yaw From North-0.54989016"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.330810546875,
+        "seqNumber": -29828,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.45419772935864"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.3310546875,
+        "seqNumber": -29827,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.331298828125,
+        "seqNumber": -29826,
+        "line": "Yaw From North-0.5596863"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.35107421875,
+        "seqNumber": -29825,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.41406711412426"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.351318359375,
+        "seqNumber": -29824,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.3515625,
+        "seqNumber": -29823,
+        "line": "Yaw From North-0.5998169"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.37109375,
+        "seqNumber": -29822,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.4176376707649"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.371337890625,
+        "seqNumber": -29821,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.37158203125,
+        "seqNumber": -29820,
+        "line": "Yaw From North-0.59624636"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.3909912109375,
+        "seqNumber": -29819,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.43062290025708"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.3912353515625,
+        "seqNumber": -29818,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.391845703125,
+        "seqNumber": -29817,
+        "line": "Yaw From North-0.58326113"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.41064453125,
+        "seqNumber": -29816,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.44711765123364"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.4110107421875,
+        "seqNumber": -29815,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.4112548828125,
+        "seqNumber": -29814,
+        "line": "Yaw From North-0.5667664"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.4306640625,
+        "seqNumber": -29813,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.4429825193977"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.4312744140625,
+        "seqNumber": -29812,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.4315185546875,
+        "seqNumber": -29811,
+        "line": "Yaw From North-0.5709015"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.45068359375,
+        "seqNumber": -29810,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.41644748521801"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.4510498046875,
+        "seqNumber": -29809,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.4512939453125,
+        "seqNumber": -29808,
+        "line": "Yaw From North-0.59743655"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.470703125,
+        "seqNumber": -29807,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.41464694810864"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.4710693359375,
+        "seqNumber": -29806,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.4713134765625,
+        "seqNumber": -29805,
+        "line": "Yaw From North-0.5992371"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.490966796875,
+        "seqNumber": -29804,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.43002780748364"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.4913330078125,
+        "seqNumber": -29803,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.49169921875,
+        "seqNumber": -29802,
+        "line": "Yaw From North-0.5838562"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.5108642578125,
+        "seqNumber": -29801,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.43996127916333"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.51123046875,
+        "seqNumber": -29800,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.511474609375,
+        "seqNumber": -29799,
+        "line": "Yaw From North-0.57392275"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.5308837890625,
+        "seqNumber": -29798,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.43239291978833"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.53125,
+        "seqNumber": -29797,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.531494140625,
+        "seqNumber": -29796,
+        "line": "Yaw From North-0.5814911"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.551025390625,
+        "seqNumber": -29795,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.43042453599926"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.5516357421875,
+        "seqNumber": -29794,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.5518798828125,
+        "seqNumber": -29793,
+        "line": "Yaw From North-0.5866028"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.5709228515625,
+        "seqNumber": -29792,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.43622287584301"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.5712890625,
+        "seqNumber": -29791,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.571533203125,
+        "seqNumber": -29790,
+        "line": "Yaw From North-0.57766116"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.591064453125,
+        "seqNumber": -29789,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.4470108397102"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.59130859375,
+        "seqNumber": -29788,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.591552734375,
+        "seqNumber": -29787,
+        "line": "Yaw From North-0.5668732"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.6107177734375,
+        "seqNumber": -29786,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.4549454100227"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.611083984375,
+        "seqNumber": -29785,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.6112060546875,
+        "seqNumber": -29784,
+        "line": "Yaw From North-0.5589386"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.630615234375,
+        "seqNumber": -29783,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.44110568834301"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.6309814453125,
+        "seqNumber": -29782,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.6312255859375,
+        "seqNumber": -29781,
+        "line": "Yaw From North-0.57277834"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.6514892578125,
+        "seqNumber": -29780,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.43608554674145"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.65185546875,
+        "seqNumber": -29779,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.6519775390625,
+        "seqNumber": -29778,
+        "line": "Yaw From North-0.5777985"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.6707763671875,
+        "seqNumber": -29777,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.44257053209301"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.6710205078125,
+        "seqNumber": -29776,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.6712646484375,
+        "seqNumber": -29775,
+        "line": "Yaw From North-0.5713135"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.69091796875,
+        "seqNumber": -29774,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.44731601549145"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.6912841796875,
+        "seqNumber": -29773,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.692626953125,
+        "seqNumber": -29772,
+        "line": "Yaw From North-0.566568"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.7109375,
+        "seqNumber": -29771,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.43842014146801"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.7113037109375,
+        "seqNumber": -29770,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.7115478515625,
+        "seqNumber": -29769,
+        "line": "Yaw From North-0.5754639"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.73095703125,
+        "seqNumber": -29768,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.43013461900708"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.7315673828125,
+        "seqNumber": -29767,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.7320556640625,
+        "seqNumber": -29766,
+        "line": "Yaw From North-0.5837494"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.7515869140625,
+        "seqNumber": -29765,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.42853244615551"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.751953125,
+        "seqNumber": -29764,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.752197265625,
+        "seqNumber": -29763,
+        "line": "Yaw From North-0.5853516"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.7706298828125,
+        "seqNumber": -29762,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.44147189928051"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.77099609375,
+        "seqNumber": -29761,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.771240234375,
+        "seqNumber": -29760,
+        "line": "Yaw From North-0.57241213"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.791015625,
+        "seqNumber": -29759,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.4391983397102"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.7913818359375,
+        "seqNumber": -29758,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.7916259765625,
+        "seqNumber": -29757,
+        "line": "Yaw From North-0.5746857"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.811279296875,
+        "seqNumber": -29756,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.4300430662727"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.8115234375,
+        "seqNumber": -29755,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.811767578125,
+        "seqNumber": -29754,
+        "line": "Yaw From North-0.58384097"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.8309326171875,
+        "seqNumber": -29753,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.42487033678051"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.831298828125,
+        "seqNumber": -29752,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.83154296875,
+        "seqNumber": -29751,
+        "line": "Yaw From North-0.5890137"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.8509521484375,
+        "seqNumber": -29750,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.43416293931958"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.851318359375,
+        "seqNumber": -29749,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.8514404296875,
+        "seqNumber": -29748,
+        "line": "Yaw From North-0.5797211"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.87109375,
+        "seqNumber": -29747,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.43343051744458"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.871337890625,
+        "seqNumber": -29746,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.87158203125,
+        "seqNumber": -29745,
+        "line": "Yaw From North-0.5804535"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.8907470703125,
+        "seqNumber": -29744,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.4387558348274"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.89111328125,
+        "seqNumber": -29743,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.8917236328125,
+        "seqNumber": -29742,
+        "line": "Yaw From North-0.5751282"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.9111328125,
+        "seqNumber": -29741,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6900000001717217E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.44438632799145"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.911376953125,
+        "seqNumber": -29740,
+        "line": "Autodrive: 0.1 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 144.91162109375,
+        "seqNumber": -29739,
+        "line": "Yaw From North-0.5694977"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 0,
+        "seqNumber": -29738,
+        "line": "********** Robot program starting **********"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 0.3822021484375,
+        "seqNumber": -29737,
+        "line": "********** Robot program startup complete **********"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 0.3863525390625,
+        "seqNumber": -29736,
+        "line": "Default disabledPeriodic() method... Override me!"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 0.3873291015625,
+        "seqNumber": -29735,
+        "line": "Default robotPeriodic() method... Override me!"
+    },
+    {
+        "timestamp": 0.4549560546875,
+        "seqNumber": -29734,
+        "numOccur": 1,
+        "errorCode": 1,
+        "flags": 0,
+        "details": "Loop time of 0.02s overrun\n",
+        "location": "edu.wpi.first.wpilibj.IterativeRobotBase.printLoopOverrunMessage(IterativeRobotBase.java:359)",
+        "callStack": "",
+        "messageType": 1
+    },
+    {
+        "messageType": 2,
+        "timestamp": 0.4554443359375,
+        "seqNumber": -29733,
+        "line": "Warning at edu.wpi.first.wpilibj.IterativeRobotBase.printLoopOverrunMessage(IterativeRobotBase.java:359): Loop time of 0.02s overrun"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 0.4573974609375,
+        "seqNumber": -29732,
+        "line": ""
+    },
+    {
+        "messageType": 2,
+        "timestamp": 0,
+        "seqNumber": -29731,
+        "line": "********** Robot program starting **********"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 0.3736572265625,
+        "seqNumber": -29730,
+        "line": "********** Robot program startup complete **********"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 0.3765869140625,
+        "seqNumber": -29729,
+        "line": "Default disabledPeriodic() method... Override me!"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 0.378662109375,
+        "seqNumber": -29728,
+        "line": "Default robotPeriodic() method... Override me!"
+    },
+    {
+        "timestamp": 0.4493408203125,
+        "seqNumber": -29727,
+        "numOccur": 1,
+        "errorCode": 1,
+        "flags": 0,
+        "details": "Loop time of 0.02s overrun\n",
+        "location": "edu.wpi.first.wpilibj.IterativeRobotBase.printLoopOverrunMessage(IterativeRobotBase.java:359)",
+        "callStack": "",
+        "messageType": 1
+    },
+    {
+        "messageType": 2,
+        "timestamp": 0.4498291015625,
+        "seqNumber": -29726,
+        "line": "Warning at edu.wpi.first.wpilibj.IterativeRobotBase.printLoopOverrunMessage(IterativeRobotBase.java:359): Loop time of 0.02s overrun"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 0.4522705078125,
+        "seqNumber": -29725,
+        "line": ""
+    },
+    {
+        "timestamp": 11.1854248046875,
+        "seqNumber": -29724,
+        "numOccur": 1,
+        "errorCode": 1,
+        "flags": 0,
+        "details": "Loop time of 0.02s overrun\n",
+        "location": "edu.wpi.first.wpilibj.IterativeRobotBase.printLoopOverrunMessage(IterativeRobotBase.java:359)",
+        "callStack": "",
+        "messageType": 1
+    },
+    {
+        "messageType": 2,
+        "timestamp": 11.1884765625,
+        "seqNumber": -29723,
+        "line": "Warning at edu.wpi.first.wpilibj.IterativeRobotBase.printLoopOverrunMessage(IterativeRobotBase.java:359): Loop time of 0.02s overrun"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 11.189453125,
+        "seqNumber": -29722,
+        "line": ""
+    },
+    {
+        "timestamp": 11.2080078125,
+        "seqNumber": -29721,
+        "numOccur": 1,
+        "errorCode": 1,
+        "flags": 1,
+        "details": "DifferentialDrive... Output not updated often enough.",
+        "location": "edu.wpi.first.wpilibj.MotorSafety.check(MotorSafety.java:96)",
+        "callStack": "",
+        "messageType": 0
+    },
+    {
+        "messageType": 2,
+        "timestamp": 11.208740234375,
+        "seqNumber": -29720,
+        "line": "Error at edu.wpi.first.wpilibj.MotorSafety.check(MotorSafety.java:96): DifferentialDrive... Output not updated often enough."
+    },
+    {
+        "messageType": 2,
+        "timestamp": 11.52294921875,
+        "seqNumber": -29719,
+        "line": "Instantiating navX-Sensor on Serial Port kUSB1."
+    },
+    {
+        "messageType": 2,
+        "timestamp": 11.52587890625,
+        "seqNumber": -29718,
+        "line": "navX-Sensor Java library for FRC"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 11.64208984375,
+        "seqNumber": -29717,
+        "line": "Opening USB  serial port to communicate with navX-Sensor."
+    },
+    {
+        "messageType": 2,
+        "timestamp": 11.9053955078125,
+        "seqNumber": -29716,
+        "line": "init"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 11.908447265625,
+        "seqNumber": -29715,
+        "line": "init"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 11.9112548828125,
+        "seqNumber": -29714,
+        "line": "init"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 11.9139404296875,
+        "seqNumber": -29713,
+        "line": "init"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 11.915771484375,
+        "seqNumber": -29712,
+        "line": "init"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 11.91748046875,
+        "seqNumber": -29711,
+        "line": "init"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 11.9205322265625,
+        "seqNumber": -29710,
+        "line": "init"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 11.9227294921875,
+        "seqNumber": -29709,
+        "line": "init"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 11.92529296875,
+        "seqNumber": -29708,
+        "line": "init"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 11.9334716796875,
+        "seqNumber": -29707,
+        "line": "init"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 11.945068359375,
+        "seqNumber": -29706,
+        "line": "navX-Sensor Connected via USB."
+    },
+    {
+        "messageType": 2,
+        "timestamp": 11.947509765625,
+        "seqNumber": -29705,
+        "line": "data:N_373453369,-1220160299,1"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 11.9647216796875,
+        "seqNumber": -29704,
+        "line": "navX-Sensor Configuration Response Received."
+    },
+    {
+        "messageType": 2,
+        "timestamp": 11.973388671875,
+        "seqNumber": -29703,
+        "line": "navX-Sensor Connected."
+    },
+    {
+        "messageType": 2,
+        "timestamp": 11.9796142578125,
+        "seqNumber": -29702,
+        "line": "navX-Sensor onboard startup calibration complete."
+    },
+    {
+        "messageType": 2,
+        "timestamp": 11.98876953125,
+        "seqNumber": -29701,
+        "line": "navX-Sensor Yaw angle auto-reset to 0.0 due to startup calibration."
+    },
+    {
+        "messageType": 2,
+        "timestamp": 12.0152587890625,
+        "seqNumber": -29700,
+        "line": "init"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 12.0264892578125,
+        "seqNumber": -29699,
+        "line": "navX-Sensor Board Type 50 (navX2-MXP (Gen 2))"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 12.0325927734375,
+        "seqNumber": -29698,
+        "line": "navX-Sensor firmware version 4.0"
+    },
+    {
+        "timestamp": 12.313720703125,
+        "seqNumber": -29697,
+        "numOccur": 1,
+        "errorCode": 1,
+        "flags": 1,
+        "details": "DifferentialDrive... Output not updated often enough.",
+        "location": "edu.wpi.first.wpilibj.MotorSafety.check(MotorSafety.java:96)",
+        "callStack": "",
+        "messageType": 0
+    },
+    {
+        "messageType": 2,
+        "timestamp": 12.3143310546875,
+        "seqNumber": -29696,
+        "line": "Error at edu.wpi.first.wpilibj.MotorSafety.check(MotorSafety.java:96): DifferentialDrive... Output not updated often enough."
+    },
+    {
+        "timestamp": 13.4342041015625,
+        "seqNumber": -29695,
+        "numOccur": 1,
+        "errorCode": 1,
+        "flags": 1,
+        "details": "DifferentialDrive... Output not updated often enough.",
+        "location": "edu.wpi.first.wpilibj.MotorSafety.check(MotorSafety.java:96)",
+        "callStack": "",
+        "messageType": 0
+    },
+    {
+        "messageType": 2,
+        "timestamp": 13.4349365234375,
+        "seqNumber": -29694,
+        "line": "Error at edu.wpi.first.wpilibj.MotorSafety.check(MotorSafety.java:96): DifferentialDrive... Output not updated often enough."
+    },
+    {
+        "messageType": 2,
+        "timestamp": 13.5208740234375,
+        "seqNumber": -29693,
+        "line": "navX-Sensor Software Yaw Reset completed."
+    },
+    {
+        "messageType": 2,
+        "timestamp": 13.5579833984375,
+        "seqNumber": -29692,
+        "line": "Start!Navigator Init Finished!"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 14.068603515625,
+        "seqNumber": -29691,
+        "line": "37.3453121505 -122.0160796505"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 14.0858154296875,
+        "seqNumber": -29690,
+        "line": "navX-Sensor Software Yaw Reset completed."
+    },
+    {
+        "messageType": 2,
+        "timestamp": 14.14697265625,
+        "seqNumber": -29689,
+        "line": "Node Relative Location:Latitude, Longitude: -2.6099999999473766E-5, -6.7000000143480065E-6, Node relavtive Yaw: -165.60190880189498"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 14.167236328125,
+        "seqNumber": -29688,
+        "line": "Autodrive: -0.5 0.0"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 14.23095703125,
+        "seqNumber": -29687,
+        "line": "Yaw From North-0.0061782836"
+    },
+    {
+        "timestamp": 14.27685546875,
+        "seqNumber": -29686,
+        "numOccur": 1,
+        "errorCode": 1,
+        "flags": 0,
+        "details": "\tteleopPeriodic(): 0.145883s\n\tSmartDashboard.updateValues(): 0.000064s\n\trobotPeriodic(): 0.000013s\n\tLiveWindow.updateValues(): 0.009307s\n\tShuffleboard.update(): 0.000025s\n\tteleopInit(): 2.923553s\n",
+        "location": "edu.wpi.first.wpilibj.Tracer.lambda$printEpochs$0(Tracer.java:63)",
+        "callStack": "",
+        "messageType": 1
+    },
+    {
+        "messageType": 2,
+        "timestamp": 14.2774658203125,
+        "seqNumber": -29685,
+        "line": "Warning at edu.wpi.first.wpilibj.Tracer.lambda$printEpochs$0(Tracer.java:63): \tteleopPeriodic(): 0.145883s"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 14.278564453125,
+        "seqNumber": -29684,
+        "line": "\tSmartDashboard.updateValues(): 0.000064s"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 14.2789306640625,
+        "seqNumber": -29683,
+        "line": "\trobotPeriodic(): 0.000013s"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 14.279296875,
+        "seqNumber": -29682,
+        "line": "\tLiveWindow.updateValues(): 0.009307s"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 14.2796630859375,
+        "seqNumber": -29681,
+        "line": "\tShuffleboard.update(): 0.000025s"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 14.2802734375,
+        "seqNumber": -29680,
+        "line": "\tteleopInit(): 2.923553s"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 14.2808837890625,
+        "seqNumber": -29679,
+        "line": ""
+    },
+    {
+        "timestamp": 14.2904052734375,
+        "seqNumber": -29678,
+        "numOccur": 1,
+        "errorCode": 1,
+        "flags": 0,
+        "details": "Loop time of 0.02s overrun\n",
+        "location": "edu.wpi.first.wpilibj.IterativeRobotBase.printLoopOverrunMessage(IterativeRobotBase.java:359)",
+        "callStack": "",
+        "messageType": 1
+    },
+    {
+        "messageType": 2,
+        "timestamp": 14.2933349609375,
+        "seqNumber": -29677,
+        "line": "Warning at edu.wpi.first.wpilibj.IterativeRobotBase.printLoopOverrunMessage(IterativeRobotBase.java:359): Loop time of 0.02s overrun"
+    },
+    {
+        "messageType": 2,
+        "timestamp": 14.2938232421875,
+        "seqNumber": -29676,
+        "line": ""
+    }
+]

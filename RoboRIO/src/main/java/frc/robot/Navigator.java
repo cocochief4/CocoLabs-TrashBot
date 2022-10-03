@@ -79,20 +79,17 @@ public class Navigator {
             location.latitude = gps.latitude * DD_LONG_TO_DOUBLE;
             location.longitude = gps.longitude * DD_LONG_TO_DOUBLE;
         }
-        if (Math.abs(encoderStruct.lVelocity - encoderStruct.rVelocity) < 0.015) { // Moving forward
-            double timeBetweenPolls = Math.abs(encoderStruct.time - location.timeStamp);
-            double avgVelocity = (encoderStruct.lVelocity + encoderStruct.rVelocity)/2;
-            double distanceTraveled = avgVelocity * timeBetweenPolls;
-            double latChange = Math.cos(localYawFromNorth * RADIANS_MULTIPLIER) * distanceTraveled * FOOT_TO_DD;
-            double lonChange = Math.sin(localYawFromNorth * RADIANS_MULTIPLIER) * distanceTraveled * FOOT_TO_DD;
+        // Relying on the speed of tick to estimate the distance forward, the yaw will change as I turn and go forward so this should be a good enough estimate even if off by a few cm
+        double timeBetweenPolls = Math.abs(encoderStruct.time - location.timeStamp);
+        double avgVelocity = (encoderStruct.lVelocity + encoderStruct.rVelocity)/2;
+        double distanceTraveled = avgVelocity * timeBetweenPolls;
+        double latChange = Math.cos(localYawFromNorth * RADIANS_MULTIPLIER) * distanceTraveled * FOOT_TO_DD;
+        double lonChange = Math.sin(localYawFromNorth * RADIANS_MULTIPLIER) * distanceTraveled * FOOT_TO_DD;
 
-            location.latitude += latChange;
-            location.longitude += lonChange;
-            location.distanceFromLastReading = distanceTraveled + gpsDistance;
-        
-        } else {
-            location.distanceFromLastReading = 0d;
-        }
+        location.latitude += latChange;
+        location.longitude += lonChange;
+        location.distanceFromLastReading = distanceTraveled + gpsDistance;
+
         location.timeStamp = System.currentTimeMillis();
         location.yawFromNorth = (double) localYawFromNorth;
         return location;

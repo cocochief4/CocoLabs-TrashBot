@@ -2,6 +2,9 @@ package frc.robot;
 
 import java.util.ArrayList;
 
+import pabeles.concurrency.IntOperatorTask.Max;
+import stcpack.stc.node;
+
 public class PathHandler {
     private static final double MAX_DRIVE_SPEED = 0.5d;
     private static final double MAX_TURN_SPEED = 0.5d;
@@ -54,69 +57,28 @@ public class PathHandler {
     public static boolean GoTo(latLong nextNode) {
         NavigatorData location = Navigator.getLocation();
         latLong relativeNodeLocation = new latLong(nextNode.Lat - location.latitude, nextNode.Long - location.longitude);
-        System.out.println("Node Relative Location:" + relativeNodeLocation.toString(relativeNodeLocation));
         double nodeThetaFromNorth = Math.toDegrees(Math.atan2(relativeNodeLocation.Long, relativeNodeLocation.Lat));
         double nodeRelativeTheta = nodeThetaFromNorth - location.yawFromNorth;
         if (Math.abs(relativeNodeLocation.Lat) > 5E-7 || 
             Math.abs(relativeNodeLocation.Long) > 5E-7) { // If we have not arrived at target node...
-            if (haveTurned) {
-                if (Math.abs(nodeRelativeTheta) > 0.5) {
-                    turning = true;
-                    haveTurned = true;
-                    if (nodeRelativeTheta < 0) {
-                        System.out.println("Turning");
-                        if (Math.abs(autoDrive.xEuclid) < MAX_TURN_SPEED) {
-                            autoDrive.xEuclid -= 0.1;
-                            if (autoDrive.yEuclid > 0d) {
-                                autoDrive.yEuclid -= 0.1;
-                            } else if (autoDrive.yEuclid < 0d) {
-                                autoDrive.yEuclid = 0d;
-                            }
-                        }
-                        AutonomousDrive.drive(autoDrive.yEuclid, autoDrive.xEuclid);
-                    } else if (nodeRelativeTheta > 0) {
-                        if (Math.abs(autoDrive.xEuclid) < MAX_TURN_SPEED) {
-                            autoDrive.xEuclid += 0.1;
-                            if (autoDrive.yEuclid > 0d) {
-                                autoDrive.yEuclid += 0.1;
-                            } else if (autoDrive.yEuclid < 0d) {
-                                autoDrive.yEuclid = 0d;
-                            }
-                        }
-                        System.out.println("Turning");
-                        AutonomousDrive.drive(autoDrive.yEuclid, autoDrive.xEuclid);
-                    }
-                } else {
-                    haveTurned = false;
-                    turning = false;
-                }
+            if (Math.abs(nodeRelativeTheta) > 60) {
+                autoDrive.yEuclid = 0d;
+            } else {
+                autoDrive.yEuclid = MAX_DRIVE_SPEED;
             }
-            if (Math.abs(nodeRelativeTheta) < 5 && turning == false) { // Go forward
-                System.out.println("Driving");
-                if (autoDrive.yEuclid < MAX_DRIVE_SPEED) {
-                    autoDrive.yEuclid += 0.1;
-                } else if (autoDrive.yEuclid > MAX_DRIVE_SPEED) {
-                    autoDrive.yEuclid = MAX_DRIVE_SPEED;
-                }
-                if (Math.abs(autoDrive.xEuclid) > 0.06) {
-                    if (autoDrive.xEuclid < 0) {
-                        autoDrive.xEuclid += 0.1;
-                    } else if (autoDrive.xEuclid > 0) {
-                        autoDrive.xEuclid -= 0.1;
-                    } else {
-                        autoDrive.xEuclid = 0d;
-                    }
-                }
-                AutonomousDrive.drive(autoDrive.yEuclid, autoDrive.xEuclid);
-            } else { // Turn
-                haveTurned = true;
-                distanceWithoutTurning = 0;
-                turning = true;
+            autoDrive.xEuclid = nodeRelativeTheta/60 * MAX_TURN_SPEED;
+            if (Math.abs(autoDrive.xEuclid) > MAX_TURN_SPEED) {
+                autoDrive.xEuclid = Math.signum(autoDrive.xEuclid) * MAX_TURN_SPEED;
             }
-
+            if (Math.abs(autoDrive.xEuclid) < 0.1) {
+                autoDrive.xEuclid = Math.signum(autoDrive.xEuclid) * 0.1;
+            }
+            System.out.println("Node Relative Location:" + relativeNodeLocation.toString(relativeNodeLocation) + ", Node relavtive Yaw: " + nodeRelativeTheta);
+            System.out.println("Autodrive: " + autoDrive.toString());
+            AutonomousDrive.drive(autoDrive.yEuclid, autoDrive.xEuclid);
             return false;
         } else {
-            System.out.println("location" + location.toString());
+            // System.out.println("location" + location.toString());
             return true;
         }
     }
