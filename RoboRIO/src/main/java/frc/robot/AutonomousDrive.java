@@ -13,7 +13,7 @@ public class AutonomousDrive {
         throttleSteering = teleopMath.ScaleUp(throttleSteering);
         // throttleSteering = teleopMath.CalcRamp(previousSpeed, throttleSteering, Robot.RAMP_MAX);
         previousSpeed = throttleSteering;
-        System.out.println("throttle, steering: " + throttleSteering.yEuclid * -1 + ", " + throttleSteering.xEuclid);
+        System.out.println("throttle, steering: " + throttle + ", " + steering);
         Robot.m_myRobot.tankDrive(throttleSteering.yEuclid * -1, throttleSteering.xEuclid);
     }
     
