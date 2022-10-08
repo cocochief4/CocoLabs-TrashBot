@@ -3,8 +3,12 @@ package frc.robot;
 import java.util.ArrayList;
 
 public class PathHandler {
-    private static final float MAX_DRIVE_SPEED = 0.25f;
-    private static final float MAX_TURN_SPEED = 0.25f;
+    private static final double MAX_DRIVE_SPEED = 0.5f;
+    private static final double MAX_TURN_SPEED = 0.25f;
+
+    private static final double ARRIVED_MARGIN = 1E-6; // About 20 cm margin (Most likely much smaller bc we not near the equator)
+
+    private static EuclideanCoord autoDrive = new EuclideanCoord(0d, 0d); // x is turning, y is throttle
 
     private static ArrayList<latLong> nodeArr;
 
@@ -53,24 +57,37 @@ public class PathHandler {
         System.out.println("Node Relative Location:" + relativeNodeLocation.toString(relativeNodeLocation));
         double nodeThetaFromNorth = Math.toDegrees(Math.atan2(relativeNodeLocation.Long, relativeNodeLocation.Lat));
         double nodeRelativeTheta = nodeThetaFromNorth - location.yawFromNorth;
-        if (Math.abs(relativeNodeLocation.Lat) > 5E-7 || 
-            Math.abs(relativeNodeLocation.Long) > 5E-7) { // If we have not arrived at target node...
-            if (Math.abs(nodeRelativeTheta) < 3) { // Go forward
-                haveTurned = false;
-                System.out.println("Driving");
-                AutonomousDrive.drive(MAX_DRIVE_SPEED, 0);
-            } else { // Turn
-                haveTurned = true;
-                distanceWithoutTurning = 0;
-                if (nodeRelativeTheta < 0) {
+        System.out.println("node relative theta: " + nodeRelativeTheta);
+        if (Math.abs(relativeNodeLocation.Lat) > ARRIVED_MARGIN || 
+            Math.abs(relativeNodeLocation.Long) > ARRIVED_MARGIN) { // If we have not arrived at target node...
+            if (haveTurned && Math.abs(nodeRelativeTheta) > 3) { // Once turning, turn to be more accurate than 3 deg
+                if (Math.abs(nodeRelativeTheta) <= 3) {
+                    haveTurned = false;
+                } else {
+                    distanceWithoutTurning = 0;
                     System.out.println("Turning");
-                    AutonomousDrive.drive(0, -MAX_TURN_SPEED);
-                } else if (nodeRelativeTheta > 0) {
-                    System.out.println("Turning");
-                    AutonomousDrive.drive(0, MAX_TURN_SPEED);
+                    if (Math.abs(autoDrive.yEuclid) < 0.05) {
+                        autoDrive.yEuclid = 0d;
+                    } else {
+                        autoDrive.yEuclid -= Math.signum(autoDrive.yEuclid) * 0.05;
+                    }
+                    AutonomousDrive.drive(autoDrive.yEuclid, Math.signum(nodeRelativeTheta) * MAX_TURN_SPEED);
                 }
             }
+            if (Math.abs(nodeRelativeTheta) < 5) { // Go forward
+                haveTurned = false;
+                System.out.println("Driving");
+                if (Math.abs(autoDrive.yEuclid) > MAX_DRIVE_SPEED) {
+                    autoDrive.yEuclid  = Math.signum(autoDrive.yEuclid) * MAX_DRIVE_SPEED;
+                }
+                autoDrive.yEuclid += Math.signum(autoDrive.yEuclid) * 0.05;
+                autoDrive.yEuclid = MAX_DRIVE_SPEED;
+                AutonomousDrive.drive(autoDrive.yEuclid, 0);
+            } else { // Turn
+                haveTurned = true;
+            }
 
+            System.out.println("location" + location.toString());
             return false;
         } else {
             System.out.println("location" + location.toString());
