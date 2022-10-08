@@ -57,14 +57,14 @@ public class PathHandler {
         System.out.println("Node Relative Location:" + relativeNodeLocation.toString(relativeNodeLocation));
         double nodeThetaFromNorth = Math.toDegrees(Math.atan2(relativeNodeLocation.Long, relativeNodeLocation.Lat));
         double nodeRelativeTheta = nodeThetaFromNorth - location.yawFromNorth;
-        System.out.println("node relative theta: " + nodeRelativeTheta);
+        System.out.println("node relative theta, yaw from north, nodeThetaFromNorth: " + nodeRelativeTheta + ", " + location.yawFromNorth + ", " + nodeThetaFromNorth);
         if (Math.abs(relativeNodeLocation.Lat) > ARRIVED_MARGIN || 
             Math.abs(relativeNodeLocation.Long) > ARRIVED_MARGIN) { // If we have not arrived at target node...
-            if (haveTurned && Math.abs(nodeRelativeTheta) > 3) { // Once turning, turn to be more accurate than 3 deg
-                if (Math.abs(nodeRelativeTheta) <= 3) {
+            if (haveTurned) {
+                if (Math.abs(nodeRelativeTheta) < 3) {
                     haveTurned = false;
+                    goForward();
                 } else {
-                    distanceWithoutTurning = 0;
                     System.out.println("Turning");
                     if (Math.abs(autoDrive.yEuclid) < 0.05) {
                         autoDrive.yEuclid = 0d;
@@ -73,18 +73,12 @@ public class PathHandler {
                     }
                     AutonomousDrive.drive(autoDrive.yEuclid, Math.signum(nodeRelativeTheta) * MAX_TURN_SPEED);
                 }
-            }
-            if (Math.abs(nodeRelativeTheta) < 5) { // Go forward
-                haveTurned = false;
-                System.out.println("Driving");
-                if (Math.abs(autoDrive.yEuclid) > MAX_DRIVE_SPEED) {
-                    autoDrive.yEuclid  = Math.signum(autoDrive.yEuclid) * MAX_DRIVE_SPEED;
+            } else {
+                if (Math.abs(nodeRelativeTheta) > 5) {
+                    haveTurned = true;
+                } else {
+                    goForward();
                 }
-                autoDrive.yEuclid += Math.signum(autoDrive.yEuclid) * 0.05;
-                autoDrive.yEuclid = MAX_DRIVE_SPEED;
-                AutonomousDrive.drive(autoDrive.yEuclid, 0);
-            } else { // Turn
-                haveTurned = true;
             }
 
             System.out.println("location" + location.toString());
@@ -100,5 +94,15 @@ public class PathHandler {
         if (targetAchieved) {
             index++;
         }
+    }
+
+    private static void goForward() {
+        haveTurned = false;
+        System.out.println("Go Forward");
+        autoDrive.yEuclid += Math.signum(autoDrive.yEuclid + 0.0001) * 0.05;
+        if (Math.abs(autoDrive.yEuclid) > MAX_DRIVE_SPEED) {
+            autoDrive.yEuclid  = Math.signum(autoDrive.yEuclid) * MAX_DRIVE_SPEED;
+        }
+        AutonomousDrive.drive(autoDrive.yEuclid, 0);
     }
 }

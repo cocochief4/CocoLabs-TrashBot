@@ -94,7 +94,7 @@ public class Robot extends TimedRobot {
     boolean arduinoData = false;
     while (arduinoData == false) {
       arduinoData = ArduinoManager.init();
-      System.out.println("init"); // Must be before Navigator Init
+      // System.out.println("init"); // Must be before Navigator Init
     }
     // resetYaw MUST BE DELAYED FROM RInit as RInit Calibration overrides resetYaw request.
     // ArduinoManager.init() has a init time of around 3 sec, varies though
