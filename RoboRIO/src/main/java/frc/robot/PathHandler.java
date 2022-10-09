@@ -2,6 +2,8 @@ package frc.robot;
 
 import java.util.ArrayList;
 
+import stcpack.stc.node;
+
 public class PathHandler {
     private static final double MAX_DRIVE_SPEED = 0.5f;
     private static final double MAX_TURN_SPEED = 0.25f;
@@ -24,7 +26,11 @@ public class PathHandler {
     protected static void init() {
         latLong initPos = new latLong(ArduinoManager.getGPS().latitude, ArduinoManager.getGPS().longitude);
         stcpack.stc.spanningTreeCoverageAlgorithm(initPos);
-        nodeArr = stcpack.stc.finalNavigate;
+        // nodeArr = stcpack.stc.finalNavigate;
+        nodeArr = new ArrayList<latLong>();
+        nodeArr.add(new latLong(373453108E-7, -1220160366E-7));
+        nodeArr.add(new latLong(373453102E-7,-1220160612E-7));
+        nodeArr.add(new latLong(373452958E-7,-1220160489E-7));
     }
 /*
     protected static void calibrate() { // WORK ON CALIBRATE
@@ -89,10 +95,17 @@ public class PathHandler {
         }
     }
 
-    public static void autonomousMainLoop() {
+    public static boolean autonomousMainLoop() {
         boolean targetAchieved = GoTo(nodeArr.get(index));
         if (targetAchieved) {
             index++;
+            if (nodeArr.size() < index + 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
         }
     }
 
