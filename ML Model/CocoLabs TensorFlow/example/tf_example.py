@@ -13,6 +13,7 @@ from threading import Lock
 # printing only warnings and error messages
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "1"
 
+
 try:
     import tensorflow as tf
     from PIL import Image
@@ -20,6 +21,13 @@ except ImportError:
     raise ImportError("ERROR: Failed to import libraries. Please refer to READEME.md file\n")
 
 EXPORT_MODEL_VERSION = 1
+
+'''
+print(os.getcwd())
+dir_path = os.getcwd()
+model_dir = os.path.dirname(dir_path)
+print(model_dir)
+'''
 
 
 class TFModel:
