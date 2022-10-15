@@ -59,6 +59,7 @@ public class PathHandler {
     }
 */
     public static boolean GoTo(latLong nextNode) {
+        System.out.println("Yaw Calib Delta: " + NavXManager.yawDeltaFromNorth);
         NavigatorData location = Navigator.getLocation();
         latLong relativeNodeLocation = new latLong(nextNode.Lat - location.latitude, nextNode.Long - location.longitude);
         System.out.println("Node Relative Location:" + relativeNodeLocation.toString(relativeNodeLocation));
