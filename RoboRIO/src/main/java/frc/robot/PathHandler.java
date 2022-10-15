@@ -68,7 +68,7 @@ public class PathHandler {
         if (Math.abs(relativeNodeLocation.Lat) > ARRIVED_MARGIN || 
             Math.abs(relativeNodeLocation.Long) > ARRIVED_MARGIN) { // If we have not arrived at target node...
             if (haveTurned) {
-                if (Math.abs(nodeRelativeTheta) < 3) {
+                if (Math.abs(nodeRelativeTheta) < 1) {
                     haveTurned = false;
                     goForward();
                 } else {
