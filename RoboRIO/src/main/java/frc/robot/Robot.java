@@ -107,6 +107,7 @@ public class Robot extends TimedRobot {
     Navigator.init();
     PathHandler.init();
     NavXManager.resetYaw();
+    arrived = false;
 
   }
 

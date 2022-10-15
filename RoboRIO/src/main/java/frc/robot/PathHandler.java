@@ -64,6 +64,7 @@ public class PathHandler {
         System.out.println("Node Relative Location:" + relativeNodeLocation.toString(relativeNodeLocation));
         double nodeThetaFromNorth = Math.toDegrees(Math.atan2(relativeNodeLocation.Long, relativeNodeLocation.Lat));
         double nodeRelativeTheta = nodeThetaFromNorth - location.yawFromNorth;
+        nodeRelativeTheta = degreesTo180(nodeRelativeTheta);
         System.out.println("node relative theta, yaw from north, nodeThetaFromNorth: " + nodeRelativeTheta + ", " + location.yawFromNorth + ", " + nodeThetaFromNorth);
         if (Math.abs(relativeNodeLocation.Lat) > ARRIVED_MARGIN || 
             Math.abs(relativeNodeLocation.Long) > ARRIVED_MARGIN) { // If we have not arrived at target node...
@@ -118,5 +119,20 @@ public class PathHandler {
             autoDrive.yEuclid  = Math.signum(autoDrive.yEuclid) * MAX_DRIVE_SPEED;
         }
         AutonomousDrive.drive(autoDrive.yEuclid, 0);
+    }
+
+    protected static double degreesTo180(double degree) {
+        System.out.println("pre-math: " + degree);
+        double newDegree = degree;
+        while (Math.abs(newDegree) > 360) {
+            newDegree -= Math.signum(newDegree) * 360;
+        }
+        if (newDegree > 180) {
+            newDegree -= 360;
+        } else if (newDegree < -180) {
+            newDegree += 360;
+        }
+        System.out.println("post-math: " + newDegree);
+        return newDegree;
     }
 }
