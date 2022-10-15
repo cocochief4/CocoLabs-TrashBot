@@ -2,10 +2,15 @@ package frc.robot;
 
 import java.util.ArrayList;
 
+import stcpack.stc.node;
+
 public class PathHandler {
-    private static final double MAX_DRIVE_SPEED = 0.5d;
-    private static final double MAX_TURN_SPEED = 0.5d;
-    protected static EuclideanCoord autoDrive = new EuclideanCoord(0d, 0d);
+    private static final double MAX_DRIVE_SPEED = 0.5f;
+    private static final double MAX_TURN_SPEED = 0.25f;
+
+    private static final double ARRIVED_MARGIN = 1E-6; // About 20 cm margin (Most likely much smaller bc we not near the equator)
+
+    private static EuclideanCoord autoDrive = new EuclideanCoord(0d, 0d); // x is turning, y is throttle
 
     private static ArrayList<latLong> nodeArr;
 
@@ -22,9 +27,12 @@ public class PathHandler {
     protected static void init() {
         latLong initPos = new latLong(ArduinoManager.getGPS().latitude, ArduinoManager.getGPS().longitude);
         stcpack.stc.spanningTreeCoverageAlgorithm(initPos);
-        nodeArr = stcpack.stc.finalNavigate;
-        autoDrive.xEuclid = 0d;
-        autoDrive.yEuclid = 0d;
+        // nodeArr = stcpack.stc.finalNavigate;
+        nodeArr = new ArrayList<latLong>();
+        nodeArr.add(new latLong(373453108E-7, -1220160366E-7)); // Center
+        nodeArr.add(new latLong(373453102E-7,-1220160612E-7)); // Near Garage
+        nodeArr.add(new latLong(373452958E-7,-1220160489E-7)); // Point 3
+        index = 0;
     }
 /*
     protected static void calibrate() { 
@@ -52,68 +60,38 @@ public class PathHandler {
     }
 */
     public static boolean GoTo(latLong nextNode) {
+        System.out.println("Yaw Calib Delta: " + NavXManager.yawDeltaFromNorth);
         NavigatorData location = Navigator.getLocation();
         latLong relativeNodeLocation = new latLong(nextNode.Lat - location.latitude, nextNode.Long - location.longitude);
         System.out.println("Node Relative Location:" + relativeNodeLocation.toString(relativeNodeLocation));
         double nodeThetaFromNorth = Math.toDegrees(Math.atan2(relativeNodeLocation.Long, relativeNodeLocation.Lat));
         double nodeRelativeTheta = nodeThetaFromNorth - location.yawFromNorth;
-        if (Math.abs(relativeNodeLocation.Lat) > 5E-7 || 
-            Math.abs(relativeNodeLocation.Long) > 5E-7) { // If we have not arrived at target node...
+        nodeRelativeTheta = degreesTo180(nodeRelativeTheta);
+        System.out.println("node relative theta, yaw from north, nodeThetaFromNorth: " + nodeRelativeTheta + ", " + location.yawFromNorth + ", " + nodeThetaFromNorth);
+        if (Math.abs(relativeNodeLocation.Lat) > ARRIVED_MARGIN || 
+            Math.abs(relativeNodeLocation.Long) > ARRIVED_MARGIN) { // If we have not arrived at target node...
             if (haveTurned) {
-                if (Math.abs(nodeRelativeTheta) > 0.5) {
-                    turning = true;
-                    haveTurned = true;
-                    if (nodeRelativeTheta < 0) {
-                        System.out.println("Turning");
-                        if (Math.abs(autoDrive.xEuclid) < MAX_TURN_SPEED) {
-                            autoDrive.xEuclid -= 0.1;
-                            if (autoDrive.yEuclid > 0d) {
-                                autoDrive.yEuclid -= 0.1;
-                            } else if (autoDrive.yEuclid < 0d) {
-                                autoDrive.yEuclid = 0d;
-                            }
-                        }
-                        AutonomousDrive.drive(autoDrive.yEuclid, autoDrive.xEuclid);
-                    } else if (nodeRelativeTheta > 0) {
-                        if (Math.abs(autoDrive.xEuclid) < MAX_TURN_SPEED) {
-                            autoDrive.xEuclid += 0.1;
-                            if (autoDrive.yEuclid > 0d) {
-                                autoDrive.yEuclid += 0.1;
-                            } else if (autoDrive.yEuclid < 0d) {
-                                autoDrive.yEuclid = 0d;
-                            }
-                        }
-                        System.out.println("Turning");
-                        AutonomousDrive.drive(autoDrive.yEuclid, autoDrive.xEuclid);
-                    }
-                } else {
+                if (Math.abs(nodeRelativeTheta) < 1) {
                     haveTurned = false;
-                    turning = false;
-                }
-            }
-            if (Math.abs(nodeRelativeTheta) < 5 && turning == false) { // Go forward
-                System.out.println("Driving");
-                if (autoDrive.yEuclid < MAX_DRIVE_SPEED) {
-                    autoDrive.yEuclid += 0.1;
-                } else if (autoDrive.yEuclid > MAX_DRIVE_SPEED) {
-                    autoDrive.yEuclid = MAX_DRIVE_SPEED;
-                }
-                if (Math.abs(autoDrive.xEuclid) > 0.06) {
-                    if (autoDrive.xEuclid < 0) {
-                        autoDrive.xEuclid += 0.1;
-                    } else if (autoDrive.xEuclid > 0) {
-                        autoDrive.xEuclid -= 0.1;
+                    goForward();
+                } else {
+                    System.out.println("Turning");
+                    if (Math.abs(autoDrive.yEuclid) < 0.05) {
+                        autoDrive.yEuclid = 0d;
                     } else {
-                        autoDrive.xEuclid = 0d;
+                        autoDrive.yEuclid -= Math.signum(autoDrive.yEuclid) * 0.05;
                     }
+                    AutonomousDrive.drive(autoDrive.yEuclid, Math.signum(nodeRelativeTheta) * MAX_TURN_SPEED);
                 }
-                AutonomousDrive.drive(autoDrive.yEuclid, autoDrive.xEuclid);
-            } else { // Turn
-                haveTurned = true;
-                distanceWithoutTurning = 0;
-                turning = true;
+            } else {
+                if (Math.abs(nodeRelativeTheta) > 5) {
+                    haveTurned = true;
+                } else {
+                    goForward();
+                }
             }
 
+            System.out.println("location" + location.toString());
             return false;
         } else {
             System.out.println("location" + location.toString());
@@ -121,10 +99,42 @@ public class PathHandler {
         }
     }
 
-    public static void autonomousMainLoop() {
+    public static boolean autonomousMainLoop() {
         boolean targetAchieved = GoTo(nodeArr.get(index));
         if (targetAchieved) {
             index++;
+            if (nodeArr.size() < index + 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
         }
+    }
+
+    private static void goForward() {
+        haveTurned = false;
+        System.out.println("Go Forward");
+        autoDrive.yEuclid += Math.signum(autoDrive.yEuclid + 0.0001) * 0.05;
+        if (Math.abs(autoDrive.yEuclid) > MAX_DRIVE_SPEED) {
+            autoDrive.yEuclid  = Math.signum(autoDrive.yEuclid) * MAX_DRIVE_SPEED;
+        }
+        AutonomousDrive.drive(autoDrive.yEuclid, 0);
+    }
+
+    protected static double degreesTo180(double degree) {
+        System.out.println("pre-math: " + degree);
+        double newDegree = degree;
+        while (Math.abs(newDegree) > 360) {
+            newDegree -= Math.signum(newDegree) * 360;
+        }
+        if (newDegree > 180) {
+            newDegree -= 360;
+        } else if (newDegree < -180) {
+            newDegree += 360;
+        }
+        System.out.println("post-math: " + newDegree);
+        return newDegree;
     }
 }

@@ -16,12 +16,14 @@ public class Navigator {
     protected static boolean haveTurned = false;
     protected static boolean haveStartedCalib = false;
     protected static double distanceWithoutTurning = 0;
-    protected static GPSLatLongData calibStartPos = new GPSLatLongData(0, 0, (short) 0, System.currentTimeMillis());
-    protected static GPSLatLongData calibEndPos = new GPSLatLongData(0, 0, (short) 0, System.currentTimeMillis());
+    protected static GPSLatLongData calibStartPos = null;
+    protected static GPSLatLongData calibEndPos = null;
+    
 
     protected static void init() {
         GPSLatLongData gps = null;
         gps = ArduinoManager.getGPS();
+        calibStartPos = null;
 
         location = new NavigatorData(gps.latitude * DD_LONG_TO_DOUBLE, gps.longitude * DD_LONG_TO_DOUBLE, 0d, 0d, System.currentTimeMillis()); // Need calibrate function
                                  // Direction is how many degrees from North (positive is west of, negative is east of)
@@ -34,37 +36,37 @@ public class Navigator {
     //     return navigatorStruct;
     // }
     
-/*  
-    protected static void calibrate() { // WORK ON CALIBRATE
-        if (haveTurned == false) {
-            GPSLatLongData gpsLatLongData = ArduinoManager.getGPS();
-            System.out.println("calibStart: " + gpsLatLongData + "real: " + calibStartPos);
-            if (System.currentTimeMillis() - gpsLatLongData.timeStamp < 50) {
-                haveStartedCalib = true;
-                calibStartPos = gpsLatLongData;
-            }
-        } else {
-            haveStartedCalib = false;
-        }
 
-        if (haveStartedCalib == false) {
-            GPSLatLongData gpsLatLongData = ArduinoManager.getGPS();
-            if (gpsLatLongData.timeStamp != calibStartPos.timeStamp) {
-                calibEndPos = gpsLatLongData;
-                System.out.println("end pos gps: " + gpsLatLongData.toString() + ", real: " + calibEndPos);
-                double deltaLat = calibStartPos.latitude - calibEndPos.latitude;
-                double deltaLong = calibStartPos.longitude - calibEndPos.longitude;
-                double tan = Math.toDegrees(Math.atan(deltaLong/deltaLat));
-                double yawTan = NavXManager.getData().yawFromNorth;
-                NavXManager.yawDeltaFromNorth = yawTan-tan;
-            }
-        }
-
-    } 
-*/
+    // protected static void calibrate() { // WORK ON CALIBRATE
+    //     EncoderStruct encoderStruct = MotorEncoder.getVelocity();
+    //     if (Math.abs(encoderStruct.lVelocity - encoderStruct.rVelocity) < 0.015) {
+    //         haveTurned = false;
+    //     } else {
+    //         haveTurned = true;
+    //         calibStartPos = null;
+    //     }
+    //     if (haveTurned == false) {
+    //         if (calibStartPos == null) {
+    //             if (System.currentTimeMillis() - ArduinoManager.getGPS().timeStamp < 70) {
+    //                 calibStartPos = ArduinoManager.getGPS();
+    //             }
+    //         }
+    //         else {
+    //             if (ArduinoManager.getGPS().timeStamp != calibStartPos.timeStamp) {
+    //                 calibEndPos = ArduinoManager.getGPS();
+    //                 double deltaLatitude = calibEndPos.latitude - calibStartPos.latitude;
+    //                 double deltaLongitude = calibEndPos.longitude - calibStartPos.longitude;
+    //                 double yawFromNorth = Math.atan2(deltaLatitude, deltaLongitude);
+    //                 NavXManager.yawDeltaFromNorth = yawFromNorth - NavXManager.getData().yawFromNorth;
+    //                 calibStartPos = null;
+    //             }
+    //         }
+    //     }
+    // } 
 
 
     protected static NavigatorData getLocation() {
+        // calibrate();
         // System.out.println(location.toString());
 
         double localYawFromNorth = NavXManager.getData().yawFromNorth;

@@ -94,7 +94,7 @@ public class Robot extends TimedRobot {
     boolean arduinoData = false;
     while (arduinoData == false) {
       arduinoData = ArduinoManager.init();
-      System.out.println("init"); // Must be before Navigator Init
+      // System.out.println("init"); // Must be before Navigator Init
     }
     // resetYaw MUST BE DELAYED FROM RInit as RInit Calibration overrides resetYaw request.
     // ArduinoManager.init() has a init time of around 3 sec, varies though
@@ -107,6 +107,7 @@ public class Robot extends TimedRobot {
     Navigator.init();
     PathHandler.init();
     NavXManager.resetYaw();
+    arrived = false;
 
   }
 
@@ -130,21 +131,20 @@ public class Robot extends TimedRobot {
 
       
   // }
-  boolean previousState = true; // true is auto, false is teleop
-  
+
+  boolean arrived = false;
   public void teleopPeriodic() {
     ArduinoManager.getArduinoMegaData();
     if (ArduinoManager.getRC() == null) {
-      boolean arrived = PathHandler.GoTo(new latLong(373453108E-7, -1220160366E-7));
-      System.out.println("Yaw From North" + NavXManager.getData().yawFromNorth);
-      if (arrived) {
-        m_myRobot.tankDrive(0, 0);
+      if (!arrived) {
+      arrived = PathHandler.autonomousMainLoop();
+      //  // Point 3
+      // System.out.println("Yaw From North" + NavXManager.getData().yawFromNorth);
+      } else {
         System.out.println("arrived");
+        m_myRobot.tankDrive(0, 0);
       }
     } else {
-      if (previousState) {
-        previousState = false;
-      }
       RcData rcData = ArduinoManager.getRC();
       EuclideanCoord steeringThrottle = new EuclideanCoord(rcData.steering, rcData.throttle);
       steeringThrottle = new TeleopMath(0d, 0d).ScaleToUnitSquare(steeringThrottle);
