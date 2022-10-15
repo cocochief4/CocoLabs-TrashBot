@@ -130,22 +130,20 @@ public class Robot extends TimedRobot {
 
       
   // }
-  boolean previousState = true; // true is auto, false is teleop
+
   boolean arrived = false;
   public void teleopPeriodic() {
     ArduinoManager.getArduinoMegaData();
     if (ArduinoManager.getRC() == null) {
       if (!arrived) {
-      arrived = PathHandler.autonomousMainLoop();
+      arrived = PathHandler.GoTo(new latLong(373453108E-7, -1220160366E-7));
       //  // Point 3
       // System.out.println("Yaw From North" + NavXManager.getData().yawFromNorth);
       } else {
         System.out.println("arrived");
+        m_myRobot.tankDrive(0, 0);
       }
     } else {
-      if (previousState) {
-        previousState = false;
-      }
       RcData rcData = ArduinoManager.getRC();
       EuclideanCoord steeringThrottle = new EuclideanCoord(rcData.steering, rcData.throttle);
       steeringThrottle = new TeleopMath(0d, 0d).ScaleToUnitSquare(steeringThrottle);

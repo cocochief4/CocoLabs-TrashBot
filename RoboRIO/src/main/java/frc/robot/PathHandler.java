@@ -28,9 +28,10 @@ public class PathHandler {
         stcpack.stc.spanningTreeCoverageAlgorithm(initPos);
         // nodeArr = stcpack.stc.finalNavigate;
         nodeArr = new ArrayList<latLong>();
-        nodeArr.add(new latLong(373453108E-7, -1220160366E-7));
-        nodeArr.add(new latLong(373453102E-7,-1220160612E-7));
-        nodeArr.add(new latLong(373452958E-7,-1220160489E-7));
+        nodeArr.add(new latLong(373453108E-7, -1220160366E-7)); // Center
+        nodeArr.add(new latLong(373453102E-7,-1220160612E-7)); // Near Garage
+        nodeArr.add(new latLong(373452958E-7,-1220160489E-7)); // Point 3
+        index = 0;
     }
 /*
     protected static void calibrate() { // WORK ON CALIBRATE
