@@ -25,16 +25,31 @@ public class input {
         vertices = new latLong[nVertices];
         //Here you would define each lat, long in vertices
         //Top left Corner: Lat: 37.3453149 Long: -122.0160824
-        vertices[0] = new latLong(37.3453149, -122.0160824);
-        vertices[1] = new latLong(37.3453149, -122.0160824 + 20 * 0.0000027495);
-        vertices[2] = new latLong(37.3453149 - 10 * 0.0000027495, -122.0160824 + 20 * 0.0000027495);
-        vertices[3] = new latLong(37.3453149 - 10 * 0.0000027495, -122.0160824);
-        int nObstacles = 4; //1 is just a placeholder for now
+        vertices[0] = new latLong(373452954E-7,-1220160290E-7);
+        vertices[1] = new latLong(373452945E-7,-1220160639E-7);
+        vertices[2] = new latLong(373453269E-7,-1220160645E-7);
+        vertices[3] = new latLong(373453265E-7,-1220160292E-7);
+
+
+        int nObstacles = 1; //1 is just a placeholder for now
         obstacles = new ArrayList[nObstacles];
         for (int i = 0; i<nObstacles; i++) {
             obstacles[i] = new ArrayList<latLong>();
         }
         //Here you would define each obstacle as an arraylist of lat, longs
+        obstacles[0].add(new latLong(373453106E-7,-1220160351E-7));
+        obstacles[0].add(new latLong(373453112E-7,-1220160446E-7));
+        obstacles[0].add(new latLong(373453067E-7,-1220160432E-7));
+    }
+
+//other test cases
+
+{
+    vertices[0] = new latLong(37.3453149, -122.0160824);
+        vertices[1] = new latLong(37.3453149, -122.0160824 + 20 * 0.0000027495);
+        vertices[2] = new latLong(37.3453149 - 10 * 0.0000027495, -122.0160824 + 20 * 0.0000027495);
+        vertices[3] = new latLong(37.3453149 - 10 * 0.0000027495, -122.0160824);
+
         obstacles[0].add(new latLong(37.3453149 - 2 * 0.0000027495, -122.0160824 + 2 * 0.0000027495));
         obstacles[0].add(new latLong(37.3453149 - 2 * 0.0000027495, -122.0160824 + 3 * 0.0000027495));
         obstacles[0].add(new latLong(37.3453149 - 5 * 0.0000027495, -122.0160824 + 3 * 0.0000027495));
@@ -66,9 +81,8 @@ public class input {
         obstacles[3].add(new latLong(37.3453149 - 8 * 0.0000027495, -122.0160824 + 13 * 0.0000027495));
         obstacles[3].add(new latLong(37.3453149 - 6 * 0.0000027495, -122.0160824 + 13 * 0.0000027495));
         obstacles[3].add(new latLong(37.3453149 - 6 * 0.0000027495, -122.0160824 + 12 * 0.0000027495));
-    }
+}
 
-//other test cases
 
 {
     vertices[0] = new latLong(37.3453186, -122.0160531);

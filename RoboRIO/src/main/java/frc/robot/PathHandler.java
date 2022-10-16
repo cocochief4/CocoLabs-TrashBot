@@ -27,11 +27,7 @@ public class PathHandler {
     protected static void init() {
         latLong initPos = new latLong(ArduinoManager.getGPS().latitude, ArduinoManager.getGPS().longitude);
         stcpack.stc.spanningTreeCoverageAlgorithm(initPos);
-        // nodeArr = stcpack.stc.finalNavigate;
-        nodeArr = new ArrayList<latLong>();
-        nodeArr.add(new latLong(373453108E-7, -1220160366E-7)); // Center
-        nodeArr.add(new latLong(373453102E-7,-1220160612E-7)); // Near Garage
-        nodeArr.add(new latLong(373452958E-7,-1220160489E-7)); // Point 3
+        nodeArr = stcpack.stc.finalNavigate;
         index = 0;
     }
 /*
@@ -101,6 +97,8 @@ public class PathHandler {
 
     public static boolean autonomousMainLoop() {
         boolean targetAchieved = GoTo(nodeArr.get(index));
+        System.out.println("Target NOde: ");
+        stcpack.stc.printLatLong(nodeArr.get(index));
         if (targetAchieved) {
             index++;
             if (nodeArr.size() < index + 1) {

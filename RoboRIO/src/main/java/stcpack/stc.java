@@ -7,13 +7,15 @@ import java.awt.Graphics;
 import java.util.*;
 import frc.robot.*;
 
+import stcpack.input.*;
+
 /*
 Note for this program:
 A lot of this processing could be done at the same time; however, for the sake of understanding the code and debugging, I have used seperate methods.
 */
 
 /** Add your docs here. */
-public class stc extends stcpack.input {
+public class stc {
     
     //Global Variable Declaration
 
@@ -62,12 +64,12 @@ public class stc extends stcpack.input {
     private static void determineZeroPoint() {
         double maxLat = -10000.0;
         double minLong = 10000.0;
-        for (int i = 0; i<vertices.length; i++) {
-            if (vertices[i].Lat > maxLat) {
-                maxLat = vertices[i].Lat;
+        for (int i = 0; i<input.vertices.length; i++) {
+            if (input.vertices[i].Lat > maxLat) {
+                maxLat = input.vertices[i].Lat;
             }
-            if (vertices[i].Long < minLong) {
-                minLong = vertices[i].Long;
+            if (input.vertices[i].Long < minLong) {
+                minLong = input.vertices[i].Long;
             }
         }
         zeroPoint = new latLong(maxLat, minLong);
@@ -77,37 +79,37 @@ public class stc extends stcpack.input {
         //Use 1 ft = 0.0000027495 decimal degrees; 495 is the repetend but it shouldn't matter that much because we are getting down to 10 mm at that point
         double maxLat = -100000.0;
         double maxLong = -100000.0;
-        for (int i = 0; i<vertices.length; i++) {
-            vertices[i].Lat = Math.abs(zeroPoint.Lat - vertices[i].Lat);
-            vertices[i].Long = Math.abs(zeroPoint.Long - vertices[i].Long);
+        for (int i = 0; i<input.vertices.length; i++) {
+            input.vertices[i].Lat = Math.abs(zeroPoint.Lat - input.vertices[i].Lat);
+            input.vertices[i].Long = Math.abs(zeroPoint.Long - input.vertices[i].Long);
             //Convert to feet actually
-            vertices[i].Lat /= 0.0000027495;
-            vertices[i].Long /= 0.0000027495;
-            vertices[i].Lat = Math.round(vertices[i].Lat);
-            vertices[i].Long = Math.round(vertices[i].Long);
-            if (vertices[i].Lat > maxLat) {
-                maxLat = vertices[i].Lat;
+            input.vertices[i].Lat /= 0.0000027495;
+            input.vertices[i].Long /= 0.0000027495;
+            input.vertices[i].Lat = Math.round(input.vertices[i].Lat);
+            input.vertices[i].Long = Math.round(input.vertices[i].Long);
+            if (input.vertices[i].Lat > maxLat) {
+                maxLat = input.vertices[i].Lat;
             }
-            if (vertices[i].Long > maxLong) {
-                maxLong = vertices[i].Long;
+            if (input.vertices[i].Long > maxLong) {
+                maxLong = input.vertices[i].Long;
             }
         }
         farPoint = new latLong(maxLat, maxLong);
-        for (int i = 0; i<obstacles.length; i++) {
-            for (int j = 0; j<obstacles[i].size(); j++) {
-                obstacles[i].get(j).Lat = Math.abs(zeroPoint.Lat - obstacles[i].get(j).Lat);
-                obstacles[i].get(j).Long = Math.abs(zeroPoint.Long - obstacles[i].get(j).Long);
+        for (int i = 0; i<input.obstacles.length; i++) {
+            for (int j = 0; j<input.obstacles[i].size(); j++) {
+                input.obstacles[i].get(j).Lat = Math.abs(zeroPoint.Lat - input.obstacles[i].get(j).Lat);
+                input.obstacles[i].get(j).Long = Math.abs(zeroPoint.Long - input.obstacles[i].get(j).Long);
                 //Convert to feet actually
-                obstacles[i].get(j).Lat /= 0.0000027495;
-                obstacles[i].get(j).Long /= 0.0000027495;
-                obstacles[i].get(j).Lat = Math.round(obstacles[i].get(j).Lat);
-                obstacles[i].get(j).Long = Math.round(obstacles[i].get(j).Long);
+                input.obstacles[i].get(j).Lat /= 0.0000027495;
+                input.obstacles[i].get(j).Long /= 0.0000027495;
+                input.obstacles[i].get(j).Lat = Math.round(input.obstacles[i].get(j).Lat);
+                input.obstacles[i].get(j).Long = Math.round(input.obstacles[i].get(j).Long);
             }
         }
-        initialPos.Lat = Math.abs(zeroPoint.Lat - initialPos.Lat);
-        initialPos.Long = Math.abs(zeroPoint.Long - initialPos.Long);
-        initialPos.Lat /= 0.0000027495;
-        initialPos.Long /= 0.0000027495;
+        input.initialPos.Lat = Math.abs(zeroPoint.Lat - input.initialPos.Lat);
+        input.initialPos.Long = Math.abs(zeroPoint.Long - input.initialPos.Long);
+        input.initialPos.Lat /= 0.0000027495;
+        input.initialPos.Long /= 0.0000027495;
         //Everything is in feet now and defined via the zero point with rounding
     }
     
@@ -132,24 +134,24 @@ public class stc extends stcpack.input {
 
     private static void makePolygon() {
         //The vertex map
-        int nPoints = vertices.length;
+        int nPoints = input.vertices.length;
         int[] xPoints = new int[nPoints];
         int[] yPoints = new int[nPoints];
         //Lat is y/row; Long is x/col
         for (int i = 0; i<nPoints; i++) {
-            xPoints[i] = (int) vertices[i].Long;
-            yPoints[i] = (int) vertices[i].Lat;
+            xPoints[i] = (int) input.vertices[i].Long;
+            yPoints[i] = (int) input.vertices[i].Lat;
         }
         vertexMap = new Polygon(yPoints, xPoints, nPoints);
         //The obstacles map
-        obstacleMap = new Polygon[obstacles.length];
-        for (int i = 0; i<obstacles.length; i++) {
-            nPoints = obstacles[i].size();
+        obstacleMap = new Polygon[input.obstacles.length];
+        for (int i = 0; i<input.obstacles.length; i++) {
+            nPoints = input.obstacles[i].size();
             xPoints = new int[nPoints];
             yPoints = new int[nPoints];
             for (int j = 0; j<nPoints; j++) {
-                xPoints[j] = (int) obstacles[i].get(j).Long;
-                yPoints[j] = (int) obstacles[i].get(j).Lat;
+                xPoints[j] = (int) input.obstacles[i].get(j).Long;
+                yPoints[j] = (int) input.obstacles[i].get(j).Lat;
             }
             obstacleMap[i] = new Polygon(yPoints, xPoints, nPoints);
         }
@@ -208,7 +210,7 @@ public class stc extends stcpack.input {
         }
     }
 
-    private static void printLatLong(latLong i) {
+    public static void printLatLong(latLong i) {
         System.out.println(i.Lat + " " + i.Long);
     }
 
@@ -249,8 +251,8 @@ public class stc extends stcpack.input {
         int savedI = 0;
         for (int i = 0; i<nodes.size(); i++) {
             placeholder = new latLong(nodes.get(i).Lat, nodes.get(i).Long);
-            if (Math.pow(Math.abs(placeholder.Lat - initialPos.Lat), 2) + Math.pow(Math.abs(placeholder.Long - initialPos.Long), 2) < minDist) {
-                minDist = Math.pow(Math.abs(placeholder.Lat - initialPos.Lat), 2) + Math.pow(Math.abs(placeholder.Long - initialPos.Long), 2);
+            if (Math.pow(Math.abs(placeholder.Lat - input.initialPos.Lat), 2) + Math.pow(Math.abs(placeholder.Long - input.initialPos.Long), 2) < minDist) {
+                minDist = Math.pow(Math.abs(placeholder.Lat - input.initialPos.Lat), 2) + Math.pow(Math.abs(placeholder.Long - input.initialPos.Long), 2);
                 savedI = i;
             }
         }
@@ -658,9 +660,9 @@ public class stc extends stcpack.input {
     //Main Method
 
     public static void spanningTreeCoverageAlgorithm(latLong initialPosition) {
-        initialPos = new latLong(initialPosition.Lat, initialPosition.Long);
+        input.initialPos = new latLong(initialPosition.Lat, initialPosition.Long);
         //the entire input function
-        Input();
+        input.Input();
         //determine zeroPoint (needed for later functions)
         determineZeroPoint();
         //convert everything that is in lat, long into feet, feet from the zero point
@@ -684,7 +686,7 @@ public class stc extends stcpack.input {
 
     public static void main(String[] args) {
         //the entire input function
-        Input();
+        input.Input();
         //determine zeroPoint (needed for later functions)
         determineZeroPoint();
         //convert everything that is in lat, long into feet, feet from the zero point
