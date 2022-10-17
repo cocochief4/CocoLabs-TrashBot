@@ -25,9 +25,13 @@ public class PathHandler {
     private static int index = 0;
 
     protected static void init() {
-        latLong initPos = new latLong(ArduinoManager.getGPS().latitude, ArduinoManager.getGPS().longitude);
-        stcpack.stc.spanningTreeCoverageAlgorithm(initPos);
-        nodeArr = stcpack.stc.finalNavigate;
+        // latLong initPos = new latLong(ArduinoManager.getGPS().latitude, ArduinoManager.getGPS().longitude);
+        // stcpack.stc.spanningTreeCoverageAlgorithm(initPos);
+        // nodeArr = stcpack.stc.finalNavigate;
+        nodeArr = new ArrayList<latLong>();
+        nodeArr.add(new latLong(373453108E-7, -1220160366E-7)); // Center
+        nodeArr.add(new latLong(373453102E-7,-1220160612E-7)); // Near Garage
+        nodeArr.add(new latLong(373452958E-7,-1220160489E-7)); // Point 3
         index = 0;
     }
 /*
@@ -56,14 +60,14 @@ public class PathHandler {
     }
 */
     public static boolean GoTo(latLong nextNode) {
-        System.out.println("Yaw Calib Delta: " + NavXManager.yawDeltaFromNorth);
+        // System.out.println("Yaw Calib Delta: " + NavXManager.yawDeltaFromNorth);
         NavigatorData location = Navigator.getLocation();
         latLong relativeNodeLocation = new latLong(nextNode.Lat - location.latitude, nextNode.Long - location.longitude);
-        System.out.println("Node Relative Location:" + relativeNodeLocation.toString(relativeNodeLocation));
+        // System.out.println("Node Relative Location:" + relativeNodeLocation.toString(relativeNodeLocation));
         double nodeThetaFromNorth = Math.toDegrees(Math.atan2(relativeNodeLocation.Long, relativeNodeLocation.Lat));
         double nodeRelativeTheta = nodeThetaFromNorth - location.yawFromNorth;
         nodeRelativeTheta = degreesTo180(nodeRelativeTheta);
-        System.out.println("node relative theta, yaw from north, nodeThetaFromNorth: " + nodeRelativeTheta + ", " + location.yawFromNorth + ", " + nodeThetaFromNorth);
+        // System.out.println("node relative theta, yaw from north, nodeThetaFromNorth: " + nodeRelativeTheta + ", " + location.yawFromNorth + ", " + nodeThetaFromNorth);
         if (Math.abs(relativeNodeLocation.Lat) > ARRIVED_MARGIN || 
             Math.abs(relativeNodeLocation.Long) > ARRIVED_MARGIN) { // If we have not arrived at target node...
             if (haveTurned) {
@@ -87,18 +91,21 @@ public class PathHandler {
                 }
             }
 
-            System.out.println("location" + location.toString());
+            System.out.println("yawDeltaFromNorth: " + NavXManager.yawDeltaFromNorth + 
+                                ", nodeRelativeLocation: " + relativeNodeLocation.toString() + 
+                                ", nodeRelativeTheta, yawFromNorth, nodeThetaFromNorth: " + 
+                                nodeRelativeTheta + ", " + location.yawFromNorth + ", " + 
+                                nodeThetaFromNorth + ", location: " + location.toString());
             return false;
         } else {
-            System.out.println("location" + location.toString());
+            // System.out.println("location" + location.toString());
             return true;
         }
     }
 
     public static boolean autonomousMainLoop() {
         boolean targetAchieved = GoTo(nodeArr.get(index));
-        System.out.println("Target NOde: ");
-        stcpack.stc.printLatLong(nodeArr.get(index));
+        System.out.println("Target NOde: " + nodeArr.get(index).toString());
         if (targetAchieved) {
             index++;
             if (nodeArr.size() < index + 1) {
