@@ -546,12 +546,12 @@ public class stc {
         finalNavigate = new ArrayList<latLong>();
 
         latLong currPos = feetToLatLong(new latLong(startNode.Lat, startNode.Long));
-        System.out.println(currPos.Lat + " " + currPos.Long);
+        //System.out.println(currPos.Lat + " " + currPos.Long);
         //moving it down 0.5 ft, 0.5 ft
         currPos.Lat -= 0.00000137477975;
         currPos.Long += 0.00000137477975;
         startPos = new latLong(currPos.Lat, currPos.Long);
-        finalNavigate.add(currPos);
+        finalNavigate.add(new latLong(currPos.Lat, currPos.Long));
 
         int currDir = 1;
         int currNode = latLongToNodeNum(startNode);
@@ -682,6 +682,11 @@ public class stc {
         //the final output is the finalNavigate array once the function is done
         output();
         //printing out the final navigate array
+        for (int i = finalNavigate.size()-1; i>0; i--) {
+            if (finalNavigate.get(i).Lat == -500.0 && finalNavigate.get(i).Long == -500.0) {
+                finalNavigate.remove(i);
+            }
+        }
     }
 
     public static void main(String[] args) {
