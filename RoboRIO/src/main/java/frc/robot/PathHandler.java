@@ -91,10 +91,10 @@ public class PathHandler {
                 }
             }
 
-            System.out.println("yawDeltaFromNorth: " + NavXManager.yawDeltaFromNorth + 
-                                "\n nodeRelativeLocation: " + relativeNodeLocation.toString() + 
-                                "\n nodeRelativeTheta: " + nodeRelativeTheta + "\nyawFromNorth: " + location.yawFromNorth + "\n nodeThetaFromNorth: " + 
-                                nodeRelativeTheta + "\n location: " + location.toString());
+            // System.out.println("yawDeltaFromNorth: " + NavXManager.yawDeltaFromNorth + 
+                                // "\n nodeRelativeLocation: " + relativeNodeLocation.toString() + 
+                                // "\n nodeRelativeTheta: " + nodeRelativeTheta + "\nyawFromNorth: " + location.yawFromNorth + "\n nodeThetaFromNorth: " + 
+                                // nodeRelativeTheta + "\n location: " + location.toString());
             return false;
         } else {
             // System.out.println("location" + location.toString());
@@ -128,7 +128,7 @@ public class PathHandler {
     }
 
     protected static double degreesTo180(double degree) {
-        System.out.println("pre-math: " + degree);
+        // System.out.println("pre-math: " + degree);
         double newDegree = degree;
         while (Math.abs(newDegree) > 360) {
             newDegree -= Math.signum(newDegree) * 360;
@@ -138,7 +138,7 @@ public class PathHandler {
         } else if (newDegree < -180) {
             newDegree += 360;
         }
-        System.out.println("post-math: " + newDegree);
+        // System.out.println("post-math: " + newDegree);
         return newDegree;
     }
 }

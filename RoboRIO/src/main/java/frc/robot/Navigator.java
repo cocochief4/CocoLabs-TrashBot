@@ -39,8 +39,8 @@ public class Navigator {
 
     protected static void calibrateYaw() { // WORK ON CALIBRATE
         EncoderStruct encoderStruct = MotorEncoder.getVelocity();
-        System.out.println("rVelo: " + encoderStruct.rVelocity + "\n lvelo: " + encoderStruct.lVelocity);
-        if (Math.abs(encoderStruct.lVelocity - encoderStruct.rVelocity) < 1.5E-6) {
+        System.out.println("  rVelo: " + encoderStruct.rVelocity + "\n  lvelo: " + encoderStruct.lVelocity);
+        if (Math.signum(encoderStruct.rVelocity) == Math.signum(encoderStruct.lVelocity)) {
             haveTurned = false;
         } else {
             haveTurned = true;

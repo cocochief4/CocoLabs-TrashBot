@@ -138,7 +138,7 @@ public class Robot extends TimedRobot {
     if (ArduinoManager.getRC() == null) {
       if (!arrived) {
       arrived = PathHandler.autonomousMainLoop();
-      Navigator.calibrateYaw();
+      // Navigator.calibrateYaw();
       //  // Point 3
       // System.out.println("Yaw From North" + NavXManager.getData().yawFromNorth);
       } else {
