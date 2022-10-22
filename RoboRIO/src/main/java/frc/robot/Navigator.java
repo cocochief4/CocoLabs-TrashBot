@@ -39,6 +39,7 @@ public class Navigator {
 
     protected static void calibrateYaw() { // WORK ON CALIBRATE
         EncoderStruct encoderStruct = MotorEncoder.getVelocity();
+        System.out.println("rVelo: " + encoderStruct.rVelocity + "\n lvelo: " + encoderStruct.lVelocity);
         if (Math.abs(encoderStruct.lVelocity - encoderStruct.rVelocity) < 0.015) {
             haveTurned = false;
         } else {
@@ -46,6 +47,7 @@ public class Navigator {
             calibStartPos = null;
         }
         if (haveTurned == false) {
+            System.out.println("calibrating");
             if (calibStartPos == null) {
                 if (System.currentTimeMillis() - ArduinoManager.getGPS().timeStamp < 70) {
                     calibStartPos = ArduinoManager.getGPS();
@@ -58,7 +60,12 @@ public class Navigator {
                     double deltaLongitude = calibEndPos.longitude - calibStartPos.longitude;
                     double yawFromNorth = Math.atan2(deltaLatitude, deltaLongitude);
                     NavXManager.yawDeltaFromNorth = yawFromNorth - NavXManager.getData().rawYaw;
-                    System.out.println("calibStartPos: " + calibStartPos + ", calibEndPos: " + calibEndPos + "yawFromNorth: " + yawFromNorth + "navX Yaw: " + NavXManager.getData().yawFromNorth + ", deltaLat: " + deltaLatitude + ", deltaLon: " + deltaLongitude);
+                    System.out.println("calibStartPos: " + calibStartPos + 
+                                        "\n calibEndPos: " + calibEndPos + 
+                                        "\n yawFromNorth: " + yawFromNorth + 
+                                        "\n navX Yaw: " + NavXManager.getData().yawFromNorth + 
+                                        "\n deltaLat: " + deltaLatitude + 
+                                        "\n deltaLon: " + deltaLongitude);
                     calibStartPos = null;
                 }
             }
