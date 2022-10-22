@@ -92,10 +92,9 @@ public class PathHandler {
             }
 
             System.out.println("yawDeltaFromNorth: " + NavXManager.yawDeltaFromNorth + 
-                                ", nodeRelativeLocation: " + relativeNodeLocation.toString() + 
-                                ", nodeRelativeTheta, yawFromNorth, nodeThetaFromNorth: " + 
-                                nodeRelativeTheta + ", " + location.yawFromNorth + ", " + 
-                                nodeThetaFromNorth + ", location: " + location.toString());
+                                "\n nodeRelativeLocation: " + relativeNodeLocation.toString() + 
+                                "\n nodeRelativeTheta: " + nodeRelativeTheta + "\nyawFromNorth: " + location.yawFromNorth + "\n nodeThetaFromNorth: " + 
+                                nodeRelativeTheta + "\n location: " + location.toString());
             return false;
         } else {
             // System.out.println("location" + location.toString());

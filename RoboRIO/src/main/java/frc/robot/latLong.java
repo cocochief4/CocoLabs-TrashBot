@@ -9,8 +9,8 @@ public class latLong {
         Long = longitude;
     }
 
-    protected String toString(latLong LatLong) {
-        String string = "Latitude, Longitude: " + LatLong.Lat + ", " + LatLong.Long;
+    public String toString() {
+        String string = "Latitude, Longitude: " + Lat + ", " + Long;
 
         return string;
     }
