@@ -1,6 +1,10 @@
 package frc.robot;
 
+import javax.naming.ldap.Rdn;
+
 import com.revrobotics.RelativeEncoder;
+
+import org.ejml.sparse.csc.decomposition.lu.LuUpLooking_DSCC;
 
 public class MotorEncoder {
     private static final float GEAR_RATIO = 125f;
@@ -9,7 +13,7 @@ public class MotorEncoder {
 
     private static final double TIRE_MULTIPLIER = Math.PI * 13d/12d;
 
-    public static double time; // Time in seconds
+    // public static double time; // Time in seconds
 
     private static RelativeEncoder rightUpEncoder;
     private static RelativeEncoder rightDownEncoder;
@@ -29,8 +33,16 @@ public class MotorEncoder {
         double lUpVelocity = leftUpEncoder.getVelocity();
         double lDownVelocity = leftDownEncoder.getVelocity();
 
+
         double rVelocity = (rUpVelocity + rDownVelocity)*0.5*TIRE_MULTIPLIER/GEAR_RATIO/MILLIS_PER_MINUTE; // Feet per millis
         double lVelocity = -1 * (lUpVelocity + lDownVelocity)*0.5*TIRE_MULTIPLIER/GEAR_RATIO/MILLIS_PER_MINUTE; // Feet per millis
+
+        System.out.println("raw Right UP: " + rightUpEncoder.getVelocity()
+                            + "\n Raw Right down: " + rightDownEncoder.getVelocity()
+                            + "\n calc Right: " + rVelocity
+                            + "\n raw Left UP: " + leftUpEncoder.getVelocity()
+                            + "\n raw Left down: " + leftDownEncoder.getVelocity()
+                            + "\n calc Left: " + lVelocity);
 
         EncoderStruct encoderStruct = new EncoderStruct(rVelocity, lVelocity, System.currentTimeMillis()); // Feet per millis
 

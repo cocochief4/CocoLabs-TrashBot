@@ -58,15 +58,18 @@ public class Navigator {
                     calibEndPos = ArduinoManager.getGPS();
                     double deltaLatitude = calibEndPos.latitude - calibStartPos.latitude;
                     double deltaLongitude = calibEndPos.longitude - calibStartPos.longitude;
-                    double yawFromNorth = Math.atan2(deltaLatitude, deltaLongitude);
-                    NavXManager.yawDeltaFromNorth = yawFromNorth - NavXManager.getData().rawYaw;
-                    System.out.println("calibStartPos: " + calibStartPos + 
-                                        "\n calibEndPos: " + calibEndPos + 
-                                        "\n yawFromNorth: " + yawFromNorth + 
-                                        "\n navX Yaw: " + NavXManager.getData().yawFromNorth + 
-                                        "\n deltaLat: " + deltaLatitude + 
-                                        "\n deltaLon: " + deltaLongitude);
-                    calibStartPos = null;
+                    double magnitude = Math.sqrt(deltaLatitude*deltaLatitude + deltaLongitude*deltaLongitude);
+                    if (magnitude > 30) { // if the distance traveled is greater that around 30 in for guaranteed accuracy.
+                        double yawFromNorth = Math.atan2(deltaLatitude, deltaLongitude);
+                        NavXManager.yawDeltaFromNorth = yawFromNorth - NavXManager.getData().rawYaw;
+                        // System.out.println("calibStartPos: " + calibStartPos + 
+                        //                     "\n calibEndPos: " + calibEndPos + 
+                        //                     "\n yawFromNorth: " + yawFromNorth + 
+                        //                     "\n navX Yaw: " + NavXManager.getData().yawFromNorth + 
+                        //                     "\n deltaLat: " + deltaLatitude + 
+                        //                     "\n deltaLon: " + deltaLongitude);
+                        calibStartPos = null;
+                    }
                 }
             }
         }
@@ -83,8 +86,8 @@ public class Navigator {
         double gpsDistance = 0;
         if (gps.timeStamp > location.timeStamp) { // GPS Reading
             location.timeStamp = gps.timeStamp;
-            gpsDistance = Math.sqrt(Math.pow(Math.abs(location.latitude - gps.latitude), 2) + 
-                                                        Math.pow(Math.abs(location.longitude - gps.longitude), 2));
+            // gpsDistance = Math.sqrt(Math.pow(Math.abs(location.latitude - gps.latitude), 2) + 
+                                                        // Math.pow(Math.abs(location.longitude - gps.longitude), 2));
             location.latitude = gps.latitude * DD_LONG_TO_DOUBLE;
             location.longitude = gps.longitude * DD_LONG_TO_DOUBLE;
         }
