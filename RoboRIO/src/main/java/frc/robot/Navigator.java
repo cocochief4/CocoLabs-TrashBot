@@ -56,11 +56,11 @@ public class Navigator {
             else {
                 if (ArduinoManager.getGPS().timeStamp != calibStartPos.timeStamp) {
                     calibEndPos = ArduinoManager.getGPS();
-                    double deltaLatitude = calibEndPos.latitude - calibStartPos.latitude;
-                    double deltaLongitude = calibEndPos.longitude - calibStartPos.longitude;
-                    double magnitude = Math.sqrt(deltaLatitude*deltaLatitude + deltaLongitude*deltaLongitude);
-                    if (magnitude > 30) { // if the distance traveled is greater that around 30 in for guaranteed accuracy.
-                        double yawFromNorth = Math.atan2(deltaLatitude, deltaLongitude);
+                    long deltaLatitude = calibEndPos.latitude - calibStartPos.latitude;
+                    long deltaLongitude = calibEndPos.longitude - calibStartPos.longitude;
+                    double magnitude = Math.sqrt((double) (deltaLatitude*deltaLatitude + deltaLongitude*deltaLongitude));
+                    if (magnitude > 30d) { // if the distance traveled is greater that around 30 in for guaranteed accuracy.
+                        double yawFromNorth = Math.atan2(deltaLongitude, deltaLatitude);
                         NavXManager.yawDeltaFromNorth = yawFromNorth - NavXManager.getData().rawYaw;
                         // System.out.println("calibStartPos: " + calibStartPos + 
                         //                     "\n calibEndPos: " + calibEndPos + 
@@ -69,6 +69,7 @@ public class Navigator {
                         //                     "\n deltaLat: " + deltaLatitude + 
                         //                     "\n deltaLon: " + deltaLongitude);
                         calibStartPos = null;
+                        calibEndPos = null;
                     }
                 }
             }
