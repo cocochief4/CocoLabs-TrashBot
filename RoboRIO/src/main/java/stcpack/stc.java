@@ -34,6 +34,7 @@ public class stc {
     static ArrayList<node>[] connected; //the connected array for DFS
     public static ArrayList<latLong> finalNavigate; //the final output to chris
     static latLong startPos;
+    public static ArrayList<latLong> finalPath;
 
     //Class Declaration
 
@@ -544,6 +545,7 @@ public class stc {
         // 360 - forward, turn, forward, turn, forward
 
         finalNavigate = new ArrayList<latLong>();
+        finalPath = new ArrayList<latLong>();
 
         latLong currPos = feetToLatLong(new latLong(startNode.Lat, startNode.Long));
         //System.out.println(currPos.Lat + " " + currPos.Long);
@@ -657,7 +659,61 @@ public class stc {
         }
     }
 
+    private static void inALine() {
+        latLong start = new latLong(finalNavigate.get(0).Lat, finalNavigate.get(0).Long);
+        latLong end = new latLong(finalNavigate.get(0).Lat, finalNavigate.get(0).Long);
+        finalPath.add(new latLong(start.Lat, start.Long));
+        boolean latDif = false;
+        boolean longDif = false;
+        for (int i = 1; i<finalNavigate.size(); i++) {
+
+
+            //checks to see what has changed
+
+            //the lat is changing
+            if (finalNavigate.get(i).Lat != start.Lat) {
+                latDif = true;
+            }
+
+            //the long is changing
+            if (finalNavigate.get(i).Long != start.Long) {
+                longDif = true;
+            }
+
+            // System.out.println("Thing we are currently processing");
+            // printLatLong(finalNavigate.get(i));
+            // System.out.println("Thing we are comparing it to");
+            // printLatLong(start);
+
+            // if (latDif) {
+            //     System.out.println("Lat is changing right now.");
+            // }
+            // if (longDif) {
+            //     System.out.println("Long is changing right now.");
+            // }
+
+            if (latDif ^ longDif) {
+                end = new latLong(finalNavigate.get(i).Lat, finalNavigate.get(i).Long);
+                // System.out.println("We have updated the end.");
+            }
+
+            //both have changed, reset
+            if (latDif & longDif) {
+                // System.out.println("Both have changed and now we are going to add the end to finalpath");
+                finalPath.add(new latLong(end.Lat, end.Long));
+                start = new latLong(end.Lat, end.Long);
+                end = new latLong(finalNavigate.get(i).Lat, finalNavigate.get(i).Long);
+                latDif = false;
+                longDif = false;
+            }
+
+        }
+    }
+
+
     //Main Method
+
+
 
     public static void spanningTreeCoverageAlgorithm(latLong initialPosition) {
         input.initialPos = new latLong(initialPosition.Lat, initialPosition.Long);
@@ -687,6 +743,8 @@ public class stc {
                 finalNavigate.remove(i);
             }
         }
+        //optimizes finalNavigate
+        inALine();
     }
 
     public static void main(String[] args) {
