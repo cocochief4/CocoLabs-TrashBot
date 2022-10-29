@@ -59,7 +59,7 @@ public class Navigator {
                     long deltaLatitude = calibEndPos.latitude - calibStartPos.latitude;
                     long deltaLongitude = calibEndPos.longitude - calibStartPos.longitude;
                     double magnitude = Math.sqrt((double) (deltaLatitude*deltaLatitude + deltaLongitude*deltaLongitude));
-                    if (magnitude > 30d) { // if the distance traveled is greater that around 30 in for guaranteed accuracy.
+                    if (magnitude > 100d) { // if the distance traveled is greater that around 30 in for guaranteed accuracy.
                         double yawFromNorth = Math.atan2(deltaLongitude, deltaLatitude);
                         NavXManager.yawDeltaFromNorth = yawFromNorth - NavXManager.getData().rawYaw;
                         // System.out.println("calibStartPos: " + calibStartPos + 
