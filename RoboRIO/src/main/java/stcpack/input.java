@@ -31,15 +31,15 @@ public class input {
         vertices[3] = new latLong(373453265E-7,-1220160292E-7);
 
 
-        int nObstacles = 1; //1 is just a placeholder for now
+        int nObstacles = 0; //1 is just a placeholder for now
         obstacles = new ArrayList[nObstacles];
         for (int i = 0; i<nObstacles; i++) {
             obstacles[i] = new ArrayList<latLong>();
         }
         //Here you would define each obstacle as an arraylist of lat, longs
-        obstacles[0].add(new latLong(373453106E-7,-1220160351E-7));
-        obstacles[0].add(new latLong(373453112E-7,-1220160446E-7));
-        obstacles[0].add(new latLong(373453067E-7,-1220160432E-7));
+        // obstacles[0].add(new latLong(373453106E-7,-1220160351E-7));
+        // obstacles[0].add(new latLong(373453112E-7,-1220160446E-7));
+        // obstacles[0].add(new latLong(373453067E-7,-1220160432E-7));
     }
 
 //other test cases

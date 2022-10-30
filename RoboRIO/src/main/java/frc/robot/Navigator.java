@@ -27,7 +27,7 @@ public class Navigator {
 
         location = new NavigatorData(gps.latitude * DD_LONG_TO_DOUBLE, gps.longitude * DD_LONG_TO_DOUBLE, 0d, 0d, System.currentTimeMillis()); // Need calibrate function
                                  // Direction is how many degrees from North (positive is west of, negative is east of)
-        System.out.println("Navigator Init Finished!");
+        // System.out.println("Navigator Init Finished!");
     }
 
     // private static NavigatorData LatLongToNav(GPSLatLongData latLongFixStruct) {
@@ -39,7 +39,7 @@ public class Navigator {
 
     protected static void calibrateYaw() { // WORK ON CALIBRATE
         EncoderStruct encoderStruct = MotorEncoder.getVelocity();
-        System.out.println("  rVelo: " + encoderStruct.rVelocity + "\n  lvelo: " + encoderStruct.lVelocity);
+        // System.out.println("  rVelo: " + encoderStruct.rVelocity + "\n  lvelo: " + encoderStruct.lVelocity);
         if (Math.signum(encoderStruct.rVelocity) == Math.signum(encoderStruct.lVelocity)) {
             haveTurned = false;
         } else {
@@ -47,7 +47,7 @@ public class Navigator {
             calibStartPos = null;
         }
         if (haveTurned == false) {
-            System.out.println("calibrating");
+            // System.out.println("calibrating");
             if (calibStartPos == null) {
                 if (System.currentTimeMillis() - ArduinoManager.getGPS().timeStamp < 70) {
                     calibStartPos = ArduinoManager.getGPS();
@@ -60,14 +60,17 @@ public class Navigator {
                     long deltaLongitude = calibEndPos.longitude - calibStartPos.longitude;
                     double magnitude = Math.sqrt((double) (deltaLatitude*deltaLatitude + deltaLongitude*deltaLongitude));
                     if (magnitude > 100d) { // if the distance traveled is greater that around 30 in for guaranteed accuracy.
-                        double yawFromNorth = Math.atan2(deltaLongitude, deltaLatitude);
-                        NavXManager.yawDeltaFromNorth = yawFromNorth - NavXManager.getData().rawYaw;
-                        // System.out.println("calibStartPos: " + calibStartPos + 
-                        //                     "\n calibEndPos: " + calibEndPos + 
-                        //                     "\n yawFromNorth: " + yawFromNorth + 
-                        //                     "\n navX Yaw: " + NavXManager.getData().yawFromNorth + 
-                        //                     "\n deltaLat: " + deltaLatitude + 
-                        //                     "\n deltaLon: " + deltaLongitude);
+                        double yawFromNorth = Math.toDegrees(Math.atan2(deltaLongitude, deltaLatitude));
+                        System.out.println("yawfromNOrth latest: " + yawFromNorth
+                                            + "\n Nav x get data: " + NavXManager.getData().toString());
+                        double rawYaw = NavXManager.getData().rawYaw;
+                        NavXManager.yawDeltaFromNorth = yawFromNorth - rawYaw;
+                        System.out.println("calibStartPos: " + calibStartPos + 
+                                            "\n calibEndPos: " + calibEndPos + 
+                                            "\n yawFromNorth: " + yawFromNorth + 
+                                            "\n navX Yaw: " + NavXManager.getData().yawFromNorth + 
+                                            "\n deltaLat: " + deltaLatitude + 
+                                            "\n deltaLon: " + deltaLongitude);
                         calibStartPos = null;
                         calibEndPos = null;
                     }

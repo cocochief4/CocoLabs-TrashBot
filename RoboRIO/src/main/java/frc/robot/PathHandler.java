@@ -25,13 +25,16 @@ public class PathHandler {
     private static int index = 0;
 
     protected static void init() {
-        // latLong initPos = new latLong(ArduinoManager.getGPS().latitude, ArduinoManager.getGPS().longitude);
-        // stcpack.stc.spanningTreeCoverageAlgorithm(initPos);
-        // nodeArr = stcpack.stc.finalNavigate;
-        nodeArr = new ArrayList<latLong>();
-        nodeArr.add(new latLong(373453108E-7, -1220160366E-7)); // Center
-        nodeArr.add(new latLong(373453102E-7,-1220160612E-7)); // Near Garage
-        nodeArr.add(new latLong(373452958E-7,-1220160489E-7)); // Point 3
+        latLong initPos = new latLong(ArduinoManager.getGPS().latitude, ArduinoManager.getGPS().longitude);
+        stcpack.stc.spanningTreeCoverageAlgorithm(initPos);
+        nodeArr = stcpack.stc.finalPath;
+        for (int i = 0; i<stcpack.stc.finalPath.size(); i++) {
+            System.out.println("(" + stcpack.stc.finalPath.get(i).Long + ", " + stcpack.stc.finalPath.get(i).Lat + ")");
+        }
+        // nodeArr = new ArrayList<latLong>();
+        // nodeArr.add(new latLong(373453108E-7, -1220160366E-7)); // Center
+        // nodeArr.add(new latLong(373453102E-7,-1220160612E-7)); // Near Garage
+        // nodeArr.add(new latLong(373452958E-7,-1220160489E-7)); // Point 3
         index = 0;
     }
 /*
@@ -75,7 +78,7 @@ public class PathHandler {
                     haveTurned = false;
                     goForward();
                 } else {
-                    System.out.println("Turning");
+                    // System.out.println("Turning");
                     if (Math.abs(autoDrive.yEuclid) < 0.05) {
                         autoDrive.yEuclid = 0d;
                     } else {
@@ -104,7 +107,7 @@ public class PathHandler {
 
     public static boolean autonomousMainLoop() {
         boolean targetAchieved = GoTo(nodeArr.get(index));
-        // System.out.println("Target NOde: " + nodeArr.get(index).toString());
+        // System.out.println("Target Node: " + nodeArr.get(index).Lat + " " + nodeArr.get(index).Long + "Number: " + index);
         if (targetAchieved) {
             index++;
             if (nodeArr.size() < index + 1) {
@@ -119,7 +122,7 @@ public class PathHandler {
 
     private static void goForward() {
         haveTurned = false;
-        System.out.println("Go Forward");
+        // System.out.println("Go Forward");
         autoDrive.yEuclid += Math.signum(autoDrive.yEuclid + 0.0001) * 0.05;
         if (Math.abs(autoDrive.yEuclid) > MAX_DRIVE_SPEED) {
             autoDrive.yEuclid  = Math.signum(autoDrive.yEuclid) * MAX_DRIVE_SPEED;

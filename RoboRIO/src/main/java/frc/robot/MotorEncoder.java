@@ -37,12 +37,12 @@ public class MotorEncoder {
         double rVelocity = (rUpVelocity + rDownVelocity)*0.5*TIRE_MULTIPLIER/GEAR_RATIO/MILLIS_PER_MINUTE; // Feet per millis
         double lVelocity = -1 * (lUpVelocity + lDownVelocity)*0.5*TIRE_MULTIPLIER/GEAR_RATIO/MILLIS_PER_MINUTE; // Feet per millis
 
-        System.out.println("raw Right UP: " + rightUpEncoder.getVelocity()
-                            + "\n Raw Right down: " + rightDownEncoder.getVelocity()
-                            + "\n calc Right: " + rVelocity
-                            + "\n raw Left UP: " + leftUpEncoder.getVelocity()
-                            + "\n raw Left down: " + leftDownEncoder.getVelocity()
-                            + "\n calc Left: " + lVelocity);
+        // System.out.println("raw Right UP: " + rightUpEncoder.getVelocity()
+                            // + "\n Raw Right down: " + rightDownEncoder.getVelocity()
+                            // + "\n calc Right: " + rVelocity
+                            // + "\n raw Left UP: " + leftUpEncoder.getVelocity()
+                            // + "\n raw Left down: " + leftDownEncoder.getVelocity()
+                            // + "\n calc Left: " + lVelocity);
 
         EncoderStruct encoderStruct = new EncoderStruct(rVelocity, lVelocity, System.currentTimeMillis()); // Feet per millis
 
