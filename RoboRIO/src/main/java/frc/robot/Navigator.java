@@ -19,8 +19,12 @@ public class Navigator {
     protected static GPSLatLongData calibStartPos = null;
     protected static GPSLatLongData calibEndPos = null;
     
+    private static boolean GPSticked = false;
+    private static long GPSlocalTimestamp = 0;
+    
 
     protected static void init() {
+        GPSticked = false;
         GPSLatLongData gps = null;
         gps = ArduinoManager.getGPS();
         calibStartPos = null;
@@ -43,14 +47,16 @@ public class Navigator {
         if (Math.signum(encoderStruct.rVelocity) == Math.signum(encoderStruct.lVelocity)) {
             haveTurned = false;
         } else {
+            System.out.println("calib turned");
             haveTurned = true;
             calibStartPos = null;
         }
         if (haveTurned == false) {
             // System.out.println("calibrating");
             if (calibStartPos == null) {
-                if (System.currentTimeMillis() - ArduinoManager.getGPS().timeStamp < 70) {
+                if (System.currentTimeMillis() - ArduinoManager.getGPS().timeStamp < 200) {
                     calibStartPos = ArduinoManager.getGPS();
+                    System.out.println("startPos: " + calibStartPos);
                 }
             }
             else {
@@ -59,12 +65,18 @@ public class Navigator {
                     long deltaLatitude = calibEndPos.latitude - calibStartPos.latitude;
                     long deltaLongitude = calibEndPos.longitude - calibStartPos.longitude;
                     double magnitude = Math.sqrt((double) (deltaLatitude*deltaLatitude + deltaLongitude*deltaLongitude));
-                    if (magnitude > 100d) { // if the distance traveled is greater that around 30 in for guaranteed accuracy.
+                    if (GPSlocalTimestamp != ArduinoManager.getGPS().timeStamp) {
+                        System.out.println("Magnitude: " + magnitude);
+                        GPSlocalTimestamp = ArduinoManager.getGPS().timeStamp;
+                    }
+                    if (magnitude > 45d) { // if the distance traveled is greater that around 30 in for guaranteed accuracy.
                         double yawFromNorth = Math.toDegrees(Math.atan2(deltaLongitude, deltaLatitude));
-                        System.out.println("yawfromNOrth latest: " + yawFromNorth
-                                            + "\n Nav x get data: " + NavXManager.getData().toString());
+                        // System.out.println("yawfromNOrth latest: " + yawFromNorth
+                        //                     + "\n Nav x get data: " + NavXManager.getData().toString());
                         double rawYaw = NavXManager.getData().rawYaw;
                         NavXManager.yawDeltaFromNorth = yawFromNorth - rawYaw;
+                        System.out.println("yawfromNOrth latest: " + yawFromNorth
+                                            + "\n Nav x get data: " + NavXManager.getData().toString());
                         System.out.println("calibStartPos: " + calibStartPos + 
                                             "\n calibEndPos: " + calibEndPos + 
                                             "\n yawFromNorth: " + yawFromNorth + 
