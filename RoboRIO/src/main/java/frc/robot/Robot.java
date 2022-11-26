@@ -11,6 +11,10 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
+import edu.wpi.first.util.datalog.DataLog;
+import edu.wpi.first.util.datalog.StringLogEntry;
+import edu.wpi.first.wpilibj.DataLogManager;
+import edu.wpi.first.wpilibj.DriverStation;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -41,8 +45,11 @@ public class Robot extends TimedRobot {
   protected static EuclideanCoord currentSpeed = new EuclideanCoord(0, 0);
   protected static final double RAMP_MAX = 0.015;
 
+  StringLogEntry strLog;
+
   @Override
   public void robotInit() {
+    DataLogManager.start();
     // NavXManager.RInit();
 
     /* Note that the PIDController GUI should be added automatically to */
@@ -85,6 +92,9 @@ public class Robot extends TimedRobot {
       rightDownMotor.restoreFactoryDefaults();
       m_myRobot = new DifferentialDrive(leftGroup, rightGroup);
 
+      DataLog log = DataLogManager.getLog();
+      strLog = new StringLogEntry(log, "/my/string");
+
   }
   int startCooldown = 100; // Timer to force the all of the motors to 0,
                           // as there is a jump for no reason at all
@@ -102,6 +112,7 @@ public class Robot extends TimedRobot {
     NavXManager.resetYaw(); // Must be before Nav init
     MotorEncoder.init(); // Must be before Nav init
     currentSpeed = new EuclideanCoord(0, 0);
+    DataLogManager.log("Start!");
     System.out.print("Start!");
     startCooldown = 50;
     Navigator.init();
@@ -134,6 +145,7 @@ public class Robot extends TimedRobot {
 
   boolean arrived = false;
   public void teleopPeriodic() {
+    DataLogManager.log("teleopPeriodicasl;djf;laskdj");
     ArduinoManager.getArduinoMegaData();
     if (ArduinoManager.getRC() == null) {
       if (!arrived) {
