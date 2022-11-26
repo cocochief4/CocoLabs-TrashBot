@@ -20,26 +20,27 @@ public class input {
      */
 
     public static void Input() { 
-        //initialPos = new latLong(37.3453149 - 0.00000137477975, -122.0160824 + 0.00000137477975); //update this
+        //initialPos = new latLong(37.3453020, -122.0160470); //update this
         int nVertices = 4; //4 is just a placeholder for now
         vertices = new latLong[nVertices];
         //Here you would define each lat, long in vertices
         //Top left Corner: Lat: 37.3453149 Long: -122.0160824
-        vertices[0] = new latLong(373452954E-7,-1220160290E-7);
-        vertices[1] = new latLong(373452945E-7,-1220160639E-7);
-        vertices[2] = new latLong(373453269E-7,-1220160645E-7);
-        vertices[3] = new latLong(373453265E-7,-1220160292E-7);
+        vertices[0] = new latLong(373471167E-7,-1220185661E-7);
+        vertices[1] = new latLong(373471892E-7,-1220185660E-7);
+        vertices[2] = new latLong(373471878E-7,-1220186348E-7);
+        vertices[3] = new latLong(373471216E-7,-1220186298E-7);
 
 
-        int nObstacles = 0; //1 is just a placeholder for now
+        int nObstacles = 1; //1 is just a placeholder for now
         obstacles = new ArrayList[nObstacles];
         for (int i = 0; i<nObstacles; i++) {
             obstacles[i] = new ArrayList<latLong>();
         }
         //Here you would define each obstacle as an arraylist of lat, longs
-        // obstacles[0].add(new latLong(373453106E-7,-1220160351E-7));
-        // obstacles[0].add(new latLong(373453112E-7,-1220160446E-7));
-        // obstacles[0].add(new latLong(373453067E-7,-1220160432E-7));
+        obstacles[0].add(new latLong(373471462E-7,-1220186094E-7));
+        obstacles[0].add(new latLong(373471455E-7,-1220185970E-7));
+        obstacles[0].add(new latLong(373471343E-7,-1220185972E-7));
+        obstacles[0].add(new latLong(373471353E-7,-1220186072E-7));
     }
 
 //other test cases

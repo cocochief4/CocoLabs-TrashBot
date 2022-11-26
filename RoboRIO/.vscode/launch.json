@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch stc",
+      "request": "launch",
+      "mainClass": "stcpack.stc",
+      "projectName": "RoboRIO"
+    },
+    {
+      "type": "java",
       "name": "Launch Main",
       "request": "launch",
       "mainClass": "frc.robot.Main",

@@ -47,7 +47,7 @@ public class Navigator {
         if (Math.signum(encoderStruct.rVelocity) == Math.signum(encoderStruct.lVelocity)) {
             haveTurned = false;
         } else {
-            System.out.println("calib turned");
+            // System.out.println("calib turned");
             haveTurned = true;
             calibStartPos = null;
         }

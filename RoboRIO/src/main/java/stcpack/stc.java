@@ -26,7 +26,7 @@ public class stc {
     public static boolean[][] map; //the actual boolean array
 
     static ArrayList<latLong> nodes; //list of usable nodes
-    static latLong startNode; //the starting node
+    public static latLong startNode; //the starting node
     static HashMap<latLong, Integer> nodeToNodeNum; //a map that's useful for figuring out my life
     // needs to be worked on with the .equals() command
     static ArrayList<node>[] adjacencyGraph; //an adjacency graph for which nodes are adjacent to each other
@@ -107,8 +107,14 @@ public class stc {
                 input.obstacles[i].get(j).Long = Math.round(input.obstacles[i].get(j).Long);
             }
         }
+        // System.out.println("before initial pos calc");
+        // printLatLong(input.initialPos);
+        // System.out.println("zeropoint");
+        // printLatLong(zeroPoint);
         input.initialPos.Lat = Math.abs(zeroPoint.Lat - input.initialPos.Lat);
         input.initialPos.Long = Math.abs(zeroPoint.Long - input.initialPos.Long);
+        // System.out.println("Middle way through initial pos calc");
+        // printLatLong(input.initialPos);
         input.initialPos.Lat /= 0.0000027495;
         input.initialPos.Long /= 0.0000027495;
         //Everything is in feet now and defined via the zero point with rounding
@@ -247,14 +253,19 @@ public class stc {
     }
 
     private static void toClosestNode() {
-        double minDist = 10000000;
+        double minDist = Integer.MAX_VALUE;
         latLong placeholder;
         int savedI = 0;
+        // System.out.println("( " + zeroPoint.Lat + " " + zeroPoint.Long + ")");
+        // System.out.println("( " + input.initialPos.Long + ", " + input.initialPos.Lat + ")");
         for (int i = 0; i<nodes.size(); i++) {
             placeholder = new latLong(nodes.get(i).Lat, nodes.get(i).Long);
+            // System.out.println("(" + placeholder.Long + ", " + placeholder.Lat + ")");
+            // System.out.println(Math.pow(Math.abs(placeholder.Lat - input.initialPos.Lat), 2) + Math.pow(Math.abs(placeholder.Long - input.initialPos.Long), 2));
             if (Math.pow(Math.abs(placeholder.Lat - input.initialPos.Lat), 2) + Math.pow(Math.abs(placeholder.Long - input.initialPos.Long), 2) < minDist) {
                 minDist = Math.pow(Math.abs(placeholder.Lat - input.initialPos.Lat), 2) + Math.pow(Math.abs(placeholder.Long - input.initialPos.Long), 2);
                 savedI = i;
+                // System.out.println(minDist);
             }
         }
         startNode = nodes.get(savedI);
@@ -770,9 +781,10 @@ public class stc {
         output();
         //printing out the final navigate array
         finalNavigate.remove(finalNavigate.size()-1);
-        for (int i = 0; i<finalNavigate.size(); i++) {
-            System.out.println(finalNavigate.get(i).Lat + " " + finalNavigate.get(i).Long);
-        }
-        
+        // for (int i = 0; i<finalNavigate.size(); i++) {
+        //     System.out.println("(" + finalNavigate.get(i).Long + ", " + finalNavigate.get(i).Lat + ")");
+        // }
+        inALine();
+        // System.out.println("( " + startNode.Long + ", " + startNode.Lat + ")");
     }
 }

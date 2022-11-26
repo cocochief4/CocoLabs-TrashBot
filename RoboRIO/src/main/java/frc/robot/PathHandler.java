@@ -8,7 +8,7 @@ public class PathHandler {
     private static final double MAX_DRIVE_SPEED = 0.5f;
     private static final double MAX_TURN_SPEED = 0.25f;
 
-    private static final double ARRIVED_MARGIN = 1E-6; // About 20 cm margin (Most likely much smaller bc we not near the equator)
+    private static final double ARRIVED_MARGIN = 7.5E-7; // About 15 cm margin (Most likely much smaller bc we not near the equator)
 
     private static EuclideanCoord autoDrive = new EuclideanCoord(0d, 0d); // x is turning, y is throttle
 
@@ -25,12 +25,24 @@ public class PathHandler {
     private static int index = 0;
 
     protected static void init() {
-        latLong initPos = new latLong(ArduinoManager.getGPS().latitude, ArduinoManager.getGPS().longitude);
+        // System.out.println(ArduinoManager.getGPS());
+        latLong initPos = new latLong(ArduinoManager.getGPS().latitude * 1E-7, ArduinoManager.getGPS().longitude * 1E-7);
+        // System.out.println("latlongstruct: " + initPos
+        //                     + "\norigin struct: " + ArduinoManager.getGPS().latitude + ", " + ArduinoManager.getGPS().longitude);
+        // System.out.println(initPos);
         stcpack.stc.spanningTreeCoverageAlgorithm(initPos);
         nodeArr = stcpack.stc.finalPath;
+        System.out.println("Final Path");
         for (int i = 0; i<stcpack.stc.finalPath.size(); i++) {
             System.out.println("(" + stcpack.stc.finalPath.get(i).Long + ", " + stcpack.stc.finalPath.get(i).Lat + ")");
         }
+        // System.out.println("FinalNavigate");
+        // for (int i = 0; i<stcpack.stc.finalNavigate.size(); i++) {
+        //     System.out.println("(" + stcpack.stc.finalNavigate.get(i).Long + ", " + stcpack.stc.finalNavigate.get(i).Lat + ")");
+        // }
+        System.out.println("Initial Position");
+        System.out.println("(" + initPos.Long + ", " + initPos.Lat + ")"); 
+        // System.out.println("( " + stcpack.stc.startNode.Long + ", " + stcpack.stc.startNode.Lat + ")");
         // nodeArr = new ArrayList<latLong>();
         // nodeArr.add(new latLong(373453108E-7, -1220160366E-7)); // Center
         // nodeArr.add(new latLong(373453102E-7,-1220160612E-7)); // Near Garage
@@ -95,9 +107,9 @@ public class PathHandler {
             }
 
             // System.out.println("yawDeltaFromNorth: " + NavXManager.yawDeltaFromNorth + 
-                                // "\n nodeRelativeLocation: " + relativeNodeLocation.toString() + 
-                                // "\n nodeRelativeTheta: " + nodeRelativeTheta + "\nyawFromNorth: " + location.yawFromNorth + "\n nodeThetaFromNorth: " + 
-                                // nodeRelativeTheta + "\n location: " + location.toString());
+            //                     "\n nodeRelativeLocation: " + relativeNodeLocation.toString() + 
+            //                     "\n nodeRelativeTheta: " + nodeRelativeTheta + "\nyawFromNorth: " + location.yawFromNorth + "\n nodeThetaFromNorth: " + 
+            //                     nodeRelativeTheta + "\n location: " + location.toString());
             return false;
         } else {
             // System.out.println("location" + location.toString());
@@ -107,8 +119,8 @@ public class PathHandler {
 
     public static boolean autonomousMainLoop() {
         boolean targetAchieved = GoTo(nodeArr.get(index));
-        // System.out.println("Target Node: " + nodeArr.get(index).Lat + " " + nodeArr.get(index).Long + "Number: " + index);
         if (targetAchieved) {
+            System.out.println("Target Node: " + nodeArr.get(index).Lat + " " + nodeArr.get(index).Long + "Number: " + index);
             index++;
             if (nodeArr.size() < index + 1) {
                 return true;
