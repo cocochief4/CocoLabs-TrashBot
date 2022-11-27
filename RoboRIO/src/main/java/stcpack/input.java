@@ -25,22 +25,29 @@ public class input {
         vertices = new latLong[nVertices];
         //Here you would define each lat, long in vertices
         //Top left Corner: Lat: 37.3453149 Long: -122.0160824
-        vertices[0] = new latLong(373471167E-7,-1220185661E-7);
-        vertices[1] = new latLong(373471892E-7,-1220185660E-7);
-        vertices[2] = new latLong(373471878E-7,-1220186348E-7);
-        vertices[3] = new latLong(373471216E-7,-1220186298E-7);
+        //House Coords
+        vertices[0] = new latLong(373452961E-7,-1220160283E-7);
+        vertices[1] = new latLong(373452942E-7,-1220160620E-7);
+        vertices[2] = new latLong(373452947E-7,-1220160536E-7);
+        vertices[3] = new latLong(373453297E-7,-1220160260E-7);
+        
+        //Panama Park Coords
+        // vertices[0] = new latLong(373471167E-7,-1220185661E-7);
+        // vertices[1] = new latLong(373471892E-7,-1220185660E-7);
+        // vertices[2] = new latLong(373471878E-7,-1220186348E-7);
+        // vertices[3] = new latLong(373471216E-7,-1220186298E-7);
 
 
-        int nObstacles = 1; //1 is just a placeholder for now
+        int nObstacles = 0; //1 is just a placeholder for now
         obstacles = new ArrayList[nObstacles];
         for (int i = 0; i<nObstacles; i++) {
             obstacles[i] = new ArrayList<latLong>();
         }
         //Here you would define each obstacle as an arraylist of lat, longs
-        obstacles[0].add(new latLong(373471462E-7,-1220186094E-7));
-        obstacles[0].add(new latLong(373471455E-7,-1220185970E-7));
-        obstacles[0].add(new latLong(373471343E-7,-1220185972E-7));
-        obstacles[0].add(new latLong(373471353E-7,-1220186072E-7));
+        // obstacles[0].add(new latLong(373471462E-7,-1220186094E-7));
+        // obstacles[0].add(new latLong(373471455E-7,-1220185970E-7));
+        // obstacles[0].add(new latLong(373471343E-7,-1220185972E-7));
+        // obstacles[0].add(new latLong(373471353E-7,-1220186072E-7));
     }
 
 //other test cases

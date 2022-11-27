@@ -2,6 +2,10 @@ package frc.robot;
 
 import java.lang.Math;
 
+import javax.sound.sampled.AudioFileFormat;
+
+import edu.wpi.first.wpilibj.DataLogManager;
+
 public class Navigator {
     //Use 1 ft = 0.0000027495 decimal degrees; 495 is the repetend but it shouldn't matter that much because we are getting down to 
     private static final double FOOT_TO_DD = 2.7495495495495496E-6;
@@ -29,9 +33,9 @@ public class Navigator {
         gps = ArduinoManager.getGPS();
         calibStartPos = null;
 
-        location = new NavigatorData(gps.latitude * DD_LONG_TO_DOUBLE, gps.longitude * DD_LONG_TO_DOUBLE, 0d, 0d, System.currentTimeMillis()); // Need calibrate function
+        location = new NavigatorData(gps.latitude * DD_LONG_TO_DOUBLE, gps.longitude * DD_LONG_TO_DOUBLE, 0d, 0d, System.currentTimeMillis(), true); // Need calibrate function
                                  // Direction is how many degrees from North (positive is west of, negative is east of)
-        // System.out.println("Navigator Init Finished!");
+        // DataLogManager.log("Navigator Init Finished!");
     }
 
     // private static NavigatorData LatLongToNav(GPSLatLongData latLongFixStruct) {
@@ -43,20 +47,21 @@ public class Navigator {
 
     protected static void calibrateYaw() { // WORK ON CALIBRATE
         EncoderStruct encoderStruct = MotorEncoder.getVelocity();
-        // System.out.println("  rVelo: " + encoderStruct.rVelocity + "\n  lvelo: " + encoderStruct.lVelocity);
+        // DataLogManager.log("  rVelo: " + encoderStruct.rVelocity + "\n  lvelo: " + encoderStruct.lVelocity);
         if (Math.signum(encoderStruct.rVelocity) == Math.signum(encoderStruct.lVelocity)) {
             haveTurned = false;
         } else {
-            // System.out.println("calib turned");
+            // DataLogManager.log("calib turned");
             haveTurned = true;
             calibStartPos = null;
         }
         if (haveTurned == false) {
-            // System.out.println("calibrating");
+            // DataLogManager.log("calibrating");
             if (calibStartPos == null) {
                 if (System.currentTimeMillis() - ArduinoManager.getGPS().timeStamp < 200) {
                     calibStartPos = ArduinoManager.getGPS();
-                    System.out.println("startPos: " + calibStartPos);
+                    // DataLogManager.log("startPos: " + calibStartPos);
+                    DataLogManager.log("startPos: " + calibStartPos);
                 }
             }
             else {
@@ -66,23 +71,31 @@ public class Navigator {
                     long deltaLongitude = calibEndPos.longitude - calibStartPos.longitude;
                     double magnitude = Math.sqrt((double) (deltaLatitude*deltaLatitude + deltaLongitude*deltaLongitude));
                     if (GPSlocalTimestamp != ArduinoManager.getGPS().timeStamp) {
-                        System.out.println("Magnitude: " + magnitude);
+                        DataLogManager.log("Magnitude: " + magnitude);
                         GPSlocalTimestamp = ArduinoManager.getGPS().timeStamp;
                     }
                     if (magnitude > 45d) { // if the distance traveled is greater that around 30 in for guaranteed accuracy.
                         double yawFromNorth = Math.toDegrees(Math.atan2(deltaLongitude, deltaLatitude));
-                        // System.out.println("yawfromNOrth latest: " + yawFromNorth
+                        // DataLogManager.log("yawfromNOrth latest: " + yawFromNorth
                         //                     + "\n Nav x get data: " + NavXManager.getData().toString());
                         double rawYaw = NavXManager.getData().rawYaw;
                         NavXManager.yawDeltaFromNorth = yawFromNorth - rawYaw;
-                        System.out.println("yawfromNOrth latest: " + yawFromNorth
+                        DataLogManager.log("yawfromNOrth latest: " + yawFromNorth
                                             + "\n Nav x get data: " + NavXManager.getData().toString());
-                        System.out.println("calibStartPos: " + calibStartPos + 
+                        // DataLogManager.log("calibStartPos: " + calibStartPos + 
+                        //                     "\n calibEndPos: " + calibEndPos + 
+                        //                     "\n yawFromNorth: " + yawFromNorth + 
+                        //                     "\n navX Yaw: " + NavXManager.getData().yawFromNorth + 
+                        //                     "\n deltaLat: " + deltaLatitude + 
+                        //                     "\n deltaLon: " + deltaLongitude +
+                        //                     "\n magnitude: " + magnitude);
+                        DataLogManager.log("calibStartPos: " + calibStartPos + 
                                             "\n calibEndPos: " + calibEndPos + 
                                             "\n yawFromNorth: " + yawFromNorth + 
                                             "\n navX Yaw: " + NavXManager.getData().yawFromNorth + 
                                             "\n deltaLat: " + deltaLatitude + 
-                                            "\n deltaLon: " + deltaLongitude);
+                                            "\n deltaLon: " + deltaLongitude +
+                                            "\n magnitude: " + magnitude);
                         calibStartPos = null;
                         calibEndPos = null;
                     }
@@ -93,7 +106,7 @@ public class Navigator {
 
 
     protected static NavigatorData getLocation() {
-        // System.out.println(location.toString());
+        // DataLogManager.log(location.toString());
 
         double localYawFromNorth = NavXManager.getData().yawFromNorth;
 
@@ -106,23 +119,25 @@ public class Navigator {
                                                         // Math.pow(Math.abs(location.longitude - gps.longitude), 2));
             location.latitude = gps.latitude * DD_LONG_TO_DOUBLE;
             location.longitude = gps.longitude * DD_LONG_TO_DOUBLE;
-        }
-        if (Math.abs(encoderStruct.lVelocity - encoderStruct.rVelocity) < 0.015) { // Moving forward
-            double timeBetweenPolls = Math.abs(encoderStruct.time - location.timeStamp);
-            double avgVelocity = (encoderStruct.lVelocity + encoderStruct.rVelocity)/2;
-            double distanceTraveled = avgVelocity * timeBetweenPolls;
-            double latChange = Math.cos(localYawFromNorth * RADIANS_MULTIPLIER) * distanceTraveled * FOOT_TO_DD;
-            double lonChange = Math.sin(localYawFromNorth * RADIANS_MULTIPLIER) * distanceTraveled * FOOT_TO_DD;
 
-            location.latitude += latChange;
-            location.longitude += lonChange;
-            location.distanceFromLastReading = distanceTraveled + gpsDistance;
-        
+            location.isGpsReading = true;
         } else {
-            location.distanceFromLastReading = 0d;
+            location.isGpsReading = false;
         }
+        
+        double timeBetweenPolls = Math.abs(encoderStruct.time - location.timeStamp);
+        double avgVelocity = (encoderStruct.lVelocity + encoderStruct.rVelocity)/2;
+        double distanceTraveled = avgVelocity * timeBetweenPolls;
+        double latChange = Math.cos(localYawFromNorth * RADIANS_MULTIPLIER) * distanceTraveled * FOOT_TO_DD;
+        double lonChange = Math.sin(localYawFromNorth * RADIANS_MULTIPLIER) * distanceTraveled * FOOT_TO_DD;
+
+        location.latitude += latChange;
+        location.longitude += lonChange;
+        location.distanceFromLastReading = distanceTraveled + gpsDistance;
+        
         location.timeStamp = System.currentTimeMillis();
         location.yawFromNorth = (double) localYawFromNorth;
+        DataLogManager.log("**location: " + location);
         return location;
     }
 }

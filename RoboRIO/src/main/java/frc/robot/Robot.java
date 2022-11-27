@@ -145,7 +145,6 @@ public class Robot extends TimedRobot {
 
   boolean arrived = false;
   public void teleopPeriodic() {
-    DataLogManager.log("teleopPeriodicasl;djf;laskdj");
     ArduinoManager.getArduinoMegaData();
     if (ArduinoManager.getRC() == null) {
       if (!arrived) {
@@ -155,6 +154,7 @@ public class Robot extends TimedRobot {
       // System.out.println("Yaw From North" + NavXManager.getData().yawFromNorth);
       } else {
         System.out.println("arrived");
+        DataLogManager.log("arrived");
         m_myRobot.tankDrive(0, 0);
       }
     } else {

@@ -2,6 +2,8 @@ package frc.robot;
 
 import java.util.ArrayList;
 
+import edu.wpi.first.wpilibj.DataLogManager;
+
 import stcpack.stc.node;
 
 public class PathHandler {
@@ -19,30 +21,34 @@ public class PathHandler {
     protected static boolean haveStartedCalib = false;
     protected static double distanceWithoutTurning = 0;
 
-    protected static NavigatorData calibStartPos = new NavigatorData(0d, 0d, 0d, 0d, System.currentTimeMillis());
-    protected static NavigatorData calibEndPos = new NavigatorData(0, 0, 0, 0, System.currentTimeMillis());
+    protected static NavigatorData calibStartPos = new NavigatorData(0d, 0d, 0d, 0d, System.currentTimeMillis(), false);
+    protected static NavigatorData calibEndPos = new NavigatorData(0, 0, 0, 0, System.currentTimeMillis(), false);
 
     private static int index = 0;
 
     protected static void init() {
-        // System.out.println(ArduinoManager.getGPS());
+        // DataLogManager.log(ArduinoManager.getGPS());
         latLong initPos = new latLong(ArduinoManager.getGPS().latitude * 1E-7, ArduinoManager.getGPS().longitude * 1E-7);
-        // System.out.println("latlongstruct: " + initPos
+        // DataLogManager.log("latlongstruct: " + initPos
         //                     + "\norigin struct: " + ArduinoManager.getGPS().latitude + ", " + ArduinoManager.getGPS().longitude);
-        // System.out.println(initPos);
+        // DataLogManager.log(initPos);
         stcpack.stc.spanningTreeCoverageAlgorithm(initPos);
         nodeArr = stcpack.stc.finalPath;
-        System.out.println("Final Path");
+        // DataLogManager.log("Final Path");
+        DataLogManager.log("Final Path");
         for (int i = 0; i<stcpack.stc.finalPath.size(); i++) {
-            System.out.println("(" + stcpack.stc.finalPath.get(i).Long + ", " + stcpack.stc.finalPath.get(i).Lat + ")");
+            // DataLogManager.log("(" + stcpack.stc.finalPath.get(i).Long + ", " + stcpack.stc.finalPath.get(i).Lat + ")");
+            DataLogManager.log("**(" + stcpack.stc.finalPath.get(i).Long + ", " + stcpack.stc.finalPath.get(i).Lat + ")");
         }
-        // System.out.println("FinalNavigate");
+        // DataLogManager.log("FinalNavigate");
         // for (int i = 0; i<stcpack.stc.finalNavigate.size(); i++) {
-        //     System.out.println("(" + stcpack.stc.finalNavigate.get(i).Long + ", " + stcpack.stc.finalNavigate.get(i).Lat + ")");
+        //     DataLogManager.log("(" + stcpack.stc.finalNavigate.get(i).Long + ", " + stcpack.stc.finalNavigate.get(i).Lat + ")");
         // }
-        System.out.println("Initial Position");
-        System.out.println("(" + initPos.Long + ", " + initPos.Lat + ")"); 
-        // System.out.println("( " + stcpack.stc.startNode.Long + ", " + stcpack.stc.startNode.Lat + ")");
+        // DataLogManager.log("Initial Position");
+        DataLogManager.log("Initial Position");
+        // DataLogManager.log("(" + initPos.Long + ", " + initPos.Lat + ")"); 
+        DataLogManager.log("**Init(" + initPos.Long + ", " + initPos.Lat + ")"); 
+        // DataLogManager.log("( " + stcpack.stc.startNode.Long + ", " + stcpack.stc.startNode.Lat + ")");
         // nodeArr = new ArrayList<latLong>();
         // nodeArr.add(new latLong(373453108E-7, -1220160366E-7)); // Center
         // nodeArr.add(new latLong(373453102E-7,-1220160612E-7)); // Near Garage
@@ -75,14 +81,14 @@ public class PathHandler {
     }
 */
     public static boolean GoTo(latLong nextNode) {
-        // System.out.println("Yaw Calib Delta: " + NavXManager.yawDeltaFromNorth);
+        // DataLogManager.log("Yaw Calib Delta: " + NavXManager.yawDeltaFromNorth);
         NavigatorData location = Navigator.getLocation();
         latLong relativeNodeLocation = new latLong(nextNode.Lat - location.latitude, nextNode.Long - location.longitude);
-        // System.out.println("Node Relative Location:" + relativeNodeLocation.toString(relativeNodeLocation));
+        // DataLogManager.log("Node Relative Location:" + relativeNodeLocation.toString(relativeNodeLocation));
         double nodeThetaFromNorth = Math.toDegrees(Math.atan2(relativeNodeLocation.Long, relativeNodeLocation.Lat));
         double nodeRelativeTheta = nodeThetaFromNorth - location.yawFromNorth;
         nodeRelativeTheta = degreesTo180(nodeRelativeTheta);
-        // System.out.println("node relative theta, yaw from north, nodeThetaFromNorth: " + nodeRelativeTheta + ", " + location.yawFromNorth + ", " + nodeThetaFromNorth);
+        // DataLogManager.log("node relative theta, yaw from north, nodeThetaFromNorth: " + nodeRelativeTheta + ", " + location.yawFromNorth + ", " + nodeThetaFromNorth);
         if (Math.abs(relativeNodeLocation.Lat) > ARRIVED_MARGIN || 
             Math.abs(relativeNodeLocation.Long) > ARRIVED_MARGIN) { // If we have not arrived at target node...
             if (haveTurned) {
@@ -90,7 +96,7 @@ public class PathHandler {
                     haveTurned = false;
                     goForward();
                 } else {
-                    // System.out.println("Turning");
+                    // DataLogManager.log("Turning");
                     if (Math.abs(autoDrive.yEuclid) < 0.05) {
                         autoDrive.yEuclid = 0d;
                     } else {
@@ -106,13 +112,13 @@ public class PathHandler {
                 }
             }
 
-            // System.out.println("yawDeltaFromNorth: " + NavXManager.yawDeltaFromNorth + 
+            // DataLogManager.log("yawDeltaFromNorth: " + NavXManager.yawDeltaFromNorth + 
             //                     "\n nodeRelativeLocation: " + relativeNodeLocation.toString() + 
             //                     "\n nodeRelativeTheta: " + nodeRelativeTheta + "\nyawFromNorth: " + location.yawFromNorth + "\n nodeThetaFromNorth: " + 
             //                     nodeRelativeTheta + "\n location: " + location.toString());
             return false;
         } else {
-            // System.out.println("location" + location.toString());
+            // DataLogManager.log("location" + location.toString());
             return true;
         }
     }
@@ -120,7 +126,10 @@ public class PathHandler {
     public static boolean autonomousMainLoop() {
         boolean targetAchieved = GoTo(nodeArr.get(index));
         if (targetAchieved) {
-            System.out.println("Target Node: " + nodeArr.get(index).Lat + " " + nodeArr.get(index).Long + "Number: " + index);
+            // DataLogManager.log("Target Node: " + nodeArr.get(index).Lat + ", " + nodeArr.get(index).Long + 
+                                // "\n Number: " + index + "out of total nodes of " + (nodeArr.size()-1));
+            DataLogManager.log("Target Node: " + nodeArr.get(index).Lat + ", " + nodeArr.get(index).Long + 
+                                "\n Number: " + index + "out of total nodes of " + (nodeArr.size()-1));
             index++;
             if (nodeArr.size() < index + 1) {
                 return true;
@@ -134,7 +143,7 @@ public class PathHandler {
 
     private static void goForward() {
         haveTurned = false;
-        // System.out.println("Go Forward");
+        // DataLogManager.log("Go Forward");
         autoDrive.yEuclid += Math.signum(autoDrive.yEuclid + 0.0001) * 0.05;
         if (Math.abs(autoDrive.yEuclid) > MAX_DRIVE_SPEED) {
             autoDrive.yEuclid  = Math.signum(autoDrive.yEuclid) * MAX_DRIVE_SPEED;
@@ -143,7 +152,7 @@ public class PathHandler {
     }
 
     protected static double degreesTo180(double degree) {
-        // System.out.println("pre-math: " + degree);
+        // DataLogManager.log("pre-math: " + degree);
         double newDegree = degree;
         while (Math.abs(newDegree) > 360) {
             newDegree -= Math.signum(newDegree) * 360;
@@ -153,7 +162,7 @@ public class PathHandler {
         } else if (newDegree < -180) {
             newDegree += 360;
         }
-        // System.out.println("post-math: " + newDegree);
+        // DataLogManager.log("post-math: " + newDegree);
         return newDegree;
     }
 }
