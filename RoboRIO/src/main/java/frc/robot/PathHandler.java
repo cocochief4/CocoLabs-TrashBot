@@ -35,19 +35,19 @@ public class PathHandler {
         stcpack.stc.spanningTreeCoverageAlgorithm(initPos);
         nodeArr = stcpack.stc.finalPath;
         // DataLogManager.log("Final Path");
-        DataLogManager.log("Final Path");
+        // DataLogManager.log("Final Path");
         for (int i = 0; i<stcpack.stc.finalPath.size(); i++) {
             // DataLogManager.log("(" + stcpack.stc.finalPath.get(i).Long + ", " + stcpack.stc.finalPath.get(i).Lat + ")");
-            DataLogManager.log("**(" + stcpack.stc.finalPath.get(i).Long + ", " + stcpack.stc.finalPath.get(i).Lat + ")");
+            DataLogManager.log("finalPath," + stcpack.stc.finalPath.get(i).Long + ", " + stcpack.stc.finalPath.get(i).Lat);
         }
         // DataLogManager.log("FinalNavigate");
         // for (int i = 0; i<stcpack.stc.finalNavigate.size(); i++) {
         //     DataLogManager.log("(" + stcpack.stc.finalNavigate.get(i).Long + ", " + stcpack.stc.finalNavigate.get(i).Lat + ")");
         // }
         // DataLogManager.log("Initial Position");
-        DataLogManager.log("Initial Position");
+        // DataLogManager.log("Initial Position");
         // DataLogManager.log("(" + initPos.Long + ", " + initPos.Lat + ")"); 
-        DataLogManager.log("**Init(" + initPos.Long + ", " + initPos.Lat + ")"); 
+        DataLogManager.log("initialPos," + initPos.Long + ", " + initPos.Lat); 
         // DataLogManager.log("( " + stcpack.stc.startNode.Long + ", " + stcpack.stc.startNode.Lat + ")");
         // nodeArr = new ArrayList<latLong>();
         // nodeArr.add(new latLong(373453108E-7, -1220160366E-7)); // Center
@@ -128,8 +128,9 @@ public class PathHandler {
         if (targetAchieved) {
             // DataLogManager.log("Target Node: " + nodeArr.get(index).Lat + ", " + nodeArr.get(index).Long + 
                                 // "\n Number: " + index + "out of total nodes of " + (nodeArr.size()-1));
-            DataLogManager.log("Target Node: " + nodeArr.get(index).Lat + ", " + nodeArr.get(index).Long + 
-                                "\n Number: " + index + "out of total nodes of " + (nodeArr.size()-1));
+            DataLogManager.log("Target Node," + nodeArr.get(index).Long + 
+                                "," + nodeArr.get(index).Lat + 
+                                "," + index + "/" + (nodeArr.size()-1));
             index++;
             if (nodeArr.size() < index + 1) {
                 return true;

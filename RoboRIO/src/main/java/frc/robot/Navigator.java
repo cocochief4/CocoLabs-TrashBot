@@ -61,7 +61,7 @@ public class Navigator {
                 if (System.currentTimeMillis() - ArduinoManager.getGPS().timeStamp < 200) {
                     calibStartPos = ArduinoManager.getGPS();
                     // DataLogManager.log("startPos: " + calibStartPos);
-                    DataLogManager.log("startPos: " + calibStartPos);
+                    DataLogManager.log("startPos," + calibStartPos);
                 }
             }
             else {
@@ -71,7 +71,7 @@ public class Navigator {
                     long deltaLongitude = calibEndPos.longitude - calibStartPos.longitude;
                     double magnitude = Math.sqrt((double) (deltaLatitude*deltaLatitude + deltaLongitude*deltaLongitude));
                     if (GPSlocalTimestamp != ArduinoManager.getGPS().timeStamp) {
-                        DataLogManager.log("Magnitude: " + magnitude);
+                        DataLogManager.log("magnitude," + magnitude);
                         GPSlocalTimestamp = ArduinoManager.getGPS().timeStamp;
                     }
                     if (magnitude > 45d) { // if the distance traveled is greater that around 30 in for guaranteed accuracy.
@@ -80,8 +80,8 @@ public class Navigator {
                         //                     + "\n Nav x get data: " + NavXManager.getData().toString());
                         double rawYaw = NavXManager.getData().rawYaw;
                         NavXManager.yawDeltaFromNorth = yawFromNorth - rawYaw;
-                        DataLogManager.log("yawfromNOrth latest: " + yawFromNorth
-                                            + "\n Nav x get data: " + NavXManager.getData().toString());
+                        // DataLogManager.log("yawfromNOrth latest: " + yawFromNorth
+                        //                     + "\n Nav x get data: " + NavXManager.getData().toString());
                         // DataLogManager.log("calibStartPos: " + calibStartPos + 
                         //                     "\n calibEndPos: " + calibEndPos + 
                         //                     "\n yawFromNorth: " + yawFromNorth + 
@@ -89,13 +89,14 @@ public class Navigator {
                         //                     "\n deltaLat: " + deltaLatitude + 
                         //                     "\n deltaLon: " + deltaLongitude +
                         //                     "\n magnitude: " + magnitude);
-                        DataLogManager.log("calibStartPos: " + calibStartPos + 
-                                            "\n calibEndPos: " + calibEndPos + 
-                                            "\n yawFromNorth: " + yawFromNorth + 
-                                            "\n navX Yaw: " + NavXManager.getData().yawFromNorth + 
-                                            "\n deltaLat: " + deltaLatitude + 
-                                            "\n deltaLon: " + deltaLongitude +
-                                            "\n magnitude: " + magnitude);
+                        DataLogManager.log("calibStartPos," + calibStartPos + 
+                                            ",calibEndPos," + calibEndPos + 
+                                            ",yawFromNorth," + yawFromNorth + 
+                                            ",rawYaw," + NavXManager.getData().rawYaw + 
+                                            ",YawDeltaFromNOrth," + NavXManager.yawDeltaFromNorth +
+                                            ",deltaLat," + deltaLatitude + 
+                                            ",deltaLon," + deltaLongitude +
+                                            ",magnitude," + magnitude);
                         calibStartPos = null;
                         calibEndPos = null;
                     }
@@ -134,10 +135,10 @@ public class Navigator {
         location.latitude += latChange;
         location.longitude += lonChange;
         location.distanceFromLastReading = distanceTraveled + gpsDistance;
-        
+
         location.timeStamp = System.currentTimeMillis();
         location.yawFromNorth = (double) localYawFromNorth;
-        DataLogManager.log("**location: " + location);
+        DataLogManager.log(location.toLogString());
         return location;
     }
 }

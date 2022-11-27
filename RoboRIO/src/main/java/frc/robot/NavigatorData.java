@@ -27,4 +27,17 @@ public class NavigatorData {
 
         return string;
     }
+
+    public String toLogString() {
+        String strIsGps = new String();
+        if (isGpsReading) {
+            strIsGps = "T";
+        } else {
+            strIsGps = "F";
+        }
+        String string = new String();
+        string = strIsGps + "currentLocation," + longitude + "," + latitude + "," + isGpsReading;
+
+        return string;
+    }
 }

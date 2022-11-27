@@ -26,10 +26,10 @@ public class input {
         //Here you would define each lat, long in vertices
         //Top left Corner: Lat: 37.3453149 Long: -122.0160824
         //House Coords
-        vertices[0] = new latLong(373452961E-7,-1220160283E-7);
-        vertices[1] = new latLong(373452942E-7,-1220160620E-7);
-        vertices[2] = new latLong(373452947E-7,-1220160536E-7);
-        vertices[3] = new latLong(373453297E-7,-1220160260E-7);
+        vertices[0] = new latLong(373452951E-7,-1220160237E-7);
+        vertices[1] = new latLong(373453231E-7,-1220160190E-7);
+        vertices[2] = new latLong(373453279E-7,-1220160499E-7);
+        vertices[3] = new latLong(373452950E-7,-1220160523E-7);
         
         //Panama Park Coords
         // vertices[0] = new latLong(373471167E-7,-1220185661E-7);
