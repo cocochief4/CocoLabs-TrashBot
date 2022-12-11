@@ -50,7 +50,8 @@ public class Navigator {
         // DataLogManager.log("  rVelo: " + encoderStruct.rVelocity + "\n  lvelo: " + encoderStruct.lVelocity);
         if (Math.signum(encoderStruct.rVelocity) == Math.signum(encoderStruct.lVelocity)) {
             haveTurned = false;
-        } else {
+        }
+        else {
             // DataLogManager.log("calib turned");
             haveTurned = true;
             calibStartPos = null;

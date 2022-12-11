@@ -16,6 +16,8 @@ import edu.wpi.first.util.datalog.StringLogEntry;
 import edu.wpi.first.wpilibj.DataLogManager;
 import edu.wpi.first.wpilibj.DriverStation;
 
+import javax.xml.crypto.Data;
+
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
@@ -162,6 +164,7 @@ public class Robot extends TimedRobot {
       EuclideanCoord steeringThrottle = new EuclideanCoord(rcData.steering, rcData.throttle);
       steeringThrottle = new TeleopMath(0d, 0d).ScaleToUnitSquare(steeringThrottle);
       AutonomousDrive.drive(steeringThrottle.yEuclid, steeringThrottle.xEuclid);
+      DataLogManager.log("" + NavXManager.getData().rawYaw);
     }
   } // End of TeleopPeriodic()
 
