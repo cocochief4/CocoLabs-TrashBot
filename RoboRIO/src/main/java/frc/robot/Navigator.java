@@ -75,32 +75,33 @@ public class Navigator {
                         DataLogManager.log("magnitude," + magnitude);
                         GPSlocalTimestamp = ArduinoManager.getGPS().timeStamp;
                     }
-                // if the distance traveled is greater that around 30 in for guaranteed accuracy. NOT IMPLEMENTED
-                    double yawFromNorth = Math.toDegrees(Math.atan2(deltaLongitude, deltaLatitude));
-                    // DataLogManager.log("yawfromNOrth latest: " + yawFromNorth
-                    //                     + "\n Nav x get data: " + NavXManager.getData().toString());
-                    double rawYaw = NavXManager.getData().rawYaw;
-                    NavXManager.yawDeltaFromNorth = yawFromNorth - rawYaw;
-                    // DataLogManager.log("yawfromNOrth latest: " + yawFromNorth
-                    //                     + "\n Nav x get data: " + NavXManager.getData().toString());
-                    // DataLogManager.log("calibStartPos: " + calibStartPos + 
-                    //                     "\n calibEndPos: " + calibEndPos + 
-                    //                     "\n yawFromNorth: " + yawFromNorth + 
-                    //                     "\n navX Yaw: " + NavXManager.getData().yawFromNorth + 
-                    //                     "\n deltaLat: " + deltaLatitude + 
-                    //                     "\n deltaLon: " + deltaLongitude +
-                    //                     "\n magnitude: " + magnitude);
-                    DataLogManager.log("calibStartPos," + calibStartPos + 
-                                        ",calibEndPos," + calibEndPos + 
-                                        ",yawFromNorth," + yawFromNorth + 
-                                        ",rawYaw," + NavXManager.getData().rawYaw + 
-                                        ",YawDeltaFromNOrth," + NavXManager.yawDeltaFromNorth +
-                                        ",deltaLat," + deltaLatitude + 
-                                        ",deltaLon," + deltaLongitude +
-                                        ",magnitude," + magnitude);
-                    calibStartPos = null;
-                    calibEndPos = null;
-                    
+                // if the distance traveled is greater that around 30 in for guaranteed accuracy. IMPLEMENTED
+                    if (magnitude > 35d) {
+                        double yawFromNorth = Math.toDegrees(Math.atan2(deltaLongitude, deltaLatitude));
+                        // DataLogManager.log("yawfromNOrth latest: " + yawFromNorth
+                        //                     + "\n Nav x get data: " + NavXManager.getData().toString());
+                        double rawYaw = NavXManager.getData().rawYaw;
+                        NavXManager.yawDeltaFromNorth = yawFromNorth - rawYaw;
+                        // DataLogManager.log("yawfromNOrth latest: " + yawFromNorth
+                        //                     + "\n Nav x get data: " + NavXManager.getData().toString());
+                        // DataLogManager.log("calibStartPos: " + calibStartPos + 
+                        //                     "\n calibEndPos: " + calibEndPos + 
+                        //                     "\n yawFromNorth: " + yawFromNorth + 
+                        //                     "\n navX Yaw: " + NavXManager.getData().yawFromNorth + 
+                        //                     "\n deltaLat: " + deltaLatitude + 
+                        //                     "\n deltaLon: " + deltaLongitude +
+                        //                     "\n magnitude: " + magnitude);
+                        DataLogManager.log("calibStartPos," + calibStartPos + 
+                                            ",calibEndPos," + calibEndPos + 
+                                            ",yawFromNorth," + yawFromNorth + 
+                                            ",rawYaw," + NavXManager.getData().rawYaw + 
+                                            ",YawDeltaFromNOrth," + NavXManager.yawDeltaFromNorth +
+                                            ",deltaLat," + deltaLatitude + 
+                                            ",deltaLon," + deltaLongitude +
+                                            ",magnitude," + magnitude);
+                        calibStartPos = null;
+                        calibEndPos = null;
+                    }
                 }
             }
         }
