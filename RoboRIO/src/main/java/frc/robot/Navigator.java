@@ -43,7 +43,6 @@ public class Navigator {
     //                                                         latLongFixStruct.longitude, location.yawFromNorth, (double) 0, System.currentTimeMillis());
     //     return navigatorStruct;
     // }
-    
 
     protected static void calibrateYaw() { // WORK ON CALIBRATE
         EncoderStruct encoderStruct = MotorEncoder.getVelocity();

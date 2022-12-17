@@ -164,7 +164,8 @@ public class Robot extends TimedRobot {
       EuclideanCoord steeringThrottle = new EuclideanCoord(rcData.steering, rcData.throttle);
       steeringThrottle = new TeleopMath(0d, 0d).ScaleToUnitSquare(steeringThrottle);
       AutonomousDrive.drive(steeringThrottle.yEuclid, steeringThrottle.xEuclid);
-      DataLogManager.log("" + NavXManager.getData().rawYaw);
+      DataLogManager.log("calcYaw" + NavXManager.getData().yawFromNorth);
+      DataLogManager.log("rawYaw" + NavXManager.getData().rawYaw);
     }
   } // End of TeleopPeriodic()
 

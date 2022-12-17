@@ -21,6 +21,10 @@ public class NavXManager {
 
     static double yawDeltaFromNorth = 0;
 
+    static double previousRawYaw = 0;
+    static double previousCorrectedYaw = 0;
+    static final double YAW_SCALE_FACTOR = 360d/390d;
+
     public static void RInit() {
         if (ahrs != null) {
             return;
@@ -59,9 +63,17 @@ public class NavXManager {
 
     public static ImuData getData() {
         double rawYaw = ahrs.getYaw();
-        double adjustedYaw = rawYaw + yawDeltaFromNorth;
-        ImuData imuStruct = new ImuData(adjustedYaw, ahrs.getVelocityX(), ahrs.getVelocityY(), ahrs.getVelocityZ(), rawYaw);
-
+        double yawFromNorth = scaleYawDrift(rawYaw) + yawDeltaFromNorth;
+        ImuData imuStruct = new ImuData(yawFromNorth, ahrs.getVelocityX(), ahrs.getVelocityY(), ahrs.getVelocityZ(), rawYaw);
         return imuStruct;
+    }
+
+    // Scale the delta as there is a linear drift in yaw, not random. (180 has 15 deg, 360 has 30, so forth)
+    protected static double scaleYawDrift(Double yaw) {
+        double yawDelta = (yaw - previousRawYaw)*YAW_SCALE_FACTOR;
+        previousRawYaw = yaw;
+        yaw = previousCorrectedYaw + yawDelta;
+        previousCorrectedYaw = yaw;
+        return yaw;
     }
 }
