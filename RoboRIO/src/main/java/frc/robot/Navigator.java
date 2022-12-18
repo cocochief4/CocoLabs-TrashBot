@@ -79,8 +79,8 @@ public class Navigator {
                         double yawFromNorth = Math.toDegrees(Math.atan2(deltaLongitude, deltaLatitude));
                         // DataLogManager.log("yawfromNOrth latest: " + yawFromNorth
                         //                     + "\n Nav x get data: " + NavXManager.getData().toString());
-                        double rawYaw = NavXManager.getData().rawYaw;
-                        NavXManager.yawDeltaFromNorth = yawFromNorth - rawYaw;
+                        double adjYaw = NavXManager.getData().adjustedYaw;
+                        NavXManager.yawDeltaFromNorth = yawFromNorth - adjYaw;
                         // DataLogManager.log("yawfromNOrth latest: " + yawFromNorth
                         //                     + "\n Nav x get data: " + NavXManager.getData().toString());
                         // DataLogManager.log("calibStartPos: " + calibStartPos + 
@@ -93,7 +93,7 @@ public class Navigator {
                         DataLogManager.log("calibStartPos," + calibStartPos + 
                                             ",calibEndPos," + calibEndPos + 
                                             ",yawFromNorth," + yawFromNorth + 
-                                            ",rawYaw," + NavXManager.getData().rawYaw + 
+                                            ",adjustedYaw," + NavXManager.getData().adjustedYaw + 
                                             ",YawDeltaFromNOrth," + NavXManager.yawDeltaFromNorth +
                                             ",deltaLat," + deltaLatitude + 
                                             ",deltaLon," + deltaLongitude +
