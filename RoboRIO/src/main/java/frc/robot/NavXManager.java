@@ -26,6 +26,8 @@ public class NavXManager {
     static final double YAW_SCALE_FACTOR = 360d/390d;
 
     public static void RInit() {
+        previousCorrectedYaw = 0;
+        previousRawYaw = 0;
         if (ahrs != null) {
             return;
         }
@@ -70,10 +72,17 @@ public class NavXManager {
 
     // Scale the delta as there is a linear drift in yaw, not random. (180 has 15 deg, 360 has 30, so forth)
     protected static double scaleYawDrift(Double yaw) {
-        double yawDelta = (yaw - previousRawYaw)*YAW_SCALE_FACTOR;
+        double calcYaw = yaw;
+        if (Math.signum(yaw) != Math.signum(previousRawYaw) && Math.abs(yaw) > 100) {
+            calcYaw += Math.signum(previousRawYaw)*360;
+        }
+        double yawDelta = (calcYaw - previousRawYaw)*YAW_SCALE_FACTOR;
         previousRawYaw = yaw;
-        yaw = previousCorrectedYaw + yawDelta;
-        previousCorrectedYaw = yaw;
-        return yaw;
+        double correctedYaw = previousCorrectedYaw + yawDelta;
+        if (Math.abs(correctedYaw) > 180) {
+            correctedYaw += Math.signum(correctedYaw)*-360;
+        }
+        previousCorrectedYaw = correctedYaw;
+        return correctedYaw;
     }
 }
