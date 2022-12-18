@@ -13,6 +13,7 @@ from threading import Lock
 # printing only warnings and error messages
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "1"
 
+
 try:
     import tensorflow as tf
     from PIL import Image
