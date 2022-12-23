@@ -58,7 +58,7 @@ public class ArduinoManager {
             if (gps.equals("N")) {
                 gpsStruct = null;
             } else {
-                if (Byte.parseByte(gps.split(",")[2]) == 2) {
+                if (Byte.parseByte(gps.split(",")[2]) == 1 || Byte.parseByte(gps.split(",")[2]) == 2 || Byte.parseByte(gps.split(",")[2]) == 0) {
                     String gpsArr[] = gps.split(",");
                     gpsStruct = new GPSLatLongData(Long.parseLong(gpsArr[0]), 
                         Long.parseLong(gpsArr[1]), Byte.parseByte(gpsArr[2]), System.currentTimeMillis());

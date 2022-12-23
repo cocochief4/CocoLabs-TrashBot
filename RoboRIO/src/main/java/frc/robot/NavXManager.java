@@ -65,9 +65,8 @@ public class NavXManager {
 
     public static ImuData getData() {
         double rawYaw = ahrs.getYaw();
-        double adjustedYaw = scaleYawDrift(rawYaw);
         double yawFromNorth = scaleYawDrift(rawYaw) + yawDeltaFromNorth;
-        ImuData imuStruct = new ImuData(yawFromNorth, ahrs.getVelocityX(), ahrs.getVelocityY(), ahrs.getVelocityZ(), rawYaw, adjustedYaw);
+        ImuData imuStruct = new ImuData(yawFromNorth, ahrs.getVelocityX(), ahrs.getVelocityY(), ahrs.getVelocityZ(), rawYaw);
         return imuStruct;
     }
 
