@@ -80,8 +80,6 @@ public class PathHandler {
 
     }
 */
-    // Goes to the next node in the array
-    // Return false if have not arrived at node, return true if we have arrived
     public static boolean GoTo(latLong nextNode) {
         // DataLogManager.log("Yaw Calib Delta: " + NavXManager.yawDeltaFromNorth);
         NavigatorData location = Navigator.getLocation();
@@ -93,34 +91,26 @@ public class PathHandler {
         // DataLogManager.log("node relative theta, yaw from north, nodeThetaFromNorth: " + nodeRelativeTheta + ", " + location.yawFromNorth + ", " + nodeThetaFromNorth);
         if (Math.abs(relativeNodeLocation.Lat) > ARRIVED_MARGIN || 
             Math.abs(relativeNodeLocation.Long) > ARRIVED_MARGIN) { // If we have not arrived at target node...
+            if (haveTurned) {
                 if (Math.abs(nodeRelativeTheta) < 0.5) {
-                    goForward();
                     haveTurned = false;
+                    goForward();
                 } else {
-                    AutonomousDrive.drive(0, Math.signum(nodeRelativeTheta) * MAX_TURN_SPEED);
-                    haveTurned = true;
+                    // DataLogManager.log("Turning");
+                    if (Math.abs(autoDrive.yEuclid) < 0.05) {
+                        autoDrive.yEuclid = 0d;
+                    } else {
+                        autoDrive.yEuclid -= Math.signum(autoDrive.yEuclid) * 0.05;
+                    }
+                    AutonomousDrive.drive(autoDrive.yEuclid, Math.signum(nodeRelativeTheta) * MAX_TURN_SPEED);
                 }
-
-            // if (haveTurned) {
-            //     if (Math.abs(nodeRelativeTheta) < 0.5) {
-            //         haveTurned = false;
-            //         goForward();
-            //     } else {
-            //         // DataLogManager.log("Turning");
-            //         if (Math.abs(autoDrive.yEuclid) < 0.05) {
-            //             autoDrive.yEuclid = 0d;
-            //         } else {
-            //             autoDrive.yEuclid -= Math.signum(autoDrive.yEuclid) * 0.05;
-            //         }
-            //         AutonomousDrive.drive(autoDrive.yEuclid, Math.signum(nodeRelativeTheta) * MAX_TURN_SPEED);
-            //     }
-            // } else {
-            //     if (Math.abs(nodeRelativeTheta) > 5) {
-            //         haveTurned = true;
-            //     } else {
-            //         goForward();
-            //     }
-            // }
+            } else {
+                if (Math.abs(nodeRelativeTheta) > 5) {
+                    haveTurned = true;
+                } else {
+                    goForward();
+                }
+            }
 
             // DataLogManager.log("yawDeltaFromNorth: " + NavXManager.yawDeltaFromNorth + 
             //                     "\n nodeRelativeLocation: " + relativeNodeLocation.toString() + 
