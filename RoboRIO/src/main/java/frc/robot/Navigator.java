@@ -12,6 +12,7 @@ public class Navigator {
 
     protected static final double RADIANS_MULTIPLIER = Math.PI/180f;
     protected static final double DEGREES_MULTIPLIER = 180f/Math.PI;
+    protected static final double MAGNITUDE_SCALE_FACTOR = 1.34; //Scale the magnitude as our dead reckonging is always short
 
     protected static final double DD_LONG_TO_DOUBLE = 1E-7;
 
@@ -69,7 +70,7 @@ public class Navigator {
                     calibEndPos = ArduinoManager.getGPS();
                     long deltaLatitude = calibEndPos.latitude - calibStartPos.latitude;
                     long deltaLongitude = calibEndPos.longitude - calibStartPos.longitude;
-                    double magnitude = Math.sqrt((double) (deltaLatitude*deltaLatitude + deltaLongitude*deltaLongitude));
+                    double magnitude = Math.sqrt((double) (deltaLatitude*deltaLatitude + deltaLongitude*deltaLongitude)) * MAGNITUDE_SCALE_FACTOR;
                     if (GPSlocalTimestamp != ArduinoManager.getGPS().timeStamp) {
                         DataLogManager.log("magnitude," + magnitude);
                         GPSlocalTimestamp = ArduinoManager.getGPS().timeStamp;

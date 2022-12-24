@@ -26,24 +26,36 @@ public class input {
         //Here you would define each lat, long in vertices
         //Top left Corner: Lat: 37.3453149 Long: -122.0160824
         //House Coords
-        vertices[0] = new latLong(373452951E-7,-1220160237E-7);
-        vertices[1] = new latLong(373453231E-7,-1220160190E-7);
-        vertices[2] = new latLong(373453279E-7,-1220160499E-7);
-        vertices[3] = new latLong(373452950E-7,-1220160523E-7);
+        vertices[0] = new latLong(373473899E-7,-1220184057E-7);
+        vertices[1] = new latLong(373474542E-7,-1220184084E-7);
+        vertices[2] = new latLong(373474558E-7,-1220184835E-7);
+        vertices[3] = new latLong(373473930E-7,-1220184798E-7);
         
-        //Panama Park Coords
+        //Panama Park Coords decaperated
         // vertices[0] = new latLong(373471167E-7,-1220185661E-7);
         // vertices[1] = new latLong(373471892E-7,-1220185660E-7);
         // vertices[2] = new latLong(373471878E-7,-1220186348E-7);
         // vertices[3] = new latLong(373471216E-7,-1220186298E-7);
 
 
-        int nObstacles = 0; //1 is just a placeholder for now
+        int nObstacles = 1; //1 is just a placeholder for now
         obstacles = new ArrayList[nObstacles];
         for (int i = 0; i<nObstacles; i++) {
             obstacles[i] = new ArrayList<latLong>();
         }
+
+        obstacles[0].add(new latLong(373474227E-7,-1220184590E-7));
+        obstacles[0].add(new latLong(373474216E-7,-1220184400E-7));
+        obstacles[0].add(new latLong(373474369E-7,-1220184379E-7));
+        obstacles[0].add(new latLong(373474388E-7,-1220184539E-7));
+        
+// home obstacle coords
+        // obstacles[0].add(new latLong((373453099-30)*1E-7, (-1220160341 - 30)*1E-7));
+        // obstacles[0].add(new latLong((373453099+30)*1E-7, (-1220160341 - 30)*1E-7));
+        // obstacles[0].add(new latLong((373453099-30)*1E-7, (-1220160341 + 30)*1E-7));
+        // obstacles[0].add(new latLong((373453099+30)*1E-7, (-1220160341 + 30)*1E-7));
         //Here you would define each obstacle as an arraylist of lat, longs
+        // Panama Park obstacle decaprated
         // obstacles[0].add(new latLong(373471462E-7,-1220186094E-7));
         // obstacles[0].add(new latLong(373471455E-7,-1220185970E-7));
         // obstacles[0].add(new latLong(373471343E-7,-1220185972E-7));
