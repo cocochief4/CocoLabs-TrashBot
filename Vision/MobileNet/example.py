@@ -4,8 +4,9 @@
 import tensorflow
 import numpy
 from PIL import Image
+import pathConfig
 
-model = tensorflow.saved_model.load('./')
+model = tensorflow.saved_model.load(str(pathConfig.MSI_PATH, 'Vision/MobileNet'))
 classes = [ "no-trash" ,  "trash" , ]
 
 img = Image.open("image.jpg").convert('RGB')

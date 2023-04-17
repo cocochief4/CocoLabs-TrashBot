@@ -2,7 +2,7 @@
 
 import serial # if you get library not found, run pip install pyserial (should work)
 import time
-import keyboard
+import cv2
 
 SerialObj = serial.Serial('COM23') # need to figure out which com you are using
 
@@ -21,11 +21,8 @@ while True:
     SerialObj.timeout = 3 # timeout for reading
     ReceivedByte = SerialObj.read()
 
-    try:
-        if keyboard.is_pressed('q'):
-            print("break")
-            break
-    except:
-        continue
+    # Break Key (q)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
 
 SerialObj.close()
