@@ -49,6 +49,8 @@ public class Robot extends TimedRobot {
 
   StringLogEntry strLog;
 
+  public static final boolean IS_AUTO = false;
+
   @Override
   public void robotInit() {
     DataLogManager.start();
@@ -102,8 +104,10 @@ public class Robot extends TimedRobot {
                           // as there is a jump for no reason at all
 
   public void teleopInit() {
+    VisionManager.init(0);
     NavXManager.RInit();
     boolean arduinoData = false;
+    // Waits for a rtk gps fix before continuing
     while (arduinoData == false) {
       arduinoData = ArduinoManager.init();
       // System.out.println("init"); // Must be before Navigator Init
@@ -147,6 +151,7 @@ public class Robot extends TimedRobot {
 
   boolean arrived = false;
   public void teleopPeriodic() {
+    System.out.println(VisionManager.trashDetected());
     ArduinoManager.getArduinoMegaData();
     if (ArduinoManager.getRC() == null) {
       if (!arrived) {

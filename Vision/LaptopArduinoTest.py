@@ -4,7 +4,7 @@ import serial # if you get library not found, run pip install pyserial (should w
 import time
 import cv2
 
-SerialObj = serial.Serial('COM23') # need to figure out which com you are using
+SerialObj = serial.Serial('COM22') # need to figure out which com you are using
 
 SerialObj.baudrate = 115200 # baudrate, must be equal both on ino and here
 SerialObj.bytesize = 8 # bit translated over 8
