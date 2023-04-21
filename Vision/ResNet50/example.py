@@ -6,7 +6,7 @@ import numpy
 from PIL import Image
 
 model = tensorflow.saved_model.load('./')
-classes = [ "no-trash" ,  "trash" , ]
+classes = [ "no-trash" ,  "trash" ,  "Unlabeled" , ]
 
 img = Image.open("image.jpg").convert('RGB')
 img = img.resize((300, 300 * img.size[1] // img.size[0]), Image.ANTIALIAS)
