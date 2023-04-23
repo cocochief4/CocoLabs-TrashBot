@@ -29,8 +29,6 @@ public class Robot extends TimedRobot {
   /* controllers by displaying a form where you can enter new P, I, */
   /* and D constants and test the mechanism. */
 
-  protected static DifferentialDrive m_myRobot;
-
   private static final int leftUpDeviceID = 3; 
   private static final int leftDownDeviceID = 1;
   protected static CANSparkMax leftUpMotor;
@@ -43,6 +41,8 @@ public class Robot extends TimedRobot {
   protected static CANSparkMax rightDownMotor;
   protected static MotorControllerGroup rightGroup;
 
+  protected static DifferentialDrive m_myRobot;
+
   protected static EuclideanCoord robotSpeed = new EuclideanCoord(0.0, 0.0);
   protected static EuclideanCoord currentSpeed = new EuclideanCoord(0, 0);
   protected static final double RAMP_MAX = 0.015;
@@ -53,6 +53,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
+    VisionManager.init(0);
     DataLogManager.start();
     // NavXManager.RInit();
 
@@ -104,7 +105,6 @@ public class Robot extends TimedRobot {
                           // as there is a jump for no reason at all
 
   public void teleopInit() {
-    VisionManager.init(0);
     NavXManager.RInit();
     boolean arduinoData = false;
     // Waits for a rtk gps fix before continuing
