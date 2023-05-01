@@ -8,12 +8,12 @@ import pathConfig
 import serial # if you get library not found, run pip install pyserial (should work)
 import time
 
-# SerialObj = serial.Serial('COM22') # need to figure out which com you are using
+SerialObj = serial.Serial('COM25') # need to figure out which com you are using
 
-# SerialObj.baudrate = 115200 # baudrate, must be equal both on ino and here
-# SerialObj.bytesize = 8 # bit translated over 8
-# SerialObj.parity = 'N' # parity = method of checking, don't need it
-# SerialObj.stopbits = 1 # needed for stopping comms, only need 1 bit
+SerialObj.baudrate = 115200 # baudrate, must be equal both on ino and here
+SerialObj.bytesize = 8 # bit translated over 8
+SerialObj.parity = 'N' # parity = method of checking, don't need it
+SerialObj.stopbits = 1 # needed for stopping comms, only need 1 bit
 
 
 # [height, width]
@@ -55,10 +55,10 @@ while(True):
     class_scores = model(inp)[0].numpy()
 
     if (classes[class_scores.argmax()] == "trash"):
-        # SerialObj.write(b'T')
+        SerialObj.write(b'T')
         print("Write T")
     elif (classes[class_scores.argmax()] == "no-trash"):
-        # SerialObj.write(b'F')
+        SerialObj.write(b'F')
         print("Write F")
 
 

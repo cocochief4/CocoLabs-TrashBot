@@ -1,15 +1,14 @@
-#define ledPin 3
+#define signalPin 3
 
 void setup()
 {
-  Serial1.begin(115200); // opens serial port with baud rate
   Serial.begin(115200);
 
-  pinMode(ledPin, OUTPUT);
+  pinMode(signalPin, OUTPUT);
 
-  digitalWrite(ledPin, HIGH);
+  digitalWrite(signalPin, HIGH);
   delay(3000);
-  digitalWrite(ledPin, LOW);
+  digitalWrite(signalPin, LOW);
 }
 
 long loopTime = millis();
@@ -18,10 +17,12 @@ void loop()
   bool flash;
   char readByte;
 
-  if (Serial1.available()) {
-    Serial.println("reading");
+  if (Serial.available()) {
+//    digitalWrite(signalPin, HIGH);
+//    delay(100);
+//    digitalWrite(signalPin, LOW);
 
-    readByte = Serial1.read();
+    readByte = Serial.read();
 
     if (readByte == 'T') {
       Serial.println("True");
@@ -32,14 +33,14 @@ void loop()
       flash = false;
     }
   } else {
-//    digitalWrite(ledPin, LOW);
+    digitalWrite(signalPin, LOW);
   }
 
   if (flash) {
     Serial.println("Write");
-    digitalWrite(ledPin, HIGH);
+    digitalWrite(signalPin, HIGH);
   } else {
-//    digitalWrite(ledPin, LOW);
+    digitalWrite(signalPin, LOW);
   }
 
 }

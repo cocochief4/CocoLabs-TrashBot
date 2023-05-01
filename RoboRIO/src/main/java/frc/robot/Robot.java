@@ -51,9 +51,11 @@ public class Robot extends TimedRobot {
 
   public static final boolean IS_AUTO = false;
 
+  protected static int visionPort = 0;
+
   @Override
   public void robotInit() {
-    VisionManager.init(0);
+    VisionManager.init(visionPort);
     DataLogManager.start();
     // NavXManager.RInit();
 
@@ -151,7 +153,7 @@ public class Robot extends TimedRobot {
 
   boolean arrived = false;
   public void teleopPeriodic() {
-    System.out.println(VisionManager.trashDetected());
+    System.out.println("Vision: " + VisionManager.trashDetected());
     ArduinoManager.getArduinoMegaData();
     if (ArduinoManager.getRC() == null) {
       if (!arrived) {
