@@ -29,6 +29,8 @@ public class Robot extends TimedRobot {
   /* controllers by displaying a form where you can enter new P, I, */
   /* and D constants and test the mechanism. */
 
+  protected static DifferentialDrive m_myRobot;
+
   private static final int leftUpDeviceID = 3; 
   private static final int leftDownDeviceID = 1;
   protected static CANSparkMax leftUpMotor;
@@ -41,21 +43,14 @@ public class Robot extends TimedRobot {
   protected static CANSparkMax rightDownMotor;
   protected static MotorControllerGroup rightGroup;
 
-  protected static DifferentialDrive m_myRobot;
-
   protected static EuclideanCoord robotSpeed = new EuclideanCoord(0.0, 0.0);
   protected static EuclideanCoord currentSpeed = new EuclideanCoord(0, 0);
   protected static final double RAMP_MAX = 0.015;
 
   StringLogEntry strLog;
 
-  public static final boolean IS_AUTO = false;
-
-  protected static int visionPort = 0;
-
   @Override
   public void robotInit() {
-    VisionManager.init(visionPort);
     DataLogManager.start();
     // NavXManager.RInit();
 
@@ -109,7 +104,6 @@ public class Robot extends TimedRobot {
   public void teleopInit() {
     NavXManager.RInit();
     boolean arduinoData = false;
-    // Waits for a rtk gps fix before continuing
     while (arduinoData == false) {
       arduinoData = ArduinoManager.init();
       // System.out.println("init"); // Must be before Navigator Init
@@ -153,7 +147,6 @@ public class Robot extends TimedRobot {
 
   boolean arrived = false;
   public void teleopPeriodic() {
-    System.out.println("Vision: " + VisionManager.trashDetected());
     ArduinoManager.getArduinoMegaData();
     if (ArduinoManager.getRC() == null) {
       if (!arrived) {

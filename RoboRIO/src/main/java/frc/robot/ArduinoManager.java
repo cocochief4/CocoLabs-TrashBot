@@ -58,18 +58,12 @@ public class ArduinoManager {
             if (gps.equals("N")) {
                 gpsStruct = null;
             } else {
-                if(Robot.IS_AUTO) {
-                    if (Byte.parseByte(gps.split(",")[2]) == 2) {
-                        String gpsArr[] = gps.split(",");
-                        gpsStruct = new GPSLatLongData(Long.parseLong(gpsArr[0]), 
-                            Long.parseLong(gpsArr[1]), Byte.parseByte(gpsArr[2]), System.currentTimeMillis());
-                    } else {
-                        gpsStruct = null;
-                    }
-                } else {
+                if (Byte.parseByte(gps.split(",")[2]) == 2) {
                     String gpsArr[] = gps.split(",");
-                        gpsStruct = new GPSLatLongData(Long.parseLong(gpsArr[0]), 
-                            Long.parseLong(gpsArr[1]), Byte.parseByte(gpsArr[2]), System.currentTimeMillis());
+                    gpsStruct = new GPSLatLongData(Long.parseLong(gpsArr[0]), 
+                        Long.parseLong(gpsArr[1]), Byte.parseByte(gpsArr[2]), System.currentTimeMillis());
+                } else {
+                    gpsStruct = null;
                 }
             }
 
