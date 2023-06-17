@@ -14,7 +14,10 @@ import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.util.datalog.DataLog;
 import edu.wpi.first.util.datalog.StringLogEntry;
 import edu.wpi.first.wpilibj.DataLogManager;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DigitalOutput;
+
 
 import javax.xml.crypto.Data;
 
@@ -47,6 +50,9 @@ public class Robot extends TimedRobot {
   protected static EuclideanCoord currentSpeed = new EuclideanCoord(0, 0);
   protected static final double RAMP_MAX = 0.015;
 
+  private DigitalInput input1;
+  private DigitalOutput output1;
+
   StringLogEntry strLog;
 
   public static final boolean IS_AUTO = false;
@@ -55,6 +61,18 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
+
+    // basic input output stuff
+    
+    // the numbers in the constructor are the port numbers
+    input1 = new DigitalInput(0);
+    output1 = new DigitalOutput(1);
+
+    input1.get(); // this returns true or false for the input
+    output1.set(true); // this sets it to true or false for the output 
+
+
+
     VisionManager.init(visionPort);
     DataLogManager.start();
     // NavXManager.RInit();
