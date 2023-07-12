@@ -16,6 +16,7 @@ import edu.wpi.first.util.datalog.StringLogEntry;
 import edu.wpi.first.wpilibj.DataLogManager;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.PWM;
 import edu.wpi.first.wpilibj.DigitalOutput;
 
 
@@ -53,6 +54,8 @@ public class Robot extends TimedRobot {
   private DigitalInput input1;
   private DigitalOutput output1;
 
+  private PWM motor;
+
   StringLogEntry strLog;
 
   public static final boolean IS_AUTO = false;
@@ -61,6 +64,8 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
+
+    motor = new PWM(0);
 
     // basic input output stuff
     
@@ -171,6 +176,9 @@ public class Robot extends TimedRobot {
 
   boolean arrived = false;
   public void teleopPeriodic() {
+
+    motor.setRaw(5);
+
     System.out.println("Vision: " + VisionManager.trashDetected());
     ArduinoManager.getArduinoMegaData();
     if (ArduinoManager.getRC() == null) {
