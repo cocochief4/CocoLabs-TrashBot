@@ -213,12 +213,12 @@ public class stc {
                     System.out.print("0 ");
                 }
             }
-            System.out.println();
+            // System.out.println();
         }
     }
 
     public static void printLatLong(latLong i) {
-        System.out.println(i.Lat + " " + i.Long);
+        // System.out.println(i.Lat + " " + i.Long);
     }
 
     private static void generateNodes() {

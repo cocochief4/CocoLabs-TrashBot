@@ -1,7 +1,6 @@
 #define signalPin 3
 
-void setup()
-{
+void setup() {
   Serial.begin(115200);
 
   pinMode(signalPin, OUTPUT);
@@ -9,15 +8,15 @@ void setup()
   digitalWrite(signalPin, HIGH);
   delay(3000);
   digitalWrite(signalPin, LOW);
-}
+  }
 
 long loopTime = millis();
+bool flash = false;
 void loop()
  {
-  bool flash;
   char readByte;
 
-  if (Serial.available()) {
+  if (Serial.available() > 0) {
 //    digitalWrite(signalPin, HIGH);
 //    delay(100);
 //    digitalWrite(signalPin, LOW);
@@ -28,12 +27,10 @@ void loop()
       Serial.println("True");
       flash = true;
     }
-    else {
+    else if (readByte == 'F') {
       Serial.println("False");
       flash = false;
     }
-  } else {
-    digitalWrite(signalPin, LOW);
   }
 
   if (flash) {

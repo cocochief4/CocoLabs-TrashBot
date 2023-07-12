@@ -42,7 +42,7 @@ public class ArduinoManager {
         String data = readUARTData();
         // System.out.println("data:" + data);
         if (data.equals("") != true) {
-            System.out.println("data:" + data.toString());
+            // System.out.println("data:" + data.toString());
             String dataArr[] = data.split("_");
             // System.out.println("dataArr:" + dataArr.length);
             String rc = dataArr[0];

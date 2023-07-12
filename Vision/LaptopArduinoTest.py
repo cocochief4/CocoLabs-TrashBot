@@ -4,22 +4,30 @@ import serial # if you get library not found, run pip install pyserial (should w
 import time
 import cv2
 
-SerialObj = serial.Serial('COM22') # need to figure out which com you are using
+SerialObj = serial.Serial('COM26') # need to figure out which com you are using
 
 SerialObj.baudrate = 115200 # baudrate, must be equal both on ino and here
 SerialObj.bytesize = 8 # bit translated over 8
 SerialObj.parity = 'N' # parity = method of checking, don't need it
 SerialObj.stopbits = 1 # needed for stopping comms, only need 1 bit
 
+time.sleep(3) # to make sure the arduino doesn't automatically reset
+
+writeByte = b'T'
+
 while True:
 
-    time.sleep(3) # to make sure the arduino doesn't automatically reset
+    if (writeByte == b'T'):
+        writeByte = b'F'
+    else:
+        writeByte = b'T'
+        
+    SerialObj.write(writeByte) # writing A as a byte
+    # print("T")
 
-    SerialObj.write(b'A') # writing A as a byte
-    print("A")
-
-    SerialObj.timeout = 3 # timeout for reading
+    # SerialObj.timeout = 3 # timeout for reading
     ReceivedByte = SerialObj.read()
+    print(ReceivedByte)
 
     # Break Key (q)
     if cv2.waitKey(1) & 0xFF == ord('q'):
