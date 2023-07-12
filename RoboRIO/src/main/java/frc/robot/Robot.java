@@ -51,8 +51,8 @@ public class Robot extends TimedRobot {
   protected static EuclideanCoord currentSpeed = new EuclideanCoord(0, 0);
   protected static final double RAMP_MAX = 0.015;
 
-  private DigitalInput input1;
-  private DigitalOutput output1;
+  private DigitalOutput forward;
+  private DigitalOutput backward;
 
   private PWM motor;
 
@@ -70,11 +70,11 @@ public class Robot extends TimedRobot {
     // basic input output stuff
     
     // the numbers in the constructor are the port numbers
-    input1 = new DigitalInput(0);
-    output1 = new DigitalOutput(1);
+    forward = new DigitalOutput(1);
+    backward = new DigitalOutput(2);
 
-    input1.get(); // this returns true or false for the input
-    output1.set(true); // this sets it to true or false for the output 
+    // forward.get(); // this returns true or false for the input
+    // backward.set(true); // this sets it to true or false for the output 
 
 
 
@@ -176,6 +176,8 @@ public class Robot extends TimedRobot {
 
   boolean arrived = false;
   public void teleopPeriodic() {
+
+    forward.set(true);
 
     motor.setRaw(5);
 
