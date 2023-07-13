@@ -51,6 +51,11 @@ public class Robot extends TimedRobot {
   protected static EuclideanCoord currentSpeed = new EuclideanCoord(0, 0);
   protected static final double RAMP_MAX = 0.015;
 
+  private DigitalOutput forward;
+  private DigitalOutput backward;
+
+  private PWM motor;
+
   StringLogEntry strLog;
 
   public static final boolean IS_AUTO = false;
@@ -199,15 +204,8 @@ public class Robot extends TimedRobot {
     }
   } // End of TeleopPeriodic()
 
-  private DigitalOutput forward;
-  private DigitalOutput backward;
-
-  private PWM a1A;
-  private PWM a1B;
-
   public void autonomousInit() {
-    a1A = new PWM(0);
-    a1B = new PWM(1);
+    motor = new PWM(0);
 
     // basic input output stuff
     
@@ -217,9 +215,8 @@ public class Robot extends TimedRobot {
   }
 
   public void autonomousPeriodic() {
-    forward.set(false);
-    backward.set(true);
+    forward.set(true);
 
-    a1A.setRaw(4095);
+    motor.setRaw(5);
   }
 }
