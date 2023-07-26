@@ -205,21 +205,33 @@ public class Robot extends TimedRobot {
   private PWM a1A;
   private PWM a1B;
 
-  public void autonomousInit() {
-    a1A = new PWM(0);
-    a1B = new PWM(1);
+  public PickupMechanism pickupMechanism;
 
-    // basic input output stuff
+  public void autonomousInit() {
     
-    // the numbers in the constructor are the port numbers
-    forward = new DigitalOutput(1);
-    backward = new DigitalOutput(2);
+    pickupMechanism = new PickupMechanism();
+
+    // pickupMechanism.startReading();
+
+    // a1A = new PWM(0);
+    // a1B = new PWM(1);
+
+    // // basic input output stuff
+    
+    // // the numbers in the constructor are the port numbers
+    // forward = new DigitalOutput(1);
+    // backward = new DigitalOutput(2);
   }
 
   public void autonomousPeriodic() {
-    forward.set(false);
-    backward.set(true);
+    
+    int currentLimitSwitchHit = pickupMechanism.isTriggered();
 
-    a1A.setRaw(4095);
+    pickupMechanism.driveHorizontalForward();
+
+    // forward.set(false);
+    // backward.set(true);
+
+    // a1A.setRaw(4095);
   }
 }
