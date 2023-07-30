@@ -21,14 +21,15 @@ public class PickupMechanism {
 
         // fill these in with akhil
 
-        vertical = new Actuator(2, 4, 0);
-        horizontal = new Actuator(1, 3, 1);
+        // for vertical forward is up and backward is down
+        vertical = new Actuator(3, 4, 2);
+        horizontal = new Actuator(1, 2, 1);
 
-        verticalMin = new DigitalInput(5);
+        verticalMin = new DigitalInput(8);
         verticalMax = new DigitalInput(9);
-        horizontalMin = new DigitalInput(6);
-        horizontalMid = new DigitalInput(7);
-        horizontalMax = new DigitalInput(8);
+        horizontalMin = new DigitalInput(5);
+        horizontalMid = new DigitalInput(6);
+        horizontalMax = new DigitalInput(7);
 
 
     }
