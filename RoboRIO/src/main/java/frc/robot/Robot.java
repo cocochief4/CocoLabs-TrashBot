@@ -227,7 +227,9 @@ public class Robot extends TimedRobot {
     
     int currentLimitSwitchHit = pickupMechanism.isTriggered();
 
-    if (currentLimitSwitchHit > 0 && currentLimitSwitchHit != 5) {
+    
+
+    if (pickupMechanism.verticalMaxTriggered()) {
       pickupMechanism.driveHorizontalBackward();
     }
 
