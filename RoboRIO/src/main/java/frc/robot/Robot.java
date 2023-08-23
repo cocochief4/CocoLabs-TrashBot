@@ -19,6 +19,9 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.PWM;
 import edu.wpi.first.wpilibj.DigitalOutput;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import javax.xml.crypto.Data;
 
@@ -59,6 +62,8 @@ public class Robot extends TimedRobot {
 
   private DigitalOutput pickupOut;
   private DigitalInput pickupIn;
+
+  private ArrayList<Boolean> visionDetected = new ArrayList<>();
 
   @Override
   public void robotInit() {
@@ -133,6 +138,10 @@ public class Robot extends TimedRobot {
     pickupIn = new DigitalInput(0); // placeholder
     pickupOut = new DigitalOutput(0); // placeholder
 
+    for (int i = 0; i<10; i++) {
+      visionDetected.add(false);
+    }
+
     NavXManager.RInit();
     boolean arduinoData = false;
     // Waits for a rtk gps fix before continuing
@@ -182,22 +191,23 @@ public class Robot extends TimedRobot {
 
     pickupOut.set(false);
 
-    // forward.set(true);
-
-    // motor.setRaw(5);
-
-    System.out.println("Vision: " + VisionManager.trashDetected());
-
-    if (VisionManager.trashDetected()) {
-
-      pickupOut.set(true);
-
-      while (!pickupIn.get()) {
-
+    double sum = 0;
+    boolean average = false;
+    
+    visionDetected.remove(0);
+    visionDetected.add(VisionManager.trashDetected());
+    for (int i = 0; i<10; i++) {
+      if (visionDetected.get(i)) {
+        sum+=1;
       }
-
+    }
+    
+    sum/=10.0;
+    average = sum > 0.8 ? true : false;
+    if (average) {
+      pickupOut.set(true);
+      while (!pickupIn.get()) {}
       pickupOut.set(false);
-
     }
 
     ArduinoManager.getArduinoMegaData();
