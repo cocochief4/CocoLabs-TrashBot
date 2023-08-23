@@ -18,6 +18,7 @@ const int verticalSpeed = 12;
 
 
 int phase;
+bool inPickup = false;
 
 void setup() {
   // put your setup code here, to run once:
@@ -48,10 +49,24 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
 
+  if (digitalRead(rioIn)) {
+
+    inPickup = true;
+
+    if (pickup()) {
+      inPickup = false;
+    }
+
+    digitalWrite(rioOut, inPickup ? LOW : HIGH);
+
+  }
 
 
-  // deciding which phase we are in
-  if (digitalRead(rioIn) == HIGH && phase == -2) {
+}
+
+bool pickup() {
+
+  if (phase == -2) {
     phase = -1;
     Serial.println(phase);
   }
@@ -87,33 +102,42 @@ void loop() {
   switch(phase) {
     case -1:
       driveHorizontalBackward();
+      return false;
       break;
     case 0:
       driveVerticalUp();
+      return false;
       break;
     case 1: // go horizontal forward
-      driveHorizontalForward();
+      driveHorizontalForward()
+      return false;
       break;
     case 2: // go down
       driveVerticalDown();
+      return false;
       break;
     case 3: // go back
       driveHorizontalBackward();
+      return false;
       break;
     case 4: // go up
       driveVerticalUp();
+      return false;
       break;
     case 5: // go in
       driveHorizontalBackward();
+      return false;
       break;
     case 6:
       stop();
       digitalWrite(rioOut, HIGH);
+      phase = -2;
+      return true;
       break;
     default:
+      return false;
       break;
   }
-
 }
 
 void stop() {

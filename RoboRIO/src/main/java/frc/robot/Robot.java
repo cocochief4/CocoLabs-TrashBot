@@ -57,6 +57,9 @@ public class Robot extends TimedRobot {
 
   protected static int visionPort = 0;
 
+  private DigitalOutput pickupOut;
+  private DigitalInput pickupIn;
+
   @Override
   public void robotInit() {
 
@@ -124,7 +127,12 @@ public class Robot extends TimedRobot {
   int startCooldown = 100; // Timer to force the all of the motors to 0,
                           // as there is a jump for no reason at all
 
+
   public void teleopInit() {
+
+    pickupIn = new DigitalInput(0); // placeholder
+    pickupOut = new DigitalOutput(0); // placeholder
+
     NavXManager.RInit();
     boolean arduinoData = false;
     // Waits for a rtk gps fix before continuing
@@ -172,11 +180,26 @@ public class Robot extends TimedRobot {
   boolean arrived = false;
   public void teleopPeriodic() {
 
+    pickupOut.set(false);
+
     // forward.set(true);
 
     // motor.setRaw(5);
 
     System.out.println("Vision: " + VisionManager.trashDetected());
+
+    if (VisionManager.trashDetected()) {
+
+      pickupOut.set(true);
+
+      while (!pickupIn.get()) {
+
+      }
+
+      pickupOut.set(false);
+
+    }
+
     ArduinoManager.getArduinoMegaData();
     if (ArduinoManager.getRC() == null) {
       if (!arrived) {
@@ -189,7 +212,6 @@ public class Robot extends TimedRobot {
         DataLogManager.log("arrived");
         m_myRobot.tankDrive(0, 0);
       }
-    } else {
       RcData rcData = ArduinoManager.getRC();
       EuclideanCoord steeringThrottle = new EuclideanCoord(rcData.steering, rcData.throttle);
       steeringThrottle = new TeleopMath(0d, 0d).ScaleToUnitSquare(steeringThrottle);
@@ -197,19 +219,21 @@ public class Robot extends TimedRobot {
       // DataLogManager.log("calcYaw" + NavXManager.getData().yawFromNorth);
       // DataLogManager.log("rawYaw" + NavXManager.getData().rawYaw);
     }
-  } // End of TeleopPeriodic()
+  } 
+  
+  // End of TeleopPeriodic()
 
-  private DigitalOutput forward;
-  private DigitalOutput backward;
+  // private DigitalOutput forward;
+  // private DigitalOutput backward;
 
-  private PWM a1A;
-  private PWM a1B;
+  // private PWM a1A;
+  // private PWM a1B;
 
   public PickupMechanism pickupMechanism;
 
   public void autonomousInit() {
     
-    pickupMechanism = new PickupMechanism();
+    // pickupMechanism = new PickupMechanism();
 
     // pickupMechanism.startReading();
 
@@ -225,13 +249,13 @@ public class Robot extends TimedRobot {
 
   public void autonomousPeriodic() {
     
-    int currentLimitSwitchHit = pickupMechanism.isTriggered();
+    // int currentLimitSwitchHit = pickupMechanism.isTriggered();
 
     
 
-    if (pickupMechanism.verticalMaxTriggered()) {
-      pickupMechanism.driveHorizontalBackward();
-    }
+    // if (pickupMechanism.verticalMaxTriggered()) {
+    //   pickupMechanism.driveHorizontalBackward();
+    // }
 
 
     // forward.set(false);
