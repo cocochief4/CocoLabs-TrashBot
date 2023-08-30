@@ -19,6 +19,9 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.PWM;
 import edu.wpi.first.wpilibj.DigitalOutput;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import javax.xml.crypto.Data;
 
@@ -56,6 +59,11 @@ public class Robot extends TimedRobot {
   public static final boolean IS_AUTO = false;
 
   protected static int visionPort = 0;
+
+  private DigitalOutput pickupOut;
+  private DigitalInput pickupIn;
+
+  private ArrayList<Boolean> visionDetected = new ArrayList<>();
 
   @Override
   public void robotInit() {
@@ -138,7 +146,15 @@ public class Robot extends TimedRobot {
    * NavXManager.resetYaw();
    */
   public void teleopInit() {
-    // NavXManager.RInit();
+
+    pickupIn = new DigitalInput(0); // placeholder
+    pickupOut = new DigitalOutput(0); // placeholder
+
+    for (int i = 0; i<10; i++) {
+      visionDetected.add(false);
+    }
+
+    NavXManager.RInit();
     boolean arduinoData = false;
     // Waits for a rtk gps fix before continuing
     /*
@@ -187,11 +203,27 @@ public class Robot extends TimedRobot {
   boolean arrived = false;
   public void teleopPeriodic() {
 
-    // forward.set(true);
+    pickupOut.set(false);
 
-    // motor.setRaw(5);
+    double sum = 0;
+    boolean average = false;
+    
+    visionDetected.remove(0);
+    visionDetected.add(VisionManager.trashDetected());
+    for (int i = 0; i<10; i++) {
+      if (visionDetected.get(i)) {
+        sum+=1;
+      }
+    }
+    
+    sum/=10.0;
+    average = sum > 0.8 ? true : false;
+    if (average) {
+      pickupOut.set(true);
+      while (!pickupIn.get()) {}
+      pickupOut.set(false);
+    }
 
-    System.out.println("Vision: " + VisionManager.trashDetected());
     ArduinoManager.getArduinoMegaData();
     if (ArduinoManager.getRC() == null) {
       if (!arrived) {
@@ -204,7 +236,6 @@ public class Robot extends TimedRobot {
         DataLogManager.log("arrived");
         m_myRobot.tankDrive(0, 0);
       }
-    } else {
       RcData rcData = ArduinoManager.getRC();
       EuclideanCoord steeringThrottle = new EuclideanCoord(rcData.steering, rcData.throttle);
       steeringThrottle = new TeleopMath(0d, 0d).ScaleToUnitSquare(steeringThrottle);
@@ -212,19 +243,21 @@ public class Robot extends TimedRobot {
       // DataLogManager.log("calcYaw" + NavXManager.getData().yawFromNorth);
       // DataLogManager.log("rawYaw" + NavXManager.getData().rawYaw);
     }
-  } // End of TeleopPeriodic()
+  } 
+  
+  // End of TeleopPeriodic()
 
-  private DigitalOutput forward;
-  private DigitalOutput backward;
+  // private DigitalOutput forward;
+  // private DigitalOutput backward;
 
-  private PWM a1A;
-  private PWM a1B;
+  // private PWM a1A;
+  // private PWM a1B;
 
   public PickupMechanism pickupMechanism;
 
   public void autonomousInit() {
     
-    pickupMechanism = new PickupMechanism();
+    // pickupMechanism = new PickupMechanism();
 
     // pickupMechanism.startReading();
 
@@ -240,11 +273,13 @@ public class Robot extends TimedRobot {
 
   public void autonomousPeriodic() {
     
-    int currentLimitSwitchHit = pickupMechanism.isTriggered();
+    // int currentLimitSwitchHit = pickupMechanism.isTriggered();
 
-    if (currentLimitSwitchHit > 0 && currentLimitSwitchHit != 5) {
-      pickupMechanism.driveHorizontalBackward();
-    }
+    
+
+    // if (pickupMechanism.verticalMaxTriggered()) {
+    //   pickupMechanism.driveHorizontalBackward();
+    // }
 
 
     // forward.set(false);

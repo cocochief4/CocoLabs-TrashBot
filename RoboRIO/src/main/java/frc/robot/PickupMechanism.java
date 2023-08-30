@@ -34,6 +34,27 @@ public class PickupMechanism {
 
     }
 
+    public boolean verticalMaxTriggered() {
+        return verticalMax.get();
+    }
+
+    public boolean verticalMinTriggered() {
+        return verticalMin.get();
+    }
+
+    public boolean horizontalMinTriggered() {
+        return horizontalMin.get();
+    }
+
+    public boolean horizontalMidTriggered() {
+        return horizontalMid.get();
+    }
+
+    public boolean horizontalMaxTriggered() {
+        return horizontalMax.get();
+    }
+
+
     // writes 0 for no limit switch is triggered
     // 1 for vertical min
     // 2 for vertical max
