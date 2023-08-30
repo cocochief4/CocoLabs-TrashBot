@@ -73,7 +73,7 @@ public class Robot extends TimedRobot {
 
 
 
-    VisionManager.init(visionPort);
+    // VisionManager.init(visionPort); // Comment this out if no camera
     DataLogManager.start();
     // NavXManager.RInit();
 
@@ -124,26 +124,41 @@ public class Robot extends TimedRobot {
   int startCooldown = 100; // Timer to force the all of the motors to 0,
                           // as there is a jump for no reason at all
 
+  /** 
+   * If you only want driving capibility, comment out:
+   * 
+   * while (arduinoData == false) {
+   *   arduinoData = ArduinoManager.init();
+   * }
+   * 
+   * NavXManager.resetYaw();
+   * 
+   * Navigator.init();
+   * 
+   * NavXManager.resetYaw();
+   */
   public void teleopInit() {
-    NavXManager.RInit();
+    // NavXManager.RInit();
     boolean arduinoData = false;
     // Waits for a rtk gps fix before continuing
+    /*
     while (arduinoData == false) {
       arduinoData = ArduinoManager.init();
       // System.out.println("init"); // Must be before Navigator Init
     }
+    */
     // resetYaw MUST BE DELAYED FROM RInit as RInit Calibration overrides resetYaw request.
     // ArduinoManager.init() has a init time of around 3 sec, varies though
     Timer.delay(1.5);
-    NavXManager.resetYaw(); // Must be before Nav init
+    /* NavXManager.resetYaw(); */// Must be before Nav init
     MotorEncoder.init(); // Must be before Nav init
     currentSpeed = new EuclideanCoord(0, 0);
     DataLogManager.log("Start!");
     System.out.print("Start!");
     startCooldown = 50;
-    Navigator.init();
+    /*Navigator.init();*/
     PathHandler.init();
-    NavXManager.resetYaw();
+    /*NavXManager.resetYaw();*/
     arrived = false;
 
   }
