@@ -147,14 +147,15 @@ public class Robot extends TimedRobot {
    */
   public void teleopInit() {
 
-    pickupIn = new DigitalInput(0); // placeholder
-    pickupOut = new DigitalOutput(0); // placeholder
+    /*pickupIn = new DigitalInput(0); // placeholder
+    pickupOut = new DigitalOutput(0); // placeholder // THIS SHOULD GO IN ROBOT INIT
 
     for (int i = 0; i<10; i++) {
       visionDetected.add(false);
     }
 
     NavXManager.RInit();
+    /*
     boolean arduinoData = false;
     // Waits for a rtk gps fix before continuing
     /*
@@ -173,7 +174,7 @@ public class Robot extends TimedRobot {
     System.out.print("Start!");
     startCooldown = 50;
     /*Navigator.init();*/
-    PathHandler.init();
+    // PathHandler.init();
     /*NavXManager.resetYaw();*/
     arrived = false;
 
@@ -203,26 +204,26 @@ public class Robot extends TimedRobot {
   boolean arrived = false;
   public void teleopPeriodic() {
 
-    pickupOut.set(false);
+  //   pickupOut.set(false);
 
-    double sum = 0;
-    boolean average = false;
+  //   double sum = 0;
+  //   boolean average = false;
     
-    visionDetected.remove(0);
-    visionDetected.add(VisionManager.trashDetected());
-    for (int i = 0; i<10; i++) {
-      if (visionDetected.get(i)) {
-        sum+=1;
-      }
-    }
+  //   visionDetected.remove(0);
+  //   visionDetected.add(VisionManager.trashDetected());
+  //   for (int i = 0; i<10; i++) {
+  //     if (visionDetected.get(i)) {
+  //       sum+=1;
+  //     }
+  //   }
     
-    sum/=10.0;
-    average = sum > 0.8 ? true : false;
-    if (average) {
-      pickupOut.set(true);
-      while (!pickupIn.get()) {}
-      pickupOut.set(false);
-    }
+  //   sum/=10.0;
+  //   average = sum > 0.8 ? true : false;
+  //   if (average) {
+  //     pickupOut.set(true);
+  //     while (!pickupIn.get()) {}
+  //     pickupOut.set(false);
+  //   }
 
     ArduinoManager.getArduinoMegaData();
     if (ArduinoManager.getRC() == null) {
