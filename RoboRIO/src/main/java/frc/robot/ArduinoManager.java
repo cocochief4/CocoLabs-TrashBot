@@ -26,12 +26,13 @@ public class ArduinoManager {
             if (queueBuf.length() > 20) {
                 queueBuf = queueBuf.substring(queueBuf.substring(0, queueBuf.lastIndexOf("|")).lastIndexOf("|")+1);
             }
-            // System.out.print("endbuf");
-            // System.out.println(queueBuf);
+            System.out.print("endbuf");
+            System.out.println(queueBuf);
             return realRead;
         } else {
+            System.out.println(queueBuf);
             read = "";
-            // System.out.println("data ded");
+            System.out.println("data ded");
             return read;
         }
     }

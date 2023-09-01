@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import javax.sound.sampled.SourceDataLine;
 import javax.xml.crypto.Data;
 
 import com.revrobotics.CANSparkMax;
@@ -204,26 +205,26 @@ public class Robot extends TimedRobot {
   boolean arrived = false;
   public void teleopPeriodic() {
 
-  //   pickupOut.set(false);
+    pickupOut.set(false);
 
-  //   double sum = 0;
-  //   boolean average = false;
+    double sum = 0;
+    boolean average = false;
     
-  //   visionDetected.remove(0);
-  //   visionDetected.add(VisionManager.trashDetected());
-  //   for (int i = 0; i<10; i++) {
-  //     if (visionDetected.get(i)) {
-  //       sum+=1;
-  //     }
-  //   }
+    visionDetected.remove(0);
+    visionDetected.add(VisionManager.trashDetected());
+    for (int i = 0; i<10; i++) {
+      if (visionDetected.get(i)) {
+        sum+=1;
+      }
+    }
     
-  //   sum/=10.0;
-  //   average = sum > 0.8 ? true : false;
-  //   if (average) {
-  //     pickupOut.set(true);
-  //     while (!pickupIn.get()) {}
-  //     pickupOut.set(false);
-  //   }
+    sum/=10.0;
+    average = sum > 0.8 ? true : false;
+    if (average) {
+      pickupOut.set(true);
+      while (!pickupIn.get()) {}
+      pickupOut.set(false);
+    }
 
     ArduinoManager.getArduinoMegaData();
     if (ArduinoManager.getRC() == null) {
@@ -256,23 +257,22 @@ public class Robot extends TimedRobot {
 
   public PickupMechanism pickupMechanism;
 
+  /**
+   * Autonomous mode is for only Phase 1 (RC Drive)
+   */
   public void autonomousInit() {
-    
-    // pickupMechanism = new PickupMechanism();
-
-    // pickupMechanism.startReading();
-
-    // a1A = new PWM(0);
-    // a1B = new PWM(1);
-
-    // // basic input output stuff
-    
-    // // the numbers in the constructor are the port numbers
-    // forward = new DigitalOutput(1);
-    // backward = new DigitalOutput(2);
+    while (!ArduinoManager.init()) {
+    }
+    System.out.println(ArduinoManager.getRC());
+    MotorEncoder.init();
+    currentSpeed = new EuclideanCoord(0, 0);
   }
 
   public void autonomousPeriodic() {
+    RcData rcData = ArduinoManager.getRC();
+    EuclideanCoord steeringThrottle = new EuclideanCoord(rcData.steering, rcData.throttle);
+    steeringThrottle = new TeleopMath(0d, 0d).ScaleToUnitSquare(steeringThrottle);
+    m_myRobot.tankDrive(steeringThrottle.yEuclid, steeringThrottle.xEuclid);
     
     // int currentLimitSwitchHit = pickupMechanism.isTriggered();
 
@@ -287,5 +287,5 @@ public class Robot extends TimedRobot {
     // backward.set(true);
 
     // a1A.setRaw(4095);
-  }
+  } 
 }
