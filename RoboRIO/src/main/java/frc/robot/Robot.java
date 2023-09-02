@@ -271,9 +271,13 @@ public class Robot extends TimedRobot {
   public void autonomousPeriodic() {
     ArduinoManager.getArduinoMegaData();
     
+    rcDrive();
+  }
+
+  private static void rcDrive() {
     RcData rcData = ArduinoManager.getRC();
     EuclideanCoord steeringThrottle = new EuclideanCoord(rcData.steering, rcData.throttle);
     steeringThrottle =  new TeleopMath(steeringThrottle.xEuclid, steeringThrottle.yEuclid).RcToDifferential();
     m_myRobot.tankDrive(steeringThrottle.yEuclid, steeringThrottle.xEuclid);
-  }   
+  }
 }
