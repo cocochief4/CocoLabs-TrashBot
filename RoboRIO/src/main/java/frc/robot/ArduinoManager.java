@@ -1,5 +1,7 @@
 package frc.robot;
 
+import javax.swing.plaf.synth.SynthSeparatorUI;
+
 import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.SerialPort.Parity;
 import edu.wpi.first.wpilibj.SerialPort.Port;
@@ -12,6 +14,10 @@ public class ArduinoManager {
     private static SerialPort arduino = new SerialPort(115200, Port.kMXP, 8, Parity.kOdd, StopBits.kOne);
     protected static String queueBuf = "";
 
+    protected static String readRaw() {
+        return arduino.readString();
+    }
+
     protected static String readUARTData() {
         String read = arduino.readString();
         queueBuf += read;
@@ -20,34 +26,31 @@ public class ArduinoManager {
         if (queueBuf.indexOf("|") != -1) {
             String realRead = queueBuf.substring(0, queueBuf.indexOf("|"));
             queueBuf = queueBuf.substring(queueBuf.indexOf("|") + 1);
-            // System.out.println(realRead);
-            // System.out.print("midbuf");
-            // System.out.println(queueBuf);
+
             if (queueBuf.length() > 20) {
                 queueBuf = queueBuf.substring(queueBuf.substring(0, queueBuf.lastIndexOf("|")).lastIndexOf("|")+1);
             }
-            System.out.print("endbuf");
-            System.out.println(queueBuf);
             return realRead;
         } else {
-            System.out.println(queueBuf);
             read = "";
-            System.out.println("data ded");
             return read;
         }
     }
 
-    static boolean init() {
+    static boolean init(boolean gpsRequired) {
         RcData rcStruct;
         GPSLatLongData gpsStruct;
-        String data = readUARTData();
-        // System.out.println("data:" + data);
-        if (data.equals("") != true) {
-            // System.out.println("data:" + data.toString());
+        String data = readUARTData(); // 1500,1500,0_N
+        if (!data.equals("")) {
             String dataArr[] = data.split("_");
-            // System.out.println("dataArr:" + dataArr.length);
             String rc = dataArr[0];
-            String gps = dataArr[1];
+            String gps;
+            if (dataArr.length == 2) {
+                gps = dataArr[1];
+            } else {
+                gps = "N";
+            }
+
             if (rc.equals("N")) {
                 rcStruct = null;
             } else {
@@ -76,10 +79,14 @@ public class ArduinoManager {
 
             ArduinoMegaData localArduinoMegaData = new ArduinoMegaData(rcStruct, gpsStruct, System.currentTimeMillis());
             arduinoMegaData = localArduinoMegaData;
-            if (gpsStruct != null) {
-                return true;
+            if (gpsRequired) {
+                if (gpsStruct != null) {
+                    return true;
+                } else {
+                    return false;
+                }
             } else {
-                return false;
+                return true;
             }
         } else {
             return false;

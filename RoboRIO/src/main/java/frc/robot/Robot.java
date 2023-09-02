@@ -261,31 +261,19 @@ public class Robot extends TimedRobot {
    * Autonomous mode is for only Phase 1 (RC Drive)
    */
   public void autonomousInit() {
-    while (!ArduinoManager.init()) {
+    while (!ArduinoManager.init(false)) {
     }
-    System.out.println(ArduinoManager.getRC());
     MotorEncoder.init();
     currentSpeed = new EuclideanCoord(0, 0);
   }
 
+  @Override
   public void autonomousPeriodic() {
+    ArduinoManager.getArduinoMegaData();
+    
     RcData rcData = ArduinoManager.getRC();
     EuclideanCoord steeringThrottle = new EuclideanCoord(rcData.steering, rcData.throttle);
-    steeringThrottle = new TeleopMath(0d, 0d).ScaleToUnitSquare(steeringThrottle);
+    steeringThrottle =  new TeleopMath(steeringThrottle.xEuclid, steeringThrottle.yEuclid).RcToDifferential();
     m_myRobot.tankDrive(steeringThrottle.yEuclid, steeringThrottle.xEuclid);
-    
-    // int currentLimitSwitchHit = pickupMechanism.isTriggered();
-
-    
-
-    // if (pickupMechanism.verticalMaxTriggered()) {
-    //   pickupMechanism.driveHorizontalBackward();
-    // }
-
-
-    // forward.set(false);
-    // backward.set(true);
-
-    // a1A.setRaw(4095);
-  } 
+  }   
 }
