@@ -56,7 +56,7 @@ model = tf.saved_model.load(PATH + RESNET50)
 classes = [ "no-trash" ,  "trash" , ]
 
 # Define video capture object
-vid = cv2.VideoCapture(1)
+vid = cv2.VideoCapture(0)
 
 time.sleep(3) # to make sure the arduino doesn't automatically reset
 
