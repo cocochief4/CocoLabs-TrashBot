@@ -1,27 +1,29 @@
 #include <Arduino.h>
 #include <Servo.h>
 
-#define pwm 9
+#define f 9
+#define b 10
 
-Servo sparkMax;
+Servo forward;
+Servo backward;
 
 // put function declarations here:
 int myFunction(int, int);
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
 
   // Servo Lib
-  sparkMax.attach(pwm, 1000, 2000);
+  forward.attach(f, 1000, 2000);
+  backward.attach(b, 1000, 2000);
 
-  pinMode(pwm, OUTPUT);
+  pinMode(f, OUTPUT);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
 
-  sparkMax.write(90);
+  forward.write(100); // 11% forward
+  backward.write(80);
 }
 
 // put function definitions here:
