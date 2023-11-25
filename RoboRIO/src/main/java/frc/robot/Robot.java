@@ -14,8 +14,16 @@ import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.util.datalog.DataLog;
 import edu.wpi.first.util.datalog.StringLogEntry;
 import edu.wpi.first.wpilibj.DataLogManager;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.PWM;
+import edu.wpi.first.wpilibj.DigitalOutput;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+
+import javax.sound.sampled.SourceDataLine;
 import javax.xml.crypto.Data;
 
 import com.revrobotics.CANSparkMax;
@@ -29,8 +37,6 @@ public class Robot extends TimedRobot {
   /* controllers by displaying a form where you can enter new P, I, */
   /* and D constants and test the mechanism. */
 
-  protected static DifferentialDrive m_myRobot;
-
   private static final int leftUpDeviceID = 3; 
   private static final int leftDownDeviceID = 1;
   protected static CANSparkMax leftUpMotor;
@@ -43,14 +49,40 @@ public class Robot extends TimedRobot {
   protected static CANSparkMax rightDownMotor;
   protected static MotorControllerGroup rightGroup;
 
+  protected static DifferentialDrive m_myRobot;
+
   protected static EuclideanCoord robotSpeed = new EuclideanCoord(0.0, 0.0);
   protected static EuclideanCoord currentSpeed = new EuclideanCoord(0, 0);
   protected static final double RAMP_MAX = 0.015;
 
   StringLogEntry strLog;
 
+  public static final boolean IS_AUTO = false;
+
+  protected static int visionPort = 0;
+
+  private DigitalOutput pickupOut;
+  private DigitalInput pickupIn;
+
+  private ArrayList<Boolean> visionDetected = new ArrayList<>();
+
   @Override
   public void robotInit() {
+
+    // motor = new PWM(0);
+
+    // // basic input output stuff
+    
+    // // the numbers in the constructor are the port numbers
+    // forward = new DigitalOutput(1);
+    // backward = new DigitalOutput(2);
+
+    // forward.get(); // this returns true or false for the input
+    // backward.set(true); // this sets it to true or false for the output 
+
+
+
+    // VisionManager.init(visionPort); // Comment this out if no camera
     DataLogManager.start();
     // NavXManager.RInit();
 
@@ -101,25 +133,50 @@ public class Robot extends TimedRobot {
   int startCooldown = 100; // Timer to force the all of the motors to 0,
                           // as there is a jump for no reason at all
 
+  /** 
+   * If you only want driving capibility, comment out:
+   * 
+   * while (arduinoData == false) {
+   *   arduinoData = ArduinoManager.init();
+   * }
+   * 
+   * NavXManager.resetYaw();
+   * 
+   * Navigator.init();
+   * 
+   * NavXManager.resetYaw();
+   */
   public void teleopInit() {
+
+    /*pickupIn = new DigitalInput(0); // placeholder
+    pickupOut = new DigitalOutput(0); // placeholder // THIS SHOULD GO IN ROBOT INIT
+
+    for (int i = 0; i<10; i++) {
+      visionDetected.add(false);
+    }
+
     NavXManager.RInit();
+    /*
     boolean arduinoData = false;
+    // Waits for a rtk gps fix before continuing
+    /*
     while (arduinoData == false) {
       arduinoData = ArduinoManager.init();
       // System.out.println("init"); // Must be before Navigator Init
     }
+    */
     // resetYaw MUST BE DELAYED FROM RInit as RInit Calibration overrides resetYaw request.
     // ArduinoManager.init() has a init time of around 3 sec, varies though
     Timer.delay(1.5);
-    NavXManager.resetYaw(); // Must be before Nav init
+    /* NavXManager.resetYaw(); */// Must be before Nav init
     MotorEncoder.init(); // Must be before Nav init
     currentSpeed = new EuclideanCoord(0, 0);
     DataLogManager.log("Start!");
     System.out.print("Start!");
     startCooldown = 50;
-    Navigator.init();
-    PathHandler.init();
-    NavXManager.resetYaw();
+    /*Navigator.init();*/
+    // PathHandler.init();
+    /*NavXManager.resetYaw();*/
     arrived = false;
 
   }
@@ -147,6 +204,28 @@ public class Robot extends TimedRobot {
 
   boolean arrived = false;
   public void teleopPeriodic() {
+
+    pickupOut.set(false);
+
+    double sum = 0;
+    boolean average = false;
+    
+    visionDetected.remove(0);
+    visionDetected.add(VisionManager.trashDetected());
+    for (int i = 0; i<10; i++) {
+      if (visionDetected.get(i)) {
+        sum+=1;
+      }
+    }
+    
+    sum/=10.0;
+    average = sum > 0.8 ? true : false;
+    if (average) {
+      pickupOut.set(true);
+      while (!pickupIn.get()) {}
+      pickupOut.set(false);
+    }
+
     ArduinoManager.getArduinoMegaData();
     if (ArduinoManager.getRC() == null) {
       if (!arrived) {
@@ -159,21 +238,46 @@ public class Robot extends TimedRobot {
         DataLogManager.log("arrived");
         m_myRobot.tankDrive(0, 0);
       }
-    } else {
       RcData rcData = ArduinoManager.getRC();
       EuclideanCoord steeringThrottle = new EuclideanCoord(rcData.steering, rcData.throttle);
       steeringThrottle = new TeleopMath(0d, 0d).ScaleToUnitSquare(steeringThrottle);
       AutonomousDrive.drive(steeringThrottle.yEuclid, steeringThrottle.xEuclid);
-      DataLogManager.log("calcYaw" + NavXManager.getData().yawFromNorth);
-      DataLogManager.log("rawYaw" + NavXManager.getData().rawYaw);
+      // DataLogManager.log("calcYaw" + NavXManager.getData().yawFromNorth);
+      // DataLogManager.log("rawYaw" + NavXManager.getData().rawYaw);
     }
-  } // End of TeleopPeriodic()
+  } 
+  
+  // End of TeleopPeriodic()
 
+  // private DigitalOutput forward;
+  // private DigitalOutput backward;
+
+  // private PWM a1A;
+  // private PWM a1B;
+
+  public PickupMechanism pickupMechanism;
+
+  /**
+   * Autonomous mode is for only Phase 1 (RC Drive)
+   */
   public void autonomousInit() {
-    
+    while (!ArduinoManager.init(false)) {
+    }
+    MotorEncoder.init();
+    currentSpeed = new EuclideanCoord(0, 0);
   }
 
+  @Override
   public void autonomousPeriodic() {
+    ArduinoManager.getArduinoMegaData();
+    
+    rcDrive();
+  }
 
+  private static void rcDrive() {
+    RcData rcData = ArduinoManager.getRC();
+    EuclideanCoord steeringThrottle = new EuclideanCoord(rcData.steering, rcData.throttle);
+    steeringThrottle =  new TeleopMath(steeringThrottle.xEuclid, steeringThrottle.yEuclid).RcToDifferential();
+    m_myRobot.tankDrive(steeringThrottle.yEuclid, steeringThrottle.xEuclid);
   }
 }
