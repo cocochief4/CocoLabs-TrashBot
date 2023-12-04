@@ -14,6 +14,14 @@
 void moveA(int speed, int direction);
 void moveB(int speed, int direction);
 
+// Manually trigger movement using limit switches, in use 12/3/2023
+#define mp1 8
+#define mp2 9
+
+// put it all into one method
+void manualMove();
+void manualInit();
+
 void setup() {
   Serial.begin(115200);
 
@@ -23,6 +31,8 @@ void setup() {
   pinMode(b2, OUTPUT);
   pinMode(a, OUTPUT);
   pinMode(b, OUTPUT);
+
+  manualInit();
 }
 
 void loop() {
@@ -34,21 +44,23 @@ void loop() {
     } else if (cmd == "rd") { // right down
       moveA(A_SPEED, 1);
     } else if (cmd == "lu") { // right up
-      moveB(B_SPEED, 1);
-    } else if (cmd == "ld") { // right down
       moveB(B_SPEED, 0);
+    } else if (cmd == "ld") { // right down
+      moveB(B_SPEED, 1);
     } else if (cmd == "u") {
       moveA(A_SPEED, 0);
-      moveB(B_SPEED, 1);
+      moveB(B_SPEED, 0);
     } else if (cmd == "d") {
       moveA(A_SPEED, 1);
-      moveB(B_SPEED, 0);
+      moveB(B_SPEED, 1);
     } else if (cmd == "s") {
       moveA(0, 0);
       moveB(0, 0);
     }
 
   }
+
+  manualMove();
 }
 
 void moveA(int speed, int direction) {
@@ -77,13 +89,31 @@ void moveB(int speed, int direction) {
     analogWrite(b, 0);
     return;
   }
-  if (direction == 0) { // forward
+  if (direction == 1) { // forward
     digitalWrite(f2, HIGH);
     digitalWrite(b2, LOW);
   }
-  else if (direction == 1) {
+  else if (direction == 0) {
     digitalWrite(f2, LOW);
     digitalWrite(b2, HIGH);
   }
   analogWrite(b, speed);
+}
+
+void manualInit() {
+  pinMode(mp1, INPUT_PULLUP);
+  pinMode(mp2, INPUT_PULLUP);
+}
+
+void manualMove() {
+  if (digitalRead(mp1) == LOW) {
+    moveA(A_SPEED, 0);
+    moveB(B_SPEED, 0);
+  } else if (digitalRead(mp2) == LOW) {
+    moveA(A_SPEED, 1);
+    moveB(B_SPEED, 1);
+  } else {
+    moveA(0, 0);
+    moveB(0, 0);
+  }
 }
