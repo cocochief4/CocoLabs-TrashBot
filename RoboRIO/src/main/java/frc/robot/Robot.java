@@ -69,6 +69,8 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
 
+    Startup.init();
+
     // motor = new PWM(0);
 
     // // basic input output stuff
@@ -132,7 +134,6 @@ public class Robot extends TimedRobot {
   }
   int startCooldown = 100; // Timer to force the all of the motors to 0,
                           // as there is a jump for no reason at all
-
   /** 
    * If you only want driving capibility, comment out:
    * 
@@ -148,35 +149,42 @@ public class Robot extends TimedRobot {
    */
   public void teleopInit() {
 
-    /*pickupIn = new DigitalInput(0); // placeholder
-    pickupOut = new DigitalOutput(0); // placeholder // THIS SHOULD GO IN ROBOT INIT
-
-    for (int i = 0; i<10; i++) {
-      visionDetected.add(false);
+    if (Startup.PICKUP){
+      pickupIn = new DigitalInput(0); // placeholder
+      pickupOut = new DigitalOutput(0); // placeholder // THIS SHOULD GO IN ROBOT INIT
     }
 
-    NavXManager.RInit();
-    /*
-    boolean arduinoData = false;
-    // Waits for a rtk gps fix before continuing
-    /*
-    while (arduinoData == false) {
-      arduinoData = ArduinoManager.init();
-      // System.out.println("init"); // Must be before Navigator Init
+    if (Startup.VISION) { // GAYWALA WHAT IS THIS FOR
+      for (int i = 0; i<10; i++) {
+        visionDetected.add(false);
+      }
     }
-    */
+
+    if (Startup.NAVIGATION) {
+      NavXManager.RInit(); 
+      boolean arduinoData = false;
+      // Waits for a rtk gps fix before continuing
+      while (arduinoData == false) {
+        arduinoData = ArduinoManager.init(true);
+        // System.out.println("init"); // Must be before Navigator Init
+      }
+    }
+
     // resetYaw MUST BE DELAYED FROM RInit as RInit Calibration overrides resetYaw request.
     // ArduinoManager.init() has a init time of around 3 sec, varies though
     Timer.delay(1.5);
-    /* NavXManager.resetYaw(); */// Must be before Nav init
+
+    if (Startup.NAVIGATION) NavXManager.resetYaw(); // Must be before Nav init
     MotorEncoder.init(); // Must be before Nav init
     currentSpeed = new EuclideanCoord(0, 0);
     DataLogManager.log("Start!");
     System.out.print("Start!");
     startCooldown = 50;
-    /*Navigator.init();*/
-    // PathHandler.init();
-    /*NavXManager.resetYaw();*/
+    if (Startup.NAVIGATION) {
+      Navigator.init();
+      PathHandler.init();
+      NavXManager.resetYaw();
+    }
     arrived = false;
 
   }

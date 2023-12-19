@@ -37,6 +37,11 @@ public class ArduinoManager {
         }
     }
 
+    /**
+     * Checks all comms with Arduino Mega Initiative as well as waits for a fix on gps if wanted. Loopable function if it fails the first time.
+     * @param gpsRequired If true, then it waits until a fix (2). If not, proceeds once comms with Arduino is established
+     * @return true if check succeeded, false if it did not
+     */
     static boolean init(boolean gpsRequired) {
         RcData rcStruct;
         GPSLatLongData gpsStruct;

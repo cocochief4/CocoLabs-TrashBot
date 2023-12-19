@@ -25,6 +25,9 @@ public class NavXManager {
     static double previousCorrectedYaw = 0;
     static final double YAW_SCALE_FACTOR = 360d/390d;
 
+    /**
+     * Gyro Init
+     */
     public static void RInit() {
         previousCorrectedYaw = 0;
         previousRawYaw = 0;
