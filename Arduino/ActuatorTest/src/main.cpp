@@ -7,11 +7,24 @@
 #define b2 6
 #define b 7
 
-#define A_SPEED 140
-#define B_SPEED 150
+#define aSwitchLow 12
+#define aSwitchHigh 13
+#define bSwitchLow 10
+#define bSwitchHigh 11
 
-// speed = 0-255, direction = 0 for forward, 1 for backward
+#define A_SPEED 150
+#define B_SPEED 130
+
+boolean autoDownCmd = false;
+boolean autoUpCmd = false;
+
+/**
+ * speed = 0-255, direction = 0 for up, 1 for down
+*/
 void moveA(int speed, int direction);
+/**
+ * speed = 0-255, direction = 0 for up, 1 for down
+*/
 void moveB(int speed, int direction);
 
 // Manually trigger movement using limit switches, in use 12/3/2023
@@ -21,6 +34,9 @@ void moveB(int speed, int direction);
 // put it all into one method
 void manualMove();
 void manualInit();
+void switchInit();
+void autoDown();
+void autoUp();
 
 void setup() {
   Serial.begin(115200);
@@ -33,11 +49,23 @@ void setup() {
   pinMode(b, OUTPUT);
 
   manualInit();
+  // switchInit();
+   pinMode(bSwitchHigh, INPUT_PULLUP);
+  pinMode(bSwitchLow, INPUT_PULLUP);
+  pinMode(aSwitchLow, INPUT_PULLUP);
+  pinMode(aSwitchHigh, INPUT_PULLUP);
 }
 
+String str;
+
 void loop() {
+  str = "";
+  str = str + "switcha: " + digitalRead(aSwitchLow) + "  ";
+  str = str + "switchb: " + digitalRead(bSwitchLow) + "  ";
   if (Serial.available()) {
     String cmd = Serial.readStringUntil('\n');
+
+    Serial.println(cmd);
 
     if (cmd == "ru") { // right up
       moveA(A_SPEED, 0);
@@ -56,11 +84,22 @@ void loop() {
     } else if (cmd == "s") {
       moveA(0, 0);
       moveB(0, 0);
+    } else if (cmd == "autoDown") {
+      str += "PING  ";
+      autoDownCmd = true;
+    } else if (cmd == "autoUp") {
+      autoUpCmd = true;
     }
 
   }
 
-  manualMove();
+  // Comment this out if you want console movement, put it back in for switch movement.
+  // manualMove();
+  autoUp();
+  autoDown();
+  if (!str.equals("")) {
+    Serial.println(str);
+  }
 }
 
 void moveA(int speed, int direction) {
@@ -70,11 +109,11 @@ void moveA(int speed, int direction) {
     analogWrite(a, 0);
     return;
   }
-  if (direction == 0) { // forward
+  if (direction == 0 /*&& digitalRead(aSwitchLow) == HIGH*/) { // down
     digitalWrite(f1, HIGH);
     digitalWrite(b1, LOW);
   }
-  else if (direction == 1) {
+  else if (direction == 1 /*&& digitalRead(aSwitchHigh) == HIGH*/) { // up
     digitalWrite(f1, LOW);
     digitalWrite(b1, HIGH);
   }
@@ -89,11 +128,11 @@ void moveB(int speed, int direction) {
     analogWrite(b, 0);
     return;
   }
-  if (direction == 1) { // forward
+  if (direction == 1 /*&& digitalRead(bSwitchLow) == HIGH*/) { // down
     digitalWrite(f2, HIGH);
     digitalWrite(b2, LOW);
   }
-  else if (direction == 0) {
+  else if (direction == 0 /*&& digitalRead(bSwitchHigh) == HIGH*/) { // up
     digitalWrite(f2, LOW);
     digitalWrite(b2, HIGH);
   }
@@ -115,5 +154,55 @@ void manualMove() {
   } else {
     moveA(0, 0);
     moveB(0, 0);
+  }
+}
+
+// void switchInit() {
+//   pinMode(bSwitchHigh, INPUT_PULLUP);
+//   pinMode(bSwitchLow, INPUT_PULLUP);
+//   pinMode(aSwitchLow, INPUT_PULLUP);
+//   pinMode(aSwitchHigh, INPUT_PULLUP);
+// }
+
+void autoDown() {
+  if (autoDownCmd) {
+    str += "auto down running  ";
+    // str += "move1  ";
+    // str += ("move ");
+    if (digitalRead(bSwitchLow) == HIGH) {
+      moveB(B_SPEED, 1);
+    } else {
+      str += "bStop ";
+      moveB(0, 0);
+    }
+    if (digitalRead(aSwitchLow) == HIGH) {
+      moveA(A_SPEED, 1);
+    } else {
+      str += "aStop ";
+      moveA(0,0);
+    }
+    if (digitalRead(aSwitchLow) == LOW && digitalRead(bSwitchLow) == LOW) {
+      autoDownCmd = false;
+    }
+  }
+}
+
+
+void autoUp() {
+  if (autoUpCmd) {
+    if (!(digitalRead(bSwitchHigh) == LOW  && digitalRead(aSwitchHigh) == LOW)) {
+      if (digitalRead(bSwitchHigh) == HIGH) {
+        moveB(0, B_SPEED);
+      } else {
+        moveB(0, 0);
+      }
+      if (digitalRead(aSwitchHigh) == HIGH) {
+        moveA(0, A_SPEED);
+      } else {
+        moveA(0, 0);
+      }
+    }
+  } else {
+    autoUpCmd = false;
   }
 }
