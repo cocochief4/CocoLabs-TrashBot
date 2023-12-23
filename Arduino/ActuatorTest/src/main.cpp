@@ -50,7 +50,7 @@ void setup() {
 
   manualInit();
   // switchInit();
-   pinMode(bSwitchHigh, INPUT_PULLUP);
+  pinMode(bSwitchHigh, INPUT_PULLUP);
   pinMode(bSwitchLow, INPUT_PULLUP);
   pinMode(aSwitchLow, INPUT_PULLUP);
   pinMode(aSwitchHigh, INPUT_PULLUP);
