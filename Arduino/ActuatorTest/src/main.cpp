@@ -190,19 +190,23 @@ void autoDown() {
 
 void autoUp() {
   if (autoUpCmd) {
-    if (!(digitalRead(bSwitchHigh) == LOW  && digitalRead(aSwitchHigh) == LOW)) {
-      if (digitalRead(bSwitchHigh) == HIGH) {
-        moveB(0, B_SPEED);
-      } else {
-        moveB(0, 0);
-      }
-      if (digitalRead(aSwitchHigh) == HIGH) {
-        moveA(0, A_SPEED);
-      } else {
-        moveA(0, 0);
-      }
+    str += "auto up running  ";
+    // str += "move1  ";
+    // str += ("move ");
+    if (digitalRead(bSwitchHigh) == HIGH) {
+      moveB(B_SPEED, 0);
+    } else {
+      str += "bStop ";
+      moveB(0, 0);
     }
-  } else {
-    autoUpCmd = false;
+    if (digitalRead(aSwitchHigh) == HIGH) {
+      moveA(A_SPEED, 0);
+    } else {
+      str += "aStop ";
+      moveA(0,0);
+    }
+    if (digitalRead(aSwitchHigh) == LOW && digitalRead(bSwitchHigh) == LOW) {
+      autoUpCmd = false;
+    }
   }
 }
