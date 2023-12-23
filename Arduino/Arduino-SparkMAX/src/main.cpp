@@ -3,7 +3,7 @@
 
 #define rpPin 8
 #define rpSwitchBack 22
-#define rpSwitchForward 26
+#define rpSwitchForward 24
 
 // 
 int speed = 13; // range is (0, 90)
@@ -48,7 +48,6 @@ String str;
 void loop() {
   str = "";
 
-  str = str + "frontSwitch: " + digitalRead(rpSwitchForward) + "  ";
   str = str + "backSwitch: " + digitalRead(rpSwitchBack) + "  ";
 
   if (Serial.available()) {
@@ -91,7 +90,7 @@ void rpAutoBack() {
 void rpAutoForward() {
   switch (cmd) {
     case 2:
-      if (digitalRead(rpSwitchForward) == LOW) {
+      if (digitalRead(rpSwitchForward) == HIGH) {
         int writeSpeed = 90 + speed;
         rev550.write(writeSpeed);
       } else {
@@ -121,5 +120,5 @@ void rackAndPinionInit() {
 
   pinMode(rpPin, OUTPUT);
   pinMode(rpSwitchBack, INPUT_PULLUP);
-  pinMode(rpSwitchForward, INPUT_PULLUP);
+  // pinMode(rpSwitchForward, INPUT_PULLUP);
 }
