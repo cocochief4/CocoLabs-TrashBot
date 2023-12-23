@@ -27,7 +27,7 @@ void moveA(int speed, int direction);
 */
 void moveB(int speed, int direction);
 
-// Manually trigger movement using limit switches, in use 12/3/2023
+// Manually trigger movement using limit switches, deprecated 12/23/2023
 #define mp1 8
 #define mp2 9
 
@@ -157,31 +157,33 @@ void manualMove() {
   }
 }
 
-// void switchInit() {
-//   pinMode(bSwitchHigh, INPUT_PULLUP);
-//   pinMode(bSwitchLow, INPUT_PULLUP);
-//   pinMode(aSwitchLow, INPUT_PULLUP);
-//   pinMode(aSwitchHigh, INPUT_PULLUP);
-// }
+void switchInit() {
+  pinMode(bSwitchHigh, INPUT_PULLUP);
+  pinMode(bSwitchLow, INPUT_PULLUP);
+  pinMode(aSwitchLow, INPUT_PULLUP);
+  pinMode(aSwitchHigh, INPUT_PULLUP);
+}
 
 void autoDown() {
   if (autoDownCmd) {
+    int bSwitch = digitalRead(bSwitchLow);
+    int aSwitch = digitalRead(bSwitchLow);
     str += "auto down running  ";
     // str += "move1  ";
     // str += ("move ");
-    if (digitalRead(bSwitchLow) == HIGH) {
+    if (bSwitch == HIGH) {
       moveB(B_SPEED, 1);
     } else {
       str += "bStop ";
       moveB(0, 0);
     }
-    if (digitalRead(aSwitchLow) == HIGH) {
+    if (aSwitch == HIGH) {
       moveA(A_SPEED, 1);
     } else {
       str += "aStop ";
       moveA(0,0);
     }
-    if (digitalRead(aSwitchLow) == LOW && digitalRead(bSwitchLow) == LOW) {
+    if (aSwitch == LOW && bSwitch == LOW) {
       autoDownCmd = false;
     }
   }
@@ -193,19 +195,21 @@ void autoUp() {
     str += "auto up running  ";
     // str += "move1  ";
     // str += ("move ");
-    if (digitalRead(bSwitchHigh) == HIGH) {
+    int bSwitch = digitalRead(bSwitchHigh);
+    int aSwitch = digitalRead(aSwitchHigh);
+    if (bSwitch == HIGH) {
       moveB(B_SPEED, 0);
     } else {
       str += "bStop ";
       moveB(0, 0);
     }
-    if (digitalRead(aSwitchHigh) == HIGH) {
+    if (aSwitch == HIGH) {
       moveA(A_SPEED, 0);
     } else {
       str += "aStop ";
       moveA(0,0);
     }
-    if (digitalRead(aSwitchHigh) == LOW && digitalRead(bSwitchHigh) == LOW) {
+    if (aSwitch == LOW && bSwitch == LOW) {
       autoUpCmd = false;
     }
   }
