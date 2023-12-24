@@ -71,12 +71,15 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
 
+    Startup.init();
+
     if (Startup.PICKUP){
       pickupEnd = new DigitalInput(Startup.pickupEnd);
       pickupStart = new DigitalOutput(Startup.pickupStart);
     }
+    
+    pickupStart.set(false);
 
-    Startup.init();
 
     // motor = new PWM(0);
 
@@ -146,6 +149,11 @@ public class Robot extends TimedRobot {
    */
   public void teleopInit() {
 
+    isPickingUp = false;
+    arrived = false;
+
+    System.out.println("teleinit");
+
     if (Startup.VISION) { // GAYWALA WHAT IS THIS FOR
       for (int i = 0; i<10; i++) {
         visionDetected.add(false);
@@ -159,6 +167,10 @@ public class Robot extends TimedRobot {
       while (arduinoData == false) {
         arduinoData = ArduinoManager.init(true);
         // System.out.println("init"); // Must be before Navigator Init
+      }
+    } else {
+      while (!ArduinoManager.init(false)) {
+        System.out.println("Stuck");
       }
     }
 
@@ -178,6 +190,8 @@ public class Robot extends TimedRobot {
       NavXManager.resetYaw();
     }
     arrived = false;
+
+    System.out.println("End of teleop init");
 
   }
 
@@ -205,7 +219,6 @@ public class Robot extends TimedRobot {
   boolean arrived = false;
   boolean isPickingUp = false;
   public void teleopPeriodic() throws NullPointerException{
-    
     if (Startup.PICKUP) {
       checkForTrash();
     }
@@ -234,6 +247,7 @@ public class Robot extends TimedRobot {
   }
 
   public void checkForTrash() throws NullPointerException{
+    System.out.println("called");
     if (!isPickingUp) { // If not currently picking up...
       if (true/*isThereTrash()*/) { // and there is trash then start the pickup process
         isPickingUp = true; // Start the pickup
@@ -242,7 +256,9 @@ public class Robot extends TimedRobot {
     } else { // If it is currently picking up...
       if (pickupEnd.get()) { // And it finished picking up,
         pickupStart.set(false); // stop the pickup
-        throw new NullPointerException();
+        isPickingUp = false;
+        System.out.println("Done");
+        throw new IndexOutOfBoundsException();
       }
     }
   }

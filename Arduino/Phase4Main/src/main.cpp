@@ -439,7 +439,7 @@ void actuatorInit() {
 
 void rioInit() {
   pinMode(rioIn, INPUT);
-  pinMode(rioOut, INPUT);
+  pinMode(rioOut, OUTPUT);
 }
 
 void checkRio() {
