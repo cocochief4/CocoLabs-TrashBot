@@ -22,11 +22,9 @@
 #define rpSwitchBack 22
 #define rpSwitchForward 26
 
-int speed = 9; // range is (0, 90), speed for rack and pinion
+int speed = 10; // range is (0, 90), speed for rack and pinion
 
 Servo rev550; // rack and pinion motor
-
-int mainCase = 0; // the counter for main sequence
 
 enum CommandState {
   s, // Stop for everything
@@ -163,6 +161,7 @@ boolean autoUp();
 boolean autoDown();
 
 void setup() {
+  cmd = s;
   Serial.begin(115200);
 
   actuatorInit();
@@ -179,9 +178,7 @@ void loop() {
     cmd = str2enum(Serial.readStringUntil('\n'));
   }
 
-  str = str + "af (7): " + str2enum("af") + "  ";
-
-  // switchMaster();
+  switchMaster();
 
   if (!str.equals("")) {
     Serial.println(str);
@@ -191,7 +188,6 @@ void loop() {
 void switchMaster() {
   switch(cmd) {
     case s:
-      mainCase = 0;
       moveA(0, 0);
       moveB(0, 0);
       rev550.write(90);
