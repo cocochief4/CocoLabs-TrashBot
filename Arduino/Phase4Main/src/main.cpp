@@ -22,6 +22,10 @@
 #define rpSwitchBack 22
 #define rpSwitchForward 26
 
+// RoboRIO and Friends
+#define rioIn 28
+#define rioOut 30
+
 int speed = 15; // range is (0, 90), speed for rack and pinion
 
 Servo rev550; // rack and pinion motor
@@ -43,6 +47,7 @@ enum CommandState {
   md, // move teeth actuator down (main loop)
 };
 
+int previousRioInState = LOW;
 CommandState cmd = s; // keeps the cmd what to do.
 
 const static struct {
@@ -85,6 +90,7 @@ static struct {
   {false, bSwitchLow},
   {false, rpSwitchBack},
   {false, rpSwitchForward},
+  {false, rioIn},
 };
 
 boolean isSwitchTripped(int pinNumber) {
@@ -96,6 +102,16 @@ boolean isSwitchTripped(int pinNumber) {
   Serial.println("no such switch");
   return false;
 }
+
+/**
+ * Checks to see if the roborio is telling arduino to start pickup. If it is, starts the pickup.
+*/
+void checkRio();
+
+/**
+ * Init RIO and Friends
+*/
+void rioInit();
 
 /**
  * does all cmd switch conditions
@@ -123,6 +139,7 @@ void rackAndPinionInit();
 
 /**
  * check all the limit switches if they have been triggered
+ * also checks if rio is calling for this to move.
 */
 void limitSwitchMaster();
 
@@ -173,11 +190,10 @@ void setup() {
 String str = "";
 void loop() {
   str = "";
-  Serial.println("start");
-  Serial.println(cmd);
 
   limitSwitchMaster();
-  Serial.println(cmd);
+
+  checkRio();
 
   if (Serial.available()) {
     cmd = str2enum(Serial.readStringUntil('\n'));
@@ -185,12 +201,10 @@ void loop() {
   Serial.println(cmd);
 
   switchMaster();
-  Serial.println(cmd);
 
   if (!str.equals("")) {
     Serial.println(str);
   }
-  Serial.println(cmd);
 }
 
 void switchMaster() {
@@ -319,14 +333,14 @@ void rackAndPinionInit() {
 void limitSwitchMaster() {
   for (int switchIndex = 0; switchIndex < (sizeof (switches) / sizeof (switches[0])); switchIndex++) {
     int isTripped = digitalRead(switches[switchIndex].pinNumber);
-    if (switches[switchIndex].pinNumber != rpSwitchForward) {
-      if (isTripped == 1) {
+    if (switches[switchIndex].pinNumber != rpSwitchForward && switches[switchIndex].pinNumber != rioIn) {
+      if (isTripped == HIGH) {
         switches[switchIndex].isTripped = false;
       } else {
         switches[switchIndex].isTripped = true;
       }
     } else { // rpSwitchForward has opposite conditions because of freaking Akhil and his hardware.
-      if (isTripped == 1) {
+      if (isTripped == HIGH) {
         switches[switchIndex].isTripped = true;
       } else {
         switches[switchIndex].isTripped = false;
@@ -421,4 +435,23 @@ void actuatorInit() {
   pinMode(b2, OUTPUT);
   pinMode(a, OUTPUT);
   pinMode(b, OUTPUT);
+}
+
+void rioInit() {
+  pinMode(rioIn, INPUT);
+  pinMode(rioOut, INPUT);
+}
+
+void checkRio() {
+  if (isSwitchTripped(rioIn) && previousRioInState == false) {
+    cmd = m;
+  } else if (isSwitchTripped(rioIn) && previousRioInState == true && cmd == s) {
+    digitalWrite(rioOut, HIGH);
+  } else if (!isSwitchTripped(rioIn) && previousRioInState == true) {
+    digitalWrite(rioOut, LOW);
+  } else if (!isSwitchTripped(rioIn) && previousRioInState == false) {
+    digitalWrite(rioOut, LOW);
+  }
+
+  previousRioInState = isSwitchTripped(rioIn);
 }

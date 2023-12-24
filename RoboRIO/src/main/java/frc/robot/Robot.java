@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import java.lang.Exception;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -201,13 +203,23 @@ public class Robot extends TimedRobot {
   // }
 
   boolean arrived = false;
-  public void teleopPeriodic() {
-
-    pickupStart.set(false);
-
-    double sum = 0;
-    boolean average = false;
+  boolean isPickingUp = false;
+  public void teleopPeriodic() throws NullPointerException{
     
+    if (Startup.PICKUP) {
+      checkForTrash();
+    }
+
+    ArduinoManager.getArduinoMegaData();
+    if (ArduinoManager.getRC() == null && Startup.NAVIGATION) { // run autonomous code
+      runAuto();
+    } else {
+      rcDrive();
+    }
+  }
+
+  public boolean isThereTrash() {
+    double sum = 0;
     visionDetected.remove(0);
     visionDetected.add(VisionManager.trashDetected());
     for (int i = 0; i<10; i++) {
@@ -217,33 +229,36 @@ public class Robot extends TimedRobot {
     }
     
     sum/=10.0;
-    average = sum > 0.8 ? true : false;
-    if (average) {
-      pickupStart.set(true);
-      while (!pickupEnd.get()) {}
-      pickupStart.set(false);
-    }
 
-    ArduinoManager.getArduinoMegaData();
-    if (ArduinoManager.getRC() == null) {
-      if (!arrived) {
+    return sum > 0.8 ? true : false;
+  }
+
+  public void checkForTrash() throws NullPointerException{
+    if (!isPickingUp) { // If not currently picking up...
+      if (true/*isThereTrash()*/) { // and there is trash then start the pickup process
+        isPickingUp = true; // Start the pickup
+        pickupStart.set(true);
+      }
+    } else { // If it is currently picking up...
+      if (pickupEnd.get()) { // And it finished picking up,
+        pickupStart.set(false); // stop the pickup
+        throw new NullPointerException();
+      }
+    }
+  }
+
+  public void runAuto() {
+    if (!arrived) {
       arrived = PathHandler.autonomousMainLoop();
       Navigator.calibrateYaw();
       //  // Point 3
       // System.out.println("Yaw From North" + NavXManager.getData().yawFromNorth);
-      } else {
-        System.out.println("arrived");
-        DataLogManager.log("arrived");
-        m_myRobot.tankDrive(0, 0);
-      }
-      RcData rcData = ArduinoManager.getRC();
-      EuclideanCoord steeringThrottle = new EuclideanCoord(rcData.steering, rcData.throttle);
-      steeringThrottle = new TeleopMath(0d, 0d).ScaleToUnitSquare(steeringThrottle);
-      AutonomousDrive.drive(steeringThrottle.yEuclid, steeringThrottle.xEuclid);
-      // DataLogManager.log("calcYaw" + NavXManager.getData().yawFromNorth);
-      // DataLogManager.log("rawYaw" + NavXManager.getData().rawYaw);
+    } else {
+      System.out.println("arrived");
+      DataLogManager.log("arrived");
+      m_myRobot.tankDrive(0, 0);
     }
-  } 
+  }
   
   // End of TeleopPeriodic()
 
