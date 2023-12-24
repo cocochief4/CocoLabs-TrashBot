@@ -22,13 +22,13 @@
 #define rpSwitchBack 22
 #define rpSwitchForward 26
 
-int speed = 13; // range is (0, 90), speed for rack and pinion
+int speed = 9; // range is (0, 90), speed for rack and pinion
 
 Servo rev550; // rack and pinion motor
 
 int mainCase = 0; // the counter for main sequence
 
-enum command {
+enum CommandState {
   s, // Stop for everything
   ru, // right actuator up
   rd, // right actuator down
@@ -45,10 +45,10 @@ enum command {
   md, // move teeth actuator down (main loop)
 };
 
-int cmd = s; // keeps the cmd what to do.
+CommandState cmd = s; // keeps the cmd what to do.
 
 const static struct {
-    command val;
+    CommandState val;
     String str;
 } conversion [] = {
   {s, "s"},
@@ -67,11 +67,11 @@ const static struct {
   {md, "md"},
 };
 
-command str2enum (String str)
+CommandState str2enum (String str)
 {
      int j;
-     for (j = 0;  j < sizeof (conversion) / sizeof (conversion[0]);  ++j)
-         if (!(str == conversion[j].str))
+     for (j = 0;  j < sizeof (conversion) / sizeof (conversion[0]);  j++)
+         if (str == conversion[j].str)
              return conversion[j].val;
 }
 
@@ -179,6 +179,8 @@ void loop() {
     cmd = str2enum(Serial.readStringUntil('\n'));
   }
 
+  str = str + "af (7): " + str2enum("af") + "  ";
+
   // switchMaster();
 
   if (!str.equals("")) {
@@ -193,6 +195,7 @@ void switchMaster() {
       moveA(0, 0);
       moveB(0, 0);
       rev550.write(90);
+      cmd = s;
     case ru:
       if (!isSwitchTripped(aSwitchHigh)) {
         moveA(A_SPEED, 0);
@@ -299,7 +302,7 @@ void limitSwitchMaster() {
         switches[switchIndex].isTripped = false;
       }
     }
-    str = str + switches[switchIndex].pinNumber + ": " + switches[switchIndex].isTripped + "  ";
+    // str = str + switches[switchIndex].pinNumber + ": " + switches[switchIndex].isTripped + "  ";
   }
 }
 
