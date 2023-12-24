@@ -20,7 +20,13 @@
 // Rack and Pinion Pins and Friends
 #define rpPin 8
 #define rpSwitchBack 22
-#define rpSwitchForward 24
+#define rpSwitchForward 26
+
+int speed = 13; // range is (0, 90), speed for rack and pinion
+
+Servo rev550; // rack and pinion motor
+
+int mainCase = 0; // the counter for main sequence
 
 enum command {
   s, // Stop for everything
@@ -33,11 +39,17 @@ enum command {
   af, // auto rack and pinion forward (with limit switch ends)
   ab, // auto rack and pinion backward (with limit switch ends)
   m, // main loop
+  mo, // move rack and pinion out (main loop)
+  mu, // move teeth actuator up (main loop)
+  mi, // move rack and pinion in (main loop)
+  md, // move teeth actuator down (main loop)
 };
+
+int cmd = s; // keeps the cmd what to do.
 
 const static struct {
     command val;
-    const char *str;
+    String str;
 } conversion [] = {
   {s, "s"},
   {ru, "ru"},
@@ -48,14 +60,18 @@ const static struct {
   {ad, "ad"},
   {af, "af"},
   {ab, "ab"},
-  {m, "m"}
+  {m, "m"},
+  {mo, "mo"},
+  {mu, "mu"},
+  {mi, "mi"},
+  {md, "md"},
 };
 
-command str2enum (const char *str)
+command str2enum (String str)
 {
      int j;
      for (j = 0;  j < sizeof (conversion) / sizeof (conversion[0]);  ++j)
-         if (!strcmp (str, conversion[j].str))
+         if (!(str == conversion[j].str))
              return conversion[j].val;
 }
 
@@ -72,7 +88,7 @@ static struct {
 };
 
 boolean isSwitchTripped(int pinNumber) {
-  for (int index = 0; index < sizeof (switches); index++) {
+  for (int index = 0; index < (sizeof (switches) / sizeof (switches[0])); index++) {
     if (switches[index].pinNumber == pinNumber) {
       return switches[index].isTripped;
     }
@@ -82,9 +98,37 @@ boolean isSwitchTripped(int pinNumber) {
 }
 
 /**
- * check all the limit switches if they have been triggered
+ * does all cmd switch conditions
 */
 void switchMaster();
+
+/**
+ * cmd = 1. Moves the rack back until it hits limit switch
+ * 
+ * @return true if limit switch is hit, false if not.
+*/
+boolean rpAutoBack();
+
+/**
+ * cmd = 2. Moves the rack forward until it hits limit switch
+ * 
+ * @return true if limit switch is hit, false if not.
+*/
+boolean rpAutoForward();
+
+/**
+ * Load pins and init Servo object for rack and pinion, including limit switches
+*/
+void rackAndPinionInit();
+
+/**
+ * check all the limit switches if they have been triggered
+*/
+void limitSwitchMaster();
+
+/**
+ * check all cmd cases
+*/
 
 /**
  * move "A" actuator
@@ -120,22 +164,142 @@ boolean autoDown();
 
 void setup() {
   Serial.begin(115200);
+
+  actuatorInit();
+  rackAndPinionInit();
 }
 
 String str = "";
 void loop() {
   str = "";
-  // put your main code here, to run repeatedly:
+
+  limitSwitchMaster();
+
+  if (Serial.available()) {
+    cmd = str2enum(Serial.readStringUntil('\n'));
+  }
+
+  // switchMaster();
+
+  if (!str.equals("")) {
+    Serial.println(str);
+  }
 }
 
 void switchMaster() {
-  for (int switchIndex = 0; switchIndex < sizeof (switches); switchIndex++) {
+  switch(cmd) {
+    case s:
+      mainCase = 0;
+      moveA(0, 0);
+      moveB(0, 0);
+      rev550.write(90);
+    case ru:
+      if (!isSwitchTripped(aSwitchHigh)) {
+        moveA(A_SPEED, 0);
+      } else {
+        cmd = s;
+      }
+    case rd:
+      if (!isSwitchTripped(aSwitchLow)) {
+        moveA(A_SPEED, 1);
+      } else {
+        cmd = s;
+      }
+    case lu:
+      if (!isSwitchTripped(bSwitchHigh)) {
+        moveA(B_SPEED, 0);
+      } else {
+        cmd = s;
+      }
+    case ld:
+      if (!isSwitchTripped(bSwitchLow)) {
+        moveA(B_SPEED, 1);
+      } else {
+        cmd = s;
+      }
+    case au:
+      if (autoUp()) {
+        cmd = s;
+      }
+    case ad:
+      if (autoDown()) {
+        cmd = s;
+      }
+    case af:
+      if (rpAutoForward()) {
+        cmd = s;
+      }
+    case ab:
+      if (rpAutoBack()) {
+        cmd = s;
+      }
+    case m:
+      cmd = mo;
+    case mo:
+      if (rpAutoForward()) {
+        cmd = mu;
+      }
+    case mu:
+      if (autoUp()) {
+        cmd = mi;
+      }
+    case mi:
+      if (rpAutoBack()) {
+        cmd = md;
+      }
+    case md:
+      if (autoDown()) {
+        cmd = s;
+      }
+  }
+}
+
+boolean rpAutoForward() {
+  if (!isSwitchTripped(rpSwitchForward)) {
+    int writeSpeed = 90 + speed;
+    rev550.write(writeSpeed);
+    return false;
+  } else {
+    return true;
+  }
+}
+
+boolean rpAutoBack() {
+  if (!isSwitchTripped(rpSwitchBack)) {
+    int writeSpeed = 90 - speed;
+    rev550.write(writeSpeed);
+    return false;
+  } else {
+    return true;
+  }
+}
+
+void rackAndPinionInit() {
+  // Servo Lib
+  rev550.attach(rpPin, 1000, 2000);
+
+  pinMode(rpPin, OUTPUT);
+  pinMode(rpSwitchBack, INPUT_PULLUP);
+  pinMode(rpSwitchForward, INPUT_PULLUP);
+}
+
+void limitSwitchMaster() {
+  for (int switchIndex = 0; switchIndex < (sizeof (switches) / sizeof (switches[0])); switchIndex++) {
     int isTripped = digitalRead(switches[switchIndex].pinNumber);
-    if (isTripped == 1) {
-      switches[switchIndex].isTripped = false;
-    } else {
-      switches[switchIndex].isTripped = true;
+    if (switches[switchIndex].pinNumber != rpSwitchForward) {
+      if (isTripped == 1) {
+        switches[switchIndex].isTripped = false;
+      } else {
+        switches[switchIndex].isTripped = true;
+      }
+    } else { // rpSwitchForward has opposite conditions because of freaking Akhil and his hardware.
+      if (isTripped == 1) {
+        switches[switchIndex].isTripped = true;
+      } else {
+        switches[switchIndex].isTripped = false;
+      }
     }
+    str = str + switches[switchIndex].pinNumber + ": " + switches[switchIndex].isTripped + "  ";
   }
 }
 
@@ -157,6 +321,24 @@ boolean autoUp() {
   }
 }
 
+boolean autoDown() {
+  if (!isSwitchTripped(bSwitchLow)) {
+    moveB(B_SPEED, 1);
+  } else {
+    moveB(0, 0);
+  }
+  if (!isSwitchTripped(aSwitchLow)) {
+    moveA(A_SPEED, 1);
+  } else {
+    moveA(0,0);
+  }
+  if (isSwitchTripped(aSwitchLow) && isSwitchTripped(bSwitchLow)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 void moveA(int speed, int direction) {
   if (speed == 0) { // coast
     digitalWrite(f1, LOW);
@@ -164,11 +346,11 @@ void moveA(int speed, int direction) {
     analogWrite(a, 0);
     return;
   }
-  if (direction == 0 /*&& digitalRead(aSwitchLow) == HIGH*/) { // down
+  if (direction == 0) { // down
     digitalWrite(f1, HIGH);
     digitalWrite(b1, LOW);
   }
-  else if (direction == 1 /*&& digitalRead(aSwitchHigh) == HIGH*/) { // up
+  else if (direction == 1) { // up
     digitalWrite(f1, LOW);
     digitalWrite(b1, HIGH);
   }
@@ -183,11 +365,11 @@ void moveB(int speed, int direction) {
     analogWrite(b, 0);
     return;
   }
-  if (direction == 1 /*&& digitalRead(bSwitchLow) == HIGH*/) { // down
+  if (direction == 1) { // down
     digitalWrite(f2, HIGH);
     digitalWrite(b2, LOW);
   }
-  else if (direction == 0 /*&& digitalRead(bSwitchHigh) == HIGH*/) { // up
+  else if (direction == 0) { // up
     digitalWrite(f2, LOW);
     digitalWrite(b2, HIGH);
   }
@@ -206,5 +388,4 @@ void actuatorInit() {
   pinMode(b2, OUTPUT);
   pinMode(a, OUTPUT);
   pinMode(b, OUTPUT);
-
 }

@@ -10,9 +10,9 @@
             "includePath": [
                 "C:/Users/cococ/Documents/GitHub/CocoLabs-TrashBot/Arduino/Phase4Main/include",
                 "C:/Users/cococ/Documents/GitHub/CocoLabs-TrashBot/Arduino/Phase4Main/src",
+                "C:/Users/cococ/Documents/GitHub/CocoLabs-TrashBot/Arduino/Phase4Main/lib/Servo-1.2.1/src",
                 "C:/Users/cococ/.platformio/packages/framework-arduino-avr/cores/arduino",
                 "C:/Users/cococ/.platformio/packages/framework-arduino-avr/variants/mega",
-                "C:/Users/cococ/Documents/GitHub/CocoLabs-TrashBot/Arduino/Phase4Main/lib/Servo-1.2.1/src",
                 "C:/Users/cococ/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
                 "C:/Users/cococ/.platformio/packages/framework-arduino-avr/libraries/HID/src",
                 "C:/Users/cococ/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
@@ -25,9 +25,9 @@
                 "path": [
                     "C:/Users/cococ/Documents/GitHub/CocoLabs-TrashBot/Arduino/Phase4Main/include",
                     "C:/Users/cococ/Documents/GitHub/CocoLabs-TrashBot/Arduino/Phase4Main/src",
+                    "C:/Users/cococ/Documents/GitHub/CocoLabs-TrashBot/Arduino/Phase4Main/lib/Servo-1.2.1/src",
                     "C:/Users/cococ/.platformio/packages/framework-arduino-avr/cores/arduino",
                     "C:/Users/cococ/.platformio/packages/framework-arduino-avr/variants/mega",
-                    "C:/Users/cococ/Documents/GitHub/CocoLabs-TrashBot/Arduino/Phase4Main/lib/Servo-1.2.1/src",
                     "C:/Users/cococ/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
                     "C:/Users/cococ/.platformio/packages/framework-arduino-avr/libraries/HID/src",
                     "C:/Users/cococ/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
