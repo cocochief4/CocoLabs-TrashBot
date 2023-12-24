@@ -63,7 +63,7 @@ public class Robot extends TimedRobot {
 
   protected static int visionPort = 0;
 
-  private DigitalOutput pickupStart;
+  private PWM pickupStart;
   private DigitalInput pickupEnd;
 
   private ArrayList<Boolean> visionDetected = new ArrayList<>();
@@ -75,10 +75,10 @@ public class Robot extends TimedRobot {
 
     if (Startup.PICKUP){
       pickupEnd = new DigitalInput(Startup.pickupEnd);
-      pickupStart = new DigitalOutput(Startup.pickupStart);
+      pickupStart = new PWM(Startup.pickupStart);
     }
     
-    pickupStart.set(false);
+    pickupStart.setSpeed(0);
 
 
     // motor = new PWM(0);
@@ -251,11 +251,11 @@ public class Robot extends TimedRobot {
     if (!isPickingUp) { // If not currently picking up...
       if (true/*isThereTrash()*/) { // and there is trash then start the pickup process
         isPickingUp = true; // Start the pickup
-        pickupStart.set(true);
+        pickupStart.setSpeed(1);
       }
     } else { // If it is currently picking up...
       if (pickupEnd.get()) { // And it finished picking up,
-        pickupStart.set(false); // stop the pickup
+        pickupStart.setSpeed(0); // stop the pickup
         isPickingUp = false;
         System.out.println("Done");
         throw new IndexOutOfBoundsException();

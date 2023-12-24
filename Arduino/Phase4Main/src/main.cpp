@@ -198,7 +198,7 @@ void loop() {
   if (Serial.available()) {
     cmd = str2enum(Serial.readStringUntil('\n'));
   }
-  Serial.println(cmd);
+  // Serial.println(cmd);
 
   switchMaster();
 
@@ -339,11 +339,18 @@ void limitSwitchMaster() {
       } else {
         switches[switchIndex].isTripped = true;
       }
-    } else { // rpSwitchForward has opposite conditions because of freaking Akhil and his hardware.
+    } else if (switches[switchIndex].pinNumber == rpSwitchForward) { // rpSwitchForward has opposite conditions because of freaking Akhil and his hardware.
       if (isTripped == HIGH) {
         switches[switchIndex].isTripped = true;
       } else {
         switches[switchIndex].isTripped = false;
+      }
+    } else if (switches[switchIndex].pinNumber == rioIn) {
+      int pwm = pulseIn(rioIn, HIGH);
+      if (abs(pwm - 1500) < 60) {
+        switches[switchIndex].isTripped = false;
+      } else {
+        switches[switchIndex].isTripped = true;
       }
     }
     // str = str + switches[switchIndex].pinNumber + ": " + switches[switchIndex].isTripped + "  ";
@@ -443,6 +450,7 @@ void rioInit() {
 }
 
 void checkRio() {
+  Serial.println(isSwitchTripped(rioIn));
   if (isSwitchTripped(rioIn) && previousRioInState == false) {
     cmd = m;
   } else if (isSwitchTripped(rioIn) && previousRioInState == true && cmd == s) {
