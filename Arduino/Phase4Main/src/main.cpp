@@ -15,14 +15,14 @@
 #define bSwitchHigh 11
 
 #define A_SPEED 150
-#define B_SPEED 130
+#define B_SPEED 140
 
 // Rack and Pinion Pins and Friends
 #define rpPin 8
 #define rpSwitchBack 22
 #define rpSwitchForward 26
 
-int speed = 10; // range is (0, 90), speed for rack and pinion
+int speed = 15; // range is (0, 90), speed for rack and pinion
 
 Servo rev550; // rack and pinion motor
 

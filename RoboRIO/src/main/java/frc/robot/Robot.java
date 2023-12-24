@@ -61,13 +61,18 @@ public class Robot extends TimedRobot {
 
   protected static int visionPort = 0;
 
-  private DigitalOutput pickupOut;
-  private DigitalInput pickupIn;
+  private DigitalOutput pickupStart;
+  private DigitalInput pickupEnd;
 
   private ArrayList<Boolean> visionDetected = new ArrayList<>();
 
   @Override
   public void robotInit() {
+
+    if (Startup.PICKUP){
+      pickupEnd = new DigitalInput(Startup.pickupEnd);
+      pickupStart = new DigitalOutput(Startup.pickupStart);
+    }
 
     Startup.init();
 
@@ -135,24 +140,9 @@ public class Robot extends TimedRobot {
   int startCooldown = 100; // Timer to force the all of the motors to 0,
                           // as there is a jump for no reason at all
   /** 
-   * If you only want driving capibility, comment out:
-   * 
-   * while (arduinoData == false) {
-   *   arduinoData = ArduinoManager.init();
-   * }
-   * 
-   * NavXManager.resetYaw();
-   * 
-   * Navigator.init();
-   * 
-   * NavXManager.resetYaw();
+   * If you only want driving, change the fields in Startup.java
    */
   public void teleopInit() {
-
-    if (Startup.PICKUP){
-      pickupIn = new DigitalInput(0); // placeholder
-      pickupOut = new DigitalOutput(0); // placeholder // THIS SHOULD GO IN ROBOT INIT
-    }
 
     if (Startup.VISION) { // GAYWALA WHAT IS THIS FOR
       for (int i = 0; i<10; i++) {
@@ -213,7 +203,7 @@ public class Robot extends TimedRobot {
   boolean arrived = false;
   public void teleopPeriodic() {
 
-    pickupOut.set(false);
+    pickupStart.set(false);
 
     double sum = 0;
     boolean average = false;
@@ -229,9 +219,9 @@ public class Robot extends TimedRobot {
     sum/=10.0;
     average = sum > 0.8 ? true : false;
     if (average) {
-      pickupOut.set(true);
-      while (!pickupIn.get()) {}
-      pickupOut.set(false);
+      pickupStart.set(true);
+      while (!pickupEnd.get()) {}
+      pickupStart.set(false);
     }
 
     ArduinoManager.getArduinoMegaData();

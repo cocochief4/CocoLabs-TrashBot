@@ -2,7 +2,9 @@ package frc.robot;
 
 public class Startup {
 
-    public static boolean NAVIGATION, PICKUP, VISION, GPS; // RC Drive is always true
+    public static  boolean NAVIGATION, PICKUP, VISION; // RC Drive is always true
+
+    public static  int pickupStart, pickupEnd;
 
     /**
      * NAVIGATION: is Phase 2 (autonomous navigation) capability installed on robot?
@@ -11,9 +13,12 @@ public class Startup {
      */
     public static void init() {
         // Change startup options here
-        NAVIGATION = false;
-        PICKUP = true;
-        VISION = false;
+        NAVIGATION = false; // You need GPS attached.
+        PICKUP = true; // You need pickup arduino attached
+        VISION = false; // You need camera mounted
+
+        pickupStart = 0;
+        pickupEnd = 1;
     }
 
 }
