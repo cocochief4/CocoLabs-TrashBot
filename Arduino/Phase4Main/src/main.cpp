@@ -71,6 +71,8 @@ CommandState str2enum (String str)
      for (j = 0;  j < sizeof (conversion) / sizeof (conversion[0]);  j++)
          if (str == conversion[j].str)
              return conversion[j].val;
+      Serial.println("no such cmd");
+      return s;
 }
 
 static struct {
@@ -171,18 +173,24 @@ void setup() {
 String str = "";
 void loop() {
   str = "";
+  Serial.println("start");
+  Serial.println(cmd);
 
   limitSwitchMaster();
+  Serial.println(cmd);
 
   if (Serial.available()) {
     cmd = str2enum(Serial.readStringUntil('\n'));
   }
+  Serial.println(cmd);
 
   switchMaster();
+  Serial.println(cmd);
 
   if (!str.equals("")) {
     Serial.println(str);
   }
+  Serial.println(cmd);
 }
 
 void switchMaster() {
@@ -192,64 +200,90 @@ void switchMaster() {
       moveB(0, 0);
       rev550.write(90);
       cmd = s;
+      break;
     case ru:
       if (!isSwitchTripped(aSwitchHigh)) {
         moveA(A_SPEED, 0);
       } else {
         cmd = s;
       }
+      break;
     case rd:
       if (!isSwitchTripped(aSwitchLow)) {
         moveA(A_SPEED, 1);
       } else {
         cmd = s;
       }
+      break;
     case lu:
       if (!isSwitchTripped(bSwitchHigh)) {
-        moveA(B_SPEED, 0);
+        moveB(B_SPEED, 0);
       } else {
         cmd = s;
       }
+      break;
     case ld:
       if (!isSwitchTripped(bSwitchLow)) {
-        moveA(B_SPEED, 1);
+        moveB(B_SPEED, 1);
       } else {
         cmd = s;
       }
+      break;
     case au:
       if (autoUp()) {
         cmd = s;
       }
+      break;
     case ad:
       if (autoDown()) {
         cmd = s;
       }
+      break;
     case af:
       if (rpAutoForward()) {
         cmd = s;
       }
+      break;
     case ab:
       if (rpAutoBack()) {
         cmd = s;
       }
-    case m:
+      break;
+    case m: // Start the main loop
       cmd = mo;
+      break;
     case mo:
       if (rpAutoForward()) {
+        moveA(0, 0);
+        moveB(0, 0);
+        rev550.write(90);
         cmd = mu;
       }
+      break;
     case mu:
       if (autoUp()) {
+        moveA(0, 0);
+        moveB(0, 0);
+        rev550.write(90);
         cmd = mi;
       }
+      break;
     case mi:
       if (rpAutoBack()) {
+        moveA(0, 0);
+        moveB(0, 0);
+        rev550.write(90);
         cmd = md;
       }
+      break;
     case md:
       if (autoDown()) {
+        moveA(0, 0);
+        moveB(0, 0);
+        rev550.write(90);
         cmd = s;
       }
+      break;
   }
 }
 
