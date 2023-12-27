@@ -10,13 +10,13 @@ import pathConfig
 
 TRASH_PATH = 'trash/'
 NO_TRASH_PATH = 'no-trash/'
-PATH = pathConfig.SMACINTOSH_PATH + 'Vision/Trash-Dataset/'
+PATH = pathConfig.SMACINTOSH_PATH + 'Vision/Trash-Dataset2/'
 
 # [height, width]
 RESIZE = [150, 300]
 
 # Define video capture object
-vid = cv2.VideoCapture(1)
+vid = cv2.VideoCapture(0)
 
 index  = 0
 record = 'false'

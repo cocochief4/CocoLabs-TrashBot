@@ -23,8 +23,8 @@
 #define rpSwitchForward 26
 
 // RoboRIO and Friends
-#define rioIn 28
-#define rioOut 30
+#define rioIn 9
+#define rioOut /*30*/32
 
 int speed = 15; // range is (0, 90), speed for rack and pinion
 
@@ -185,26 +185,29 @@ void setup() {
 
   actuatorInit();
   rackAndPinionInit();
+
+  rioInit();
 }
 
 String str = "";
 void loop() {
-  str = "";
+  digitalWrite(rioOut, LOW);
+  // str = "";
 
-  limitSwitchMaster();
+  // limitSwitchMaster();
 
-  checkRio();
+  // checkRio();
 
-  if (Serial.available()) {
-    cmd = str2enum(Serial.readStringUntil('\n'));
-  }
-  // Serial.println(cmd);
+  // if (Serial.available()) {
+  //   cmd = str2enum(Serial.readStringUntil('\n'));
+  // }
+  // // Serial.println(cmd);
 
-  switchMaster();
+  // switchMaster();
 
-  if (!str.equals("")) {
-    Serial.println(str);
-  }
+  // if (!str.equals("")) {
+  //   Serial.println(str);
+  // }
 }
 
 void switchMaster() {
@@ -346,8 +349,8 @@ void limitSwitchMaster() {
         switches[switchIndex].isTripped = false;
       }
     } else if (switches[switchIndex].pinNumber == rioIn) {
-      int pwm = pulseIn(rioIn, HIGH);
-      if (abs(pwm - 1500) < 60) {
+      int pwm = pulseIn(rioIn, HIGH, 100);
+      if (pwm < 1500) {
         switches[switchIndex].isTripped = false;
       } else {
         switches[switchIndex].isTripped = true;
@@ -450,12 +453,14 @@ void rioInit() {
 }
 
 void checkRio() {
-  Serial.println(isSwitchTripped(rioIn));
   if (isSwitchTripped(rioIn) && previousRioInState == false) {
+    Serial.println("Start pickup");
     cmd = m;
   } else if (isSwitchTripped(rioIn) && previousRioInState == true && cmd == s) {
+    Serial.println("Finish Pickup");
     digitalWrite(rioOut, HIGH);
   } else if (!isSwitchTripped(rioIn) && previousRioInState == true) {
+    Serial.println("Rio acknowledge finish pickup");
     digitalWrite(rioOut, LOW);
   } else if (!isSwitchTripped(rioIn) && previousRioInState == false) {
     digitalWrite(rioOut, LOW);

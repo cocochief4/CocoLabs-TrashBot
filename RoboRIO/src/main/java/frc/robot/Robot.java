@@ -78,7 +78,7 @@ public class Robot extends TimedRobot {
       pickupStart = new PWM(Startup.pickupStart);
     }
     
-    pickupStart.setSpeed(0);
+    pickupStart.setSpeed(-1);
 
 
     // motor = new PWM(0);
@@ -93,8 +93,9 @@ public class Robot extends TimedRobot {
     // backward.set(true); // this sets it to true or false for the output 
 
 
-
-    // VisionManager.init(visionPort); // Comment this out if no camera
+    if (Startup.VISION) {
+      VisionManager.init(visionPort); // Comment this out if no camera
+    }
     DataLogManager.start();
     // NavXManager.RInit();
 
@@ -254,8 +255,8 @@ public class Robot extends TimedRobot {
         pickupStart.setSpeed(1);
       }
     } else { // If it is currently picking up...
-      if (pickupEnd.get()) { // And it finished picking up,
-        pickupStart.setSpeed(0); // stop the pickup
+      if (!pickupEnd.get()) { // And it finished picking up,
+        pickupStart.setSpeed(-1); // stop the pickup
         isPickingUp = false;
         System.out.println("Done");
         throw new IndexOutOfBoundsException();
@@ -308,5 +309,27 @@ public class Robot extends TimedRobot {
     EuclideanCoord steeringThrottle = new EuclideanCoord(rcData.steering, rcData.throttle);
     steeringThrottle =  new TeleopMath(steeringThrottle.xEuclid, steeringThrottle.yEuclid).RcToDifferential();
     m_myRobot.tankDrive(steeringThrottle.yEuclid, steeringThrottle.xEuclid);
+  }
+
+  @Override
+  public void testInit() {
+    pickupStart.setSpeed(-1);
+  }
+
+  @Override
+  public void testPeriodic() {
+    testGet();
+  }
+
+  public void testPWM() {
+    pickupStart.setSpeed(1);
+  }
+
+  public void testGet() {
+    System.out.println(pickupEnd.get());
+  }
+
+  public void testTrashPickup() {
+    checkForTrash();
   }
 }
