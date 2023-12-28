@@ -8,18 +8,18 @@ void setup() {
   digitalWrite(signalPin, HIGH);
   delay(3000);
   digitalWrite(signalPin, LOW);
-  }
+}
 
 long loopTime = millis();
 bool flash = false;
 void loop()
- {
+{
   char readByte;
 
   if (Serial.available() > 0) {
-//    digitalWrite(signalPin, HIGH);
-//    delay(100);
-//    digitalWrite(signalPin, LOW);
+    //    digitalWrite(signalPin, HIGH);
+    //    delay(100);
+    //    digitalWrite(signalPin, LOW);
 
     readByte = Serial.read();
 

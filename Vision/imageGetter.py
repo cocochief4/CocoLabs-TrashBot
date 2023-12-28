@@ -13,10 +13,10 @@ NO_TRASH_PATH = 'no-trash/'
 PATH = pathConfig.SMACINTOSH_PATH + 'Vision/Trash-Dataset2/'
 
 # [height, width]
-RESIZE = [150, 300]
+RESIZE = [300, 300]
 
 # Define video capture object
-vid = cv2.VideoCapture(0)
+vid = cv2.VideoCapture(1)
 
 index  = 0
 record = 'false'

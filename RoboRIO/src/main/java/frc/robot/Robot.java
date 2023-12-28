@@ -220,7 +220,7 @@ public class Robot extends TimedRobot {
   boolean arrived = false;
   boolean isPickingUp = false;
   public void teleopPeriodic() throws NullPointerException{
-    if (Startup.PICKUP) {
+    if (Startup.PICKUP && Startup.VISION) {
       checkForTrash();
     }
 

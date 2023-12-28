@@ -9,12 +9,12 @@ import pathConfig
 import serial # if you get library not found, run pip install pyserial (should work)
 import time
 
-# SerialObj = serial.Serial('COM26') # need to figure out which com you are using Should be COM60 if multiple CH340s
+SerialObj = serial.Serial('COM43') # need to figure out which com you are using Should be COM60 if multiple CH340s
 
-# SerialObj.baudrate = 115200 # baudrate, must be equal both on ino and here
-# SerialObj.bytesize = 8 # bit translated over 8
-# SerialObj.parity = 'N' # parity = method of checking, don't need it
-# SerialObj.stopbits = 1 # needed for stopping comms, only need 1 bit
+SerialObj.baudrate = 115200 # baudrate, must be equal both on ino and here
+SerialObj.bytesize = 8 # bit translated over 8
+SerialObj.parity = 'N' # parity = method of checking, don't need it
+SerialObj.stopbits = 1 # needed for stopping comms, only need 1 bit
 
 
 # [height, width]
