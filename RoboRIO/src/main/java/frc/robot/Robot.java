@@ -255,12 +255,15 @@ public class Robot extends TimedRobot {
         pickupStart.setSpeed(1);
       }
     } else { // If it is currently picking up...
-      if (pickupEnd.get()) { // And it finished picking up,
+      if (!pickupEnd.get()) { // And it finished picking up,
         pickupStart.setSpeed(-1); // stop the pickup
         System.out.println("Stop the pickup");
         isPickingUp = false;
         System.out.println("Done");
         throw new IndexOutOfBoundsException();
+      } else { // If it is not finished...
+        System.out.println("sending dlfkjsdlkfjk");
+        pickupStart.setSpeed(1); // Keep the signal going
       }
     }
   }

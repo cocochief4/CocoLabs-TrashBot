@@ -348,7 +348,9 @@ void limitSwitchMaster() {
         switches[switchIndex].isTripped = false;
       }
     } else if (switches[switchIndex].pinNumber == rioIn) {
-      int pwm = pulseIn(rioIn, HIGH, 20);
+      int pwm = pulseIn(rioIn, HIGH, 50000);
+      // Serial.print("pwm: ");
+      // Serial.println(pwm);
       if (pwm < 1500) {
         switches[switchIndex].isTripped = false;
       } else {
@@ -452,7 +454,7 @@ void rioInit() {
 }
 
 void checkRio() {
-  Serial.println(isSwitchTripped(rioIn));
+  // Serial.println(isSwitchTripped(rioIn));
   if (isSwitchTripped(rioIn) && previousRioInState == false) {
     digitalWrite(rioOut, HIGH);
     Serial.println("Start pickup");
