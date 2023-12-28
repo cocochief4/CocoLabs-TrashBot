@@ -217,15 +217,23 @@ public class Robot extends TimedRobot {
       
   // }
 
+  enum PickupPhases {
+    NO_PICKUP,
+    MOVE,
+    PICKUP
+  }
+
   boolean arrived = false;
-  boolean isPickingUp = false;
+  PickupPhases isPickingUp = PickupPhases.NO_PICKUP;
+  double pickupStartTime = 0d;
+  final double SECONDS_TO_DRIVE = 2.0;
   public void teleopPeriodic() throws NullPointerException {
     if (Startup.PICKUP) {
       checkForTrash();
     }
 
     ArduinoManager.getArduinoMegaData();
-    if (!isPickingUp) {
+    if (isPickingUp == PickupPhases.NO_PICKUP) {
       if (ArduinoManager.getRC() == null && Startup.NAVIGATION) { // run autonomous code
         runAuto();
       } else {
@@ -250,23 +258,33 @@ public class Robot extends TimedRobot {
   }
 
   public void checkForTrash() throws NullPointerException{
-    if (!isPickingUp) { // If not currently picking up...
-      if (isThereTrash()) { // and there is trash then start the pickup process
-        isPickingUp = true; // Start the pickup
-        System.out.println("Start the pickup");
-        pickupStart.setSpeed(1);
-      }
-    } else { // If it is currently picking up...
-      if (!pickupEnd.get()) { // And it finished picking up,
-        pickupStart.setSpeed(-1); // stop the pickup
-        System.out.println("Stop the pickup");
-        isPickingUp = false;
-        System.out.println("Done");
-        throw new IndexOutOfBoundsException();
-      } else { // If it is not finished...
-        System.out.println("sending dlfkjsdlkfjk");
-        pickupStart.setSpeed(1); // Keep the signal going
-      }
+    switch(isPickingUp) {
+      case NO_PICKUP:
+        if (isThereTrash()) { // and there is trash then start the pickup process
+          System.out.println("Start the pickup");
+          isPickingUp = PickupPhases.MOVE; // Start the pickup
+          pickupStartTime = Timer.getFPGATimestamp(); // Set start time of pickup
+        }
+        break;
+      case MOVE: // Move to get trash to be on pickup mechanism.
+        if (Timer.getFPGATimestamp() - pickupStartTime < SECONDS_TO_DRIVE) { // Drive forward for "x" seconds.
+          AutonomousDrive.drive(PathHandler.MAX_DRIVE_SPEED, 0);
+        } else {
+          isPickingUp = PickupPhases.PICKUP;
+        }
+        break;
+      case PICKUP: // If currently picking up,
+        if (!pickupEnd.get()) { // And it finished picking up,
+          pickupStart.setSpeed(-1); // stop the pickup
+          System.out.println("Stop the pickup");
+          isPickingUp = false;
+          System.out.println("Done");
+          throw new IndexOutOfBoundsException();
+        } else { // If it is not finished...
+          System.out.println("sending dlfkjsdlkfjk");
+          pickupStart.setSpeed(1); // Keep the signal going
+        }
+        break;
     }
   }
 
