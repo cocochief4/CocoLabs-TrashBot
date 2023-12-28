@@ -219,16 +219,18 @@ public class Robot extends TimedRobot {
 
   boolean arrived = false;
   boolean isPickingUp = false;
-  public void teleopPeriodic() throws NullPointerException{
+  public void teleopPeriodic() throws NullPointerException {
     if (Startup.PICKUP) {
       checkForTrash();
     }
 
     ArduinoManager.getArduinoMegaData();
-    if (ArduinoManager.getRC() == null && Startup.NAVIGATION) { // run autonomous code
-      runAuto();
-    } else {
-      rcDrive();
+    if (!isPickingUp) {
+      if (ArduinoManager.getRC() == null && Startup.NAVIGATION) { // run autonomous code
+        runAuto();
+      } else {
+        rcDrive();
+      }
     }
   }
 
@@ -249,7 +251,7 @@ public class Robot extends TimedRobot {
 
   public void checkForTrash() throws NullPointerException{
     if (!isPickingUp) { // If not currently picking up...
-      if (true/*isThereTrash()*/) { // and there is trash then start the pickup process
+      if (isThereTrash()) { // and there is trash then start the pickup process
         isPickingUp = true; // Start the pickup
         System.out.println("Start the pickup");
         pickupStart.setSpeed(1);
