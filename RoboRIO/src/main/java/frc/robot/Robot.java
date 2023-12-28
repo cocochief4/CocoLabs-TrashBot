@@ -248,15 +248,16 @@ public class Robot extends TimedRobot {
   }
 
   public void checkForTrash() throws NullPointerException{
-    System.out.println("called");
     if (!isPickingUp) { // If not currently picking up...
       if (true/*isThereTrash()*/) { // and there is trash then start the pickup process
         isPickingUp = true; // Start the pickup
+        System.out.println("Start the pickup");
         pickupStart.setSpeed(1);
       }
     } else { // If it is currently picking up...
-      if (!pickupEnd.get()) { // And it finished picking up,
+      if (pickupEnd.get()) { // And it finished picking up,
         pickupStart.setSpeed(-1); // stop the pickup
+        System.out.println("Stop the pickup");
         isPickingUp = false;
         System.out.println("Done");
         throw new IndexOutOfBoundsException();
@@ -313,15 +314,15 @@ public class Robot extends TimedRobot {
 
   @Override
   public void testInit() {
-    pickupStart.setSpeed(-1);
   }
 
   @Override
   public void testPeriodic() {
-    testGet();
+    testTrashPickup();
   }
 
   public void testPWM() {
+    System.out.println("testPWM");
     pickupStart.setSpeed(1);
   }
 

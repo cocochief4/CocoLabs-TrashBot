@@ -191,23 +191,22 @@ void setup() {
 
 String str = "";
 void loop() {
-  digitalWrite(rioOut, LOW);
-  // str = "";
+  str = "";
 
-  // limitSwitchMaster();
+  limitSwitchMaster();
 
-  // checkRio();
+  checkRio();
 
-  // if (Serial.available()) {
-  //   cmd = str2enum(Serial.readStringUntil('\n'));
-  // }
-  // // Serial.println(cmd);
+  if (Serial.available()) {
+    cmd = str2enum(Serial.readStringUntil('\n'));
+  }
+  // Serial.println(cmd);
 
-  // switchMaster();
+  switchMaster();
 
-  // if (!str.equals("")) {
-  //   Serial.println(str);
-  // }
+  if (!str.equals("")) {
+    Serial.println(str);
+  }
 }
 
 void switchMaster() {
@@ -349,7 +348,7 @@ void limitSwitchMaster() {
         switches[switchIndex].isTripped = false;
       }
     } else if (switches[switchIndex].pinNumber == rioIn) {
-      int pwm = pulseIn(rioIn, HIGH, 100);
+      int pwm = pulseIn(rioIn, HIGH, 20);
       if (pwm < 1500) {
         switches[switchIndex].isTripped = false;
       } else {
@@ -453,17 +452,21 @@ void rioInit() {
 }
 
 void checkRio() {
+  Serial.println(isSwitchTripped(rioIn));
   if (isSwitchTripped(rioIn) && previousRioInState == false) {
+    digitalWrite(rioOut, HIGH);
     Serial.println("Start pickup");
     cmd = m;
   } else if (isSwitchTripped(rioIn) && previousRioInState == true && cmd == s) {
     Serial.println("Finish Pickup");
+    digitalWrite(rioOut, LOW);
+  } else if (isSwitchTripped(rioIn) && previousRioInState == true && cmd != s) {
     digitalWrite(rioOut, HIGH);
   } else if (!isSwitchTripped(rioIn) && previousRioInState == true) {
     Serial.println("Rio acknowledge finish pickup");
-    digitalWrite(rioOut, LOW);
+    digitalWrite(rioOut, HIGH);
   } else if (!isSwitchTripped(rioIn) && previousRioInState == false) {
-    digitalWrite(rioOut, LOW);
+    digitalWrite(rioOut, HIGH);
   }
 
   previousRioInState = isSwitchTripped(rioIn);
