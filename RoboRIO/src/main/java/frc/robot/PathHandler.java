@@ -7,8 +7,8 @@ import edu.wpi.first.wpilibj.DataLogManager;
 import stcpack.stc.node;
 
 public class PathHandler {
-    private static final double MAX_DRIVE_SPEED = 0.5f;
-    private static final double MAX_TURN_SPEED = 0.25f;
+    public static final double MAX_DRIVE_SPEED = 0.5f;
+    public static final double MAX_TURN_SPEED = 0.25f;
 
     private static final double ARRIVED_MARGIN = 7.5E-7; // About 15 cm margin (Most likely much smaller bc we not near the equator)
 
