@@ -7,29 +7,20 @@
 
 package frc.robot;
 
-import java.lang.Exception;
+import java.util.ArrayList;
 
-import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
 import edu.wpi.first.util.datalog.DataLog;
 import edu.wpi.first.util.datalog.StringLogEntry;
 import edu.wpi.first.wpilibj.DataLogManager;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.PWM;
-import edu.wpi.first.wpilibj.DigitalOutput;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
-
-import javax.sound.sampled.SourceDataLine;
-import javax.xml.crypto.Data;
-
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 
 public class Robot extends TimedRobot {
 
@@ -220,8 +211,9 @@ public class Robot extends TimedRobot {
 
   enum PickupPhases {
     NO_PICKUP,
+    PRE_PICKUP,
     MOVE,
-    PICKUP
+    PICKUP,
   }
 
   boolean arrived = false;
@@ -263,8 +255,17 @@ public class Robot extends TimedRobot {
       case NO_PICKUP:
         if (isThereTrash()) { // and there is trash then start the pickup process
           System.out.println("Start the pickup");
-          isPickingUp = PickupPhases.MOVE; // Start the pickup
+          isPickingUp = PickupPhases.PRE_PICKUP; // Start the pickup
           pickupStartTime = Timer.getFPGATimestamp(); // Set start time of pickup
+        }
+        break;
+      case PRE_PICKUP:
+         if (!pickupEnd.get()) { 
+          System.out.println("pre pickup ended");
+          isPickingUp = PickupPhases.MOVE; // Start the pickup
+        }
+        else {
+          pickupStart.setSpeed(0);
         }
         break;
       case MOVE: // Move to get trash to be on pickup mechanism.
