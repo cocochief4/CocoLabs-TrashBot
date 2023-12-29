@@ -256,12 +256,13 @@ public class Robot extends TimedRobot {
         if (isThereTrash()) { // and there is trash then start the pickup process
           System.out.println("Start the pickup");
           isPickingUp = PickupPhases.PRE_PICKUP; // Start the pickup
-          pickupStartTime = Timer.getFPGATimestamp(); // Set start time of pickup
+          
         }
         break;
       case PRE_PICKUP:
          if (!pickupEnd.get()) { 
           System.out.println("pre pickup ended");
+          pickupStartTime = Timer.getFPGATimestamp(); // Set start time of pickup
           isPickingUp = PickupPhases.MOVE; // Start the pickup
         }
         else {
@@ -338,11 +339,12 @@ public class Robot extends TimedRobot {
 
   @Override
   public void testInit() {
+    teleopInit();
   }
 
   @Override
   public void testPeriodic() {
-    testTrashPickup();
+    System.out.println(isThereTrash());
   }
 
   public void testPWM() {
