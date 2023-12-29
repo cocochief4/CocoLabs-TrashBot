@@ -47,8 +47,15 @@ enum CommandState {
   md, // move teeth actuator down (main loop)
 };
 
-int previousRioInState = LOW;
 CommandState cmd = s; // keeps the cmd what to do.
+
+enum rioInStates {
+  stop,
+  actuatorDown,
+  pickup
+};
+
+rioInStates previousRioInState = stop;
 
 const static struct {
     CommandState val;
@@ -90,7 +97,6 @@ static struct {
   {false, bSwitchLow},
   {false, rpSwitchBack},
   {false, rpSwitchForward},
-  {false, rioIn},
 };
 
 boolean isSwitchTripped(int pinNumber) {
@@ -102,6 +108,10 @@ boolean isSwitchTripped(int pinNumber) {
   Serial.println("no such switch");
   return false;
 }
+
+rioInStates TheRIOState = stop;
+
+rioInStates getState();
 
 /**
  * Checks to see if the roborio is telling arduino to start pickup. If it is, starts the pickup.
@@ -289,7 +299,7 @@ void switchMaster() {
         moveA(0, 0);
         moveB(0, 0);
         rev550.write(90);
-        cmd = md;
+        cmd = s;
       }
       break;
     case md:
@@ -335,7 +345,7 @@ void rackAndPinionInit() {
 void limitSwitchMaster() {
   for (int switchIndex = 0; switchIndex < (sizeof (switches) / sizeof (switches[0])); switchIndex++) {
     int isTripped = digitalRead(switches[switchIndex].pinNumber);
-    if (switches[switchIndex].pinNumber != rpSwitchForward && switches[switchIndex].pinNumber != rioIn) {
+    if (switches[switchIndex].pinNumber != rpSwitchForward) {
       if (isTripped == HIGH) {
         switches[switchIndex].isTripped = false;
       } else {
@@ -346,15 +356,6 @@ void limitSwitchMaster() {
         switches[switchIndex].isTripped = true;
       } else {
         switches[switchIndex].isTripped = false;
-      }
-    } else if (switches[switchIndex].pinNumber == rioIn) {
-      int pwm = pulseIn(rioIn, HIGH, 50000);
-      // Serial.print("pwm: ");
-      // Serial.println(pwm);
-      if (pwm < 1500) {
-        switches[switchIndex].isTripped = false;
-      } else {
-        switches[switchIndex].isTripped = true;
       }
     }
     // str = str + switches[switchIndex].pinNumber + ": " + switches[switchIndex].isTripped + "  ";
@@ -455,21 +456,44 @@ void rioInit() {
 
 void checkRio() {
   // Serial.println(isSwitchTripped(rioIn));
-  if (isSwitchTripped(rioIn) && previousRioInState == false) {
+  if (getState() == pickup && previousRioInState != pickup) {
     digitalWrite(rioOut, HIGH);
     Serial.println("Start pickup");
     cmd = m;
-  } else if (isSwitchTripped(rioIn) && previousRioInState == true && cmd == s) {
+  } else if (getState() == pickup && previousRioInState == pickup && cmd == s) {
     Serial.println("Finish Pickup");
     digitalWrite(rioOut, LOW);
-  } else if (isSwitchTripped(rioIn) && previousRioInState == true && cmd != s) {
+  } else if (getState() == pickup && previousRioInState == pickup && cmd != s) {
     digitalWrite(rioOut, HIGH);
-  } else if (!isSwitchTripped(rioIn) && previousRioInState == true) {
+  } else if (getState() == stop && previousRioInState == pickup) {
     Serial.println("Rio acknowledge finish pickup");
     digitalWrite(rioOut, HIGH);
-  } else if (!isSwitchTripped(rioIn) && previousRioInState == false) {
+  } else if (getState() == stop && previousRioInState == stop) {
     digitalWrite(rioOut, HIGH);
+  } else if (getState() == actuatorDown && previousRioInState == stop) {
+    Serial.println("Start moving actuator down to move forwarrd to pickup");
+  } else if (getState() == actuatorDown && previousRioInState == actuatorDown && cmd == s) {
+    Serial.println("Done moving down send acknowledgement");
+    digitalWrite(rioOut, LOW);
+    cmd = ad;
+  } else if (getState() == actuatorDown && previousRioInState == actuatorDown && cmd != s) {
+    digitalWrite (rioOut, HIGH);
   }
 
-  previousRioInState = isSwitchTripped(rioIn);
+  previousRioInState = getState();
+}
+
+rioInStates getState() {
+  return TheRIOState;
+}
+
+void readStateFromRio() {
+  int pwm = pulseIn(rioIn, HIGH, 50000);
+  if (abs(1500-pwm) < 60) {
+    TheRIOState = actuatorDown;
+  } else if (pwm < 1500-60) {
+    TheRIOState = stop;
+  } else {
+    TheRIOState = pickup;
+  }
 }
