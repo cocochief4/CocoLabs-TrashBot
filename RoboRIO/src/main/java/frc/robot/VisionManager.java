@@ -10,7 +10,6 @@ public class VisionManager {
 
     protected static boolean trashDetected() {
         boolean trashDetected = port.get();
-
         return trashDetected;
     }
 }

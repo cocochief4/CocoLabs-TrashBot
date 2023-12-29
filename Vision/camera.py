@@ -83,10 +83,10 @@ while(True):
     class_scores = model(inp)[0].numpy()
 
     if (classes[class_scores.argmax()] == "trash"):
-        # SerialObj.write(b'T')
+        SerialObj.write(b'T')
         print("Write T")
     elif (classes[class_scores.argmax()] == "no-trash"):
-        # SerialObj.write(b'F')
+        SerialObj.write(b'F')
         print("Write F")
 
 

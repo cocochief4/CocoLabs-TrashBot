@@ -76,9 +76,10 @@ public class Robot extends TimedRobot {
     if (Startup.PICKUP){
       pickupEnd = new DigitalInput(Startup.pickupEnd);
       pickupStart = new PWM(Startup.pickupStart);
+      pickupStart.setSpeed(-1);
     }
     
-    pickupStart.setSpeed(-1);
+    
 
 
     // motor = new PWM(0);
@@ -150,13 +151,13 @@ public class Robot extends TimedRobot {
    */
   public void teleopInit() {
 
-    isPickingUp = false;
+    isPickingUp = PickupPhases.NO_PICKUP;
     arrived = false;
 
     System.out.println("teleinit");
 
-    if (Startup.VISION) { // GAYWALA WHAT IS THIS FOR
-      for (int i = 0; i<10; i++) {
+    if (Startup.VISION) { // 
+      for (int i = 0; i<10; i++) { // Fill the vision array with negatives
         visionDetected.add(false);
       }
     }
@@ -254,7 +255,7 @@ public class Robot extends TimedRobot {
     
     sum/=10.0;
 
-    return sum > 0.8 ? true : false;
+    return sum > 0.9 ? true : false;
   }
 
   public void checkForTrash() throws NullPointerException{
@@ -277,9 +278,8 @@ public class Robot extends TimedRobot {
         if (!pickupEnd.get()) { // And it finished picking up,
           pickupStart.setSpeed(-1); // stop the pickup
           System.out.println("Stop the pickup");
-          isPickingUp = false;
+          isPickingUp = PickupPhases.NO_PICKUP;
           System.out.println("Done");
-          throw new IndexOutOfBoundsException();
         } else { // If it is not finished...
           System.out.println("sending dlfkjsdlkfjk");
           pickupStart.setSpeed(1); // Keep the signal going

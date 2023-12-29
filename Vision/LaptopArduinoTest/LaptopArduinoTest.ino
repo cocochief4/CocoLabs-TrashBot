@@ -35,9 +35,9 @@ void loop()
 
   if (flash) {
     Serial.println("Write");
-    digitalWrite(signalPin, HIGH);
+    digitalWrite(signalPin, LOW); // Low is true, High is false
   } else {
-    digitalWrite(signalPin, LOW);
+    digitalWrite(signalPin, HIGH);
   }
 
 }
