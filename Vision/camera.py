@@ -51,12 +51,18 @@ def preprocessWarmthFilter(image):
     hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
     h, s, v = cv2. split(hsv_image)
 
+def zoom_at(img, zoom=1, angle=0, coord=None):
+    cy, cx = [ i/2 for i in img.shape[:-1] ] if coord is None else coord[::-1]
+    rot_mat = cv2.getRotationMatrix2D((cx,cy), angle, zoom)
+    result = cv2.warpAffine(img, rot_mat, img.shape[1::-1], flags=cv2.INTER_LINEAR)
+    return result
+
 # Load the model
 model = tf.saved_model.load(PATH + RESNET50)
 classes = [ "no-trash" ,  "trash" , ]
 
 # Define video capture object
-vid = cv2.VideoCapture(1)
+vid = cv2.VideoCapture(0)
 
 time.sleep(3) # to make sure the arduino doesn't automatically reset
 
@@ -71,7 +77,10 @@ while(True):
     crop_width = [int(((width-RESIZE[1])/2)), int((RESIZE[1]+((width-RESIZE[1]))/2))]
 
     crop = image[int(((height-RESIZE[0])/2)):int((RESIZE[0]+((height-RESIZE[0]))/2)), int(((width-RESIZE[1])/2)):int((RESIZE[1]+((width-RESIZE[1]))/2))]
-    prepreprocess = crop
+    
+    new_crop = zoom_at(crop, 2, coord=(150, 150))
+    scaled_crop = new_crop.resize(300, 300);
+
     # crop = preprocessBlur(crop)
     inference = np.array(crop)[None]
 
