@@ -25,11 +25,18 @@ public class input {
         vertices = new latLong[nVertices];
         //Here you would define each lat, long in vertices
         //Top left Corner: Lat: 37.3453149 Long: -122.0160824
+
+        // akhil coords
+        vertices[0] = new latLong(373501115E-7,-1220187724E-7);
+        vertices[1] = new latLong(373501118E-7,-1220187355E-7);
+        vertices[2] = new latLong(373500866E-7,-1220187373E-7);
+        vertices[3] = new latLong(373500847E-7,-1220187709E-7);
+
         //House Coords
-        vertices[0] = new latLong(373473899E-7,-1220184057E-7);
-        vertices[1] = new latLong(373474542E-7,-1220184084E-7);
-        vertices[2] = new latLong(373474558E-7,-1220184835E-7);
-        vertices[3] = new latLong(373473930E-7,-1220184798E-7);
+        // vertices[0] = new latLong(373473899E-7,-1220184057E-7);
+        // vertices[1] = new latLong(373474542E-7,-1220184084E-7);
+        // vertices[2] = new latLong(373474558E-7,-1220184835E-7);
+        // vertices[3] = new latLong(373473930E-7,-1220184798E-7);
         
         //Panama Park Coords decaperated
         // vertices[0] = new latLong(373471167E-7,-1220185661E-7);

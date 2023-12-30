@@ -67,7 +67,7 @@ public class ArduinoManager {
             if (gps.equals("N")) {
                 gpsStruct = null;
             } else {
-                if(Robot.IS_AUTO) {
+                if(Startup.NAVIGATION) {
                     if (Byte.parseByte(gps.split(",")[2]) == 2) {
                         String gpsArr[] = gps.split(",");
                         gpsStruct = new GPSLatLongData(Long.parseLong(gpsArr[0]), 

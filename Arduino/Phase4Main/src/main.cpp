@@ -113,6 +113,8 @@ rioInStates TheRIOState = stop;
 
 rioInStates getState();
 
+void readStateFromRio();
+
 /**
  * Checks to see if the roborio is telling arduino to start pickup. If it is, starts the pickup.
 */
@@ -204,7 +206,7 @@ void loop() {
   str = "";
 
   limitSwitchMaster();
-
+  readStateFromRio();
   checkRio();
 
   if (Serial.available()) {
@@ -455,29 +457,31 @@ void rioInit() {
 }
 
 void checkRio() {
-  // Serial.println(isSwitchTripped(rioIn));
+  // Serial.println(pulseIn(rioIn, HIGH, 50000));
   if (getState() == pickup && previousRioInState != pickup) {
-    digitalWrite(rioOut, HIGH);
+    digitalWrite(rioOut, LOW);
     Serial.println("Start pickup");
     cmd = m;
   } else if (getState() == pickup && previousRioInState == pickup && cmd == s) {
     Serial.println("Finish Pickup");
-    digitalWrite(rioOut, LOW);
-  } else if (getState() == pickup && previousRioInState == pickup && cmd != s) {
+    delay(100);
     digitalWrite(rioOut, HIGH);
+  } else if (getState() == pickup && previousRioInState == pickup && cmd != s) {
+    digitalWrite(rioOut, LOW);
   } else if (getState() == stop && previousRioInState == pickup) {
     Serial.println("Rio acknowledge finish pickup");
-    digitalWrite(rioOut, HIGH);
+    digitalWrite(rioOut, LOW);
   } else if (getState() == stop && previousRioInState == stop) {
-    digitalWrite(rioOut, HIGH);
+    digitalWrite(rioOut, LOW);
   } else if (getState() == actuatorDown && previousRioInState == stop) {
     Serial.println("Start moving actuator down to move forwarrd to pickup");
+    cmd = ad;
+    digitalWrite(rioOut, LOW);
   } else if (getState() == actuatorDown && previousRioInState == actuatorDown && cmd == s) {
     Serial.println("Done moving down send acknowledgement");
-    digitalWrite(rioOut, LOW);
-    cmd = ad;
+    digitalWrite(rioOut, HIGH);
   } else if (getState() == actuatorDown && previousRioInState == actuatorDown && cmd != s) {
-    digitalWrite (rioOut, HIGH);
+    digitalWrite (rioOut, LOW);
   }
 
   previousRioInState = getState();

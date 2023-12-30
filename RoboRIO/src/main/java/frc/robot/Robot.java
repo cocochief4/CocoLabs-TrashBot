@@ -50,7 +50,7 @@ public class Robot extends TimedRobot {
 
   StringLogEntry strLog;
 
-  public static final boolean IS_AUTO = false;
+  public static final boolean IS_AUTO = true;
 
   protected static int visionPort = 0;
 
@@ -219,7 +219,7 @@ public class Robot extends TimedRobot {
   boolean arrived = false;
   PickupPhases isPickingUp = PickupPhases.NO_PICKUP;
   double pickupStartTime = 0d;
-  final double SECONDS_TO_DRIVE = 2.0;
+  final double SECONDS_TO_DRIVE = 1.0;
   public void teleopPeriodic() throws NullPointerException {
     if (Startup.PICKUP && Startup.VISION) {
       checkForTrash();
@@ -257,10 +257,12 @@ public class Robot extends TimedRobot {
           System.out.println("Start the pickup");
           isPickingUp = PickupPhases.PRE_PICKUP; // Start the pickup
           
+        } else {
+          pickupStart.setSpeed(-1);
         }
         break;
       case PRE_PICKUP:
-         if (!pickupEnd.get()) { 
+         if (pickupEnd.get()) { 
           System.out.println("pre pickup ended");
           pickupStartTime = Timer.getFPGATimestamp(); // Set start time of pickup
           isPickingUp = PickupPhases.MOVE; // Start the pickup
@@ -272,12 +274,13 @@ public class Robot extends TimedRobot {
       case MOVE: // Move to get trash to be on pickup mechanism.
         if (Timer.getFPGATimestamp() - pickupStartTime < SECONDS_TO_DRIVE) { // Drive forward for "x" seconds.
           AutonomousDrive.drive(PathHandler.MAX_DRIVE_SPEED, 0);
+          pickupStart.setSpeed(-1);
         } else {
           isPickingUp = PickupPhases.PICKUP;
         }
         break;
       case PICKUP: // If currently picking up,
-        if (!pickupEnd.get()) { // And it finished picking up,
+        if (pickupEnd.get()) { // And it finished picking up,
           pickupStart.setSpeed(-1); // stop the pickup
           System.out.println("Stop the pickup");
           isPickingUp = PickupPhases.NO_PICKUP;
