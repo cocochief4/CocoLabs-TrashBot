@@ -219,7 +219,7 @@ public class Robot extends TimedRobot {
   boolean arrived = false;
   PickupPhases isPickingUp = PickupPhases.NO_PICKUP;
   double pickupStartTime = 0d;
-  final double SECONDS_TO_DRIVE = 1.0;
+  final double SECONDS_TO_DRIVE = 1.5;
   public void teleopPeriodic() throws NullPointerException {
     if (Startup.PICKUP && Startup.VISION) {
       checkForTrash();
@@ -253,7 +253,9 @@ public class Robot extends TimedRobot {
   public void checkForTrash() throws NullPointerException{
     switch(isPickingUp) {
       case NO_PICKUP:
-        if (isThereTrash()) { // and there is trash then start the pickup process
+        boolean yesTrash = isThereTrash();
+        System.out.println(yesTrash);
+        if (yesTrash) { // and there is trash then start the pickup process
           System.out.println("Start the pickup");
           isPickingUp = PickupPhases.PRE_PICKUP; // Start the pickup
           
@@ -285,6 +287,10 @@ public class Robot extends TimedRobot {
           System.out.println("Stop the pickup");
           isPickingUp = PickupPhases.NO_PICKUP;
           System.out.println("Done");
+          visionDetected.clear();
+          for (int i = 0; i<10; i++) { // Fill the vision array with negatives
+            visionDetected.add(false);
+          }
         } else { // If it is not finished...
           System.out.println("sending dlfkjsdlkfjk");
           pickupStart.setSpeed(1); // Keep the signal going
