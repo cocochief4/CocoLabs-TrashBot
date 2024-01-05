@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": "../RoboRIO"
+		},
+		{
+			"name": "Phase4Main",
+			"path": "../Arduino/Phase4Main"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "automatic",
+		"java.server.launchMode": "Standard"
+	}
+}
