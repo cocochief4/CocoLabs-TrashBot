@@ -13,9 +13,9 @@ public class Startup {
      */
     public static void init() {
         // Change startup options here
-        NAVIGATION = true; // You need GPS attached.
-        PICKUP = true; // You need pickup arduino attached
-        VISION = true; // You need camera mounted
+        NAVIGATION = false; // You need GPS attached.
+        PICKUP = false; // You need pickup arduino attached
+        VISION = false; // You need camera mounted
 
         pickupStart = 0;
         pickupEnd = 1;

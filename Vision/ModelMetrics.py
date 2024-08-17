@@ -4,16 +4,24 @@ import os
 import numpy
 import keyboard
 from PIL import Image
+import time
 
 sys.path.append('.')
 import pathConfig
 
-TRASH_PATH = 'trash/'
-NO_TRASH_PATH = 'no-trash/'
-PATH = pathConfig.SMACINTOSH_PATH + 'Vision/Trash-Dataset2/'
+#Define paths
+MOBILENET='MobileNet/'
+RESNET50='ResNet50/'
+RESNET50_FULL = 'ResNet50-Full'
+EFFICIENTNET='EfficientNet/'
+PATH = pathConfig.SMACINTOSH_PATH + 'Vision/'
+TRASH_PATH = PATH + 'trash/'
+NO_TRASH_PATH = PATH + 'no-trash/'
+sys.path.append(PATH + RESNET50)
 
 # [height, width]
 RESIZE = [300, 300]
+SCALE = [75, 75];
 
 # Define video capture object
 vid = cv2.VideoCapture(1)
@@ -55,20 +63,16 @@ while(True):
 
     # Check whether or not to save the image
     if record == 'trash':
-        path = PATH + TRASH_PATH;
-        img_name = 'image_' + str(index) + '.jpg'
-        os.chdir(path);
-        print(cv2.imwrite(img_name, crop))
+        path = PATH + TRASH_PATH + 'image_' + str(index) + '.jpg'
+        print(cv2.imwrite(path, crop))
         index += 1
         print(index)
     elif record == 'no-trash':
-        path = PATH + NO_TRASH_PATH;
-        img_name = 'image_' + str(index) + '.jpg'
-        os.chdir(path);
-        print(cv2.imwrite(img_name, crop))
+        path = PATH + NO_TRASH_PATH + 'image_' + str(index) + '.jpg'
+        print(cv2.imwrite(path, crop))
         index += 1
         print(index)
-          
+    
     # break key
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break

@@ -99,7 +99,7 @@ String readRC() {
     rc2Val = 1500;
   }
 
-  String string = String(rc1Val) + "," + String(rc2Val);
+  String string = String(rc1Val) + "," + String(rc2Val); // these are wrong! flip the order
 
   return string;
 }

@@ -1,3 +1,5 @@
+# NOT FOR COLLECTING METRICS!
+
 import sys
 sys.path.append('.')
 import cv2
@@ -74,7 +76,7 @@ def process_images(folder_path, isTrash):
     acc = acc/len(files)
     return acc
 
-print(process_images(PATH + "train/no-trash", False))
-print(process_images(PATH + "train/trash", True))
+print(process_images(PATH + "Trash-Dataset2/no-trash", False))
+print(process_images(PATH + "Trash-Dataset2/trash", True))
     
 
