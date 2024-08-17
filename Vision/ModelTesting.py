@@ -17,10 +17,10 @@ import time
 RESIZE = [75, 75]
 
 #Define paths
-MOBILENET='/MobileNet/'
-RESNET50='/ResNet50/'
+MOBILENET='/MobileNet1/'
+RESNET50='/ResNet501/'
 RESNET50_FULL = '/ResNet50-Full'
-EFFICIENTNET='/EfficientNet/'
+EFFICIENTNET='/EfficientNet1/'
 PATH = pathConfig.SMACINTOSH_PATH + 'Vision/'
 sys.path.append(PATH + RESNET50)
 

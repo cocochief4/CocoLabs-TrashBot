@@ -111,7 +111,7 @@ public class stc {
         // printLatLong(input.initialPos);
         // System.out.println("zeropoint");
         // printLatLong(zeroPoint);
-        input.initialPos.Lat = Math.abs(zeroPoint.Lat - input.initialPos.Lat);
+        input.initialPos.Lat = Math.abs(zeroPoint.Lat - input.initialPos.Lat); // This throws NullPointerExcep when GPS not connected; Check initalPos (go through refs)
         input.initialPos.Long = Math.abs(zeroPoint.Long - input.initialPos.Long);
         // System.out.println("Middle way through initial pos calc");
         // printLatLong(input.initialPos);
@@ -218,7 +218,7 @@ public class stc {
     }
 
     public static void printLatLong(latLong i) {
-        // System.out.println(i.Lat + " " + i.Long);
+        System.out.println(i.Lat + " " + i.Long);
     }
 
     private static void generateNodes() {
@@ -781,9 +781,9 @@ public class stc {
         output();
         //printing out the final navigate array
         finalNavigate.remove(finalNavigate.size()-1);
-        // for (int i = 0; i<finalNavigate.size(); i++) {
-        //     System.out.println("(" + finalNavigate.get(i).Long + ", " + finalNavigate.get(i).Lat + ")");
-        // }
+        for (int i = 0; i<finalNavigate.size(); i++) {
+            System.out.println("(" + finalNavigate.get(i).Long + ", " + finalNavigate.get(i).Lat + ")");
+        }
         inALine();
         // System.out.println("( " + startNode.Long + ", " + startNode.Lat + ")");
     }
